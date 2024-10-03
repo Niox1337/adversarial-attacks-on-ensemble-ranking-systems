@@ -37,6 +37,7 @@ __Comparison__
 - Different models use similar functions to train while the tasks are identical
 - The direction of perturbation is the main impact to form a adversarial example
 ##### __Ensembles cannot defend adversarial examples__
+
 # [Deep Text Classification Can be Fooled](https://arxiv.org/pdf/1704.08006)
 
 **Comparison**
@@ -49,8 +50,35 @@ __Comparison__
 - Image and audio are both continuous data
 - Text is discrete
 - Continuous data has more tolerance to perturbed input than discrete one
-# [Passage Re-Ranking with BERT](https://arxiv.org/abs/1901.04085)
+
+# [Passage Re-Ranking with BERT](https://arxiv.org/pdf/1901.04085)
+##### Process of using BERT to rank passages
+1. Use a standard retrieval method (e.g. BM25) to fetch a large number of (potentially) relevant documents from a corpus
+2. Re-Ranking with BERT: For each passage-document pair (query + passage), estimate how relevant the passage is to the query. This relevance is represented by a score.
+	- Specifically, the model extracts a special **\[CLS] token** representation from BERT’s output, which will be the input to a single-layer neural network to estimate the probability of relevance.
 
 # [PRADA: Practical Black-Box Adversarial Attacks against Neural Ranking Models](https://arxiv.org/pdf/2204.01321)
 
+##### WSRA
+- Stands for **Word Substitution Ranking Attack**
+- Aims to manipulate the rankings of search results by introducing **adversarial word substitutions**
+- The objective is to promote documents' rankings by fooling **NRMs (Neural Ranking Models)** through adversarial attacks
+
+##### PRADA
+- Stands for **Pseudo-Relevance based ADversarial ranking Attack**
+- Is a way of generating adversarial ranking attack
+
+
+**WSRA focuses on manipulating search rankings using word substitutions, and PRADA offers a practical and effective method to carry out these attacks**
+
 # [Topic-oriented Adversarial Attacks against Black-box Neural Ranking Models](https://dl.acm.org/doi/pdf/10.1145/3539618.3591777)
+
+##### TARA
+- Stands for **topic-oriented adversarial ranking attack**
+- Fooling the neural network by rephrasing sentences/words in the document
+
+##### RELEVANT
+- Stands for reinforcement learning-based adversarial ranking attack
+- Uses Markov decision process to update the attack strategy from previous findings
+
+**Black-box ranking systems still has their vulnerabilities**
