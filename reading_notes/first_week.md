@@ -39,6 +39,16 @@ __Comparison__
 ##### __Ensembles cannot defend adversarial examples__
 # [Deep Text Classification Can be Fooled](https://arxiv.org/pdf/1704.08006)
 
+**Comparison**
+- Our Project:
+	- Has the goal of evaluating the impact of adversarial attacks on search engine
+- This paper:
+	- Evaluates the tolerance of different kinds of data
+	- Analyse how much will perturbed discrete data affects the performance of deep neural network
+##### Tolerance of Perturbations
+- Image and audio are both continuous data
+- Text is discrete
+- Continuous data has more tolerance to perturbed input than discrete one
 # [Passage Re-Ranking with BERT](https://arxiv.org/abs/1901.04085)
 
 # [PRADA: Practical Black-Box Adversarial Attacks against Neural Ranking Models](https://arxiv.org/pdf/2204.01321)
