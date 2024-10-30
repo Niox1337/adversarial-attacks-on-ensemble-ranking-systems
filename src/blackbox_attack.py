@@ -8,8 +8,7 @@ from tqdm import tqdm
 
 import torch
 from torch.utils.data import DataLoader
-from transformers import (BertConfig, BertTokenizer, AdamW,
-                          get_linear_schedule_with_warmup)
+from transformers import (BertConfig, BertTokenizer)
 from transformers import BertTokenizer
 
 from myutils.semantic_helper import SemanticHelper
