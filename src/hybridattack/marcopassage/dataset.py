@@ -94,7 +94,7 @@ class PostAttackDataset(Dataset):
     
     def __getitem__(self, idx):
         item = self.training_data[idx]
-        qid, doc_id_a, perturbed = item.query_id, item.doc_id_a, perturbed
+        qid, doc_id_a, perturbed = item.query_id, item.doc_id_a, item.perturbed
         query = self.queries[str(qid)]
         text = self.docs[str(doc_id_a)]
 
