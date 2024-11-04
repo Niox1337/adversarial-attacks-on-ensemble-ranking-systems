@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from transformers import BertTokenizer
 from rankers import Cat, Dot
 from .myutils.semantic_helper import SemanticHelper
-from .msmarcopassage.dataset import PreAttackDataset, PreCatDataCollator
+from .marcopassage.dataset import PreAttackDataset, PreCatDataCollator
 
 # Make new semantic helper without pre-compute 
 
