@@ -1,5 +1,5 @@
 import torch
-from myutils.word_recover import WordRecover
+from word_recover import WordRecover
 
 
 class BERTWordRecover(WordRecover):

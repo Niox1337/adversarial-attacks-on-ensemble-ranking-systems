@@ -15,7 +15,7 @@ import pandas as pd
 import torch
 from typing import Optional, Union
 import ir_datasets as irds
-from rankers_util import initialise_irds_eval
+from rankers._util import initialise_irds_eval
 from rankers.datasets.corpus import Corpus
 
 logger = logging.getLogger(__name__)
