@@ -17,8 +17,9 @@ def main(model_name_or_path : str, output_dir, dataset : str, model_type : str =
     elif model_type == 'dot': model = Dot.from_pretrained(model_name_or_path)
     else: raise ValueError(f"Model type '{model_type}' not recognised")
 
-    semantic_helper = SemanticHelper(getattr(model, 'classifier' if model_type == 'cat' else 'encoder').embeddings)
     tokenizer = BertTokenizer.from_pretrained(model_name_or_path)
+    semantic_helper = SemanticHelper(getattr(model, 'classifier' if model_type == 'cat' else 'encoder').embeddings, tokenizer)
+
 
     dataset = PreAttackDataset.from_irds(dataset)
     collator = PreCatDataCollator(tokenizer)

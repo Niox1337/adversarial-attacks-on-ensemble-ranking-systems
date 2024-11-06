@@ -3,30 +3,22 @@ import numpy as np
 
 class SemanticHelper:
 
-    def __init__(self, sim_embedding_path, sim_embedding_npy_path):
-        self.sim_embedding_path = sim_embedding_path
-        self.sim_embedding_npy_path = sim_embedding_npy_path
+    def __init__(self, embeddings, tokenizer):
+        self.word2idx = None
+        self.idx2word = None
+        self.embeddings = embeddings
+        self.tokenizer = tokenizer
+        self.build_vocab()
 
     def build_vocab(self):
-        idx2word = {}
-        word2idx = {}
+        self.idx2word = {}
+        self.word2idx = {}
 
         print("Building vocab...")
-        with open(self.sim_embedding_path, 'r') as sef:
-            for line in sef:
-                word = line.split()[0]
-                if word not in word2idx:
-                    idx2word[len(idx2word)] = word
-                    word2idx[word] = len(idx2word) - 1
-
-        self.idx2word = idx2word
-        self.word2idx = word2idx
-
-    def load_embedding_cos_sim_matrix(self):
-        print('Load pre-computed cosine similarity matrix from {}'.format(self.sim_embedding_npy_path))
-        cos_sim = np.load(self.sim_embedding_npy_path)
-        print("Cos sim import finished!")
-        self.cos_sim_matrix = cos_sim
+        vocab = self.tokenizer.get_vocab()
+        for token, idx in vocab.items():
+            self.idx2word[idx] = token
+            self.word2idx[token] = idx
 
     def is_number(self, input):
         try:
@@ -89,6 +81,13 @@ class SemanticHelper:
                 in_words.append(src_word)
             else:
                 out_words.append(src_word)
+
+        embeddings = self.embeddings.weight.data[in_words_idx].cpu().numpy()
+        embeddings_norm = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+        all_embeddings = self.embeddings.weight.data.cpu().numpy()
+        all_embeddings_norm = all_embeddings / np.linalg.norm(all_embeddings, axis=1, keepdims=True)
+        cos_sim = np.matmul(embeddings_norm, all_embeddings_norm.T)
+
         sim_order = np.argsort(-self.cos_sim_matrix[in_words_idx, :])[:, 1:1 + ret_count]
         sim_words, sim_values = {}, []
         for idx, in_word_idx in enumerate(in_words_idx):
