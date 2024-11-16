@@ -6,7 +6,8 @@ class SemanticHelper:
     def __init__(self, embeddings, tokenizer):
         self.word2idx = None
         self.idx2word = None
-        self.embeddings = embeddings
+        raw = embeddings.weight.data.cpu().numpy()
+        self.embeddings = raw / np.linalg.norm(raw, axis=1, keepdims=True)
         self.tokenizer = tokenizer
         self.build_vocab()
 
@@ -26,6 +27,13 @@ class SemanticHelper:
             return True
         except:
             return False
+
+    def get_cos_sim(self, in_words_idx):
+        embeddings = self.embeddings[in_words_idx]
+        all_embeddings = self.embeddings
+        cos_sim = np.matmul(embeddings, all_embeddings.T)
+        return cos_sim
+
 
     def recover_whole_word(self, sub_word, ori_doc_token_ids_list, word_re):
         word_index = ori_doc_token_ids_list.index(word_re.word2idx[sub_word])
@@ -82,23 +90,37 @@ class SemanticHelper:
             else:
                 out_words.append(src_word)
 
-        embeddings = self.embeddings.weight.data[in_words_idx].cpu().numpy()
-        embeddings_norm = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
-        all_embeddings = self.embeddings.weight.data.cpu().numpy()
-        all_embeddings_norm = all_embeddings / np.linalg.norm(all_embeddings, axis=1, keepdims=True)
-        cos_sim = np.matmul(embeddings_norm, all_embeddings_norm.T)
+        cos_sim = self.get_cos_sim(in_words_idx)
 
-        sim_order = np.argsort(-self.cos_sim_matrix[in_words_idx, :])[:, 1:1 + ret_count]
-        sim_words, sim_values = {}, []
+        # Exclude the word itself from similarities
         for idx, in_word_idx in enumerate(in_words_idx):
-            sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
-            mask = sim_value >= threshold
-            sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
-            sim_word = [self.idx2word[id] for id in sim_word]
-            sim_words[in_words[idx]] = sim_word
-            sim_values.append(sim_value)
+            cos_sim[idx, in_word_idx] = -np.inf
+
+        sim_order = np.argsort(-cos_sim)[:, 1:1 + ret_count]
+
+        sim_values = np.take_along_axis(cos_sim, sim_order, axis=1)
+
+        sim_words = {}
+
+        for idx, in_word in enumerate(in_words):
+            sim_word_ids = sim_order[idx]
+            sim_word_scores = sim_values[idx]
+            mask = sim_word_scores >= threshold
+            sim_word_ids = sim_word_ids[mask]
+            sim_word_tokens = [self.idx2word[word_id] for word_id in sim_word_ids]
+            sim_words[in_word] = sim_word_tokens
+            # score can be accessed thru sim_word_scores[mask]
+
+        # for idx, in_word_idx in enumerate(in_words_idx):
+        #     sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
+        #     mask = sim_value >= threshold
+        #     sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
+        #     sim_word = [self.idx2word[id] for id in sim_word]
+        #     sim_words[in_words[idx]] = sim_word
+        #     sim_values.append(sim_value)
         return sim_words, sim_values, self.subword_neighbor_dict
 
+# seems no changes are needed
     def pick_nearest_word_with_embedding(self, importance_tokens, importance_token_id_list,
                                          ori_doc_token_ids_list,
                                          ori_embedding, att_embedding, word_re, attacker_word_number):
@@ -135,15 +157,30 @@ class SemanticHelper:
             else:
                 out_words.append(src_word)
 
-        sim_order = np.argsort(-self.cos_sim_matrix[in_words_idx, :])[:, 1:1 + ret_count]
-        sim_words, sim_values = {}, []
+        cos_sim = self.get_cos_sim(in_words_idx)
+
+        sim_order = np.argsort(-cos_sim)[:, :ret_count]
+        sim_values = np.take_along_axis(cos_sim, sim_order, axis=1)
+        sim_words = {}
+
         for idx, in_word_idx in enumerate(in_words_idx):
-            sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
-            mask = sim_value >= threshold
-            sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
-            sim_word = [self.idx2word[id] for id in sim_word]
-            sim_word.append(in_words[idx])
-            sim_words[in_words[idx]] = sim_word
-            sim_values.append(sim_value)
+            sim_word_ids = sim_order[idx]
+            sim_word_scores = sim_values[idx]
+            mask = sim_word_scores >= threshold
+            sim_word_ids = sim_word_ids[mask]
+            sim_word_tokens = [self.idx2word[word_id] for word_id in sim_word_ids]
+            sim_words[in_word_idx] = sim_word_tokens
+            # append the word itself to its similarity list
+            if in_word_idx not in sim_word_tokens:
+                sim_words[in_word_idx].append(in_word_idx)
+
+
+            # sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
+            # mask = sim_value >= threshold
+            # sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
+            # sim_word = [self.idx2word[id] for id in sim_word]
+            # sim_word.append(in_words[idx])
+            # sim_words[in_words[idx]] = sim_word
+            # sim_values.append(sim_value)
         return sim_words, sim_values
 
