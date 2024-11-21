@@ -100,8 +100,43 @@ class PostAttackDataset(Dataset):
 
         return qid, query, doc_id_a, text, perturbed
 
+class PreDotDataCollator:
+    def __init__(self,
+                 tokenizer,
+                 q_max_length=30,
+                 d_max_length=200,
+                 ) -> None:
+        self.tokenizer = tokenizer
+        self.q_max_length = q_max_length
+        self.d_max_length = d_max_length
+    
+    def __call__(self, batch) -> dict:
+        qidx, queries, didx, docs = zip(*batch)
+
+        tokenized_queries = self.tokenizer(
+            queries,
+            padding=True,
+            truncation=True,
+            max_length=self.q_max_length,
+            return_tensors="pt",
+        )
+        tokenized_docs = self.tokenizer(
+            docs,
+            padding=True,
+            truncation=True,
+            max_length=self.d_max_length,
+            return_tensors="pt",
+        )
+
+        return {
+            "queries": dict(tokenized_queries),
+            "docs": dict(tokenized_docs),
+            "qidx": torch.tensor(qidx),
+            "didx": torch.tensor(didx),
+        }
+    
 class PreCatDataCollator:
-    def __init__(self, 
+    def __init__(self,
                  tokenizer,
                  q_max_length=30,
                  d_max_length=200,
@@ -128,7 +163,7 @@ class PreCatDataCollator:
         }
     
 class PostCatDataCollator:
-    def __init__(self, 
+    def __init__(self,
                  tokenizer,
                  q_max_length=30,
                  d_max_length=200,
@@ -165,3 +200,46 @@ class PostCatDataCollator:
             "didx": torch.tensor(didx),
         }
 
+
+class PostDotDataCollator:
+    def __init__(self,
+                 tokenizer,
+                 q_max_length=30,
+                 d_max_length=200,
+                 ) -> None:
+        self.tokenizer = tokenizer
+        self.q_max_length = q_max_length
+        self.d_max_length = d_max_length
+
+    def __call__(self, batch) -> dict:
+        qidx, queries, didx, docs, perturbed = zip(*batch)
+
+        tokenized_queries = self.tokenizer(
+            queries,
+            padding=True,
+            truncation=True,
+            max_length=self.q_max_length,
+            return_tensors="pt",
+        )
+        tokenized_docs = self.tokenizer(
+            docs,
+            padding=True,
+            truncation=True,
+            max_length=self.d_max_length,
+            return_tensors="pt",
+        )
+        tokenized_perturbed_docs = self.tokenizer(
+            perturbed,
+            padding=True,
+            truncation=True,
+            max_length=self.d_max_length,
+            return_tensors="pt",
+        )
+
+        return {
+            "queries": dict(tokenized_queries),
+            "docs": dict(tokenized_docs),
+            "perturbed_docs": dict(tokenized_perturbed_docs),
+            "qidx": torch.tensor(qidx),
+            "didx": torch.tensor(didx),
+        }

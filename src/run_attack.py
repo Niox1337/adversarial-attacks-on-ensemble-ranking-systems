@@ -33,6 +33,7 @@ def replace_with_similar_words(input_text: str, semantic_helper: SemanticHelper,
     adversarial_text = semantic_helper.tokenizer.convert_tokens_to_string(new_tokens)
     return adversarial_text
 
+
 def main(model_name_or_path : str, output_dir, dataset : str, model_type : str = 'cat', subset : int = 1):
 
     if model_type == 'cat': model = Cat.from_pretrained(model_name_or_path)

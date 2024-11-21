@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 
 from myutils.attacker.PGD import PGD
+from ....modelling_bert_cat import Cat
+from ....modelling_bert_dot import Dot
 
 
 class Attacker:
@@ -30,9 +32,8 @@ class Attacker:
 
         model.train()
         model.zero_grad()
-
         for batch in batch_list:
-
+            
             batch = {k: torch.cat((attack_doc_input[k].unsqueeze(dim=0), v), dim=0)
                      for k, v in batch.items()}
             batch = {k: v.to(device) for k, v in batch.items()}
