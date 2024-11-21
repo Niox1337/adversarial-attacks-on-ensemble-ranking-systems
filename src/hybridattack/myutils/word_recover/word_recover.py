@@ -2,16 +2,9 @@ import torch
 
 
 class WordRecover:
-    def __init__(self, embed_name):
-        self.embed_name = embed_name
+    def __init__(self, tokenizer):
+        self.tokenizer = tokenizer
         pass
-
-    def get_word_embedding(self, model):
-        emb_name = self.embed_name
-        for name, param in model.named_parameters():
-            if emb_name in name:
-               embedding_matrix = param
-               return embedding_matrix
 
     def get_max_sim_word(self, word_tensors, ori_word_embedding_matrix):
         cossim_maxtrix = self.cos_similar(word_tensors, ori_word_embedding_matrix)
@@ -78,26 +71,36 @@ class WordRecover:
         print(new_doc)
         return new_doc
 
-    def get_highest_gradient_words(self, model, attack_num=50, attack_word_idx = []):
-        embed_name = self.embed_name
-        word_embedding = self.get_word_embedding(model, embed_name)
-        gradient_matrix = word_embedding.grad[attack_word_idx]
+    def get_highest_gradient_words(self, gradient_matrix, attack_num=50):
 
         row_norm = torch.norm(gradient_matrix, p=2, dim=-1)
-
         attack_num = min(attack_num, row_norm.shape[0])
 
-        topk_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
-        print(topk_norm, topk_idx)
-        model.zero_grad()
+        top_k_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
 
-        word_topk_list = []
-        for idx in topk_idx:
-            idx = idx.item()
-            true_idx = attack_word_idx[idx]
-            word_topk_list.append(true_idx)
+        word_topk_list = [idx.item() for idx in topk_idx]
+        return top_k_norm, word_topk_list
 
-        return topk_norm, word_topk_list
+    # def get_highest_gradient_words(self, model, attack_num=50, attack_word_idx = []):
+    #     embed_name = self.embed_name
+    #     word_embedding = self.get_word_embedding(model, embed_name)
+    #     gradient_matrix = word_embedding.grad[attack_word_idx]
+    # 
+    #     row_norm = torch.norm(gradient_matrix, p=2, dim=-1)
+    # 
+    #     attack_num = min(attack_num, row_norm.shape[0])
+    # 
+    #     topk_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
+    #     print(topk_norm, topk_idx)
+    #     model.zero_grad()
+    # 
+    #     word_topk_list = []
+    #     for idx in topk_idx:
+    #         idx = idx.item()
+    #         true_idx = attack_word_idx[idx]
+    #         word_topk_list.append(true_idx)
+    # 
+    #     return topk_norm, word_topk_list
 
 
 

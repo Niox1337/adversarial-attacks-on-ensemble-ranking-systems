@@ -1,12 +1,13 @@
 import torch
-from word_recover import WordRecover
+from .word_recover import WordRecover
 
 
 class BERTWordRecover(WordRecover):
-    def __init__(self, embed_name, bert_tokenizer, bert_vocab_path, max_query_length, max_doc_length):
-        super(BERTWordRecover, self).__init__(embed_name)
+    def __init__(self, bert_tokenizer, max_query_length, max_doc_length):
+        super(BERTWordRecover, self).__init__(bert_tokenizer)
+        self.word2idx = None
+        self.idx2word = None
         self.tokenizer = bert_tokenizer
-        self.embedding_path = bert_vocab_path
         self.build_vocab()
         self.cls_id = self.tokenizer.cls_token_id
         self.sep_id = self.tokenizer.sep_token_id
@@ -14,21 +15,23 @@ class BERTWordRecover(WordRecover):
         self.max_doc_length = max_doc_length
 
     def build_vocab(self):
-        idx2word = {}
-        word2idx = {}
+        # idx2word = {}
+        # word2idx = {}
 
         print("Building vocab for bert_tokenizer...")
-        with open(self.embedding_path, 'r') as sef:
-            index = 0
-            for line in sef:
-                word = line.strip()
-
-                idx2word[index] = word
-                word2idx[word] = index
-                index += 1
-
-        self.idx2word = idx2word
-        self.word2idx = word2idx
+        self.idx2word = {idx: token for token, idx in self.tokenizer.vocab.items()}
+        self.word2idx = self.tokenizer.vocab
+        # with open(self.embedding_path, 'r') as sef:
+        #     index = 0
+        #     for line in sef:
+        #         word = line.strip()
+        # 
+        #         idx2word[index] = word
+        #         word2idx[word] = index
+        #         index += 1
+        # 
+        # self.idx2word = idx2word
+        # self.word2idx = word2idx
 
     def get_word_embedding(self, model):
         emb_name = self.embed_name
@@ -276,26 +279,15 @@ class BERTWordRecover(WordRecover):
 
         return doc_token_id_list, best_score
 
-    def get_highest_gradient_words(self, model, attack_num=50, attack_word_idx = []):
-
-        word_embedding = self.get_word_embedding(model)
-        gradient_matrix = word_embedding.grad[attack_word_idx]
+    def get_highest_gradient_words(self, gradient_matrix, attack_num=50):
 
         row_norm = torch.norm(gradient_matrix, p=2, dim=-1)
-
         attack_num = min(attack_num, row_norm.shape[0])
 
-        topk_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
+        top_k_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
 
-        model.zero_grad()
-
-        word_topk_list = []
-        for idx in topk_idx:
-            idx = idx.item()
-            true_idx = attack_word_idx[idx]
-            word_topk_list.append(true_idx)
-
-        return topk_norm, word_topk_list
+        word_topk_list = [idx.item() for idx in topk_idx]
+        return top_k_norm, word_topk_list
 
     def recover_doc(self, doc_id, attacked_doc_token_ids, collection, max_doc_length):
         if self.sep_id in attacked_doc_token_ids:

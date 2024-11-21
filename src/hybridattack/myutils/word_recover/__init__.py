@@ -1,1 +1,1 @@
-from myutils.word_recover.word_recover import WordRecover
+from .word_recover import WordRecover
