@@ -25,7 +25,6 @@ from .hybridattack.myutils.attacker.attacker import Attacker
 from transformers import HfArgumentParser
 from dataclasses import dataclass, field
 
-
 @dataclass
 class Args:
     model_name_or_path = field(default="bert-base-uncased")
@@ -33,14 +32,19 @@ class Args:
     dataset = field(default="./dataset.json")
     model_type = field(default="cat")
     subset = field(default=1)
-    max_attack_word_number = field(default=5)
+    max_attack_word_number = field(default=10)
     toy = field(default=False)
     eps = field(default=0.1)
-    max_iter = field(default=100)
+    max_iter = field(default=3)
     simi_candi_topk = field(default=5)
     simi_threshod = field(default=0.7)
     max_doc_length = field(default=200)
     max_query_length = field(default=30)
+    device = field(default="cuda" if torch.cuda.is_available() else "cpu")
+    find_word_search = field(default=False)
+    doc_list_length = field(default=100)
+    group_size = field(default=20)
+
 
 
 def load_local_json(file_path):
@@ -180,7 +184,7 @@ def main():
         max_doc_length=args.max_doc_length,
     )
 
-    if not toy:
+    if not args.toy:
         dataset = PreAttackDataset.from_irds(args.dataset_id)
         collator = (
             PreCatDataCollator(tokenizer)
