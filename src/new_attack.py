@@ -1,6 +1,5 @@
 """
 TODO:
-* Create a script to get the top-k documents for a given query
 * Create a script to get attack pairs from the qrels
 * Create an argparser
 * What is the collection variable in the original read_resources function?
@@ -23,6 +22,25 @@ from fire import Fire
 import torch
 import copy
 from .hybridattack.myutils.attacker.attacker import Attacker
+from transformers import HfArgumentParser
+from dataclasses import dataclass, field
+
+
+@dataclass
+class Args:
+    model_name_or_path = field(default="bert-base-uncased")
+    output_dir = field(default="./output")
+    dataset = field(default="./dataset.json")
+    model_type = field(default="cat")
+    subset = field(default=1)
+    max_attack_word_number = field(default=5)
+    toy = field(default=False)
+    eps = field(default=0.1)
+    max_iter = field(default=100)
+    simi_candi_topk = field(default=5)
+    simi_threshod = field(default=0.7)
+    max_doc_length = field(default=200)
+    max_query_length = field(default=30)
 
 
 def load_local_json(file_path):
@@ -140,34 +158,33 @@ def attack(
     return new_doc_token_id_list, score
 
 
-def main(
-    model_name_or_path="bert-base-uncased",
-    output_dir="./output",
-    dataset="./dataset.json",
-    model_type="cat",
-    subset=1,
-    max_attack_word_number=5,
-    toy=False,
-):
-    if model_type == "cat":
-        model = Cat.from_pretrained(model_name_or_path)
-    elif model_type == "dot":
-        model = Dot.from_pretrained(model_name_or_path)
+def main():
+    parser = HfArgumentParser(Args)
+    args = parser.parse_args()[0]
+
+    if args.model_type == "cat":
+        model = Cat.from_pretrained(args.model_name_or_path)
+    elif args.model_type == "dot":
+        model = Dot.from_pretrained(args.model_name_or_path)
     else:
-        raise ValueError(f"Model type '{model_type}' not recognised")
+        raise ValueError(f"Model type '{args.model_type}' not recognised")
 
     model_state_dict = copy.deepcopy(model.state_dict())
 
     tokenizer = model.tokenizer
     embeddings = model.model.base_model.embeddings.word_embeddings
     semantic_helper = SemanticHelper(embeddings, tokenizer)
-    word_re = BERTWordRecover(tokenizer, max_query_length=30, max_doc_length=200)
+    word_re = BERTWordRecover(
+        tokenizer,
+        max_query_length=args.max_query_length,
+        max_doc_length=args.max_doc_length,
+    )
 
     if not toy:
-        dataset = PreAttackDataset.from_irds(dataset)
+        dataset = PreAttackDataset.from_irds(args.dataset_id)
         collator = (
             PreCatDataCollator(tokenizer)
-            if model_type == "cat"
+            if args.model_type == "cat"
             else PreDotDataCollator(tokenizer)
         )
         dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
