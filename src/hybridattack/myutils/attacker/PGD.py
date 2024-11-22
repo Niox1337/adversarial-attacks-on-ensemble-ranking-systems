@@ -10,7 +10,13 @@ class PGD:
         self.device = device
         self.momentum = 0
 
-    def attack(self, epsilon=1., alpha=0.3, emb_name='bert.embeddings.word_embeddings.weight', is_first_attack=False):
+    def attack(
+        self,
+        epsilon=1.0,
+        alpha=0.3,
+        emb_name="bert.embeddings.word_embeddings.weight",
+        is_first_attack=False,
+    ):
         for name, param in self.model.named_parameters():
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
@@ -18,13 +24,20 @@ class PGD:
                 norm = torch.norm(param.grad)
                 if norm != 0 and not torch.isnan(norm):
                     r_matrix = torch.zeros(param.grad.shape).to(self.device)
-                    r_matrix[self.attack_word_idx] = (param.grad / norm)[self.attack_word_idx]
-                    r_at = - alpha * r_matrix
+                    r_matrix[self.attack_word_idx] = (param.grad / norm)[
+                        self.attack_word_idx
+                    ]
+                    r_at = -alpha * r_matrix
                     param.data.add_(r_at)
 
-    def attack_with_momentum(self, epsilon=1., alpha=0.3,
-                             emb_name='bert.embeddings.word_embeddings.weight',
-                             is_first_attack=False, mu=1):
+    def attack_with_momentum(
+        self,
+        epsilon=1.0,
+        alpha=0.3,
+        emb_name="bert.embeddings.word_embeddings.weight",
+        is_first_attack=False,
+        mu=1,
+    ):
         # change the emb_name to the embedding parameter name of your model
         for name, param in self.model.named_parameters():
             if param.requires_grad and emb_name in name:
@@ -33,13 +46,15 @@ class PGD:
                 norm = torch.norm(param.grad)
                 if norm != 0 and not torch.isnan(norm):
                     r_matrix = torch.zeros(param.grad.shape).to(self.device)
-                    r_matrix[self.attack_word_idx] = (param.grad / norm)[self.attack_word_idx]
+                    r_matrix[self.attack_word_idx] = (param.grad / norm)[
+                        self.attack_word_idx
+                    ]
 
                     self.momentum = self.momentum + r_matrix
-                    r_at = - alpha * self.momentum
+                    r_at = -alpha * self.momentum
                     param.data.add_(r_at)
 
-    def restore(self, emb_name='bert.embeddings.word_embeddings.weight'):
+    def restore(self, emb_name="model.bert.embeddings.word_embeddings.weight"):
         # emb_name xxx
         for name, param in self.model.named_parameters():
             if param.requires_grad and emb_name in name:
@@ -62,4 +77,3 @@ class PGD:
         for name, param in self.model.named_parameters():
             if param.requires_grad:
                 param.grad = self.grad_backup[name]
-

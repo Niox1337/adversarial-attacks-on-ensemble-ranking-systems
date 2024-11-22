@@ -294,6 +294,5 @@ class Dot(Ranker):
         return cls(model, tokenizer, config)
 
 
-
 AutoConfig.register("Dot", DotConfig)
 AutoModel.register(DotConfig, Dot)

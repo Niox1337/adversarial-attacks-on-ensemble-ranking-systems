@@ -12,7 +12,7 @@ class WordRecover:
 
         return max_sim, max_idx
 
-    def cos_similar(self, p:torch.Tensor, q:torch.Tensor):
+    def cos_similar(self, p: torch.Tensor, q: torch.Tensor):
         sim_maxtrix = p.matmul(q.transpose(-2, -1))
         a = torch.norm(p, p=2, dim=-1)
         b = torch.norm(q, p=2, dim=-1)
@@ -36,7 +36,9 @@ class WordRecover:
             candidate_word_no_dict[ori_word] = idx_list
         return candidate_word_matrix_list, candidate_word_no_dict
 
-    def get_sim_word_semantic(self, candidate_word_matrix_list, now_word_embedding_matrix):
+    def get_sim_word_semantic(
+        self, candidate_word_matrix_list, now_word_embedding_matrix
+    ):
         max_sim_list = {}
         max_id_list = {}
 
@@ -45,7 +47,9 @@ class WordRecover:
             ori_word_tensor = now_word_embedding_matrix[ori_word_idx, :]
             if len(candidate_word_matrix_list[ori_word]) == 0:
                 continue
-            max_sim, max_idx = self.get_max_sim_word(ori_word_tensor, candidate_word_matrix_list[ori_word])
+            max_sim, max_idx = self.get_max_sim_word(
+                ori_word_tensor, candidate_word_matrix_list[ori_word]
+            )
             max_sim_list[ori_word] = max_sim
             max_id_list[ori_word] = max_idx
         return max_sim_list, max_id_list
@@ -53,13 +57,19 @@ class WordRecover:
     def recover_document_semantic(self, old_doc, ori_wem, now_wem, simwords_list):
 
         max_word_no_dict = {}
-        candidate_word_matrix_dict, candidate_word_no_dict = self.get_sim_word_matrix(simwords_list, ori_wem)
-        max_sim_dict, max_id_dict = self.get_sim_word_semantic(candidate_word_matrix_dict, now_wem)
+        candidate_word_matrix_dict, candidate_word_no_dict = self.get_sim_word_matrix(
+            simwords_list, ori_wem
+        )
+        max_sim_dict, max_id_dict = self.get_sim_word_semantic(
+            candidate_word_matrix_dict, now_wem
+        )
         for word in max_id_dict:
-            max_word_no_dict[word] = [candidate_word_no_dict[word][max_id_dict[word][0]]]
+            max_word_no_dict[word] = [
+                candidate_word_no_dict[word][max_id_dict[word][0]]
+            ]
 
         new_doc_list = []
-        for token in old_doc.split(' '):
+        for token in old_doc.split(" "):
             if token not in max_word_no_dict:
                 new_doc_list.append(token)
             else:
@@ -67,7 +77,7 @@ class WordRecover:
                 new_token = self.tokenizer.decode(max_word_no_dict[token])
                 # print(new_token)
                 new_doc_list.append(new_token)
-        new_doc = ' '.join(new_doc_list)
+        new_doc = " ".join(new_doc_list)
         print(new_doc)
         return new_doc
 
@@ -85,22 +95,19 @@ class WordRecover:
     #     embed_name = self.embed_name
     #     word_embedding = self.get_word_embedding(model, embed_name)
     #     gradient_matrix = word_embedding.grad[attack_word_idx]
-    # 
+    #
     #     row_norm = torch.norm(gradient_matrix, p=2, dim=-1)
-    # 
+    #
     #     attack_num = min(attack_num, row_norm.shape[0])
-    # 
+    #
     #     topk_norm, topk_idx = torch.topk(row_norm, k=attack_num, dim=-1)
     #     print(topk_norm, topk_idx)
     #     model.zero_grad()
-    # 
+    #
     #     word_topk_list = []
     #     for idx in topk_idx:
     #         idx = idx.item()
     #         true_idx = attack_word_idx[idx]
     #         word_topk_list.append(true_idx)
-    # 
+    #
     #     return topk_norm, word_topk_list
-
-
-

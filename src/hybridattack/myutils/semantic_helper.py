@@ -34,13 +34,12 @@ class SemanticHelper:
         cos_sim = np.matmul(embeddings, all_embeddings.T)
         return cos_sim
 
-
     def recover_whole_word(self, sub_word, ori_doc_token_ids_list, word_re):
         word_index = ori_doc_token_ids_list.index(word_re.word2idx[sub_word])
         right_word_index = word_index + 1
-        while (right_word_index < len(ori_doc_token_ids_list)) and\
-                (word_re.idx2word[ori_doc_token_ids_list[right_word_index]].
-                        startswith("##")):
+        while (right_word_index < len(ori_doc_token_ids_list)) and (
+            word_re.idx2word[ori_doc_token_ids_list[right_word_index]].startswith("##")
+        ):
             word_index = word_index + 1
             right_word_index = word_index + 1
         subword_list = []
@@ -51,8 +50,7 @@ class SemanticHelper:
         subword_token_id_list.append(word_re.word2idx[now_sub_word])
         while (now_sub_word.startswith("##")) and (now_word_index > 0):
             now_word_index = now_word_index - 1
-            now_sub_word = word_re.idx2word[
-                ori_doc_token_ids_list[now_word_index]]
+            now_sub_word = word_re.idx2word[ori_doc_token_ids_list[now_word_index]]
 
             subword_list.append(now_sub_word)
             subword_token_id_list.append(word_re.word2idx[now_sub_word])
@@ -66,23 +64,26 @@ class SemanticHelper:
             whole_word += current_sub_word
 
         first_word = subword_list[-1]
-        tail_word = whole_word[len(first_word):]
+        tail_word = whole_word[len(first_word) :]
         if self.is_number(first_word) and (tail_word in self.word2idx):
             whole_word = tail_word
             subword_token_id_list.pop(0)
         self.subword_neighbor_dict[whole_word] = subword_token_id_list
         return whole_word
 
-    def pick_most_similar_words_batch(self, src_words, ori_doc_token_ids_list,
-                                      word_re, ret_count=10, threshold=0.):
+    def pick_most_similar_words_batch(
+        self, src_words, ori_doc_token_ids_list, word_re, ret_count=10, threshold=0.0
+    ):
         in_words_idx = []
         in_words = []
         out_words = []
 
         self.subword_neighbor_dict = {}
         for src_word in src_words:
-            if src_word.startswith('##'):
-                src_word = self.recover_whole_word(src_word, ori_doc_token_ids_list, word_re)
+            if src_word.startswith("##"):
+                src_word = self.recover_whole_word(
+                    src_word, ori_doc_token_ids_list, word_re
+                )
 
             if src_word in self.word2idx:
                 in_words_idx.append(self.word2idx[src_word])
@@ -96,7 +97,7 @@ class SemanticHelper:
         for idx, in_word_idx in enumerate(in_words_idx):
             cos_sim[idx, in_word_idx] = -np.inf
 
-        sim_order = np.argsort(-cos_sim)[:, 1:1 + ret_count]
+        sim_order = np.argsort(-cos_sim)[:, 1 : 1 + ret_count]
 
         sim_values = np.take_along_axis(cos_sim, sim_order, axis=1)
 
@@ -120,10 +121,17 @@ class SemanticHelper:
         #     sim_values.append(sim_value)
         return sim_words, sim_values, self.subword_neighbor_dict
 
-# seems no changes are needed
-    def pick_nearest_word_with_embedding(self, importance_tokens, importance_token_id_list,
-                                         ori_doc_token_ids_list,
-                                         ori_embedding, att_embedding, word_re, attacker_word_number):
+    # seems no changes are needed
+    def pick_nearest_word_with_embedding(
+        self,
+        importance_tokens,
+        importance_token_id_list,
+        ori_doc_token_ids_list,
+        ori_embedding,
+        att_embedding,
+        word_re,
+        attacker_word_number,
+    ):
         new_doc_token_ids_list = ori_doc_token_ids_list.copy()
         assert len(importance_tokens) == len(importance_token_id_list)
         m = attacker_word_number
@@ -135,7 +143,9 @@ class SemanticHelper:
                 ori_word_id = ori_doc_token_ids_list[j]
                 if ori_word_id == word_id:
                     word_vecor = att_embedding[word_id]
-                    max_sim, max_id = word_re.get_max_sim_word(word_vecor, ori_embedding)
+                    max_sim, max_id = word_re.get_max_sim_word(
+                        word_vecor, ori_embedding
+                    )
                     replace_word_id = max_id.cpu()[0].item()
                     new_doc_token_ids_list[j] = replace_word_id
                     ti_huan_num += 1
@@ -145,7 +155,9 @@ class SemanticHelper:
                 break
         return new_doc_token_ids_list
 
-    def pick_most_similar_words_batch_with_itself(self, src_words, ret_count=10, threshold=0.):
+    def pick_most_similar_words_batch_with_itself(
+        self, src_words, ret_count=10, threshold=0.0
+    ):
 
         in_words_idx = []
         in_words = []
@@ -174,7 +186,6 @@ class SemanticHelper:
             if in_word_idx not in sim_word_tokens:
                 sim_words[in_word_idx].append(in_word_idx)
 
-
             # sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
             # mask = sim_value >= threshold
             # sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
@@ -183,4 +194,3 @@ class SemanticHelper:
             # sim_words[in_words[idx]] = sim_word
             # sim_values.append(sim_value)
         return sim_words, sim_values
-

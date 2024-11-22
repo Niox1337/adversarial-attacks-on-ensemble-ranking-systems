@@ -8,33 +8,50 @@ from tqdm import tqdm
 
 import torch
 from torch.utils.data import DataLoader
-from transformers import (BertConfig, BertTokenizer)
+from transformers import BertConfig, BertTokenizer
 from transformers import BertTokenizer
 
 from myutils.semantic_helper import SemanticHelper
 from utils import read_qds_pairs
 from modeling import RankingBERT_Train
-from marcodoc.dataset import MSMARCODataset_file_qd, get_collate_function, CollectionDataset
+from marcodoc.dataset import (
+    MSMARCODataset_file_qd,
+    get_collate_function,
+    CollectionDataset,
+)
 from myutils.word_recover.Bert_word_recover import BERTWordRecover
 from myutils.attacker.attacker import Attacker
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(format='%(asctime)s-%(levelname)s-%(name)s- %(message)s',
-                    datefmt='%d %H:%M:%S',
-                    level=logging.INFO)
+logging.basicConfig(
+    format="%(asctime)s-%(levelname)s-%(name)s- %(message)s",
+    datefmt="%d %H:%M:%S",
+    level=logging.INFO,
+)
 
 
-def read_resources(embed_path, embed_cos_matrix_path, embed_name,
-                   attack_qd_path, black_model_ranked_list_score_path, bert_tokenizer,
-                   bert_vocab_path, max_query_length, max_doc_length, collection_memmap_dir):
-    '''
+def read_resources(
+    embed_path,
+    embed_cos_matrix_path,
+    embed_name,
+    attack_qd_path,
+    black_model_ranked_list_score_path,
+    bert_tokenizer,
+    bert_vocab_path,
+    max_query_length,
+    max_doc_length,
+    collection_memmap_dir,
+):
+    """
     :return:
-    '''
+    """
     synonym_helper = SemanticHelper(embed_path, embed_cos_matrix_path)
     synonym_helper.build_vocab()
     synonym_helper.load_embedding_cos_sim_matrix()
 
-    word_re = BERTWordRecover(embed_name, bert_tokenizer, bert_vocab_path, max_query_length, max_doc_length)
+    word_re = BERTWordRecover(
+        embed_name, bert_tokenizer, bert_vocab_path, max_query_length, max_doc_length
+    )
 
     attack_qds = read_qds_pairs(attack_qd_path)
 
@@ -50,30 +67,26 @@ def run_parse_args():
 
     parser.add_argument("--output_dir", type=str, default=f"./data/train")
 
-    parser.add_argument("--msmarco_dir", type=str,
-                        default=f"./data/msmarco-passage")
-    parser.add_argument("--collection_memmap_dir", type=str,
-                        default="./data/collection_memmap")
+    parser.add_argument("--msmarco_dir", type=str, default=f"./data/msmarco-passage")
+    parser.add_argument(
+        "--collection_memmap_dir", type=str, default="./data/collection_memmap"
+    )
     parser.add_argument("--tokenize_dir", type=str, default="./data/tokenize")
     parser.add_argument("--max_query_length", type=int, default=64)
     parser.add_argument("--max_doc_length", type=int, default=445)
 
     parser.add_argument("--batch_size", default=20, type=int)
 
-    parser.add_argument("--no_cuda", action='store_true')
+    parser.add_argument("--no_cuda", action="store_true")
 
     parser.add_argument("--data_num_workers", default=0, type=int)
 
     parser.add_argument("--learning_rate", default=3e-6, type=float)
-    parser.add_argument("--bert_tokenizer_path",
-                        default='bert-base-uncased',
-                        type=str)
+    parser.add_argument("--bert_tokenizer_path", default="bert-base-uncased", type=str)
     # parser.add_argument("--attack_qd_path", type=str,
     #                     default="")
-    parser.add_argument("--attack_save_dir", type=str,
-                        default="")
-    parser.add_argument("--doc_list_length", type=int,
-                        default=100)
+    parser.add_argument("--attack_save_dir", type=str, default="")
+    parser.add_argument("--doc_list_length", type=int, default=100)
 
     parser.add_argument("--eps", type=float, default=45)
 
@@ -89,33 +102,28 @@ def run_parse_args():
 
     parser.add_argument("--find_word_search", action="store_true")
 
-    parser.add_argument("--black_model_ranked_list_path", type=str,
-                        default='')
+    parser.add_argument("--black_model_ranked_list_path", type=str, default="")
 
-    parser.add_argument("--black_model_ranked_list_score_path", type=str,
-                        default='')
+    parser.add_argument("--black_model_ranked_list_score_path", type=str, default="")
 
-    parser.add_argument("--save_doc_tokens_path", type=str,
-                        default='')
+    parser.add_argument("--save_doc_tokens_path", type=str, default="")
 
-    parser.add_argument("--ori_model_path", type=str,
-                        default='bert-base-uncased')
+    parser.add_argument("--ori_model_path", type=str, default="bert-base-uncased")
 
-    parser.add_argument("--surrogate_model_path", type=str,
-                        default='bert-base-uncased')
+    parser.add_argument("--surrogate_model_path", type=str, default="bert-base-uncased")
 
-    parser.add_argument("--embed_path", type=str,
-                        default='./glove.6B.50d.txt')
+    parser.add_argument("--embed_path", type=str, default="./glove.6B.50d.txt")
 
-    parser.add_argument("--embed_cos_matrix_path", type=str,
-                        default='./cosine_matrix.npy')
+    parser.add_argument(
+        "--embed_cos_matrix_path", type=str, default="./cosine_matrix.npy"
+    )
 
     args = parser.parse_args()
 
     time_stamp = time.strftime("%b-%d_%H:%M:%S", time.localtime())
     args.log_dir = f"{args.output_dir}/log/{time_stamp}"
     args.model_save_dir = f"{args.output_dir}/models"
-    args.bert_vocab_path = args.bert_tokenizer_path + '/vocab.txt'
+    args.bert_vocab_path = args.bert_tokenizer_path + "/vocab.txt"
 
     assert 100 % args.batch_size == 0
     return args
@@ -123,8 +131,7 @@ def run_parse_args():
 
 def remove_input_tensor_column(input_tensor, delete_index):
 
-    res_tensor = input_tensor[
-        torch.arange(input_tensor.size(0)) != delete_index]
+    res_tensor = input_tensor[torch.arange(input_tensor.size(0)) != delete_index]
     return res_tensor
 
 
@@ -138,44 +145,58 @@ def find_attack_doc_input_and_remove(batch_list, docid_list, attack_doc_id):
         for j in range(len(docids)):
             did = docids[j]
             if did == attack_doc_id:
-                attack_doc_input["input_ids"] = res_batch_list[i]['input_ids'][
-                    j]
-                attack_doc_input["token_type_ids"] = \
-                res_batch_list[i]['token_type_ids'][j]
-                attack_doc_input["position_ids"] = \
-                res_batch_list[i]['position_ids'][j]
+                attack_doc_input["input_ids"] = res_batch_list[i]["input_ids"][j]
+                attack_doc_input["token_type_ids"] = res_batch_list[i][
+                    "token_type_ids"
+                ][j]
+                attack_doc_input["position_ids"] = res_batch_list[i]["position_ids"][j]
 
-                res_batch_list[i]['input_ids'] = remove_input_tensor_column(
-                    res_batch_list[i]['input_ids'], j)
-                res_batch_list[i][
-                    'token_type_ids'] = remove_input_tensor_column(
-                    res_batch_list[i]['token_type_ids'], j)
-                res_batch_list[i]['position_ids'] = remove_input_tensor_column(
-                    res_batch_list[i]['position_ids'], j)
+                res_batch_list[i]["input_ids"] = remove_input_tensor_column(
+                    res_batch_list[i]["input_ids"], j
+                )
+                res_batch_list[i]["token_type_ids"] = remove_input_tensor_column(
+                    res_batch_list[i]["token_type_ids"], j
+                )
+                res_batch_list[i]["position_ids"] = remove_input_tensor_column(
+                    res_batch_list[i]["position_ids"], j
+                )
 
     return attack_doc_input, res_batch_list
 
 
-def attack_by_testing_blackbox(ori_model, surr_model, batch_list, docid_list,
-                               attack_doc_id, args, attack_word_number,
-                               bert_tokenizer, semantic_helper, word_re,
-                               ori_score, ori_qds, qid):
+def attack_by_testing_blackbox(
+    ori_model,
+    surr_model,
+    batch_list,
+    docid_list,
+    attack_doc_id,
+    args,
+    attack_word_number,
+    bert_tokenizer,
+    semantic_helper,
+    word_re,
+    ori_score,
+    ori_qds,
+    qid,
+):
 
-    attack_doc_input, batch_list = find_attack_doc_input_and_remove(batch_list,
-                                                                    docid_list,
-                                                                    attack_doc_id)
+    attack_doc_input, batch_list = find_attack_doc_input_and_remove(
+        batch_list, docid_list, attack_doc_id
+    )
 
-    attack_input_ids_list = attack_doc_input['input_ids'].tolist()
+    attack_input_ids_list = attack_doc_input["input_ids"].tolist()
     sep_token_id = bert_tokenizer.sep_token_id
 
-    query_token_id = attack_input_ids_list[1:attack_input_ids_list.index(
-                                           sep_token_id)]
+    query_token_id = attack_input_ids_list[
+        1 : attack_input_ids_list.index(sep_token_id)
+    ]
 
     with_last_sep_doc_token_ids_list = attack_input_ids_list[
-                                       attack_input_ids_list.index(
-                                           sep_token_id) + 1:]
+        attack_input_ids_list.index(sep_token_id) + 1 :
+    ]
     ori_doc_token_ids_list = with_last_sep_doc_token_ids_list[
-                             :len(with_last_sep_doc_token_ids_list) - 1]
+        : len(with_last_sep_doc_token_ids_list) - 1
+    ]
 
     doc_token_ids_list = list({}.fromkeys(ori_doc_token_ids_list).keys())
 
@@ -184,35 +205,60 @@ def attack_by_testing_blackbox(ori_model, surr_model, batch_list, docid_list,
 
     attacker = Attacker()
 
-    attacker.get_model_gradient(surr_model, batch_list, attack_doc_input,
-                                args.device)
+    attacker.get_model_gradient(surr_model, batch_list, attack_doc_input, args.device)
 
-    gradient_norm_topk_word, gradient_topk_word_idx_list = word_re.get_highest_gradient_words(
-        surr_model, attack_word_number, doc_token_ids_list)
+    gradient_norm_topk_word, gradient_topk_word_idx_list = (
+        word_re.get_highest_gradient_words(
+            surr_model, attack_word_number, doc_token_ids_list
+        )
+    )
 
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
         gradient_topk_words.append(word_re.idx2word[word_idx])
 
-    attacker.attack(surr_model, batch_list, attack_doc_input,
-                    attack_word_idx=doc_token_ids_list,
-                    args=args, eps=args.eps, max_iter=args.max_iter)
+    attacker.attack(
+        surr_model,
+        batch_list,
+        attack_doc_input,
+        attack_word_idx=doc_token_ids_list,
+        args=args,
+        eps=args.eps,
+        max_iter=args.max_iter,
+    )
 
     attacked_we_matrix = word_re.get_word_embedding(surr_model)
 
-    sim_word_ids_dict, sim_values, sub_word_dict = semantic_helper.pick_most_similar_words_batch(
-        gradient_topk_words, ori_doc_token_ids_list, word_re,
-        args.simi_candi_topk, args.simi_threshod)
+    sim_word_ids_dict, sim_values, sub_word_dict = (
+        semantic_helper.pick_most_similar_words_batch(
+            gradient_topk_words,
+            ori_doc_token_ids_list,
+            word_re,
+            args.simi_candi_topk,
+            args.simi_threshod,
+        )
+    )
 
-    new_doc_token_id_list, score = \
-        word_re.recover_document_greedy_rank_pos(ori_doc_token_ids_list, ori_we_matrix,
-                                                 attacked_we_matrix, sim_word_ids_dict, ori_score,
-                                                 ori_model, query_token_id, args,
-                                                 sub_word_dict, ori_qds, attack_doc_id, qid)
+    new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
+        ori_doc_token_ids_list,
+        ori_we_matrix,
+        attacked_we_matrix,
+        sim_word_ids_dict,
+        ori_score,
+        ori_model,
+        query_token_id,
+        args,
+        sub_word_dict,
+        ori_qds,
+        attack_doc_id,
+        qid,
+    )
 
     return new_doc_token_id_list, score
 
-dataset = ir_datasets.load('antique/test')
+
+dataset = ir_datasets.load("antique/test")
+
 
 def load_query_with_docs():
     queries = {}
@@ -232,6 +278,7 @@ def load_query_with_docs():
 
     return None, None, None, None
 
+
 def main():
     args = run_parse_args()
     logger.info(args)
@@ -239,7 +286,8 @@ def main():
     # Setup CUDA, GPU
     os.environ["CUDA_VISIBLE_DEVICES"] = "1"
     device = torch.device(
-        "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
+        "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu"
+    )
     args.n_gpu = torch.cuda.device_count()
 
     args.device = device
@@ -283,10 +331,18 @@ def main():
 
     # create global resources
     bert_tokenizer = BertTokenizer.from_pretrained(args.bert_tokenizer_path)
-    synonym_helper, word_recover, attack_qds, ori_qds, collection = read_resources \
-        (args.embed_path, args.embed_cos_matrix_path, args.embed_name,
-         args.attack_qd_path, args.black_model_ranked_list_score_path, bert_tokenizer, args.bert_vocab_path,
-         args.max_query_length, args.max_doc_length, args.collection_memmap_dir)
+    synonym_helper, word_recover, attack_qds, ori_qds, collection = read_resources(
+        args.embed_path,
+        args.embed_cos_matrix_path,
+        args.embed_name,
+        args.attack_qd_path,
+        args.black_model_ranked_list_score_path,
+        bert_tokenizer,
+        args.bert_vocab_path,
+        args.max_query_length,
+        args.max_doc_length,
+        args.collection_memmap_dir,
+    )
 
     max_attack_word_number = args.max_attack_word_number
 
@@ -295,7 +351,7 @@ def main():
         print("No query with documents found in the dataset.")
         return
 
-    with open('results.txt', 'w', encoding='utf-8') as result_file:
+    with open("results.txt", "w", encoding="utf-8") as result_file:
         result_file.write(f"Query ID: {query_id}\n")
         result_file.write(f"Query Text: {query_text}\n\n")
 
@@ -311,18 +367,20 @@ def main():
                 query_text,
                 doc_text,
                 max_length=args.max_query_length + args.max_doc_length,
-                truncation='only_second',
-                padding='max_length',
-                return_tensors='pt'
+                truncation="only_second",
+                padding="max_length",
+                return_tensors="pt",
             )
             inputs.append(encoded_dict)
             docids_batch.append(doc_id)
 
         # Convert list of dicts to dict of tensors
         batch = {
-            'input_ids': torch.cat([inp['input_ids'] for inp in inputs], dim=0),
-            'token_type_ids': torch.cat([inp['token_type_ids'] for inp in inputs], dim=0),
-            'position_ids': None
+            "input_ids": torch.cat([inp["input_ids"] for inp in inputs], dim=0),
+            "token_type_ids": torch.cat(
+                [inp["token_type_ids"] for inp in inputs], dim=0
+            ),
+            "position_ids": None,
         }
 
         batch_list = [batch]
@@ -331,8 +389,8 @@ def main():
         # Compute the original scores using ori_model
         with torch.no_grad():
             outputs = ori_model(
-                input_ids=batch['input_ids'].to(args.device),
-                token_type_ids=batch['token_type_ids'].to(args.device)
+                input_ids=batch["input_ids"].to(args.device),
+                token_type_ids=batch["token_type_ids"].to(args.device),
             )
             scores = outputs[0].cpu().numpy().tolist()
 
@@ -353,24 +411,28 @@ def main():
         ori_qds = {query_id: {doc_id: score for doc_id, score in rankings}}
 
         new_doc_token_id_list, new_score = attack_by_testing_blackbox(
-            ori_model, surr_model,
-            batch_list, docid_list,
-            attack_doc_id, args,
+            ori_model,
+            surr_model,
+            batch_list,
+            docid_list,
+            attack_doc_id,
+            args,
             max_attack_word_number,
             bert_tokenizer,
             synonym_helper,
             word_recover,
             ori_score,
-            ori_qds, query_id
+            ori_qds,
+            query_id,
         )
 
         result_file.write(f"\nAttacked Document ID: {attack_doc_id}\n")
         result_file.write(f"Original Score: {ori_score}\n")
         result_file.write(f"New Score after Attack: {new_score}\n\n")
         attacked_doc = word_recover.recover_doc(
-            attack_doc_id, new_doc_token_id_list, collection, args.max_doc_length)
+            attack_doc_id, new_doc_token_id_list, collection, args.max_doc_length
+        )
         result_file.write(f"Attacked Document Text:\n{attacked_doc}\n")
-
 
 
 if __name__ == "__main__":

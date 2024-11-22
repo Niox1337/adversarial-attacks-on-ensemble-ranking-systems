@@ -43,12 +43,13 @@ class Cat(Ranker):
 
         self.transformer_class = CatTransformer
 
-    def prepare_outputs(self, logits, labels=None):
+    def prepare_outputs(self, logits):
         """Prepare outputs"""
-        return F.log_softmax(logits.reshape(-1, self.config.group_size, 2), dim=-1)[
-            :, :, 1
-        ], (labels.view(-1, self.config.group_size) if labels is not None else None)
+        return F.log_softmax(logits, dim=-1)[:, 1]
 
-
-AutoConfig.register("Cat", CatConfig)
-AutoModelForSequenceClassification.register(CatConfig, Cat)
+    def forward(self, **inputs):
+        """Compute the loss given (pairs, labels)"""
+        sequences = {k: v.to(self.model.device) for k, v in inputs.items()}
+        logits = self.model(**sequences).logits
+        pred = self.prepare_outputs(logits)
+        return pred  # B x Group x 1

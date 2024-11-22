@@ -25,11 +25,11 @@ class BERTWordRecover(WordRecover):
         #     index = 0
         #     for line in sef:
         #         word = line.strip()
-        # 
+        #
         #         idx2word[index] = word
         #         word2idx[word] = index
         #         index += 1
-        # 
+        #
         # self.idx2word = idx2word
         # self.word2idx = word2idx
 
@@ -37,8 +37,8 @@ class BERTWordRecover(WordRecover):
         emb_name = self.embed_name
         for name, param in model.named_parameters():
             if emb_name in name:
-               embedding_matrix = param
-               return embedding_matrix
+                embedding_matrix = param
+                return embedding_matrix
 
     def get_max_sim_word(self, word_tensors, ori_word_embedding_matrix):
 
@@ -51,7 +51,7 @@ class BERTWordRecover(WordRecover):
 
         return max_sim, max_idx
 
-    def cos_similar(self, p:torch.Tensor, q:torch.Tensor):
+    def cos_similar(self, p: torch.Tensor, q: torch.Tensor):
         sim_maxtrix = p.matmul(q.transpose(-2, -1))
         a = torch.norm(p, p=2, dim=-1)
         b = torch.norm(q, p=2, dim=-1)
@@ -83,8 +83,15 @@ class BERTWordRecover(WordRecover):
                 index += 1
 
             simword_matrix = ori_word_embedding_matrix[idx_list, :]
-            assert torch.equal(simword_matrix[multi_idx_list_index_list],
-                               ori_word_embedding_matrix[[zhanwei_token_id] * len(multi_idx_list_index_list)]) == True
+            assert (
+                torch.equal(
+                    simword_matrix[multi_idx_list_index_list],
+                    ori_word_embedding_matrix[
+                        [zhanwei_token_id] * len(multi_idx_list_index_list)
+                    ],
+                )
+                == True
+            )
             m_index = 0
             for multi_idx in multi_idx_list:
                 multi_sim_vectors = ori_word_embedding_matrix[multi_idx, :]
@@ -98,7 +105,9 @@ class BERTWordRecover(WordRecover):
             candidate_word_index_dict[ori_word] = idx_list
         return candidate_word_matrix_dict, candidate_word_index_dict
 
-    def get_sim_word_semantic(self, candidate_word_matrix_dict, now_word_embedding_matrix):
+    def get_sim_word_semantic(
+        self, candidate_word_matrix_dict, now_word_embedding_matrix
+    ):
 
         max_sim_dict = {}
         max_id_dict = {}
@@ -115,24 +124,34 @@ class BERTWordRecover(WordRecover):
                 ori_word_tensor = now_word_embedding_matrix[ori_word_id, :]
             if len(candidate_word_matrix_dict[ori_word]) == 0:
                 continue
-            max_sim, max_idx = self.get_max_sim_word(ori_word_tensor, candidate_word_matrix_dict[ori_word])
+            max_sim, max_idx = self.get_max_sim_word(
+                ori_word_tensor, candidate_word_matrix_dict[ori_word]
+            )
             max_sim_dict[ori_word] = max_sim
             max_id_dict[ori_word] = max_idx
         return max_sim_dict, max_id_dict
 
-    def recover_document_semantic(self, old_doc_token_list, ori_wem, now_wem, simword_dict):
+    def recover_document_semantic(
+        self, old_doc_token_list, ori_wem, now_wem, simword_dict
+    ):
 
         max_word_index_dict = {}
 
-        candidate_word_matrix_dict, candidate_word_index_dict = self.get_sim_word_matrix(simword_dict, ori_wem)
-        max_sim_dict, max_id_dict = self.get_sim_word_semantic(candidate_word_matrix_dict, now_wem)
+        candidate_word_matrix_dict, candidate_word_index_dict = (
+            self.get_sim_word_matrix(simword_dict, ori_wem)
+        )
+        max_sim_dict, max_id_dict = self.get_sim_word_semantic(
+            candidate_word_matrix_dict, now_wem
+        )
 
         for word in max_id_dict:
-            max_word_index_dict[word] = [candidate_word_index_dict[word][max_id_dict[word][0]]]
+            max_word_index_dict[word] = [
+                candidate_word_index_dict[word][max_id_dict[word][0]]
+            ]
 
         new_doc_token_id_list = []
         old_doc = self.tokenizer.decode(old_doc_token_list)
-        old_doc_token_words = old_doc.split(' ')
+        old_doc_token_words = old_doc.split(" ")
         for old_doc_word in old_doc_token_words:
             if old_doc_word not in max_word_index_dict:
                 new_doc_token_id_list.append(old_doc_word)
@@ -150,24 +169,26 @@ class BERTWordRecover(WordRecover):
         tensor = default * torch.ones((batch_size, length), dtype=dtype)
         for i, l in enumerate(lstlst):
             # print(i, l)
-            tensor[i, :len(l)] = torch.tensor(l, dtype=dtype)
+            tensor[i, : len(l)] = torch.tensor(l, dtype=dtype)
         return tensor
 
     def eval_model(self, model, doc_input_ids, query_input_ids, args):
 
-        query_input_ids = query_input_ids[:self.max_query_length]
+        query_input_ids = query_input_ids[: self.max_query_length]
         query_input_ids = [self.cls_id] + query_input_ids + [self.sep_id]
-        doc_input_ids = doc_input_ids[:self.max_doc_length]
+        doc_input_ids = doc_input_ids[: self.max_doc_length]
         doc_input_ids = doc_input_ids + [self.sep_id]
         input_id_lst = [query_input_ids + doc_input_ids]
         token_type_ids_lst = [[0] * len(query_input_ids) + [1] * len(doc_input_ids)]
-        position_ids_lst = [
-            list(range(len(query_input_ids) + len(doc_input_ids)))]
+        position_ids_lst = [list(range(len(query_input_ids) + len(doc_input_ids)))]
 
         input_id_lst = self.pack_tensor_2D(input_id_lst, default=0, dtype=torch.int64)
-        token_type_ids_lst = self.pack_tensor_2D(token_type_ids_lst, default=0, dtype=torch.int64)
-        position_ids_lst = self.pack_tensor_2D(position_ids_lst, default=0,
-                                       dtype=torch.int64)
+        token_type_ids_lst = self.pack_tensor_2D(
+            token_type_ids_lst, default=0, dtype=torch.int64
+        )
+        position_ids_lst = self.pack_tensor_2D(
+            position_ids_lst, default=0, dtype=torch.int64
+        )
 
         model.eval()
         with torch.no_grad():
@@ -184,12 +205,16 @@ class BERTWordRecover(WordRecover):
         finded_start_index_list = []
         for i in range(len(ori_doc_token_ids_list)):
             if ori_doc_token_ids_list[i] == specific_token_ids_list[0]:
-                ori_sub_tokens = ori_doc_token_ids_list[i: i + len(specific_token_ids_list)]
+                ori_sub_tokens = ori_doc_token_ids_list[
+                    i : i + len(specific_token_ids_list)
+                ]
                 if ori_sub_tokens == specific_token_ids_list:
                     finded_start_index_list.append(i)
         return finded_start_index_list
 
-    def replace_one_word_token_ids(self, doc_token_id_list, word_token_ids, new_token_ids, finded_start_index_list):
+    def replace_one_word_token_ids(
+        self, doc_token_id_list, word_token_ids, new_token_ids, finded_start_index_list
+    ):
 
         res_token_id_list = []
 
@@ -198,7 +223,7 @@ class BERTWordRecover(WordRecover):
 
         assert doc_token_id_list[index] == word_token_ids[0]
 
-        res_token_id_list.extend(doc_token_id_list[: index])
+        res_token_id_list.extend(doc_token_id_list[:index])
         res_token_id_list.extend(new_token_ids)
         last_index = index + len(word_token_ids)
 
@@ -206,14 +231,18 @@ class BERTWordRecover(WordRecover):
         res_token_id_list.extend(doc_token_id_list[last_index:])
 
         for i in range(len(finded_start_index_list)):
-            finded_start_index_list[i] = finded_start_index_list[i] + len(new_token_ids) - len(word_token_ids)
+            finded_start_index_list[i] = (
+                finded_start_index_list[i] + len(new_token_ids) - len(word_token_ids)
+            )
 
         return res_token_id_list, finded_start_index_list
 
     def get_rank_pos(self, ori_qds, score, attack_doc_id, qid):
         ranked_list = ori_qds[qid]
         ranked_list[attack_doc_id] = score
-        sorted_ranked_list = sorted(ranked_list.items(), key=lambda item: item[1], reverse=True)
+        sorted_ranked_list = sorted(
+            ranked_list.items(), key=lambda item: item[1], reverse=True
+        )
         index = 0
         for did_score in sorted_ranked_list:
             index += 1
@@ -222,22 +251,40 @@ class BERTWordRecover(WordRecover):
                 break
         return index
 
-    def recover_document_greedy_rank_pos(self, old_doc_token_list, ori_wem,
-                                         now_wem, simword_dict, ori_score,
-                                         model, query_input_id, args, subword_dict,
-                                         ori_qds, attack_doc_id, qid):
+    def recover_document_greedy_rank_pos(
+        self,
+        old_doc_token_list,
+        ori_wem,
+        now_wem,
+        simword_dict,
+        ori_score,
+        model,
+        query_input_id,
+        args,
+        subword_dict,
+        ori_qds,
+        attack_doc_id,
+        qid,
+    ):
 
         max_word_index_dict = {}
 
-        candidate_word_matrix_dict, candidate_word_index_dict = self.get_sim_word_matrix(simword_dict, ori_wem)
-        max_sim_dict, max_id_dict = self.get_sim_word_semantic(candidate_word_matrix_dict, now_wem)
+        candidate_word_matrix_dict, candidate_word_index_dict = (
+            self.get_sim_word_matrix(simword_dict, ori_wem)
+        )
+        max_sim_dict, max_id_dict = self.get_sim_word_semantic(
+            candidate_word_matrix_dict, now_wem
+        )
 
         for word in max_id_dict:
-            max_word_index_dict[word] = [candidate_word_index_dict[word][max_id_dict[word][0]]]
+            max_word_index_dict[word] = [
+                candidate_word_index_dict[word][max_id_dict[word][0]]
+            ]
 
         m = args.max_attack_word_number
         current_attacked_num = 0
         import copy
+
         doc_token_id_list = copy.deepcopy(old_doc_token_list)
         best_score = ori_score
 
@@ -256,15 +303,22 @@ class BERTWordRecover(WordRecover):
             new_token_ids = max_word_index_dict[word]
             if isinstance(new_token_ids[0], list):
                 new_token_ids = new_token_ids[0]
-            finded_start_index_list = self.find_ori_word_index(new_doc_token_id_list,
-                                                               word_token_ids)
+            finded_start_index_list = self.find_ori_word_index(
+                new_doc_token_id_list, word_token_ids
+            )
             while finded_start_index_list:
-                new_doc_token_id_list, finded_start_index_list = self.replace_one_word_token_ids(new_doc_token_id_list,
-                                                                                   word_token_ids,
-                                                                                   new_token_ids,
-                                                                                   finded_start_index_list)
+                new_doc_token_id_list, finded_start_index_list = (
+                    self.replace_one_word_token_ids(
+                        new_doc_token_id_list,
+                        word_token_ids,
+                        new_token_ids,
+                        finded_start_index_list,
+                    )
+                )
                 # inference
-                score = self.eval_model(model, new_doc_token_id_list, query_input_id, args)[0][0]
+                score = self.eval_model(
+                    model, new_doc_token_id_list, query_input_id, args
+                )[0][0]
 
                 rank_pos = self.get_rank_pos(ori_qds, score, attack_doc_id, qid)
                 if rank_pos < best_pos:
@@ -294,6 +348,8 @@ class BERTWordRecover(WordRecover):
             sep_index = attacked_doc_token_ids.index(self.sep_id)
             attacked_doc_token_ids = attacked_doc_token_ids[:sep_index]
 
-        attacked_doc_token_ids = attacked_doc_token_ids + collection[int(doc_id)][max_doc_length:]
+        attacked_doc_token_ids = (
+            attacked_doc_token_ids + collection[int(doc_id)][max_doc_length:]
+        )
         attacked_doc = self.tokenizer.decode(attacked_doc_token_ids)
         return attacked_doc
