@@ -7,7 +7,6 @@ TODO:
 """
 
 from torch.utils.data import DataLoader
-from transformers import BertTokenizer
 from .modelling_bert_cat import Cat
 from .modelling_bert_dot import Dot
 from hybridattack.myutils.semantic_helper import SemanticHelper
@@ -44,7 +43,6 @@ class Args:
     find_word_search = field(default=False)
     doc_list_length = field(default=100)
     group_size = field(default=20)
-
 
 
 def load_local_json(file_path):
