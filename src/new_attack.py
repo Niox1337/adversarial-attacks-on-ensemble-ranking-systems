@@ -195,11 +195,18 @@ def main():
         )
         dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
     else:
-        dataloader = load_local_json(dataset)
+        dataloader = [
+            {
+                'qid' : "0",
+                'docid_a' : ["10"],
+                'sequences_a' : tokenizer(['']]),
+                'sequences_b' : tokenizer(['']),
+            }
+        ]
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
-        for i in range(batch["sequences_a"]):
+        for i in range(batch["sequences_a"])
             sequence_a = batch["sequences_a"][i]
             doc_id_a = batch["docid_a"][i]
             qid = batch["qid"]
