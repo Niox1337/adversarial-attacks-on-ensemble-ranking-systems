@@ -1,8 +1,3 @@
-"""
-TODO:
-* Create a script to get attack pairs from the qrels
-"""
-
 from torch.utils.data import DataLoader
 import ir_datasets as irds
 from .modelling_bert_cat import Cat
