@@ -12,7 +12,7 @@ def get_topk(
     index_path: str,
     model_name_or_path: str,
     k=10,
-    subsample: int = 100,
+    subsample: int = -1,
     batch_size: int = 128,
 ):
     dataset = irds.load(dataset_id)
@@ -29,20 +29,27 @@ def get_topk(
         columns={"query_id": "qid", "query": "query"}
     )
 
-    if subsample:
+    if subsample > 0:
         queries = queries.sample(subsample)
 
     rez = pipeline.transform(queries)
 
     data = rez.groupby("qid").doc_id.apply(list).to_dict()
+    scores = (
+        rez.groupby("qid")
+        .apply(lambda x: dict(zip(x["docno"], x["score"])))
+        .to_dict()
+    )
 
     # turn from dict to list of records
     data = [{"qid": qid, "doc_id_b": doc_id} for qid, doc_id in data.items()]
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
     out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}.jsonl"
+    score_out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}-scores.json.gz"
 
     save_json(data, out_file)
+    save_json(scores, score_out_file)
 
     return f"Saved to {out_file}"
 

@@ -1,12 +1,10 @@
 """
 TODO:
 * Create a script to get attack pairs from the qrels
-* Create an argparser
-* What is the collection variable in the original read_resources function?
-* check format of ori_qds and replace appropriately
 """
 
 from torch.utils.data import DataLoader
+import ir_datasets as irds
 from .modelling_bert_cat import Cat
 from .modelling_bert_dot import Dot
 from hybridattack.myutils.semantic_helper import SemanticHelper
@@ -22,14 +20,17 @@ import torch
 import copy
 from .hybridattack.myutils.attacker.attacker import Attacker
 from transformers import HfArgumentParser
+import pandas as pd
 from dataclasses import dataclass, field
+from . import load_json
 
 
 @dataclass
 class Args:
     model_name_or_path: str = field(default="bert-base-uncased")
     output_dir: str = field(default="./output")
-    dataset: str = field(default="./dataset.json")
+    dataset: str = field(default="./dataset.tsv.gz")
+    scores: str = field(default="./scores.json.gz")
     model_type: str = field(default="cat")
     subset: int = field(default=1)
     max_attack_word_number: int = field(default=10)
@@ -43,7 +44,14 @@ class Args:
     device: str = field(default="cuda" if torch.cuda.is_available() else "cpu")
     find_word_search: bool = field(default=False)
     doc_list_length: int = field(default=100)
+    dataset_id : str = field(default="msmarco-passage/trec-dl-2019/judged")
     group_size: int = field(default=20)
+
+    def __post_init(self):
+        if self.model_type not in ["cat", "dot"]:
+            raise ValueError(f"Model type '{self.model_type}' not recognised")
+        self.dataset_frame = pd.read_csv(self.dataset, sep="\t")
+        self.scores_lookup = load_json(self.scores)
 
 
 def load_local_json(file_path):
@@ -153,7 +161,7 @@ def attack(
         pre_sep,
         args,
         sub_word_dict,
-        ori_qds,
+        args.score_lookup,
         attack_doc_id,
         qid,
     )
@@ -184,7 +192,7 @@ def main():
     )
 
     if not args.toy:
-        dataset = PreAttackDataset.from_irds(args.dataset_id)
+        dataset = PreAttackDataset(args.dataset_data, irds.load(args.dataset_id), args.score_lookup)
         collator = (
             PreCatDataCollator(tokenizer)
             if args.model_type == "cat"
@@ -224,7 +232,7 @@ def main():
                 semantic_helper,
                 tokenizer,
                 args,
-                device,
+                args.device,
             )
 
             new_key = f"{qid}_{doc_id_a}"
@@ -232,13 +240,20 @@ def main():
             attack_score_dict[new_key] = score
 
         for key, text in attack_text_dict.items():
-            recovered_doc = word_recover.recover_doc(
-                key.split("_")[1], text, collection, args.max_doc_length
+            recovered_doc = word_re.recover_doc(
+                key.split("_")[1], text, args.max_doc_length
+            )
+            recovered_attack_doc = word_re.tokenizer.convert_tokens_to_string(
+                text
             )
 
-            to_write = f"{key}\t{recovered_doc}\t{attack_score_dict[key]}"
-            with open(output_file, "a") as f:
-                f.write(to_write)
+            to_write = f"{key}\t{recovered_doc}\t{recovered_attack_doc}\t{attack_score_dict[key]}"
+
+            if args.toy:
+                print(to_write)
+            else:
+                with open(args.output_file, "a") as f:
+                    f.write(to_write)
 
 
 if __name__ == "__main__":

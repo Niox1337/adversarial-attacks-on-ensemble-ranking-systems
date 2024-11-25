@@ -1,9 +1,11 @@
 import torch
 from .word_recover import WordRecover
+import pandas as pd
+import ir_datasets as irds
 
 
 class BERTWordRecover(WordRecover):
-    def __init__(self, bert_tokenizer, max_query_length, max_doc_length):
+    def __init__(self, bert_tokenizer, max_query_length, max_doc_length, corpus):
         super(BERTWordRecover, self).__init__(bert_tokenizer)
         self.word2idx = None
         self.idx2word = None
@@ -13,6 +15,11 @@ class BERTWordRecover(WordRecover):
         self.sep_id = self.tokenizer.sep_token_id
         self.max_query_length = max_query_length
         self.max_doc_length = max_doc_length
+        self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").text.to_dict()
+    
+    def get_tokenized_doc(self, doc_id):
+        text = self.docs[doc_id]
+        return self.tokenizer.encode(text, add_special_tokens=False)
 
     def build_vocab(self):
         # idx2word = {}
@@ -238,8 +245,8 @@ class BERTWordRecover(WordRecover):
         return res_token_id_list, finded_start_index_list
 
     def get_rank_pos(self, ori_qds, score, attack_doc_id, qid):
-        ranked_list = ori_qds[qid]
-        ranked_list[attack_doc_id] = score
+        ranked_list = ori_qds[str(qid)]
+        ranked_list[str(attack_doc_id)] = score
         sorted_ranked_list = sorted(
             ranked_list.items(), key=lambda item: item[1], reverse=True
         )
@@ -247,7 +254,7 @@ class BERTWordRecover(WordRecover):
         for did_score in sorted_ranked_list:
             index += 1
             did = did_score[0]
-            if did == attack_doc_id:
+            if str(did) == str(attack_doc_id):
                 break
         return index
 
@@ -343,13 +350,13 @@ class BERTWordRecover(WordRecover):
         word_topk_list = [idx.item() for idx in topk_idx]
         return top_k_norm, word_topk_list
 
-    def recover_doc(self, doc_id, attacked_doc_token_ids, collection, max_doc_length):
+    def recover_doc(self, doc_id, attacked_doc_token_ids, max_doc_length):
         if self.sep_id in attacked_doc_token_ids:
             sep_index = attacked_doc_token_ids.index(self.sep_id)
             attacked_doc_token_ids = attacked_doc_token_ids[:sep_index]
 
         attacked_doc_token_ids = (
-            attacked_doc_token_ids + collection[int(doc_id)][max_doc_length:]
+            attacked_doc_token_ids + self.get_tokenized_doc(str(doc_id))[:max_doc_length]
         )
         attacked_doc = self.tokenizer.decode(attacked_doc_token_ids)
         return attacked_doc
