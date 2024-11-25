@@ -22,7 +22,7 @@ from . import load_json
 
 @dataclass
 class Args:
-    model_name_or_path: str = field(default="bert-base-uncased")
+    model_name_or_path: str = field(default="crystina-z/monoELECTRA_LCE_nneg31")
     output_dir: str = field(default="./output")
     dataset: str = field(default="./dataset.tsv.gz")
     scores: str = field(default="./scores.json.gz")
@@ -199,7 +199,7 @@ def main():
             {
                 'qid' : "0",
                 'docid_a' : ["10"],
-                'sequences_a' : tokenizer(['']]),
+                'sequences_a' : tokenizer(['']),
                 'sequences_b' : tokenizer(['']),
             }
         ]
