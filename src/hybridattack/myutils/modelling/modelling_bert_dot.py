@@ -10,7 +10,7 @@ from transformers import (
     AutoTokenizer,
     AutoConfig,
 )
-from ranker.train.loss import batched_dot_product, cross_dot_product
+from rankers.train.loss.flax import batched_dot_product, cross_dot_product
 from rankers.modelling.base import Ranker
 
 
