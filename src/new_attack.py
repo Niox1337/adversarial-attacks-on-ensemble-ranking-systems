@@ -259,7 +259,7 @@ def main():
 
 
 if __name__ == "__main__":
-    Fire(main)
+    main()
 
     # word recoverer
     # new attack function which expects our form
