@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 import ir_datasets as irds
-from .modelling_bert_cat import Cat
-from .modelling_bert_dot import Dot
+from hybridattack.myutils.modelling.modelling_bert_cat import Cat
+from hybridattack.myutils.modelling.modelling_bert_dot import Dot
 from hybridattack.myutils.semantic_helper import SemanticHelper
 from hybridattack.marcopassage.dataset import (
     PreAttackDataset,
@@ -180,14 +180,16 @@ def main():
     tokenizer = model.tokenizer
     embeddings = model.model.base_model.embeddings.word_embeddings
     semantic_helper = SemanticHelper(embeddings, tokenizer)
+    corpus = irds.load(args.dataset_id)
     word_re = BERTWordRecover(
         tokenizer,
         max_query_length=args.max_query_length,
         max_doc_length=args.max_doc_length,
+        corpus=corpus
     )
 
     if not args.toy:
-        dataset = PreAttackDataset(args.dataset_data, irds.load(args.dataset_id), args.score_lookup)
+        dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         collator = (
             PreCatDataCollator(tokenizer)
             if args.model_type == "cat"
@@ -206,7 +208,7 @@ def main():
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
-        for i in range(batch["sequences_a"])
+        for i in range(len(batch["sequences_a"])):
             sequence_a = batch["sequences_a"][i]
             doc_id_a = batch["docid_a"][i]
             qid = batch["qid"]
@@ -227,14 +229,25 @@ def main():
             )  # Concatenate the two sequences
 
             new_tokens, score = attack(
+                # ranking,
+                # score_lookup,
+                # model,
+                # word_re,
+                # semantic_helper,
+                # tokenizer,
+                # args,
+                # args.device,
                 ranking,
                 score_lookup,
+                qid,
+                doc_id_a,
                 model,
                 word_re,
                 semantic_helper,
                 tokenizer,
                 args,
                 args.device,
+                attack_word_number=5,
             )
 
             new_key = f"{qid}_{doc_id_a}"
