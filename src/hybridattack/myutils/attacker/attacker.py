@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from myutils.attacker.PGD import PGD
+from ...myutils.attacker.PGD import PGD
 
 
 class Attacker:

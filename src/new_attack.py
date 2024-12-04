@@ -13,11 +13,11 @@ import json
 from fire import Fire
 import torch
 import copy
-from .hybridattack.myutils.attacker.attacker import Attacker
+from hybridattack.myutils.attacker.attacker import Attacker
 from transformers import HfArgumentParser
 import pandas as pd
 from dataclasses import dataclass, field
-from . import load_json
+from src import load_json
 
 
 @dataclass
