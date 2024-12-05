@@ -7,7 +7,7 @@ import ir_datasets as irds
 class BERTWordRecover(WordRecover):
     def __init__(self, bert_tokenizer, max_query_length, max_doc_length, corpus):
         super(BERTWordRecover, self).__init__(bert_tokenizer)
-        self.embed_name = None
+        self.embed_name = "electra.embeddings.word_embeddings.weight"
         self.word2idx = None
         self.idx2word = None
         self.tokenizer = bert_tokenizer

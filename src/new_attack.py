@@ -29,7 +29,7 @@ class Args:
     model_type: str = field(default="cat")
     subset: int = field(default=1)
     max_attack_word_number: int = field(default=10)
-    toy: False = field(default=False)
+    toy: bool = field(default=True)
     eps: float = field(default=0.1)
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
@@ -92,6 +92,7 @@ def attack(
     sequence_score,
     qid,
     attack_doc_id,
+    batch_list,
     model,
     word_re,
     semantic_helper,
@@ -101,9 +102,10 @@ def attack(
     attack_word_number=5,
 ):
     attack_sequence = ranking["input_ids"][0]
-    batch_list = ranking["input_ids"][1:]
-    pre_sep = attack_sequence[1 : attack_sequence.index(tokenizer.sep_token_id)]
-    post_sep = attack_sequence[attack_sequence.index(tokenizer.sep_token_id) + 1 :]
+    # batch_list = ranking["input_ids"][1:]
+    sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
+    pre_sep = attack_sequence[1 : sep_idx]
+    post_sep = attack_sequence[sep_idx + 1 :]
     post_sep = post_sep[:-2]
     attack_sequence_list = list({}.fromkeys(post_sep).keys())
 
@@ -166,7 +168,7 @@ def attack(
 
 def main():
     parser = HfArgumentParser(Args)
-    args = parser.parse_args()[0]
+    args = parser.parse_args()
 
     if args.model_type == "cat":
         model = Cat.from_pretrained(args.model_name_or_path)
@@ -201,53 +203,97 @@ def main():
             {
                 'qid' : "0",
                 'docid_a' : ["10"],
-                'sequences_a' : tokenizer(['']),
-                'sequences_b' : tokenizer(['']),
+                'docid_b' : ["10"],
+                'sequences_a' : tokenizer(['sample query'], return_tensors="pt"),
+                'sequences_b' : tokenizer(['sample document'], return_tensors="pt"),
+                'scores_a': [1.0],
+                'scores_b': [0.5]
             }
         ]
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
-        for i in range(len(batch["sequences_a"])):
-            sequence_a = batch["sequences_a"][i]
-            doc_id_a = batch["docid_a"][i]
-            qid = batch["qid"]
+        # for i in range(len(batch["sequences_a"])):
+        #     sequence_a = torch.tensor(batch["sequences_a"][i].ids, device=args.device)
+        #     doc_id_a = batch["docid_a"][i]
+        #     qid = batch["qid"]
+        #
+        #     score_lookup = {
+        #         doc_id: score
+        #         for doc_id, score in zip(batch["docid_a"], batch["scores_a"])
+        #     }
+        #     score_lookup.update(
+        #         {
+        #             doc_id: score
+        #             for doc_id, score in zip(batch["docid_b"], batch["scores_b"])
+        #         }
+        #     )
+        #
+        #     ranking = {
+        #         "input_ids": torch.stack([sequence_a, torch.tensor(batch["sequences_b"][i].ids, device=args.device)], dim=0
+        #     )}  # Concatenate the two sequences
+        #
+        #     new_tokens, score = attack(
+        #         # ranking,
+        #         # score_lookup,
+        #         # model,
+        #         # word_re,
+        #         # semantic_helper,
+        #         # tokenizer,
+        #         # args,
+        #         # args.device,
+        #         ranking,
+        #         score_lookup,
+        #         qid,
+        #         doc_id_a,
+        #         model,
+        #         word_re,
+        #         semantic_helper,
+        #         tokenizer,
+        #         args,
+        #         args.device,
+        #         attack_word_number=5,
+        #     )
 
-            score_lookup = {
-                doc_id: score
-                for doc_id, score in zip(batch["docid_a"], batch["scores_a"])
+        batch_list = []
+
+        for i in range(len(batch["sequences_a"]["input_ids"])):
+            batch_data = {
+                "input_ids": batch["sequences_a"]["input_ids"][i],
+                "token_type_ids": batch["sequences_a"]["token_type_ids"][i],
+                "position_ids": torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)),
             }
-            score_lookup.update(
-                {
-                    doc_id: score
-                    for doc_id, score in zip(batch["docid_b"], batch["scores_b"])
-                }
-            )
+            batch_list.append(batch_data)
 
-            ranking = torch.cat(
-                [sequence_a, batch["sequences_b"]], dim=0
-            )  # Concatenate the two sequences
+        for i in range(len(batch["sequences_a"]["input_ids"])):
+            qid = batch["qid"]
+            doc_id_a = batch["docid_a"][i]
+            print(
+                batch["sequences_a"]["input_ids"][i],
+                batch["sequences_b"]["input_ids"][i],
+            )
+            ranking = {
+                "input_ids": torch.cat(
+                    [
+                        batch["sequences_a"]["input_ids"][i].unsqueeze(0),
+                        batch["sequences_b"]["input_ids"][i].unsqueeze(0),
+                    ]
+                )
+            }
 
             new_tokens, score = attack(
-                # ranking,
-                # score_lookup,
-                # model,
-                # word_re,
-                # semantic_helper,
-                # tokenizer,
-                # args,
-                # args.device,
                 ranking,
-                score_lookup,
+                batch["scores_a"][i],
                 qid,
                 doc_id_a,
+                batch_list,
                 model,
                 word_re,
                 semantic_helper,
                 tokenizer,
                 args,
                 args.device,
-                attack_word_number=5,
+                attack_word_number=args.max_attack_word_number,
             )
 
             new_key = f"{qid}_{doc_id_a}"
