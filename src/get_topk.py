@@ -9,6 +9,7 @@ from fire import Fire
 def get_topk(
     out_dir: str,
     dataset_id: str,
+    pairs_file : str,
     index_path: str,
     model_name_or_path: str,
     k=10,
@@ -29,8 +30,10 @@ def get_topk(
         columns={"query_id": "qid", "query": "query"}
     )
 
-    if subsample > 0:
-        queries = queries.sample(subsample)
+    pairs = pd.read_csv(pairs_file, sep="\t")
+
+    # filter queries to the qids found in pairs qid
+    queries = queries[queries.qid.isin(pairs.qid)]
 
     rez = pipeline.transform(queries)
 
@@ -41,14 +44,16 @@ def get_topk(
         .to_dict()
     )
 
-    # turn from dict to list of records
-    data = [{"qid": qid, "doc_id_b": doc_id} for qid, doc_id in data.items()]
+    # sort by score
+    data = {qid: sorted(doc_ids, key=lambda x: scores[qid][x], reverse=True) for qid, doc_ids in data.items()}
+    pairs['doc_id_b'] = pairs['qid'].map(data)
+
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
-    out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}.jsonl"
+    out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}.tsv.gz"
     score_out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}-scores.json.gz"
 
-    save_json(data, out_file)
+    pairs.to_csv(out_file, sep="\t", index=False)
     save_json(scores, score_out_file)
 
     return f"Saved to {out_file}"

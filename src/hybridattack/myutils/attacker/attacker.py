@@ -26,30 +26,25 @@ class Attacker:
         computed_loss = loss_fct(pos_doc_ss, neg_docs_s, labels)
         return computed_loss
 
-    def get_model_gradient(self, model, batch_list, attack_doc_input, device):
+    # TODO: Pass ranking rather than batch_list
+    def get_model_gradient(self, model, ranking, device):
 
         model.train()
         model.zero_grad()
-        for batch in batch_list:
 
-            batch = {
-                k: torch.cat((attack_doc_input[k].unsqueeze(dim=0), v), dim=0)
-                for k, v in batch.items()
-            }
-            batch = {k: v.to(device) for k, v in batch.items()}
-
-            outputs = model(**batch)
+        ranking = {k : v.to(device) for k, v in ranking.items()}
+        outputs = model(**ranking)
 
             # scores, shape = [B, 1]
-            attack_loss = self.rank_attack_loss(outputs[0], outputs[1:])
+        attack_loss = self.rank_attack_loss(outputs[0], outputs[1:])
 
-            if attack_loss is not None:
-                attack_loss.backward()
+        if attack_loss is not None:
+            attack_loss.backward()
 
     def attack(
         self,
         model,
-        batch_list,
+        batch_list, # TODO: Pass ranking rather than batch_list
         attack_doc_input,
         attack_word_idx,
         args,

@@ -92,7 +92,7 @@ def attack(
     sequence_score,
     qid,
     attack_doc_id,
-    batch_list,
+    batch_list, # BATCH_SIZE X SEQ_LEN X 1
     model,
     word_re,
     semantic_helper,
@@ -101,14 +101,14 @@ def attack(
     device,
     attack_word_number=5,
 ):
-    attack_sequence = ranking["input_ids"][0]
+    attack_sequence = ranking["input_ids"][0] # SEQ_LEN X 1
     # batch_list = ranking["input_ids"][1:]
     sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
     post_sep = post_sep[:-2]
     attack_sequence_list = list({}.fromkeys(post_sep).keys())
-
+    breakpoint()
     word_embedding_matrix = word_re.get_word_embedding(model)
     ori_we_matrix = word_embedding_matrix.clone().detach()
 
@@ -122,10 +122,12 @@ def attack(
         )
     )
 
+    breakpoint()
+
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
         gradient_topk_words.append(word_re.idx2word[word_idx])
-
+    breakpoint()
     attacker.attack(
         model,
         batch_list,
@@ -148,6 +150,8 @@ def attack(
         )
     )
 
+    breakpoint()
+
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
         post_sep,
         ori_we_matrix,
@@ -162,6 +166,8 @@ def attack(
         attack_doc_id,
         qid,
     )
+    # we want the score to be higher
+    breakpoint()
 
     return new_doc_token_id_list, score
 
@@ -202,12 +208,12 @@ def main():
         dataloader = [
             {
                 'qid' : "0",
-                'docid_a' : ["10"],
-                'docid_b' : ["10"],
-                'sequences_a' : tokenizer(['sample query'], return_tensors="pt"),
-                'sequences_b' : tokenizer(['sample document'], return_tensors="pt"),
-                'scores_a': [1.0],
-                'scores_b': [0.5]
+                'docid_a' : ["1"],
+                'docid_b' : ["2", "3", "4"],
+                'sequences_a' : tokenizer(['sample query'], ['sample positive'], return_tensors="pt"),
+                'sequences_b' : tokenizer(['sample query']*3, ['sample negative 1', 'sample negative 3', 'sample negative 3'], return_tensors="pt"),
+                'scores_a': [0.1],
+                'scores_b': [0.5, 0.3, 0.2]
             }
         ]
     for batch in dataloader:
@@ -257,48 +263,60 @@ def main():
 
         batch_list = []
 
-        for i in range(len(batch["sequences_a"]["input_ids"])):
-            batch_data = {
-                "input_ids": batch["sequences_a"]["input_ids"][i],
-                "token_type_ids": batch["sequences_a"]["token_type_ids"][i],
-                "position_ids": torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)),
-            }
-            batch_list.append(batch_data)
+        batch_data = {
+            "input_ids": batch["sequences_a"]["input_ids"],
+            "token_type_ids": batch["sequences_a"]["token_type_ids"],
+            "position_ids": torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)),
+        }
+        batch_list.append(batch_data)
 
-        for i in range(len(batch["sequences_a"]["input_ids"])):
-            qid = batch["qid"]
-            doc_id_a = batch["docid_a"][i]
-            print(
-                batch["sequences_a"]["input_ids"][i],
-                batch["sequences_b"]["input_ids"][i],
-            )
-            ranking = {
-                "input_ids": torch.cat(
-                    [
-                        batch["sequences_a"]["input_ids"][i].unsqueeze(0),
-                        batch["sequences_b"]["input_ids"][i].unsqueeze(0),
-                    ]
-                )
-            }
+        qid = batch["qid"]
+        doc_id_a = batch["docid_a"]
+        print(
+            batch["sequences_a"]["input_ids"][i],
+            batch["sequences_b"]["input_ids"][i],
+        )
+        ranking = {
+            "input_ids": torch.cat(
+                [
+                    batch["sequences_a"]["input_ids"].unsqueeze(0),
+                    batch["sequences_b"]["input_ids"],
+                ]
+            ),
+            "token_type_ids": torch.cat(
+                [
+                    batch["sequences_a"]["token_type_ids"].unsqueeze(0),
+                    batch["sequences_b"]["token_type_ids"],
+                ]
+            ),
+            "position_ids": torch.cat(
+                [
+                    torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)).unsqueeze(
+                        0
+                    ),
+                    torch.stack([torch.arange(0, batch["sequences_b"]["input_ids"].size(-1))]*batch["sequences_b"]["input_ids"].size(0)),
+                ]
+            ),
+        }
+        breakpoint()
+        new_tokens, score = attack(
+            ranking,
+            batch["scores_a"][0],
+            qid,
+            doc_id_a,
+            batch_list, # remove, as it is equal to ranking[NAME][0]
+            model,
+            word_re,
+            semantic_helper,
+            tokenizer,
+            args,
+            args.device,
+            attack_word_number=args.max_attack_word_number,
+        )
 
-            new_tokens, score = attack(
-                ranking,
-                batch["scores_a"][i],
-                qid,
-                doc_id_a,
-                batch_list,
-                model,
-                word_re,
-                semantic_helper,
-                tokenizer,
-                args,
-                args.device,
-                attack_word_number=args.max_attack_word_number,
-            )
-
-            new_key = f"{qid}_{doc_id_a}"
-            attack_text_dict[new_key] = new_tokens
-            attack_score_dict[new_key] = score
+        new_key = f"{qid}_{doc_id_a}"
+        attack_text_dict[new_key] = new_tokens
+        attack_score_dict[new_key] = score
 
         for key, text in attack_text_dict.items():
             recovered_doc = word_re.recover_doc(
