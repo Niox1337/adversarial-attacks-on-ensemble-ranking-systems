@@ -14,7 +14,7 @@ class PGD:
         self,
         epsilon=1.0,
         alpha=0.3,
-        emb_name="bert.embeddings.word_embeddings.weight",
+        emb_name="electra.embeddings.word_embeddings.weight",
         is_first_attack=False,
     ):
         for name, param in self.model.named_parameters():
@@ -34,7 +34,7 @@ class PGD:
         self,
         epsilon=1.0,
         alpha=0.3,
-        emb_name="bert.embeddings.word_embeddings.weight",
+        emb_name="electra.embeddings.word_embeddings.weight",
         is_first_attack=False,
         mu=1,
     ):
@@ -54,7 +54,7 @@ class PGD:
                     r_at = -alpha * self.momentum
                     param.data.add_(r_at)
 
-    def restore(self, emb_name="model.bert.embeddings.word_embeddings.weight"):
+    def restore(self, emb_name="electra.embeddings.word_embeddings.weight"):
         # emb_name xxx
         for name, param in self.model.named_parameters():
             if param.requires_grad and emb_name in name:
