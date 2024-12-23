@@ -23,10 +23,18 @@ class PGD:
                     self.emb_backup[name] = param.data.clone()
                 norm = torch.norm(param.grad)
                 if norm != 0 and not torch.isnan(norm):
+                    attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
                     r_matrix = torch.zeros(param.grad.shape).to(self.device)
-                    r_matrix[self.attack_word_idx] = (param.grad / norm)[
-                        self.attack_word_idx
-                    ]
+
+                    # param.grad shape: torch.Size([30522, 768])
+                    # norm shape: torch.Size([])
+                    # self.attack_word_idx: [tensor(7099), tensor(3893), tensor(102)]
+
+                    r_matrix[attack_word_idx, :] = (param.grad / norm)[attack_word_idx, :]
+
+                    # r_matrix[self.attack_word_idx] = (param.grad / norm)[
+                    #     self.attack_word_idx
+                    # ]
                     r_at = -alpha * r_matrix
                     param.data.add_(r_at)
 
