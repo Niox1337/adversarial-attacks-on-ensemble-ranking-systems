@@ -273,29 +273,33 @@ def main():
         qid = batch["qid"]
         doc_id_a = batch["docid_a"]
         print(
-            batch["sequences_a"]["input_ids"][i],
-            batch["sequences_b"]["input_ids"][i],
+            batch["sequences_a"]["input_ids"],
+            batch["sequences_b"]["input_ids"],
         )
+
         ranking = {
             "input_ids": torch.cat(
                 [
-                    batch["sequences_a"]["input_ids"].unsqueeze(0),
-                    batch["sequences_b"]["input_ids"],
-                ]
+                    torch.nn.functional.pad(batch["sequences_a"]["input_ids"], pad=(0,1), value=tokenizer.pad_token_id), # Shape: [1, 8]
+                    batch["sequences_b"]["input_ids"], # Shape: [3, 8]
+                ],
+                dim=0
             ),
             "token_type_ids": torch.cat(
                 [
-                    batch["sequences_a"]["token_type_ids"].unsqueeze(0),
-                    batch["sequences_b"]["token_type_ids"],
-                ]
+                    torch.nn.functional.pad(batch["sequences_a"]["token_type_ids"], pad=(0,1), value=tokenizer.pad_token_id), # Shape: [1, 8]
+                    batch["sequences_b"]["token_type_ids"], # Shape: [3, 8]
+                ],
+                dim=0
             ),
             "position_ids": torch.cat(
                 [
-                    torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)).unsqueeze(
+                    torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)+1).unsqueeze(
                         0
                     ),
-                    torch.stack([torch.arange(0, batch["sequences_b"]["input_ids"].size(-1))]*batch["sequences_b"]["input_ids"].size(0)),
-                ]
+                    torch.stack([torch.arange(0, batch["sequences_b"]["input_ids"].size(-1))]*batch["sequences_b"]["input_ids"].size(0)), # Shape: [3, 8]
+                ],
+                dim=0,
             ),
         }
         breakpoint()
