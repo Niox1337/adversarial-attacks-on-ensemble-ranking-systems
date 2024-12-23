@@ -44,7 +44,7 @@ class Attacker:
     def attack(
         self,
         model,
-        batch_list, # TODO: Pass ranking rather than batch_list
+        ranking,
         attack_doc_input,
         attack_word_idx,
         args,
@@ -54,32 +54,75 @@ class Attacker:
 
         model.train()
 
-        for batch in batch_list:
-            pgd_attacker = PGD(model, attack_word_idx, args.device)
+        batch = {
+            "input_ids": torch.cat((attack_doc_input.unsqueeze(0), ranking["input_ids"]), dim=0),
+            "token_type_ids": torch.cat(
+                (
+                    torch.zeros_like(attack_doc_input.unsqueeze(0)),
+                    ranking["token_type_ids"],
+                ),
+                dim=0,
+            ),
+            "position_ids": torch.cat(
+                (
+                    torch.arange(attack_doc_input.size(0), device=ranking["position_ids"].device)
+                    .unsqueeze(0),
+                    ranking["position_ids"],
+                ),
+                dim=0,
+            ),
+        }
 
-            batch = {
-                k: torch.cat((attack_doc_input[k].unsqueeze(dim=0), v), dim=0)
-                for k, v in batch.items()
-            }
-            batch = {k: v.to(args.device) for k, v in batch.items()}
+        batch = {k: v.to(args.device) for k, v in batch.items()}
 
-            alpha = eps / max(1, max_iter // 2)
-            for t in range(max_iter):
 
-                outputs = model(**batch)
-                attack_loss = self.rank_attack_loss(outputs[0], outputs[1:])
+        pgd_attacker = PGD(model, attack_word_idx, args.device)
 
-                if attack_loss is not None:
-                    attack_loss.backward()
+        alpha = eps / max(1, max_iter // 2)
 
-                pgd_attacker.attack(
-                    is_first_attack=(t == 0),
-                    epsilon=eps,
-                    alpha=alpha,
-                    emb_name=args.embed_name,
-                )
+        for t in range(max_iter):
+            outputs = model(**batch)
 
-                model.zero_grad()
+            attack_loss = self.rank_attack_loss(outputs[0].view(1, 1), outputs[1:].view(-1, 1))
+            if attack_loss is not None:
+                attack_loss.backward()
+
+            pgd_attacker.attack(
+                is_first_attack=(t == 0),
+                epsilon=eps,
+                alpha=alpha,
+                emb_name="electra.embeddings.word_embeddings.weight",
+            )
+
+            model.zero_grad()
+
+
+        # for batch in batch_list:
+        #     pgd_attacker = PGD(model, attack_word_idx, args.device)
+        #
+        #     batch = {
+        #         k: torch.cat((attack_doc_input[k].unsqueeze(dim=0), v), dim=0)
+        #         for k, v in batch.items()
+        #     }
+        #     batch = {k: v.to(args.device) for k, v in batch.items()}
+        #
+        #     alpha = eps / max(1, max_iter // 2)
+        #     for t in range(max_iter):
+        #
+        #         outputs = model(**batch)
+        #         attack_loss = self.rank_attack_loss(outputs[0], outputs[1:])
+        #
+        #         if attack_loss is not None:
+        #             attack_loss.backward()
+        #
+        #         pgd_attacker.attack(
+        #             is_first_attack=(t == 0),
+        #             epsilon=eps,
+        #             alpha=alpha,
+        #             emb_name=args.embed_name,
+        #         )
+        #
+        #         model.zero_grad()
 
     def random_attack(self, model, args):
 

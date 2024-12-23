@@ -127,7 +127,7 @@ def attack(
     breakpoint()
     attacker.attack(
         model,
-        batch_list,
+        ranking,
         attack_sequence,
         attack_word_idx=attack_sequence_list,
         args=args,
@@ -181,7 +181,6 @@ def main():
         raise ValueError(f"Model type '{args.model_type}' not recognised")
 
     model_state_dict = copy.deepcopy(model.state_dict())
-
     tokenizer = model.tokenizer
     embeddings = model.model.base_model.embeddings.word_embeddings
     semantic_helper = SemanticHelper(embeddings, tokenizer)
@@ -192,7 +191,6 @@ def main():
         max_doc_length=args.max_doc_length,
         corpus=corpus
     )
-
     if not args.toy:
         dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         collator = (
@@ -216,47 +214,6 @@ def main():
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
-        # for i in range(len(batch["sequences_a"])):
-        #     sequence_a = torch.tensor(batch["sequences_a"][i].ids, device=args.device)
-        #     doc_id_a = batch["docid_a"][i]
-        #     qid = batch["qid"]
-        #
-        #     score_lookup = {
-        #         doc_id: score
-        #         for doc_id, score in zip(batch["docid_a"], batch["scores_a"])
-        #     }
-        #     score_lookup.update(
-        #         {
-        #             doc_id: score
-        #             for doc_id, score in zip(batch["docid_b"], batch["scores_b"])
-        #         }
-        #     )
-        #
-        #     ranking = {
-        #         "input_ids": torch.stack([sequence_a, torch.tensor(batch["sequences_b"][i].ids, device=args.device)], dim=0
-        #     )}  # Concatenate the two sequences
-        #
-        #     new_tokens, score = attack(
-        #         # ranking,
-        #         # score_lookup,
-        #         # model,
-        #         # word_re,
-        #         # semantic_helper,
-        #         # tokenizer,
-        #         # args,
-        #         # args.device,
-        #         ranking,
-        #         score_lookup,
-        #         qid,
-        #         doc_id_a,
-        #         model,
-        #         word_re,
-        #         semantic_helper,
-        #         tokenizer,
-        #         args,
-        #         args.device,
-        #         attack_word_number=5,
-        #     )
 
         batch_list = []
 
@@ -269,37 +226,28 @@ def main():
 
         qid = batch["qid"]
         doc_id_a = batch["docid_a"]
-        print(
-            batch["sequences_a"]["input_ids"],
-            batch["sequences_b"]["input_ids"],
+
+        all_docs = [batch["sequences_a"]["input_ids"].squeeze(0)] + [
+            seq.squeeze(0) for seq in batch["sequences_b"]["input_ids"]
+        ]
+
+        combined_tokens = tokenizer(
+            [tokenizer.decode(seq.tolist()) for seq in all_docs],
+            padding=True,
+            truncation=True,
+            max_length=args.max_doc_length,
+            return_tensors="pt",
         )
 
         ranking = {
-            "input_ids": torch.cat(
-                [
-                    torch.nn.functional.pad(batch["sequences_a"]["input_ids"], pad=(0,1), value=tokenizer.pad_token_id), # Shape: [1, 8]
-                    batch["sequences_b"]["input_ids"], # Shape: [3, 8]
-                ],
-                dim=0
-            ),
-            "token_type_ids": torch.cat(
-                [
-                    torch.nn.functional.pad(batch["sequences_a"]["token_type_ids"], pad=(0,1), value=tokenizer.pad_token_id), # Shape: [1, 8]
-                    batch["sequences_b"]["token_type_ids"], # Shape: [3, 8]
-                ],
-                dim=0
-            ),
-            "position_ids": torch.cat(
-                [
-                    torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)+1).unsqueeze(
-                        0
-                    ),
-                    torch.stack([torch.arange(0, batch["sequences_b"]["input_ids"].size(-1))]*batch["sequences_b"]["input_ids"].size(0)), # Shape: [3, 8]
-                ],
-                dim=0,
+            "input_ids": combined_tokens["input_ids"],
+            "token_type_ids": combined_tokens["token_type_ids"],
+            "position_ids": torch.arange(combined_tokens["input_ids"].size(-1)).unsqueeze(0).repeat(
+                combined_tokens["input_ids"].size(0), 1
             ),
         }
-        breakpoint()
+        print(ranking)
+
         new_tokens, score = attack(
             ranking,
             batch["scores_a"][0],
