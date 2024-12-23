@@ -92,7 +92,6 @@ def attack(
     sequence_score,
     qid,
     attack_doc_id,
-    batch_list, # BATCH_SIZE X SEQ_LEN X 1
     model,
     word_re,
     semantic_helper,
@@ -102,7 +101,6 @@ def attack(
     attack_word_number=5,
 ):
     attack_sequence = ranking["input_ids"][0] # SEQ_LEN X 1
-    # batch_list = ranking["input_ids"][1:]
     sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
@@ -221,14 +219,12 @@ def main():
         attack_text_dict = {}
         attack_score_dict = {}
 
-        batch_list = []
 
         batch_data = {
             "input_ids": batch["sequences_a"]["input_ids"],
             "token_type_ids": batch["sequences_a"]["token_type_ids"],
             "position_ids": torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)),
         }
-        batch_list.append(batch_data)
 
         qid = batch["qid"]
         doc_id_a = batch["docid_a"][0]
@@ -259,7 +255,6 @@ def main():
             batch["scores_a"][0],
             qid,
             doc_id_a,
-            batch_list, # remove, as it is equal to ranking[NAME][0]
             model,
             word_re,
             semantic_helper,
