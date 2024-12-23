@@ -26,7 +26,6 @@ class Attacker:
         computed_loss = loss_fct(pos_doc_ss, neg_docs_s, labels)
         return computed_loss
 
-    # TODO: Pass ranking rather than batch_list
     def get_model_gradient(self, model, ranking, device):
 
         model.train()

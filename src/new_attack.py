@@ -108,7 +108,6 @@ def attack(
     post_sep = attack_sequence[sep_idx + 1 :]
     post_sep = post_sep[:-2]
     attack_sequence_list = list({}.fromkeys(post_sep).keys())
-    breakpoint()
     word_embedding_matrix = word_re.get_word_embedding(model)
     ori_we_matrix = word_embedding_matrix.clone().detach()
 
@@ -118,11 +117,9 @@ def attack(
 
     gradient_norm_topk_word, gradient_topk_word_idx_list = (
         word_re.get_highest_gradient_words(
-            model, attack_word_number, attack_sequence_list
+            word_embedding_matrix, attack_word_number
         )
     )
-
-    breakpoint()
 
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
