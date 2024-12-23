@@ -124,7 +124,6 @@ def attack(
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
         gradient_topk_words.append(word_re.idx2word[word_idx])
-    breakpoint()
     attacker.attack(
         model,
         ranking,
@@ -147,7 +146,6 @@ def attack(
         )
     )
 
-    breakpoint()
 
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
         post_sep,
@@ -164,7 +162,6 @@ def attack(
         qid,
     )
     # we want the score to be higher
-    breakpoint()
 
     return new_doc_token_id_list, score
 
@@ -211,6 +208,15 @@ def main():
                 'scores_b': [0.5, 0.3, 0.2]
             }
         ]
+
+        args.score_lookup = {
+            "0": {
+                "1": 0.1,
+                "2": 0.5,
+                "3": 0.3,
+                "4": 0.2
+            }
+        }
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
@@ -225,7 +231,7 @@ def main():
         batch_list.append(batch_data)
 
         qid = batch["qid"]
-        doc_id_a = batch["docid_a"]
+        doc_id_a = batch["docid_a"][0]
 
         all_docs = [batch["sequences_a"]["input_ids"].squeeze(0)] + [
             seq.squeeze(0) for seq in batch["sequences_b"]["input_ids"]
@@ -267,12 +273,16 @@ def main():
         attack_text_dict[new_key] = new_tokens
         attack_score_dict[new_key] = score
 
+        print(attack_text_dict)
+
         for key, text in attack_text_dict.items():
+            if isinstance(text, torch.Tensor):
+                text = text.tolist()
             recovered_doc = word_re.recover_doc(
                 key.split("_")[1], text, args.max_doc_length
             )
             recovered_attack_doc = word_re.tokenizer.convert_tokens_to_string(
-                text
+                word_re.tokenizer.convert_ids_to_tokens(text)
             )
 
             to_write = f"{key}\t{recovered_doc}\t{recovered_attack_doc}\t{attack_score_dict[key]}"
@@ -286,6 +296,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    # word recoverer
-    # new attack function which expects our form

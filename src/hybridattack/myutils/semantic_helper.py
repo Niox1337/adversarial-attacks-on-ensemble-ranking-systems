@@ -35,6 +35,14 @@ class SemanticHelper:
         return cos_sim
 
     def recover_whole_word(self, sub_word, ori_doc_token_ids_list, word_re):
+        if sub_word not in word_re.word2idx:
+            print(f"Warning: Subword '{sub_word}' not found in tokenizer.vocab")
+            return sub_word
+
+        if word_re.word2idx[sub_word] not in ori_doc_token_ids_list:
+            print(f"Warning: Token ID for subword '{sub_word}' not found in ori_doc_token_ids_list.")
+            return sub_word
+
         word_index = ori_doc_token_ids_list.index(word_re.word2idx[sub_word])
         right_word_index = word_index + 1
         while (right_word_index < len(ori_doc_token_ids_list)) and (
@@ -112,13 +120,6 @@ class SemanticHelper:
             sim_words[in_word] = sim_word_tokens
             # score can be accessed thru sim_word_scores[mask]
 
-        # for idx, in_word_idx in enumerate(in_words_idx):
-        #     sim_value = self.cos_sim_matrix[in_word_idx][sim_order[idx]]
-        #     mask = sim_value >= threshold
-        #     sim_word, sim_value = sim_order[idx][mask], sim_value[mask]
-        #     sim_word = [self.idx2word[id] for id in sim_word]
-        #     sim_words[in_words[idx]] = sim_word
-        #     sim_values.append(sim_value)
         return sim_words, sim_values, self.subword_neighbor_dict
 
     # seems no changes are needed
