@@ -114,7 +114,7 @@ def attack(
 
     attacker = Attacker()
 
-    attacker.get_model_gradient(model, batch_list, attack_sequence, device)
+    attacker.get_model_gradient(model, ranking, device)
 
     gradient_norm_topk_word, gradient_topk_word_idx_list = (
         word_re.get_highest_gradient_words(
