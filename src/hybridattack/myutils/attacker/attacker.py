@@ -33,7 +33,6 @@ class Attacker:
 
         ranking = {k : v.to(device) for k, v in ranking.items()}
         outputs = model(**ranking)
-        print(outputs)
 
             # scores, shape = [B, 1]
         attack_loss = self.rank_attack_loss(outputs[0].view(1, 1), outputs[1:].view(-1, 1))

@@ -248,7 +248,6 @@ def main():
                 combined_tokens["input_ids"].size(0), 1
             ),
         }
-        print(ranking)
 
         new_tokens, score = attack(
             ranking,
@@ -267,8 +266,6 @@ def main():
         new_key = f"{qid}_{doc_id_a}"
         attack_text_dict[new_key] = new_tokens
         attack_score_dict[new_key] = score
-
-        print(attack_text_dict)
 
         for key, text in attack_text_dict.items():
             if isinstance(text, torch.Tensor):
