@@ -277,7 +277,7 @@ def main():
                 word_re.tokenizer.convert_ids_to_tokens(text)
             )
 
-            to_write = f"{key}\t{recovered_doc}\t{recovered_attack_doc}\t{attack_score_dict[key]}"
+            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nattack_score_dict[key]: {attack_score_dict[key]}"
 
             if args.toy:
                 print(to_write)
