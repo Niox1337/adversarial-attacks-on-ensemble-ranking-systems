@@ -113,9 +113,15 @@ def attack(
 
     attacker.get_model_gradient(model, ranking, device)
 
+    gradient_matrix = word_embedding_matrix.grad.clone()
+    mask = torch.zeros(gradient_matrix.shape[0], dtype=torch.bool)
+    mask[[token.item() for token in attack_sequence_list]] = 1
+    filtered_gradient_matrix = gradient_matrix.clone()
+    filtered_gradient_matrix[~mask] = 0
+
     gradient_norm_topk_word, gradient_topk_word_idx_list = (
         word_re.get_highest_gradient_words(
-            word_embedding_matrix, attack_word_number
+            filtered_gradient_matrix, attack_word_number
         )
     )
 
@@ -186,6 +192,18 @@ def main():
         max_doc_length=args.max_doc_length,
         corpus=corpus
     )
+
+    vocab_semantic = semantic_helper.tokenizer.get_vocab()
+    vocab_word_re = word_re.tokenizer.vocab
+    assert vocab_semantic == vocab_word_re, "Mismatch in vocab from tokenizer"
+
+    text = "Example text to test tokenization consistency."
+    tokens_semantic = semantic_helper.tokenizer.tokenize(text)
+    tokens_word_re = word_re.tokenizer.tokenize(text)
+    print("Tokens (SemanticHelper):", tokens_semantic)
+    print("Tokens (word_re):", tokens_word_re)
+    assert tokens_semantic == tokens_word_re, "Tokenization mismatch"
+
     if not args.toy:
         dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         collator = (
@@ -218,13 +236,6 @@ def main():
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
-
-
-        batch_data = {
-            "input_ids": batch["sequences_a"]["input_ids"],
-            "token_type_ids": batch["sequences_a"]["token_type_ids"],
-            "position_ids": torch.arange(0, batch["sequences_a"]["input_ids"].size(-1)),
-        }
 
         qid = batch["qid"]
         doc_id_a = batch["docid_a"][0]

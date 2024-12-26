@@ -23,23 +23,9 @@ class BERTWordRecover(WordRecover):
         return self.tokenizer.encode(text, add_special_tokens=False)
 
     def build_vocab(self):
-        # idx2word = {}
-        # word2idx = {}
-
         print("Building vocab for bert_tokenizer...")
         self.idx2word = {idx: token for token, idx in self.tokenizer.vocab.items()}
         self.word2idx = self.tokenizer.vocab
-        # with open(self.embedding_path, 'r') as sef:
-        #     index = 0
-        #     for line in sef:
-        #         word = line.strip()
-        #
-        #         idx2word[index] = word
-        #         word2idx[word] = index
-        #         index += 1
-        #
-        # self.idx2word = idx2word
-        # self.word2idx = word2idx
 
     def get_word_embedding(self, model):
         emb_name = self.embed_name
