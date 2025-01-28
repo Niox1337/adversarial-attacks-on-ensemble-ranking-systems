@@ -18,6 +18,7 @@ from transformers import HfArgumentParser
 import pandas as pd
 from dataclasses import dataclass, field
 from src import load_json
+from src.get_topk import get_topk
 
 
 @dataclass
@@ -29,7 +30,7 @@ class Args:
     model_type: str = field(default="cat")
     subset: int = field(default=1)
     max_attack_word_number: int = field(default=10)
-    toy: bool = field(default=True)
+    toy: bool = field(default=False)
     eps: float = field(default=0.1)
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
@@ -193,25 +194,17 @@ def main():
         corpus=corpus
     )
 
-    vocab_semantic = semantic_helper.tokenizer.get_vocab()
-    vocab_word_re = word_re.tokenizer.vocab
-    assert vocab_semantic == vocab_word_re, "Mismatch in vocab from tokenizer"
-
-    text = "Example text to test tokenization consistency."
-    tokens_semantic = semantic_helper.tokenizer.tokenize(text)
-    tokens_word_re = word_re.tokenizer.tokenize(text)
-    print("Tokens (SemanticHelper):", tokens_semantic)
-    print("Tokens (word_re):", tokens_word_re)
-    assert tokens_semantic == tokens_word_re, "Tokenization mismatch"
-
     if not args.toy:
-        dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
-        collator = (
-            PreCatDataCollator(tokenizer)
-            if args.model_type == "cat"
-            else PreDotDataCollator(tokenizer)
-        )
-        dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
+        # dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
+        # collator = (
+        #     PreCatDataCollator(tokenizer)
+        #     if args.model_type == "cat"
+        #     else PreDotDataCollator(tokenizer)
+        # )
+        # dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
+
+        get_topk("./output", args.dataset_id, args.model_name_or_path)
+
     else:
         dataloader = [
             {

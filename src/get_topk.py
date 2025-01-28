@@ -3,15 +3,13 @@ from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
 from rankers._util import save_json
 import pandas as pd
-from fire import Fire
 
 
 def get_topk(
     out_dir: str,
     dataset_id: str,
-    pairs_file : str,
-    index_path: str,
     model_name_or_path: str,
+    index_path: str = "./dataset",
     k=10,
     subsample: int = -1,
     batch_size: int = 128,
@@ -27,15 +25,20 @@ def get_topk(
     pipeline = bm25 >> model
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
-        columns={"query_id": "qid", "query": "query"}
+        columns={"query_id": "qid", "text": "query"}
     )
 
-    pairs = pd.read_csv(pairs_file, sep="\t")
+    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "docno"})
 
+    pairs = pd.DataFrame([{"qid": qrel.query_id, "doc_id": qrel.doc_id} for qrel in dataset.qrels_iter() if qrel.relevance > 2])
+
+    pairs = pairs.merge(docs, left_on="doc_id", right_on="docno", how="left")
+    pairs = pairs.merge(queries, on="qid", how="left")
+    pairs = pairs.dropna()
     # filter queries to the qids found in pairs qid
-    queries = queries[queries.qid.isin(pairs.qid)]
 
-    rez = pipeline.transform(queries)
+
+    rez = pipeline.transform(pairs)
 
     data = rez.groupby("qid").doc_id.apply(list).to_dict()
     scores = (
@@ -58,6 +61,3 @@ def get_topk(
 
     return f"Saved to {out_file}"
 
-
-if __name__ == "__main__":
-    Fire(get_topk)
