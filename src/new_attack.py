@@ -10,7 +10,6 @@ from hybridattack.marcopassage.dataset import (
 )
 from hybridattack.myutils.word_recover.Bert_word_recover import BERTWordRecover
 import json
-from fire import Fire
 import torch
 import copy
 from hybridattack.myutils.attacker.attacker import Attacker
