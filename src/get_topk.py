@@ -9,13 +9,20 @@ def get_topk(
     out_dir: str,
     dataset_id: str,
     model_name_or_path: str,
-    index_path: str = "./dataset",
+    index_path: str = "./index",
     k=10,
     subsample: int = -1,
     batch_size: int = 128,
 ):
     dataset = irds.load(dataset_id)
+
     index = PisaIndex(index_path, threads=4)
+    index.index(
+        (
+            {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
+            for doc in dataset.docs_iter()
+        )
+    )
     bm25 = index.bm25() % 100
 
     model = (
