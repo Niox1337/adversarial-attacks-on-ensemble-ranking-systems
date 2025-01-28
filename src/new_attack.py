@@ -1,18 +1,18 @@
 from torch.utils.data import DataLoader
 import ir_datasets as irds
-from hybridattack.myutils.modelling.modelling_bert_cat import Cat
-from hybridattack.myutils.modelling.modelling_bert_dot import Dot
-from hybridattack.myutils.semantic_helper import SemanticHelper
-from hybridattack.marcopassage.dataset import (
+from src.hybridattack.myutils.modelling.modelling_bert_cat import Cat
+from src.hybridattack.myutils.modelling.modelling_bert_dot import Dot
+from src.hybridattack.myutils.semantic_helper import SemanticHelper
+from src.hybridattack.marcopassage.dataset import (
     PreAttackDataset,
     PreCatDataCollator,
     PreDotDataCollator,
 )
-from hybridattack.myutils.word_recover.Bert_word_recover import BERTWordRecover
+from src.hybridattack.myutils.word_recover.Bert_word_recover import BERTWordRecover
 import json
 import torch
 import copy
-from hybridattack.myutils.attacker.attacker import Attacker
+from src.hybridattack.myutils.attacker.attacker import Attacker
 from transformers import HfArgumentParser
 import pandas as pd
 from dataclasses import dataclass, field

@@ -17,12 +17,6 @@ def get_topk(
     dataset = irds.load(dataset_id)
 
     index = PisaIndex(index_path, threads=4)
-    index.index(
-        (
-            {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
-            for doc in dataset.docs_iter()
-        )
-    )
     bm25 = index.bm25() % 100
 
     model = (
@@ -43,6 +37,7 @@ def get_topk(
     pairs = pairs.merge(queries, on="qid", how="left")
     pairs = pairs.dropna()
     # filter queries to the qids found in pairs qid
+    print("First five rows of pairs:\n", pairs.head())
 
 
     rez = pipeline.transform(pairs)
@@ -50,7 +45,7 @@ def get_topk(
     data = rez.groupby("qid").doc_id.apply(list).to_dict()
     scores = (
         rez.groupby("qid")
-        .apply(lambda x: dict(zip(x["docno"], x["score"])))
+        .apply(lambda x: dict(zip(x["doc_id"], x["score"])))
         .to_dict()
     )
 
