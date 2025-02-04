@@ -11,12 +11,21 @@ def get_topk(
     model_name_or_path: str,
     index_path: str = "./index",
     k=10,
-    subsample: int = -1,
     batch_size: int = 128,
 ):
     dataset = irds.load(dataset_id)
 
     index = PisaIndex(index_path, threads=4)
+
+    # Uncomment the following to create indexes
+
+    # index.index(
+    #     (
+    #         {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
+    #         for doc in dataset.docs_iter()
+    #     )
+    # )
+
     bm25 = index.bm25() % 100
 
     model = (
@@ -37,7 +46,6 @@ def get_topk(
     pairs = pairs.merge(queries, on="qid", how="left")
     pairs = pairs.dropna()
     # filter queries to the qids found in pairs qid
-    print("First five rows of pairs:\n", pairs.head())
 
 
     rez = pipeline.transform(pairs)
@@ -51,7 +59,12 @@ def get_topk(
 
     # sort by score
     data = {qid: sorted(doc_ids, key=lambda x: scores[qid][x], reverse=True) for qid, doc_ids in data.items()}
-    pairs['doc_id_b'] = pairs['qid'].map(data)
+    ranked_data = pd.DataFrame([
+        {"qid": qid, "doc_id_b": doc_id, "rank": rank + 1}
+        for qid, doc_ids in data.items()
+        for rank, doc_id in enumerate(doc_ids)
+    ])
+    pairs = pairs.merge(ranked_data, on=["qid", "doc_id"], how="left")
 
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
