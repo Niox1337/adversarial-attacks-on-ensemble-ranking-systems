@@ -64,7 +64,7 @@ def get_topk(
         for qid, doc_ids in data.items()
         for rank, doc_id in enumerate(doc_ids)
     ])
-    pairs = pairs.merge(ranked_data, on=["qid", "doc_id"], how="left")
+    pairs = pairs.merge(ranked_data, on="qid", how="left")
 
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
