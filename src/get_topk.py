@@ -48,9 +48,8 @@ def get_topk(
     # filter queries to the qids found in pairs qid
 
 
-    rez = pipeline.transform(pairs)
+    rez = pipeline.transform(queries)
 
-    data = rez.groupby("qid").doc_id.apply(list).to_dict()
     scores = (
         rez.groupby("qid")
         .apply(lambda x: dict(zip(x["doc_id"], x["score"])))
@@ -58,13 +57,11 @@ def get_topk(
     )
 
     # sort by score
-    data = {qid: sorted(doc_ids, key=lambda x: scores[qid][x], reverse=True) for qid, doc_ids in data.items()}
-    ranked_data = pd.DataFrame([
-        {"qid": qid, "doc_id_b": doc_id, "rank": rank + 1}
-        for qid, doc_ids in data.items()
-        for rank, doc_id in enumerate(doc_ids)
-    ])
-    pairs = pairs.merge(ranked_data, on="qid", how="left")
+    data = {
+        qid: [doc_id for doc_id, _ in sorted(doc_score.items(), key=lambda item: item[1], reverse=True)[:k]]
+        for qid, doc_score in scores.items()
+    }
+    pairs['doc_id_b'] = pairs['qid'].map(data)
 
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
