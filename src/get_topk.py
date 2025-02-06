@@ -46,7 +46,9 @@ def get_topk(
     pairs = pairs.merge(queries, on="qid", how="left")
     pairs = pairs.dropna()
     # filter queries to the qids found in pairs qid
-
+    print(queries.head())
+    print(docs.head())
+    print(pairs.head())
 
     rez = pipeline.transform(queries)
 
