@@ -35,10 +35,10 @@ def get_topk(
     pipeline = bm25 >> model
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
-        columns={"query_id": "qid", "text": "query"}
+        columns={"query_id": "qid", "text": "query_text"}
     )
 
-    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "docno"})
+    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "docno", "text": "doc_text"})
 
     pairs = pd.DataFrame([{"qid": qrel.query_id, "doc_id": qrel.doc_id} for qrel in dataset.qrels_iter() if qrel.relevance > 2])
 
@@ -50,6 +50,7 @@ def get_topk(
     print(docs.head())
     print(pairs.head())
 
+    queries = queries.rename(columns={"query_text": "text"})
     rez = pipeline.transform(queries)
 
     scores = (
