@@ -50,7 +50,7 @@ def get_topk(
     print(docs.head())
     print(pairs.head())
 
-    queries = queries.rename(columns={"query_text": "text"})
+    queries = queries.rename(columns={"query_text": "query"})
     rez = pipeline.transform(queries)
 
     scores = (
