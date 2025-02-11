@@ -39,13 +39,12 @@ def get_topk(
     )
     retrieved_docs = bm25.transform(queries)
     docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"text": "doc_text"})
-    print(retrieved_docs.head())
-    print(docs.head())
     retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
 
     retrieved_docs.merge(docs, on="doc_id", how="left")
     retrieved_docs = retrieved_docs.dropna()
     retrieved_docs = retrieved_docs.rename(columns={"doc_text": "text"})
+    print(retrieved_docs.head())
     ranked_docs = model.transform(retrieved_docs)
 
     print(ranked_docs.head())
