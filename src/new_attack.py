@@ -173,11 +173,10 @@ def attack(
 def main():
     parser = HfArgumentParser(Args)
     args = parser.parse_args()
-
     if args.model_type == "cat":
-        model = Cat.from_pretrained(args.model_name_or_path)
+        model = Cat.from_pretrained(args.model_name_or_path).to(args.device)
     elif args.model_type == "dot":
-        model = Dot.from_pretrained(args.model_name_or_path)
+        model = Dot.from_pretrained(args.model_name_or_path).to(args.device)
     else:
         raise ValueError(f"Model type '{args.model_type}' not recognised")
 

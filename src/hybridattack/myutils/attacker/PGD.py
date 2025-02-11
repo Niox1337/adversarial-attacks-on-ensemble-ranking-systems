@@ -2,11 +2,11 @@ import torch
 
 
 class PGD:
-    def __init__(self, model, attack_word_idx, device):
+    def __init__(self, model, attack_word_idx:list[torch.Tensor], device):
         self.model = model
         self.emb_backup = {}
         self.grad_backup = {}
-        self.attack_word_idx = attack_word_idx
+        self.attack_word_idx = torch.stack(attack_word_idx, dim=0)
         self.device = device
         self.momentum = 0
 
@@ -18,22 +18,21 @@ class PGD:
         is_first_attack=False,
     ):
         for name, param in self.model.named_parameters():
-            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
                     self.emb_backup[name] = param.data.clone()
-                norm = torch.norm(param.grad).to(device)
+                norm = torch.norm(param.grad)
                 if norm != 0 and not torch.isnan(norm):
-                    attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
-                    param = param.to(device)
-                    param.grad = param.grad.to(device)
-                    r_matrix = torch.zeros(param.grad.shape).to(self.device)
+                    #attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
+                    #param = param.to(device)
+                    #param.grad = param.grad.to(device)
+                    r_matrix = torch.zeros(param.grad.shape).to(param.device)
 
                     # param.grad shape: torch.Size([30522, 768])
                     # norm shape: torch.Size([])
                     # self.attack_word_idx: [tensor(7099), tensor(3893), tensor(102)]
 
-                    r_matrix[attack_word_idx, :] = (param.grad / norm)[attack_word_idx, :]
+                    r_matrix[self.attack_word_idx, :] = (param.grad / norm)[self.attack_word_idx, :]
 
                     # r_matrix[self.attack_word_idx] = (param.grad / norm)[
                     #     self.attack_word_idx
