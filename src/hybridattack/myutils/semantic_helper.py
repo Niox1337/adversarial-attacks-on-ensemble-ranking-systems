@@ -35,13 +35,7 @@ class SemanticHelper:
         return cos_sim
 
     def recover_whole_word(self, sub_word, ori_doc_token_ids_list, word_re):
-        if sub_word not in word_re.word2idx:
-            print(f"Warning: Subword '{sub_word}' not found in tokenizer.vocab")
-            return sub_word
-
-        if word_re.word2idx[sub_word] not in ori_doc_token_ids_list:
-            print(f"Warning: Token ID for subword '{sub_word}' not found in ori_doc_token_ids_list.")
-            return sub_word
+        ori_doc_token_ids_list = [t.item() for t in ori_doc_token_ids_list]
 
         word_index = ori_doc_token_ids_list.index(word_re.word2idx[sub_word])
         right_word_index = word_index + 1
