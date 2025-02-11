@@ -25,6 +25,7 @@ class PGD:
                 norm = torch.norm(param.grad).to(device)
                 if norm != 0 and not torch.isnan(norm):
                     attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
+                    param = param.to(device)
                     param.grad = param.grad.to(device)
                     r_matrix = torch.zeros(param.grad.shape).to(self.device)
 
