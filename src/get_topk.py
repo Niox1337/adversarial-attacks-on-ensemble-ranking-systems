@@ -32,29 +32,23 @@ def get_topk(
         CatTransformer.from_pretrained(model_name_or_path, batch_size=batch_size) % k
     )
 
-    pipeline = bm25 >> model
+    # pipeline = bm25 >> model
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
-        columns={"query_id": "qid", "text": "query_text"}
+        columns={"query_id": "qid", "text": "query"}
     )
 
+    retrieved_docs = bm25.transform(queries)
     docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "docno", "text": "doc_text"})
+    retrieved_docs = retrieved_docs.merge(docs[['docno', 'doc_text']], left_on="doc_id", right_on="docno", how="left")
+    retrieved_docs = retrieved_docs.dropna()
+    retrieved_docs = retrieved_docs.rename(columns={"doc_text": "text"})
+    ranked_docs = model.transform(retrieved_docs)
 
-    pairs = pd.DataFrame([{"qid": qrel.query_id, "doc_id": qrel.doc_id} for qrel in dataset.qrels_iter() if qrel.relevance > 2])
-
-    pairs = pairs.merge(docs, left_on="doc_id", right_on="docno", how="left")
-    pairs = pairs.merge(queries, on="qid", how="left")
-    pairs = pairs.dropna()
-    # filter queries to the qids found in pairs qid
-    print(queries.head())
-    print(docs.head())
-    print(pairs.head())
-
-    queries = queries.rename(columns={"query_text": "query"})
-    rez = pipeline.transform(queries)
+    print(ranked_docs.head())
 
     scores = (
-        rez.groupby("qid")
+        ranked_docs.groupby("qid")
         .apply(lambda x: dict(zip(x["doc_id"], x["score"])))
         .to_dict()
     )
@@ -64,7 +58,17 @@ def get_topk(
         qid: [doc_id for doc_id, _ in sorted(doc_score.items(), key=lambda item: item[1], reverse=True)[:k]]
         for qid, doc_score in scores.items()
     }
-    pairs['doc_id_b'] = pairs['qid'].map(data)
+    pairs = pd.DataFrame(
+        [{"qid": qrel.query_id, "doc_id": qrel.doc_id} for qrel in dataset.qrels_iter() if qrel.relevance > 2]
+    )
+    pairs = pairs.merge(docs[['docno', 'doc_text']], left_on="doc_id", right_on="docno", how="left")
+
+    # Merge pairs with queries
+    pairs = pairs.merge(queries[['qid', 'query']], on="qid", how="left")
+    pairs = pairs.dropna()
+
+    # Add ranked documents
+    pairs["doc_id_b"] = pairs["qid"].map(data)
 
     formatted_model = model_name_or_path.replace("/", "-")
     formatted_dataset = dataset_id.replace("/", "-")
