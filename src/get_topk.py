@@ -38,7 +38,7 @@ def get_topk(
         columns={"query_id": "qid", "text": "query"}
     )
     retrieved_docs = bm25.transform(queries)
-    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "docno", "text": "doc_text"})
+    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"text": "doc_text"})
     print(retrieved_docs.head())
     print(docs.head())
     retrieved_docs = retrieved_docs.merge(docs[['docno', 'doc_text']], left_on="doc_id", right_on="docno", how="left")
