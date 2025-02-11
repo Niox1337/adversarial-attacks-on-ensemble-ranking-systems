@@ -46,7 +46,7 @@ class SemanticHelper:
         word_index = ori_doc_token_ids_list.index(word_re.word2idx[sub_word])
         right_word_index = word_index + 1
         while (right_word_index < len(ori_doc_token_ids_list)) and (
-            word_re.idx2word[ori_doc_token_ids_list[right_word_index]].startswith("##")
+            word_re.idx2word[ori_doc_token_ids_list[right_word_index].item()].startswith("##")
         ):
             word_index = word_index + 1
             right_word_index = word_index + 1
