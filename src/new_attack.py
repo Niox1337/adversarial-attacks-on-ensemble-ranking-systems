@@ -212,15 +212,21 @@ def main():
             docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
             sequences_a = tokenizer(
-                [group.iloc[-1]["query"]],  # Single query for docid_a
-                [group.iloc[-1]["text"]],  # Corresponding most irrelevant doc
-                return_tensors="pt"
+                [group.iloc[-1]["query"]],
+                [group.iloc[-1]["text"]],
+                return_tensors="pt",
+                padding=True,
+                truncation=True,
+                max_length=512
             )
 
             sequences_b = tokenizer(
-                [group.iloc[-1]["query"]] * len(docid_b),  # Query repeated for each docid_b
-                group.iloc[:-1]["text"].tolist(),  # Texts for all other docs
-                return_tensors="pt"
+                [group.iloc[-1]["query"]] * len(docid_b),
+                group.iloc[:-1]["text"].tolist(),
+                return_tensors="pt",
+                padding=True,
+                truncation=True,  # Truncate if exceeding model max length
+                max_length=512
             )
 
             scores_a = [group.iloc[-1]["score"]]  # Score for docid_a
