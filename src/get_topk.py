@@ -73,5 +73,5 @@ def get_topk(
     ranked_docs.to_csv(out_file, sep="\t", index=False)
     save_json(scores, score_out_file)
 
-    return f"Saved to {out_file}"
+    return ranked_docs, scores
 

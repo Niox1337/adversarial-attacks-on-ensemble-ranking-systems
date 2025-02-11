@@ -202,7 +202,40 @@ def main():
         # )
         # dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
 
-        get_topk("./output", args.dataset_id, args.model_name_or_path)
+        ranked_pairs, args.score_lookup = get_topk("./output", args.dataset_id, args.model_name_or_path)
+        dataloader = []
+
+        for qid, group in ranked_pairs.groupby("qid"):
+            group = group.sort_values(by="score", ascending=False)  # Lower score = more relevant
+
+            docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
+            docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
+
+            sequences_a = tokenizer(
+                [group.iloc[-1]["query"]],  # Single query for docid_a
+                [group.iloc[-1]["text"]],  # Corresponding most irrelevant doc
+                return_tensors="pt"
+            )
+
+            sequences_b = tokenizer(
+                [group.iloc[-1]["query"]] * len(docid_b),  # Query repeated for each docid_b
+                group.iloc[:-1]["text"].tolist(),  # Texts for all other docs
+                return_tensors="pt"
+            )
+
+            scores_a = [group.iloc[-1]["score"]]  # Score for docid_a
+            scores_b = group.iloc[:-1]["score"].tolist()  # Scores for docid_b
+
+            dataloader.append({
+                "qid": str(qid),
+                "docid_a": docid_a,
+                "docid_b": docid_b,
+                "sequences_a": sequences_a,
+                "sequences_b": sequences_b,
+                "scores_a": scores_a,
+                "scores_b": scores_b
+            })
+
 
     else:
         dataloader = [
