@@ -88,9 +88,6 @@ class Attacker:
             if attack_loss is not None:
                 attack_loss.backward(retain_graph=True)
 
-            for param in model.parameters():
-                print("Gradient norm after backward: ", param.grad.norm(), '\n')
-
             pgd_attacker.attack(
                 is_first_attack=(t == 0),
                 epsilon=eps,

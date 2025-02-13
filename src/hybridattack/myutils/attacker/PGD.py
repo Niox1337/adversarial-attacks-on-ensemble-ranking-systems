@@ -18,11 +18,12 @@ class PGD:
         is_first_attack=False,
     ):
         for name, param in self.model.named_parameters():
+            print('Gradient norm ', torch.norm(param.grad), '\n')
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
                     self.emb_backup[name] = param.data.clone()
                 norm = torch.norm(param.grad)
-                print('Same norm: ', norm, '\n')
+
                 if norm != 0 and not torch.isnan(norm):
                     #attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
                     #param = param.to(device)
