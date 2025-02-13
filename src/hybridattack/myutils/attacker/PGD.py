@@ -18,7 +18,8 @@ class PGD:
         is_first_attack=False,
     ):
         for name, param in self.model.named_parameters():
-            print('Gradient norm ', torch.norm(param.grad), '\n')
+            print('Gradient norm: ', torch.norm(param.grad))
+            print('name: ', name, 'requires_grad: ', param.requires_grad)
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
                     self.emb_backup[name] = param.data.clone()
