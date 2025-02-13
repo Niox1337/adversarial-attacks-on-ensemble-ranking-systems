@@ -1,6 +1,6 @@
 import torch
 
-
+# Projected Gradient Descent
 class PGD:
     def __init__(self, model, attack_word_idx:list[torch.Tensor], device):
         self.model = model
@@ -22,6 +22,7 @@ class PGD:
                 if is_first_attack:
                     self.emb_backup[name] = param.data.clone()
                 norm = torch.norm(param.grad)
+                print('Same norm: ', norm, '\n')
                 if norm != 0 and not torch.isnan(norm):
                     #attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
                     #param = param.to(device)
@@ -39,6 +40,7 @@ class PGD:
                     # ]
                     r_at = -alpha * r_matrix
                     param.data.add_(r_at)
+                    print('After perturbation: ', param.grad.norm(), '\n\n')
 
     def attack_with_momentum(
         self,
