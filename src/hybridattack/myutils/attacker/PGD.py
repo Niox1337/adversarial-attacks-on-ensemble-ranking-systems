@@ -27,8 +27,6 @@ class PGD:
                     #attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
                     #param = param.to(device)
                     #param.grad = param.grad.to(device)
-                    print('Gradient norm: ', norm)
-                    print('attack_word_idx: ', self.attack_word_idx)
                     r_matrix = torch.zeros(param.grad.shape).to(param.device)
 
                     # param.grad shape: torch.Size([30522, 768])
@@ -42,7 +40,6 @@ class PGD:
                     # ]
                     r_at = -alpha * r_matrix
                     param.data.add_(r_at)
-                    print('After perturbation: ', param.grad.norm(), '\n\n')
 
     def attack_with_momentum(
         self,
