@@ -141,9 +141,6 @@ def attack(
     )
 
     attacked_we_matrix = word_re.get_word_embedding(model)
-    print('embeddings not changed', torch.equal(attacked_we_matrix, ori_we_matrix))
-    print('attack_sequence_list',[word_re.idx2word.get(idx.item()) for idx in attack_sequence_list])
-    print("gradient_topk_words", gradient_topk_words)
 
     sim_word_ids_dict, sim_values, sub_word_dict = (
         semantic_helper.pick_most_similar_words_batch(
@@ -154,9 +151,9 @@ def attack(
             args.simi_threshod,
         )
     )
-    print('sim_word_ids_dict', sim_word_ids_dict)
-    print('sim_values', sim_values)
-    print('sub_word_dict', sub_word_dict)
+    # print('sim_word_ids_dict', sim_word_ids_dict)
+    # print('sim_values', sim_values)
+    # print('sub_word_dict', sub_word_dict)
 
 
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
@@ -174,10 +171,6 @@ def attack(
         qid,
     )
     # we want the score to be higher
-    print('new_doc_token_id_list', new_doc_token_id_list)
-    print('score', score)
-    print('\n'*3)
-
     return new_doc_token_id_list, score
 
 

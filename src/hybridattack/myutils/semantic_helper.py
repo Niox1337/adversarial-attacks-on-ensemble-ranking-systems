@@ -98,7 +98,7 @@ class SemanticHelper:
         # Exclude the word itself from similarities
         for idx, in_word_idx in enumerate(in_words_idx):
             cos_sim[idx, in_word_idx] = -np.inf
-
+        print(cos_sim)
         sim_order = np.argsort(-cos_sim)[:, 1 : 1 + ret_count]
 
         sim_values = np.take_along_axis(cos_sim, sim_order, axis=1)
