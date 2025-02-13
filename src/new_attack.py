@@ -124,11 +124,6 @@ def attack(
         )
     )
 
-    attack_words = [word_re.idx2word.get(idx.item(), "<UNK>") for idx in attack_sequence_list]
-    print("attack_words", " ".join(attack_words), "\n")
-    topk_words = [word_re.idx2word.get(idx, "<UNK>") for idx in gradient_topk_word_idx_list]
-    print("topk_words", " ".join(topk_words), "\n")
-
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
         gradient_topk_words.append(word_re.idx2word[word_idx])
