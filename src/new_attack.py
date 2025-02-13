@@ -141,7 +141,7 @@ def attack(
     )
 
     attacked_we_matrix = word_re.get_word_embedding(model)
-    print('embeddings not changed', str(attacked_we_matrix==ori_we_matrix))
+    print('embeddings not changed', torch.equal(attacked_we_matrix, ori_we_matrix))
 
     sim_word_ids_dict, sim_values, sub_word_dict = (
         semantic_helper.pick_most_similar_words_batch(
