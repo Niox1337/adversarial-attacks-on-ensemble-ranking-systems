@@ -105,7 +105,10 @@ def attack(
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
     post_sep = post_sep[:-2]
-    attack_sequence_list = list({}.fromkeys(post_sep).keys())
+    attack_sequence_list = [
+        token_id for token_id in dict.fromkeys(post_sep).keys()
+        if token_id > 102
+    ]
     word_embedding_matrix = word_re.get_word_embedding(model)
     ori_we_matrix = word_embedding_matrix.clone()
 
