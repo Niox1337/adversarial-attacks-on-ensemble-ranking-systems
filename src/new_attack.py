@@ -108,7 +108,6 @@ def attack(
     post_sep = post_sep[:-2]
     attack_sequence_list = [
         token_id for token_id in dict.fromkeys(post_sep).keys()
-        if token_id > 102
     ]
     word_embedding_matrix = word_re.get_word_embedding(model)
     ori_we_matrix = word_embedding_matrix.clone()
@@ -144,7 +143,7 @@ def attack(
     attacked_we_matrix = word_re.get_word_embedding(model)
     print('embeddings not changed', torch.equal(attacked_we_matrix, ori_we_matrix))
     print('attack_sequence_list',[word_re.idx2word.get(idx.item()) for idx in attack_sequence_list])
-    print(post_sep)
+    print("gradient_topk_words", gradient_topk_words)
 
     sim_word_ids_dict, sim_values, sub_word_dict = (
         semantic_helper.pick_most_similar_words_batch(
