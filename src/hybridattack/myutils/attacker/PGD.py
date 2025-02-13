@@ -18,8 +18,6 @@ class PGD:
         is_first_attack=False,
     ):
         for name, param in self.model.named_parameters():
-            print('Gradient norm: ', torch.norm(param.grad))
-            print('name: ', name, 'requires_grad: ', param.requires_grad)
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
                     self.emb_backup[name] = param.data.clone()
@@ -29,6 +27,8 @@ class PGD:
                     #attack_word_idx = [int(idx.item()) for idx in self.attack_word_idx]
                     #param = param.to(device)
                     #param.grad = param.grad.to(device)
+                    print('Gradient norm: ', norm)
+                    print('attack_word_idx: ', self.attack_word_idx)
                     r_matrix = torch.zeros(param.grad.shape).to(param.device)
 
                     # param.grad shape: torch.Size([30522, 768])
