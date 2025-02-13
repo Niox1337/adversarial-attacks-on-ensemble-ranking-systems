@@ -114,18 +114,20 @@ def attack(
     attacker.get_model_gradient(model, ranking, device)
 
     gradient_matrix = word_embedding_matrix.grad.clone()
-    print("gradient matrix: \n", gradient_matrix, "\nMax:\n", gradient_matrix.max().item())
     mask = torch.zeros(gradient_matrix.shape[0], dtype=torch.bool)
     mask[[token.item() for token in attack_sequence_list]] = 1
     filtered_gradient_matrix = gradient_matrix.clone()
     filtered_gradient_matrix[~mask] = 0
-    print("filtered gradient matrix: \n", filtered_gradient_matrix)
     gradient_norm_topk_word, gradient_topk_word_idx_list = (
         word_re.get_highest_gradient_words(
             filtered_gradient_matrix, attack_word_number
         )
     )
-    print("gradient_norm_topk_word: \n", gradient_norm_topk_word)
+
+    attack_words = [word_re.idx2word.get(idx.item(), "<UNK>") for idx in attack_sequence_list]
+    print("attack_words", " ".join(attack_words), "\n")
+    topk_words = [word_re.idx2word.get(idx, "<UNK>") for idx in gradient_topk_word_idx_list]
+    print("topk_words", " ".join(topk_words), "\n")
 
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
