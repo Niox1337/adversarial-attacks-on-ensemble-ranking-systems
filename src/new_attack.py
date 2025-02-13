@@ -114,16 +114,18 @@ def attack(
     attacker.get_model_gradient(model, ranking, device)
 
     gradient_matrix = word_embedding_matrix.grad.clone()
+    print("gradient matrix: \n", gradient_matrix)
     mask = torch.zeros(gradient_matrix.shape[0], dtype=torch.bool)
     mask[[token.item() for token in attack_sequence_list]] = 1
     filtered_gradient_matrix = gradient_matrix.clone()
     filtered_gradient_matrix[~mask] = 0
-
+    print("filtered gradient matrix: \n", filtered_gradient_matrix)
     gradient_norm_topk_word, gradient_topk_word_idx_list = (
         word_re.get_highest_gradient_words(
             filtered_gradient_matrix, attack_word_number
         )
     )
+    print("gradient_norm_topk_word: \n", gradient_norm_topk_word)
 
     gradient_topk_words = []
     for word_idx in gradient_topk_word_idx_list:
@@ -318,7 +320,7 @@ def main():
                 word_re.tokenizer.convert_ids_to_tokens(text)
             )
 
-            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nattack_score_dict[key]: {attack_score_dict[key]}"
+            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nattack_score_dict[key]: {attack_score_dict[key]}\n"
 
             if args.toy:
                 print(to_write)

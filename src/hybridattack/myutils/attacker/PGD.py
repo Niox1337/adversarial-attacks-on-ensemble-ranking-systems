@@ -48,7 +48,6 @@ class PGD:
         is_first_attack=False,
         mu=1,
     ):
-        # change the emb_name to the embedding parameter name of your model
         for name, param in self.model.named_parameters():
             if param.requires_grad and emb_name in name:
                 if is_first_attack:
