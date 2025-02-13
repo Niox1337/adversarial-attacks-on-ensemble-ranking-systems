@@ -104,7 +104,7 @@ def attack(
     sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
-    post_sep = post_sep[post_sep.item() > 102]
+    post_sep = post_sep[post_sep > 102]
     post_sep = post_sep[:-2]
     attack_sequence_list = [
         token_id for token_id in dict.fromkeys(post_sep).keys()
