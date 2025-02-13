@@ -33,7 +33,7 @@ class Args:
     eps: float = field(default=0.1)
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
-    simi_threshod: float = field(default=0.7)
+    simi_threshod: float = field(default=0.0)
     max_doc_length: int = field(default=200)
     max_query_length: int = field(default=30)
     device: str = field(default="cuda" if torch.cuda.is_available() else "cpu")

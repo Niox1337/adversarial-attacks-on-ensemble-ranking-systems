@@ -104,16 +104,15 @@ class SemanticHelper:
 
         sim_words = {}
 
-        print("sim_order: ",sim_order)
-        print("sim_values: ",sim_values)
         for idx, in_word in enumerate(in_words):
             sim_word_ids = sim_order[idx]
             sim_word_scores = sim_values[idx]
-            print(f"Similarity Scores: {sim_word_scores}")
             mask = sim_word_scores >= threshold
             sim_word_ids = sim_word_ids[mask]
             sim_word_tokens = [self.idx2word[word_id] for word_id in sim_word_ids]
             sim_words[in_word] = sim_word_tokens
+            print('sim_word_ids: ', sim_word_ids)
+            print('sim_word_tokens: ', sim_word_tokens)
             # score can be accessed thru sim_word_scores[mask]
 
         return sim_words, sim_values, self.subword_neighbor_dict
