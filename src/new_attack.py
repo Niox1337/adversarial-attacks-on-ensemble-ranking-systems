@@ -114,7 +114,7 @@ def attack(
     attacker.get_model_gradient(model, ranking, device)
 
     gradient_matrix = word_embedding_matrix.grad.clone()
-    print("gradient matrix: \n", gradient_matrix)
+    print("gradient matrix: \n", gradient_matrix, "\nMax:\n", gradient_matrix.max().item())
     mask = torch.zeros(gradient_matrix.shape[0], dtype=torch.bool)
     mask[[token.item() for token in attack_sequence_list]] = 1
     filtered_gradient_matrix = gradient_matrix.clone()
