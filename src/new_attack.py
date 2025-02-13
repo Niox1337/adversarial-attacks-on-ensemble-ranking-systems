@@ -107,7 +107,7 @@ def attack(
     post_sep = post_sep[:-2]
     attack_sequence_list = list({}.fromkeys(post_sep).keys())
     word_embedding_matrix = word_re.get_word_embedding(model)
-    ori_we_matrix = word_embedding_matrix.clone().detach()
+    ori_we_matrix = word_embedding_matrix.clone()
 
     attacker = Attacker()
 
