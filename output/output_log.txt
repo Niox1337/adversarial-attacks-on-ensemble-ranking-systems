@@ -2,304 +2,46 @@ You are using a model of type electra to instantiate a model of type Cat. This i
 We strongly recommend passing in an `attention_mask` since your input_ids may be padded. See https://huggingface.co/docs/transformers/troubleshooting#incorrect-output-when-padding-tokens-arent-masked.
 Building vocab...
 Building vocab for bert_tokenizer...
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
-embeddings not changed tensor([[True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        ...,
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True],
-        [True, True, True,  ..., True, True, True]], device='cuda:0')
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
+embeddings not changed False
