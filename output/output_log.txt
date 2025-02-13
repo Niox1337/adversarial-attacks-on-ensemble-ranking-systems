@@ -2,906 +2,175 @@ You are using a model of type electra to instantiate a model of type Cat. This i
 We strongly recommend passing in an `attention_mask` since your input_ids may be padded. See https://huggingface.co/docs/transformers/troubleshooting#incorrect-output-when-padding-tokens-arent-masked.
 Building vocab...
 Building vocab for bert_tokenizer...
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 6.77538537979126
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([19.1086, 13.4301, 10.2633,  9.9312,  9.0077,  8.4568,  7.2021,  6.5089,
-         6.3383,  6.1065], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 5.202933311462402
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([35.7685, 22.8389, 22.6967, 18.9008, 15.9563, 15.7626, 13.5739, 12.4964,
-        10.1178,  9.9826], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 24.064430236816406
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([140.5067,  76.4711,  25.3297,  18.2069,  17.2629,  17.2523,  16.6054,
-         13.3936,  11.6892,   8.3835], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 66.53983306884766
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([229.7895, 114.3440,  30.6842,  26.8576,  18.1570,  15.8307,  15.0303,
-         15.0301,  15.0084,  14.6883], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 10.086846351623535
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([62.7282, 26.1646, 23.6095, 22.4532, 19.0253, 16.5183, 13.5879, 13.4167,
-        12.4020, 11.5089], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 4.407587051391602
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([20.0992, 20.0461, 18.3416, 16.9694, 14.6590, 14.4761, 13.6177, 13.3149,
-        12.3035, 11.8936], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 19.640987396240234
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([150.5537,  39.8304,  39.8029,  29.6165,  28.0736,  25.1872,  25.0413,
-         20.2016,  18.8120,  18.6402], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 9.879630088806152
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([67.8736, 40.8072, 28.6156, 28.2528, 25.7406, 22.9522, 22.3661, 20.0694,
-        18.7399, 16.8993], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 7.956202507019043
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([44.6919, 18.3677, 17.9072, 16.0751, 15.7572, 15.0882, 14.5201, 13.6732,
-        12.3433, 11.8145], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 2.255156993865967
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([10.2373,  8.9701,  7.1575,  5.7226,  5.3487,  3.6443,  3.4170,  3.2722,
-         2.9162,  2.8077], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 11.198983192443848
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([55.5982, 50.8185, 49.8523, 38.9797, 31.8561, 26.5839, 25.4499, 23.7430,
-        23.1238, 22.1527], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 16.041378021240234
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([114.8441, 108.5911,  53.2841,  48.2397,  45.5855,  39.8074,  39.0937,
-         37.4682,  36.9004,  32.9927], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 5.449677467346191
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([38.7937, 12.9298, 12.7651, 11.6912, 11.5998,  9.7198,  9.5520,  9.1416,
-         8.3286,  8.0367], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 13.282856941223145
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([38.2199, 27.2840, 16.6412, 16.0294, 15.1906, 11.5705,  9.6113,  9.4156,
-         8.4882,  8.4570], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 8.90345287322998
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([45.6658, 36.7929, 34.6068, 26.1618, 19.7908, 15.1678, 14.5986, 13.3364,
-        13.0056, 12.3291], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 6.305855751037598
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([37.2145, 27.5831, 20.7573, 20.3784, 15.4560, 13.2731, 12.3662, 12.0671,
-        10.6406, 10.0699], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 21.47484016418457
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([140.4211,  46.7260,  42.2657,  36.9131,  30.5457,  20.5177,  18.1092,
-         16.0793,  13.8028,  12.9015], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 16.181459426879883
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([107.6768,  66.4004,  63.3270,  60.5069,  47.6343,  46.5043,  45.4640,
-         42.9309,  36.0630,  30.7511], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 11.544540405273438
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([70.4068, 67.3853, 66.2604, 63.2654, 58.2610, 54.7955, 54.3888, 51.7085,
-        44.0431, 22.7110], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 13.355077743530273
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([72.3981, 41.8875, 29.9591, 22.7352, 22.3340, 16.0340, 13.9695, 13.3477,
-        13.0910, 11.2717], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 6.223116397857666
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([21.0599, 20.2079, 13.0245, 10.9178, 10.7373,  9.6568,  9.1003,  7.5644,
-         7.0791,  7.0463], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 5.357792377471924
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([11.1838,  7.8790,  7.6720,  7.3206,  6.1156,  6.0498,  6.0439,  5.4901,
-         4.6635,  4.4347], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 1.5424813032150269
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([12.6706,  6.6912,  5.2102,  4.6039,  3.6365,  3.6281,  3.4038,  3.0532,
-         2.9905,  2.7538], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 13.955894470214844
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([32.3886, 21.9149, 20.9026, 18.0949, 17.0174, 15.7778, 13.7872, 13.6184,
-        13.2825, 12.5323], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 3.5341098308563232
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([26.0507, 14.3786, 11.7524, 11.5112, 10.2452,  7.5956,  6.5463,  5.9812,
-         5.4153,  5.1978], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 4.843421459197998
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([38.8133, 28.7333, 20.9563, 16.8554, 16.3273, 15.5398, 14.0919, 13.7045,
-        11.7291, 10.7753], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 6.645254611968994
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([53.0636, 26.0827, 18.8746, 16.5346, 13.6338, 13.6013, 11.9826, 11.3015,
-        10.7373,  9.4494], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 0.7241865992546082
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([4.6680, 4.3560, 1.8801, 1.8710, 1.8225, 1.5365, 1.3782, 1.1648, 1.1444,
-        1.0346], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 2.425740957260132
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([18.3160,  4.6113,  3.0762,  2.9070,  2.8343,  2.6513,  2.6168,  2.4870,
-         2.1175,  2.0976], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 2.0298550128936768
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([11.2294,  9.7934,  7.5314,  6.9180,  5.8134,  5.5334,  5.2506,  3.6630,
-         3.4303,  3.3979], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 6.803876876831055
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([21.5899, 15.7519, 14.4141, 12.5242, 11.5903, 11.3923, 11.2703, 10.1823,
-         9.2037,  8.8614], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 7.878772735595703
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([57.3289, 44.1612, 36.6154, 23.6430, 23.6353, 22.4262, 20.4696, 18.3039,
-        17.6403, 16.6985], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 3.6280508041381836
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([17.3018, 15.7827, 15.1102, 11.2413,  7.6095,  6.9031,  6.6659,  6.3994,
-         6.1042,  6.0833], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 2.6281983852386475
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([15.2013, 14.7267, 14.2800,  9.0128,  7.8203,  5.9860,  5.2289,  4.9594,
-         4.4381,  3.2580], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 5.54594087600708
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([18.8190, 17.9562, 17.5748, 15.2473, 13.7086, 12.3531, 10.4563,  9.1766,
-         8.6021,  8.5366], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 10.173545837402344
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([57.1910, 55.8151, 45.8085, 30.9083, 22.3355, 22.2356, 14.9672, 14.8833,
-        12.7602, 12.3987], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 0.0679788738489151
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([0.2333, 0.2288, 0.2197, 0.1614, 0.1445, 0.1373, 0.1058, 0.1052, 0.1011,
-        0.0960], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 8.647644996643066
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([65.5529, 17.2132, 13.9888, 11.7399, 11.1029, 10.1977,  9.3886,  8.2301,
-         7.6374,  7.2638], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 4.6408915519714355
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([43.3418, 22.4732, 22.1031, 19.7406, 17.7955, 15.5982, 15.4906, 13.6970,
-        13.6933, 11.9191], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 0.3980296552181244
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([3.4682, 2.1652, 1.9554, 1.9223, 1.8191, 1.7127, 1.5901, 1.5029, 1.4198,
-        1.2892], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 7.648163795471191
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([61.1733, 19.3698, 14.8649, 14.3579, 13.7746,  9.4542,  8.6745,  7.9200,
-         7.5237,  6.4192], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 4.770718097686768
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([38.7847, 23.6118, 21.9617, 21.0166, 17.9731, 16.7261, 16.4503, 16.1351,
-        15.4437, 13.4058], device='cuda:0')
-gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0') 
-Max:
- 23.533937454223633
-filtered gradient matrix: 
- tensor([[0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        ...,
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.],
-        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')
-gradient_norm_topk_word: 
- tensor([144.7207,  42.9220,  31.6782,  29.0953,  22.1372,  21.2157,  20.8862,
-         20.4209,  18.9687,  18.8654], device='cuda:0')
+attack_words sha ##sta travel trailers . sha ##sta travel trailers were recreational vehicles built between 1941 and 2004 . founded by industry pioneer robert gray , the firm was originally situated in a small factory in los angeles , california to provide housing for members of the us armed forces . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words [SEP] trailers gray robert . travel sha ##sta recreational the 
+
+attack_words video on the cost of concrete floors . depending on the level of complexity , concrete floors can cost as little as $ 2 to $ 6 a square foot or be as expensive as $ 15 to $ 30 a square foot . ve ##n floor ##ing options that are initially cheaper to install than decorative concrete may turn out to be more expensive in the long run . when you amor ##ti ##ze the cost of a concrete floor over a lifetime , the price is often comparable or even lower than other floor ##ing materials , especially if you factor in maintenance costs . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words [SEP] video concrete the floor on ##ing . to , 
+
+attack_words why australia became involved in w ##w ##1 . they became involved in august 1914 because britain was preparing to declare war on germany . australia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle east . us ##tral ##ia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle east . 
+
+topk_words australia became . why us the entering in involved ) 
+
+attack_words league of nations - an international organization formed in 1920 to promote cooperation and peace among nations ; although suggested by woodrow wilson , the united states never joined and it remained powerless ; it was dissolved in 1946 after the united nations was formed . is , commonwealth of independent states - an alliance made up of states that had been soviet socialist republics in the soviet union prior to its dissolution in dec 1991 . un , united nations - an organization of independent states formed in 1945 to promote international peace and security . [SEP] [SEP] [PAD] [PAD] [PAD] 
+
+topk_words commonwealth formed independent 1920 states in [SEP] the of nations 
+
+attack_words heart ##burn and chest pain are manifestation ##s of vis ##cera ##l pain . vis ##cera ##l pain by definition means that it originates from the organs of the thor ##ax , abdomen , and pe ##lvis . vis ##cera ##l pain is distinguished from so ##matic pain in that it is often diffuse and poorly localized . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##burn [SEP] and ##cera ##s heart . are vis ##l 
+
+attack_words radio frequency ( rf ) radiation consists of the cell signal , blue ##tooth and wi ##fi while extremely low frequency ( elf ) radiation is generated by phone ’ s hardware . this radiation is absorbed into the body , usually through body tissue situated at or near where the cell phone is held . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words while , [SEP] ##tooth radiation blue ##fi consists the wi 
+
+attack_words the population of thailand is approximately 67 . 5 million people , with an annual growth rate of about 0 . 3 percent . in addition to thai , it includes ethnic chinese , malay , lao , burma , cambodia , and indians , among others . ve ##n though thailand has one of the best social security systems in asia , the increasing population of elderly people is a challenge for the country . life expect ##ancy has risen , a positive reflection of thailand ' s efforts in executing effective public health policies . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words 67 , life thai [SEP] thailand . the people is 
+
+attack_words spruce tree scientific name , pic ##ea . spruce trees are cone bearing trees and can therefore be classified as con ##iferous . other con ##iferous trees include pine trees , douglas fir trees , redwood trees and cedar trees . spruce tree types : list of different type of spruce . bird ' s nest spruce , dwarf variety of norway spruce . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words spruce . tree trees scientific , cone of bearing ##ea 
+
+attack_words fa ##mc ##ic ##lov ##ir ( fa ##m ##vir ##® ) and val ##acy ##cl ##ov ##ir ( val ##tre ##x ##® ) both are new anti ##her ##pes ##vira ##l pro ##dr ##ug ##s ( in the same class as ac ##y ##cl ##ov ##ir ) . indication : acute her ##pes z ##ost ##er in the im ##mun ##oco ##mp ##ete ##nt host . ( their role in gen ##ital her ##pes will be discussed in a future therapeutic ##s letter ) . mechanism of action : reduce viral replication by inhibit ##ing viral dna polymer ##ase . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words indication ##® fa ##m ##vir . therapeutic ##pes ( ) 
+
+attack_words often abbreviated as “ d ##me ” , durable medical equipment includes various types of walking aids , transfer equipment , bath safety and wheelchair ##s . as the name implies , this category must be manufactured and tested to be “ durable ” because patients who use this equipment rely on it to keep them safe and comfort . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words , durable equipment medical of . includes as [SEP] this 
+
+attack_words am ##l is the native programming language of the arc ##in ##fo works ##tation gi ##s software . am ##l is most commonly used in the 7 ##x versions of arc ##in ##fo . am ##l basics pdf file on the basics of am ##l . make sure you have adobe ’ s ( www . adobe . com ) free adobe reader installed on your machine in order to su ##ces ##sf ##ull ##y open up this ur ##l . arcs ##cript ##s 
+
+topk_words language of ##l programming am . arc is the gi 
+
+attack_words making the world better , one answer at a time . passive continental margins are not areas of convergence . there is little volcanic and earthquake activity on passive margins . active margins are areas of convergence where one plate is descending beneath another . they are associated with volcanic and earthquake activity . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words answer [SEP] active making at one time . margins , 
+
+attack_words definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil erosion . definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil erosion . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words english minimize ##owing - pl of ##tour [SEP] land definition 
+
+attack_words distribution of the water on earth . 1 ocean water : 97 . 2 percent . 2 glaciers and other ice : 2 . 15 percent . 3 groundwater , : 0 . 61 percent . 4 fresh water lakes : 0 . 00 ##9 percent . 5 inland seas : 0 . 00 ##8 percent . 6 soil moisture : 0 . 00 ##5 percent . 7 atmosphere : 0 . 001 percent . 8 rivers : 0 . 000 ##1 percent . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ocean . percent [SEP] distribution water the : earth 2 
+
+attack_words 1 the x ##yle ##m tr ##ache ##ary elements consist of cells known as tr ##ache ##ids and vessel members , both of which are typically narrow , hollow , and elongated . tr ##ache ##ids are less specialized than the vessel members and are the only type of water - conducting cells in most gym ##nos ##per ##ms and seed ##less vascular plants . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##ache ##ids . of are tr the [SEP] , 1 
+
+attack_words for hydrogen , the boiling point is - 253 degrees ce ##ls ##ius ; for mercury it is 357 degrees ce ##ls ##ius , and for iron it is 2 , 750 degrees ce ##ls ##ius . from these numbers you can see that at room temperature ( and indeed for nearly any temperature found on earth ) hydrogen is a gas , mercury is a liquid , and iron is a solid . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words hydrogen is boiling , liquid point temperature mercury ; a 
+
+attack_words and it ' s absolutely true . this is jamaica weather ! most of our days are filled with warmth and sunshine , even during the rainy season . jamaica has a tropical climate with hot and humid weather at sea level . the higher inland regions have a more temperate climate . ( bring a light jacket just in case you travel to the mountains where temperatures can be 10 degrees cooler or in case you go on a windy boat ride ) . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words jamaica is true weather the [SEP] . absolutely climate a 
+
+attack_words no ##lo ' s plain - english law dictionary . a court decision in a civil case that tells the parties what their rights and responsibilities are , without awarding damages or ordering them to do anything . courts are usually reluctant to hear dec ##lar ##atory judgment cases , preferring to wait until there has been a me ##asurable loss . but especially in cases involving important constitutional rights , courts will step in to clarify the legal landscape . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##lo no dictionary ' s [SEP] ##atory judgment a dec 
+
+attack_words si ##gm ##et 1 is the type of the message and the sequential number of the day ; valid 150 ##43 ##5 / 150 ##8 ##35 is the period of validity of the message . it follows the same standard of the . date / time of the header . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words type the is ##gm si of ##et 1 . message 
+
+attack_words the double che ##es ##burg ##er is now $ 1 . 19 instead of a buck . seriously , $ . 19 / slice of cheese and a removal from the dollar menu . do i order the double cheese ##burg ##er at its new full price or do i stick to the dollar menu and go with the mc ##dou ##ble . of course , i go with the mc ##dou ##ble . one piece of mcc ##hee ##se might be better than two pieces of mcc ##hee ##se . i guess mcdonald ##s thinks people like me who bought the double cheese ##burg ##er for a buck will pony up and pay the extra penn ##ies . sooner or later they will be charging for extra napkin ##s and ke ##tch ##up . 
+
+topk_words ##burg double . che ##dou cheese mc the a ##ble 
+
+attack_words the higher level positions have a higher average salary . for that reason , while there is no significant difference in the salary of an ad ##n rn and a bs ##n rn working as a staff nurse on a hospital unit , a nurse with a bs ##n will make more income over the course of their career . many ad ##n graduates return to school and complete their bs ##n after they start working . owe ##ver , many facilities also offer a differential for the bs ##n degree . on a national level an rn with a bs ##n makes $ 2500 - $ 350 ##0 more per year in the entry level position due to the differential . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##n as . that while the a salary [SEP] also 
+
+attack_words a : while gold ##fish can grow up to 18 inches in length and can weigh more than six pounds , most never attain such large size . gold ##fish occur in a number of different varieties , and some grow larger than others . the most common gold ##fish in state fairs and pet shops is the “ common gold ##fish . ” [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words inches grow the of 18 in a ##fish [SEP] to 
+
+attack_words : pneumonia that is caused by a bacterium of the genus legion ##ella ( l . p ##ne ##um ##op ##hila ) , that is characterized initially by symptoms resembling influenza ( as mala ##ise , headache , and muscular ache ##s ) followed by high fever , cough , dia ##rr ##hea , lo ##bar pneumonia , and mental confusion , and that may be fatal especially in elderly and im ##mun ##oco ##mp ##rom ##ised . . . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words pneumonia caused ##oco : legion , ##hila ##ella . [SEP] 
+
+attack_words an important application of mono ##tonic functions is in probability theory . if is a random variable , its cumulative distribution function is a mono ##tonic ##ally increasing function . a function is un ##imo ##dal if it is mono ##tonic ##ally increasing up to some point ( the mode ) and then mono ##tonic ##ally decreasing . when is a strictly mono ##tonic function , then is in ##ject ##ive on its domain , and if is the range of , then there is an inverse function on for . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words probability in ##tonic theory is random . function mono of 
+
+attack_words by definition , ex ##ons and intro ##ns are sequences in a protein - coding gene region of a double - stranded dna molecule ( ds ##dna ) that are expressed as proteins , or intervening sequences not so expressed . the ex ##on and intro ##n sequences are typical ##lly visual ##ized as the sense strand of the ds ##dna , written 5 ' - 3 ' , left to right . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words are ex ##ons definition and , a the sequences intro 
+
+attack_words anthropology , the study of humans , en ##tom ##ology , the study of insect , der ##mat ##ology , the study of the skin , card ##iology , the study of … the heart , and pale ##ont ##ology , is the study of prehistoric life , including organisms ' evolution and interactions with each other and their environment . 3 people found this useful . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words anthropology ##ology ##tom environment , the study organisms is prehistoric 
+
+attack_words rating newest oldest . best answer : whales , seals , dolphins , and otter ##s are mammals ( warm blooded creatures that give birth to live young . some sharks give live birth , some eggs , and some are eggs in the ut ##erus , but are born live . seals find a nice beach and give birth to their pup ##s there . ut whales , dolphins and otter ##s ( i ' m su ##pp ##osing it ' s sea otter ##s you ' re talking about ) give birth in water . although their babies are born in water and can swim , they need adults to help them to the surface to breathe . as for sharks , most lay eggs , but some do give live birth . 
+
+topk_words newest blooded sharks rating . warm , oldest some are 
+
+attack_words 1 flea ##s pass through a complete life cycle of four stages . made up of 50 % eggs , 30 % larvae , 15 % pup ##ae and only 5 % biting adults . completion of the life cycle from egg to adult varies from two weeks to eight months . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words complete cycle flea life pass through a from . of 
+
+attack_words the mid ##se ##gm ##ent ( also called the median or mid ##line ) of a trap ##ez ##oid is the segment that joins the mid ##points of the legs . it is parallel to the bases . its length m is equal to the average of the lengths of the bases a and b of the trap ##ez ##oid , n ob ##tus ##e trap ##ez ##oid with two pairs of parallel sides is a parallel ##og ##ram . a parallel ##og ##ram has central 2 - fold rotational symmetry ( or point reflection symmetry ) . there is some disagreement whether parallel ##og ##ram ##s , which have two pairs of parallel sides , should be regarded as trap ##ez ##oids . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words , the ##oid . ##gm [SEP] mid to ##ez of 
+
+attack_words aero ##port aero ##port - roi ##ss ##y charles de ( gaulle airport code ) . cd ##g located 30 km northeast of paris in the suburb of , roi ##ss ##y this is ’ paris largest airport and has three , terminals which are used by both international and domestic . carriers [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##y gaulle paris ##port airport aero ##g cd roi [SEP] 
+
+attack_words lightweight portable security ( lp ##s ) . lp ##s is an award winning thin ( 282 ##mb ) linux based os designed to boot from cd or usb stick . it resides entirely within ram when run ( so no persistent user data is saved ) , but can write to usb sticks and portable hard drives . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words an lp when is . ##s award to lightweight ( 
+
+attack_words what is mechanical ventilation ? mechanical ventilation , in the healthcare setting or home , helps patients breathe by assisting the in ##hala ##tion of oxygen into the lungs and the ex ##hala ##tion of carbon dioxide . depending on the patient ’ s condition , mechanical ventilation can help support or completely control breathing . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ? ventilation the mechanical what , . [SEP] of s 
+
+attack_words ax ##on terminals refer to the ax ##on endings that are somewhat enlarged and often club - or button - shaped . ax ##on terminals are that part of a nerve cell that make syn ##ap ##tic connections with another nerve cell or with an effect ##or cell ( e . g . muscle cell or gland cell ) . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words terminals ax button . ##on that ##ap ##tic nerve cell 
+
+attack_words pe ##l ##vic pain : what ' s causing your pe ##l ##vic pain ? there are many causes of pe ##l ##vic pain in women including ut ##erine fi ##bro ##ids , cy ##sts , pm ##s , app ##end ##ici ##tis , bladder infections , and unusual vu ##lva ##r pain . pe ##l ##vic pain has symptoms that can be uncomfortable , but luckily there are treatments for pe ##l ##vic pain . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##vic pain causes pe , [SEP] . ? ##l : 
+
+attack_words 2 . rs ##a is a public - key encryption algorithm and the standard for en ##cr ##yp ##ting data sent over the internet . it also happens to be one of the methods used in our pg ##p and gp ##g programs . unlike triple des , rs ##a is considered an as ##ym ##metric algorithm due to its use of a pair of keys . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words . 2 key ##a rs encryption [SEP] as is algorithm 
+
+attack_words spa ##stic cerebral pal ##sy . spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff and jerk ##y . spa ##stic ##ity is a form of hyper ##ton ##ia , or increased muscle tone . when people without cerebral pal ##sy perform a movement , some groups of muscles turn on and some groups of muscles turn off . past ##ic cerebral pal ##sy spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff . . . https : / / www . cerebral ##pal ##sy . org . au / what - is - cerebral - pal ##sy / types - of - cerebral - pal ##sy / spa ##stic - cerebral - pal ##sy / . 
+
+topk_words when ##sy . pal cerebral / of spa types the 
+
+attack_words social deter ##mina ##nts of health reflect the social factors and physical conditions of the environment in which people are born , live , learn , play , work , and age . also known as social and physical deter ##mina ##nts of health , they impact a wide range of health , functioning , and quality - of - life outcomes . examples of social deter ##mina ##nts include : availability of resources to meet daily needs , such as educational and job opportunities , living wages , or health ##ful foods . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words health reflect of which the ##mina ##nts also [SEP] . 
+
+attack_words switzerland dishes . swiss dishes . 1 zu ##er ##cher zur ##cher - ein ##top ##f zurich style hot . 2 pot vegetables and meat are served all in the same . 3 pot - fond ##ue this is a famous swiss food made of melted . 4 cheese bread pieces or potato pieces are dipped in . cheese ##ood of switzerland . traditional food in switzerland . there are many different dishes in switzerland that are regional . italian food is very common in modern switzerland including pasta and pizza . swiss cheese includes em ##mental cheese , va ##cher ##in and app ##en ##zell ##er . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words . dishes switzerland famous swiss food in that [SEP] is 
+
+attack_words in the case of the ##rade ##rm , this is taken even further , as the brand was founded by a plastic surgeon , dr . james beck ##man . however , even though this brand was created by a doctor , it doesn ’ t mean that the products are the right choice for everyone . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##rade ##rm the [SEP] . , of in that case 
+
+attack_words left vent ##ric ##ular hyper ##tro ##phy is en ##lar ##gement and thick ##ening ( hyper ##tro ##phy ) of the walls of your heart ' s main pumping chamber ( left vent ##ric ##le ) . left vent ##ric ##ular hyper ##tro ##phy can develop in response to some factor — such as high blood pressure or a heart condition — that causes the left vent ##ric ##le to work harder . as the work ##load increases , the muscle tissue in the chamber wall thick ##ens , and sometimes the size of the chamber itself also increases . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##phy . that ##tro hyper causes ##lar ##ular vent [SEP] 
+
+attack_words critical issues facing veterans and military families . sam ##hs ##a addresses critical issues such as suicide risk , trauma , and homeless ##ness that impact members of the military with behavioral health conditions . suicide prevention according to the january 2014 veterans health administration report ( pdf | 85 ##5 kb ) , the suicide rate among male and female veterans and military service members exceeds the national rate for the general population . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words ##hs suicide issues [SEP] military veterans critical . trauma ##a 
+
+attack_words with a sous vi ##de cooke ##r , you can cook your eggs anywhere from just - set - enough - that - they - break - when - you - touch - them , to a rich , fu ##dge - like consistency , to hard - boiled with no hint of chalk ##iness in the yo ##lk . cooking eggs sous vi ##de also allows you to make flawless ##ly egg - shaped po ##ache ##d eggs time after time . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words eggs sous that in cook vi ##de - , anywhere 
+
+attack_words the salvation army movement expanded rapidly to canada , australia , france , switzerland , india , south africa , iceland , and local neighborhood units . the salvation army is active in virtually every corner of the world . general booth ' s death in 1912 was a great loss to the salvation army . however , he had laid a firm foundation ' even his death could not deter the ministry ' s onward march . his eldest son , bram ##well booth , succeeded him . [SEP] [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] 
+
+topk_words australia , . foundation salvation 1912 to army neighborhood africa 
+
