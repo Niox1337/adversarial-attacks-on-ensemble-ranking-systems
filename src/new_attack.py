@@ -151,9 +151,9 @@ def attack(
             args.simi_threshod,
         )
     )
-    # print('sim_word_ids_dict', sim_word_ids_dict)
-    # print('sim_values', sim_values)
-    # print('sub_word_dict', sub_word_dict)
+    print('sim_word_ids_dict', sim_word_ids_dict)
+    print('sim_values', sim_values)
+    print('sub_word_dict', sub_word_dict)
 
 
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
@@ -170,6 +170,7 @@ def attack(
         attack_doc_id,
         qid,
     )
+    print('new_doc_token_id_list: ', new_doc_token_id_list)
     # we want the score to be higher
     return new_doc_token_id_list, score
 
