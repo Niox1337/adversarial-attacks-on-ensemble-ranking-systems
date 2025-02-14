@@ -111,8 +111,6 @@ class SemanticHelper:
             sim_word_ids = sim_word_ids[mask]
             sim_word_tokens = [self.idx2word[word_id] for word_id in sim_word_ids]
             sim_words[in_word] = sim_word_tokens
-            print('sim_word_ids: ', sim_word_ids)
-            print('sim_word_tokens: ', sim_word_tokens)
             # score can be accessed thru sim_word_scores[mask]
 
         return sim_words, sim_values, self.subword_neighbor_dict
