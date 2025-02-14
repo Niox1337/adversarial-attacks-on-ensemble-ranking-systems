@@ -171,7 +171,7 @@ def attack(
         qid,
     )
     print('new_doc_token_id_list: ', " ".join([word_re.idx2word[idx.item()] for idx in new_doc_token_id_list]))
-    print('original text: ', post_sep)
+    print('original text: ', " ".join([word_re.idx2word[idx] for idx in attack_sequence_list]))
     # we want the score to be higher
     return new_doc_token_id_list, score
 
