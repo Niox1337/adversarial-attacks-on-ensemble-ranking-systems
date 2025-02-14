@@ -10,20 +10,20 @@ Traceback (most recent call last):
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 299, in main
     new_tokens, score = attack(
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 173, in attack
-    print('new_doc_token_id_list: ', " ".join([word_re.idx2words[idx] for idx in new_doc_token_id_list]))
+    print('new_doc_token_id_list: ', " ".join([word_re.idx2word[idx] for idx in new_doc_token_id_list]))
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 173, in <listcomp>
-    print('new_doc_token_id_list: ', " ".join([word_re.idx2words[idx] for idx in new_doc_token_id_list]))
-AttributeError: 'BERTWordRecover' object has no attribute 'idx2words'. Did you mean: 'idx2word'?
+    print('new_doc_token_id_list: ', " ".join([word_re.idx2word[idx] for idx in new_doc_token_id_list]))
+KeyError: tensor(21146)
 Building vocab...
 Building vocab for bert_tokenizer...
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'gray': ['black', 'greyish', 'blue', 'brown', 'white'], '.': ['and', '[MASK]', '>', ';', 'the'], 'trailers': ['tents', 'trucks', 'tractors', 'rv', 'clips'], 'robert': ['william', 'bob', 'jonathan', 'peter', 'philip'], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], 'pioneer': ['pioneering', 'pioneered', 'frontier', 'maverick', 'groundbreaking'], 'were': ['was', 'weren', 'had', 'is', 'been'], ',': ['and', '[MASK]', ';', 'the', '-']}
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'gray': ['black', 'greyish', 'blue', 'brown', 'white'], 'robert': ['william', 'bob', 'jonathan', 'peter', 'philip'], 'were': ['was', 'weren', 'had', 'is', 'been'], 'trailers': ['tents', 'trucks', 'tractors', 'rv', 'clips'], ',': ['and', '[MASK]', ';', 'the', '-'], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], 'sha': ['sh', '##sha', 'ke', 'shah', 'ki']}
 sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.32663867 0.31768107 0.30621827 0.2943601  0.2783519 ]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.32663867 0.31768107 0.30621827 0.2943601  0.2783519 ]
+ [0.31098598 0.26339573 0.26236707 0.25228846 0.24911968]
+ [0.67450285 0.54775965 0.43578124 0.3916226  0.38870308]
  [0.31778908 0.2955345  0.2939164  0.27966774 0.2745441 ]
- [0.31098595 0.26339573 0.26236707 0.2522884  0.24911964]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.5584521  0.5168032  0.49920234 0.46785337 0.4463392 ]
- [0.57433933 0.4564566  0.3266893  0.3055432  0.30118793]
- [0.67450285 0.54775953 0.4357813  0.39162254 0.3887031 ]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
+ [0.24103427 0.24009274 0.23410262 0.22846273 0.22585404]]
 sub_word_dict {'shasta': [9153, 21146]}
