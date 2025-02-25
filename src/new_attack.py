@@ -322,8 +322,9 @@ def main():
             )
             recovered_attack_doc = word_re.tokenizer.decode(text, skip_special_tokens=True)
 
+            ori_doc = word_re.tokenizer.decode(batch['sequence_a'], skip_special_tokens=True)
             same = recovered_doc==word_re.get_tokenized_doc(key.split("_")[1])
-            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_id_a}\nattack_score_dict[key]: {attack_score_dict[key]}\nsame: {same}"
+            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {ori_doc}\nattack_score_dict[key]: {attack_score_dict[key]}\nsame: {same}"
 
             if args.toy:
                 print(to_write)
