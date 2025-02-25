@@ -34,7 +34,7 @@ class Args:
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
     simi_threshod: float = field(default=0.4)
-    max_doc_length: int = field(default=200)
+    max_doc_length: int = field(default=300)
     max_query_length: int = field(default=30)
     device: str = field(default="cuda" if torch.cuda.is_available() else "cpu")
     find_word_search: bool = field(default=False)
@@ -334,13 +334,13 @@ def main():
             # Decode only the document part
             doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
 
-            same = recovered_doc==word_re.get_tokenized_doc(key.split("_")[1])
+            same = recovered_doc==doc_text_decoded
             to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nsame: {same}"
 
             if args.toy:
                 print(to_write)
             else:
-                with open(args.output_file, "w") as f:
+                with open(args.output_file, "a") as f:
                     f.write(to_write)
 
 
