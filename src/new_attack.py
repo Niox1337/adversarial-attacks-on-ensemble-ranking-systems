@@ -23,7 +23,7 @@ from src.get_topk import get_topk
 @dataclass
 class Args:
     model_name_or_path: str = field(default="crystina-z/monoELECTRA_LCE_nneg31")
-    output_file: str = field(default="./output/attacks")
+    output_file: str = field(default="./output/attacks.txt")
     dataset: str = field(default="./dataset.tsv.gz")
     scores: str = field(default="./scores.json.gz")
     model_type: str = field(default="cat")
