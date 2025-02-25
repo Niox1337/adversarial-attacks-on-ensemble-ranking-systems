@@ -220,6 +220,7 @@ def main():
                 [group.iloc[-1]["query"]],
                 [group.iloc[-1]["text"]],
                 return_tensors="pt",
+                padding=True,
                 truncation=True,
                 max_length=512
             )
@@ -228,6 +229,7 @@ def main():
                 [group.iloc[-1]["query"]] * len(docid_b),
                 group.iloc[:-1]["text"].tolist(),
                 return_tensors="pt",
+                padding=True,
                 truncation=True,  # Truncate if exceeding model max length
                 max_length=512
             )

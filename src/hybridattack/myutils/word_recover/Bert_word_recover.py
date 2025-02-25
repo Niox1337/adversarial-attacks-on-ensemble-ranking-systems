@@ -342,8 +342,8 @@ class BERTWordRecover(WordRecover):
             sep_index = attacked_doc_token_ids.index(self.sep_id)
             attacked_doc_token_ids = attacked_doc_token_ids[:sep_index]
 
-        attacked_doc_token_ids = (
-            attacked_doc_token_ids + self.get_tokenized_doc(str(doc_id))[:max_doc_length]
-        )
+        # attacked_doc_token_ids = (
+        #     attacked_doc_token_ids + self.get_tokenized_doc(str(doc_id))[:max_doc_length]
+        # )
         attacked_doc = self.tokenizer.decode(attacked_doc_token_ids)
         return attacked_doc
