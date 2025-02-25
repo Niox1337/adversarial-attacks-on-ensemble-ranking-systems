@@ -8,24 +8,24 @@ Traceback (most recent call last):
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 337, in <module>
     main()
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 325, in main
-    ori_doc = word_re.tokenizer.decode(batch['sequences_a'], skip_special_tokens=True)
+    ori_doc = word_re.tokenizer.decode(batch['sequences_a'][0], skip_special_tokens=True)
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3851, in decode
     return self._decode(
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/transformers/tokenization_utils_fast.py", line 668, in _decode
     text = self._tokenizer.decode(token_ids, skip_special_tokens=skip_special_tokens)
-TypeError: argument 'ids': 'dict' object cannot be converted to 'Sequence'
+TypeError: argument 'ids': 'Encoding' object cannot be converted to 'Sequence'
 Building vocab...
 Building vocab for bert_tokenizer...
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'robert': [], 'gray': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'trailers': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], 'founded': []}
-sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'gray': [], 'robert': [], 'trailers': [], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], '.': ['and', '[MASK]', '>', ';', 'the'], 'sha': [], 'pioneer': ['pioneering', 'pioneered'], ',': ['and', '[MASK]', ';', 'the', '-'], 'the': ['[MASK]', '.', 'of', 'an', ',']}
+sim_values [[0.32663867 0.31768107 0.30621827 0.2943601  0.2783519 ]
  [0.31098598 0.26339573 0.26236707 0.25228846 0.24911968]
- [0.32663867 0.31768107 0.30621827 0.2943601  0.2783519 ]
- [0.4530402  0.4412557  0.43977302 0.41892815 0.40535527]
  [0.31778908 0.2955345  0.2939164  0.27966774 0.2745441 ]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.5584521  0.5168032  0.49920234 0.46785337 0.4463392 ]
- [0.3800669  0.34599924 0.34039742 0.33840558 0.3274157 ]]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
+ [0.24103427 0.24009274 0.23410262 0.22846273 0.22585404]
+ [0.57433933 0.4564566  0.3266893  0.3055432  0.30118793]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]]
 sub_word_dict {'shasta': [9153, 21146]}
 new_doc_token_id_list:  sha ##sta travel trailers . sha ##sta travel trailers were recreational vehicles built between 1941 and 2004 . founded by industry pioneer robert gray , the firm was originally situated in a small factory in los angeles , california to provide housing for members of the us armed
 original text:  sha ##sta travel trailers . sha ##sta travel trailers were recreational vehicles built between 1941 and 2004 . founded by industry pioneer robert gray , the firm was originally situated in a small factory in los angeles , california to provide housing for members of the us armed
