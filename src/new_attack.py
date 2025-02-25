@@ -322,7 +322,18 @@ def main():
             )
             recovered_attack_doc = word_re.tokenizer.decode(text, skip_special_tokens=True)
 
-            ori_doc = word_re.tokenizer.decode(batch['sequences_a'][0], skip_special_tokens=True)
+            # Get the token IDs from the tokenized sequence
+            input_ids = batch["sequences_a"]["input_ids"][0]
+
+            # Find the first [SEP] token, which marks the end of the query
+            sep_indices = (input_ids == tokenizer.sep_token_id).nonzero(as_tuple=True)[0]
+
+            first_sep_index = sep_indices[0].item()
+            # The document tokens are everything after the first [SEP] token
+            doc_token_ids = input_ids[first_sep_index + 1:]
+            # Decode only the document part
+            doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
+
             same = recovered_doc==word_re.get_tokenized_doc(key.split("_")[1])
             to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {ori_doc}\nattack_score_dict[key]: {attack_score_dict[key]}\nsame: {same}"
 
