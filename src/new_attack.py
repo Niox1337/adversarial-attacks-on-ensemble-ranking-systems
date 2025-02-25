@@ -34,7 +34,7 @@ class Args:
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
     simi_threshod: float = field(default=0.4)
-    max_doc_length: int = field(default=200)
+    max_doc_length: int = field(default=100)
     max_query_length: int = field(default=30)
     device: str = field(default="cuda" if torch.cuda.is_available() else "cpu")
     find_word_search: bool = field(default=False)
@@ -320,9 +320,8 @@ def main():
             recovered_doc = word_re.recover_doc(
                 key.split("_")[1], text, args.max_doc_length
             )
-            recovered_attack_doc = word_re.tokenizer.convert_tokens_to_string(
-                word_re.tokenizer.convert_ids_to_tokens(text)
-            )
+            recovered_attack_doc = word_re.tokenizer.decode(text, skip_special_tokens=True)
+
 
             to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nattack_score_dict[key]: {attack_score_dict[key]}\n"
 
