@@ -2,543 +2,548 @@ You are using a model of type electra to instantiate a model of type Cat. This i
 We strongly recommend passing in an `attention_mask` since your input_ids may be padded. See https://huggingface.co/docs/transformers/troubleshooting#incorrect-output-when-padding-tokens-arent-masked.
 Building vocab...
 Building vocab for bert_tokenizer...
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], '.': ['and', '[MASK]', '>', ';', 'the'], 'trailers': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'gray': [], 'robert': [], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], 'sha': []}
-sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'robert': [], 'recreational': [], 'trailers': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'gray': [], 'travel': ['travels', 'travelling', 'traveled', 'travelers', 'travelled'], 'were': ['was', 'weren', 'had'], ',': ['and', '[MASK]', ';', 'the', '-'], 'firm': []}
+sim_values [[0.31098598 0.26339573 0.26236707 0.25228846 0.24911968]
+ [0.30780438 0.2846003  0.26307654 0.2581708  0.25766724]
  [0.31778908 0.2955345  0.2939164  0.27966774 0.2745441 ]
- [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]
- [0.32663867 0.31768107 0.30621827 0.2943601  0.2783519 ]
- [0.31098598 0.26339573 0.26236707 0.25228846 0.24911968]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.32663864 0.31768104 0.3062183  0.2943602  0.278352  ]
  [0.5584521  0.5168032  0.49920234 0.46785337 0.4463392 ]
- [0.24103427 0.24009274 0.23410262 0.22846273 0.22585404]]
+ [0.67450285 0.54775953 0.4357813  0.39162254 0.3887031 ]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.32741934 0.3077879  0.25042105 0.24452987 0.2172646 ]]
 sub_word_dict {'shasta': [9153, 21146]}
 new_doc_token_id_list:  sha ##sta travel trailers . sha ##sta travel trailers were recreational vehicles built between 1941 and 2004 . founded by industry pioneer robert gray , the firm was originally situated in a small factory in los angeles , california to provide housing for members of the us armed
 original text:  sha ##sta travel trailers . sha ##sta travel trailers were recreational vehicles built between 1941 and 2004 . founded by industry pioneer robert gray , the firm was originally situated in a small factory in los angeles , california to provide housing for members of the us armed
-sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'concrete': [], 'floor': [], 'floors': [], 'video': [], 'depending': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'cost': ['costing', 'price']}
-sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.3350748  0.2891866  0.27320734 0.27201974 0.27127868]
- [0.3192399  0.3134962  0.27448618 0.27372074 0.2712212 ]
- [0.30182898 0.30120242 0.29074463 0.28773665 0.28767222]
- [0.34902853 0.3432453  0.3191136  0.31063068 0.30329862]
- [0.39724448 0.38441807 0.37464607 0.33713466 0.33159852]
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], 'as': [], 'concrete': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'floors': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'video': [], 'floor': [], 'to': ['of', 'and', 'in', 'the', 'ᵗ']}
+sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.53067064 0.41096824 0.37203363 0.36196285 0.34451276]]
-sub_word_dict {'flooring': [2075, 2723]}
+ [0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
+ [0.3350748  0.2891866  0.27320734 0.27201974 0.27127868]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
+ [0.30182898 0.30120242 0.29074463 0.28773665 0.28767222]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.3490286  0.34324524 0.3191136  0.31063062 0.3032986 ]
+ [0.3192399  0.3134962  0.27448618 0.27372074 0.2712212 ]
+ [0.46190315 0.43789172 0.43751714 0.43116158 0.41013086]]
+sub_word_dict {}
 new_doc_token_id_list:  video on the cost of concrete floors . depending on the level of complexity , concrete floors can cost as little as $ 2 to $ 6 a square foot or be as expensive as $ 15 to $ 30 a square foot . ve ##n floor ##ing options that are initially cheaper to install than decorative concrete may turn out to be more expensive in the long run . when you amor ##ti ##ze the cost of a concrete floor over a lifetime , the price is often comparable or even lower than other floor ##ing materials , especially if you factor in maintenance
 original text:  video on the cost of concrete floors . depending on the level of complexity , concrete floors can cost as little as $ 2 to $ 6 a square foot or be as expensive as $ 15 to $ 30 a square foot . ve ##n floor ##ing options that are initially cheaper to install than decorative concrete may turn out to be more expensive in the long run . when you amor ##ti ##ze the cost of a concrete floor over a lifetime , the price is often comparable or even lower than other floor ##ing materials , especially if you factor in maintenance
-sim_word_ids_dict {'became': ['become', 'becoming', 'was', 'remained'], 'australia': ['australians', 'canada', 'nsw', 'sydney', 'queensland'], 'involved': ['involvement', 'involving', 'involves'], 'us': ['we'], 'why': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'entering': ['enter', 'enters'], 'www': []}
+sim_word_ids_dict {'became': ['become', 'becoming', 'was', 'remained'], 'australia': ['australians', 'canada', 'nsw', 'sydney', 'queensland'], 'us': ['we'], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'involved': ['involvement', 'involving', 'involves'], 'why': [], 'w': []}
 sim_values [[0.6569787  0.58159864 0.41219923 0.40057117 0.3789932 ]
  [0.5882034  0.44214267 0.4356609  0.4226578  0.41489324]
- [0.42582554 0.41829628 0.4109394  0.38110316 0.37545475]
  [0.4379217  0.39361906 0.34147185 0.3205225  0.3189904 ]
- [0.39594114 0.33678222 0.33452162 0.3265212  0.31829935]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.67406577 0.6511311  0.38776886 0.31677964 0.3146503 ]
- [0.25594074 0.25297552 0.24933931 0.21799989 0.21596967]]
-sub_word_dict {'ustraltral': [21493, 21493, 2149], 'www': [2860, 2860, 1059]}
+ [0.42582554 0.41829628 0.4109394  0.38110316 0.37545475]
+ [0.39594105 0.33678222 0.3345216  0.3265211  0.3182994 ]
+ [0.271965   0.26024273 0.25990975 0.25901282 0.25667128]]
+sub_word_dict {'ustraltral': [21493, 21493, 2149], 'ww1': [2487, 2860, 1059]}
 new_doc_token_id_list:  why australia became involved in w ##w ##1 . they became involved in august 1914 because britain was preparing to declare war on germany . australia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle east . us ##tral ##ia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle
 original text:  why australia became involved in w ##w ##1 . they became involved in august 1914 because britain was preparing to declare war on germany . australia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle east . us ##tral ##ia became involved in w ##w ##1 for a lot of reasons . the first reason that they were involved in the first war is because of australia ’ s mother country ( britain ) . entering the war in 1914 via their deep connection to the british , troops from australia and new zealand fought mainly in the middle
-sim_word_ids_dict {'1920': ['1919', '1922', '1924', '1925', '1923'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'in': ['of', 'to', 'for', 'at', 'with'], '-': [','], '1991': ['1990', '1993', '1989', '1987', '1994'], 'formed': ['formation'], 'the': ['[MASK]', '.', 'of', 'an', ','], '1946': ['1945', '1951', '1948', '1944', '1943'], 'commonwealth': [], 'states': []}
-sim_values [[0.6285416  0.5833434  0.55068755 0.5488272  0.54046667]
- [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
- [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
- [0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
- [0.595063   0.59193397 0.54028475 0.52173233 0.5175347 ]
+sim_word_ids_dict {'organization': ['organizations', 'organizational', 'organisations'], 'independent': ['independents'], 'formed': ['formation'], 'commonwealth': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'states': [], 'nations': ['countries'], 'wilson': [], 'international': ['internationally'], ',': ['and', '[MASK]', ';', 'the', '-']}
+sim_values [[0.6608834  0.48858336 0.4245843  0.33550465 0.32797086]
+ [0.42039406 0.39123607 0.31051308 0.26910102 0.2678267 ]
  [0.40083694 0.35811704 0.35527152 0.34559023 0.3274157 ]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.6496263  0.61212456 0.6022669  0.5738838  0.5680504 ]
  [0.23681211 0.22837053 0.22749862 0.22259161 0.22080888]
- [0.3341754  0.28955773 0.26183385 0.24958637 0.24805987]]
+ [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
+ [0.33417532 0.28955764 0.26183385 0.24958645 0.2480599 ]
+ [0.49189293 0.3311919  0.28241327 0.2776972  0.26183385]
+ [0.2444373  0.24201268 0.23261611 0.23127025 0.22752701]
+ [0.48568946 0.3841992  0.36879027 0.31012195 0.30351326]
+ [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]]
 sub_word_dict {}
 new_doc_token_id_list:  league of nations - an international organization formed in 1920 to promote cooperation and peace among nations ; although suggested by woodrow wilson , the united states never joined and it remained powerless ; it was dissolved in 1946 after the united nations was formed . is , commonwealth of independent states - an alliance made up of states that had been soviet socialist republics in the soviet union prior to its dissolution in dec 1991 . un , united nations - an organization of independent states formed in 1945 to promote international peace and
 original text:  league of nations - an international organization formed in 1920 to promote cooperation and peace among nations ; although suggested by woodrow wilson , the united states never joined and it remained powerless ; it was dissolved in 1946 after the united nations was formed . is , commonwealth of independent states - an alliance made up of states that had been soviet socialist republics in the soviet union prior to its dissolution in dec 1991 . un , united nations - an organization of independent states formed in 1945 to promote international peace and
-sim_word_ids_dict {'and': ['or', 'but', '.', 'ᵖ', '[MASK]'], 'pain': ['agony', 'painful'], 'vis': [], 'heart': [], 'manifestation': ['manifest'], 'are': ['is', 'aren', 'was', 'have'], '.': ['and', '[MASK]', '>', ';', 'the']}
-sim_values [[0.55602837 0.49707404 0.49370688 0.457479   0.45735276]
- [0.42405292 0.41351712 0.36171108 0.32897598 0.30437586]
- [0.18376955 0.17629457 0.176133   0.1748862  0.17488159]
- [0.29437426 0.29310295 0.28366363 0.27773523 0.2681312 ]
- [0.41801104 0.37781647 0.2716773  0.26627928 0.26426527]
+sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'are': ['is', 'aren', 'was', 'have'], 'manifestation': ['manifest'], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]'], 'vis': [], 'the': ['[MASK]', '.', 'of', 'an', ',']}
+sim_values [[0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
  [0.6546544  0.47197163 0.435049   0.43284306 0.39833397]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
-sub_word_dict {'heartburn': [8022, 2540], 'visceracera': [19357, 19357, 25292], 'manifestations': [2015, 24491]}
+ [0.41801104 0.37781647 0.2716773  0.26627928 0.26426527]
+ [0.55602825 0.497074   0.49370688 0.457479   0.4573527 ]
+ [0.18376963 0.17629457 0.176133   0.1748862  0.17488158]
+ [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]]
+sub_word_dict {'visceral': [2140, 19357, 25292], 'visceracera': [19357, 19357, 25292], 'heartburn': [8022, 2540], 'manifestations': [2015, 24491]}
 new_doc_token_id_list:  heart ##burn and chest pain are manifestation ##s of vis ##cera ##l pain . vis ##cera ##l pain by definition means that it originates from the organs of the thor ##ax , abdomen , and pe ##lvis . vis ##cera ##l pain is distinguished from so ##matic pain in that it is often diffuse and poorly
 original text:  heart ##burn and chest pain are manifestation ##s of vis ##cera ##l pain . vis ##cera ##l pain by definition means that it originates from the organs of the thor ##ax , abdomen , and pe ##lvis . vis ##cera ##l pain is distinguished from so ##matic pain in that it is often diffuse and poorly
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'is': ['are', 'has', 'isn', 'be'], 'blue': [], 'wi': [], 'radiation': ['radiated'], 'while': ['whereas'], ',': ['and', '[MASK]', ';', 'the', '-'], 'radio': ['television']}
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'where': ['when'], 'radiation': ['radiated'], 'is': ['are', 'has', 'isn', 'be'], ',': ['and', '[MASK]', ';', 'the', '-'], 'usually': ['normally', 'often', 'sometimes', 'generally', 'always'], 'frequency': []}
 sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
- [0.37666738 0.35865855 0.33143422 0.33032483 0.329948  ]
- [0.24230427 0.24139881 0.23844467 0.2141177  0.20452212]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.4163915  0.39867315 0.3970468  0.38998914 0.38097444]
  [0.40378368 0.3380077  0.26404953 0.26284197 0.2520346 ]
- [0.40256077 0.38542733 0.36279035 0.36140805 0.31702167]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.42994997 0.39084327 0.3028902  0.302215   0.2867979 ]]
+ [0.5603343  0.5566776  0.46583295 0.45499718 0.44506088]
+ [0.3582145  0.30448237 0.2904663  0.28466454 0.27817404]]
 sub_word_dict {'bluetooth': [19392, 2630], 'wifi': [8873, 15536]}
 new_doc_token_id_list:  radio frequency ( rf ) radiation consists of the cell signal , blue ##tooth and wi ##fi while extremely low frequency ( elf ) radiation is generated by phone ’ s hardware . this radiation is absorbed into the body , usually through body tissue situated at or near where the cell phone is
 original text:  radio frequency ( rf ) radiation consists of the cell signal , blue ##tooth and wi ##fi while extremely low frequency ( elf ) radiation is generated by phone ’ s hardware . this radiation is absorbed into the body , usually through body tissue situated at or near where the cell phone is
-sim_word_ids_dict {'life': [], 'thai': ['bangkok'], ',': ['and', '[MASK]', ';', 'the', '-'], 'people': ['folks'], 'thailand': ['thai', 'cambodia', 'siam'], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'population': ['populace'], 'the': ['[MASK]', '.', 'of', 'an', ',']}
-sim_values [[0.32921743 0.3129034  0.30183196 0.29900497 0.29706073]
- [0.6033878  0.39812163 0.3459417  0.34133452 0.33295274]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+sim_word_ids_dict {'thai': ['bangkok'], 'life': [], 'thailand': ['thai', 'cambodia', 'siam'], 'people': ['folks'], 'population': ['populace'], 'is': ['are', 'has', 'isn', 'be'], 'of': ['in', 'the', 'for', 'and', 'from'], 'the': ['[MASK]', '.', 'of', 'an', ','], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the']}
+sim_values [[0.6033878  0.39812163 0.3459417  0.34133452 0.33295274]
+ [0.32921743 0.3129034  0.30183196 0.29900497 0.29706073]
+ [0.7044789  0.43530518 0.41358376 0.39575154 0.37805724]
  [0.41614676 0.38011312 0.37544382 0.3681152  0.34952   ]
- [0.70447904 0.43530515 0.4135838  0.3957515  0.37805724]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.48625743 0.35870904 0.35048085 0.35027567 0.32573658]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.48625746 0.35870913 0.3504809  0.35027567 0.32573658]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]]
-sub_word_dict {'expectancy': [11656, 5987]}
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
+sub_word_dict {}
 new_doc_token_id_list:  the population of thailand is approximately 67 . 5 million people , with an annual growth rate of about 0 . 3 percent . in addition to thai , it includes ethnic chinese , malay , lao , burma , cambodia , and indians , among others . ve ##n though thailand has one of the best social security systems in asia , the increasing population of elderly people is a challenge for the country . life expect ##ancy has risen , a positive reflection of thailand ' s efforts in executing effective public health
 original text:  the population of thailand is approximately 67 . 5 million people , with an annual growth rate of about 0 . 3 percent . in addition to thai , it includes ethnic chinese , malay , lao , burma , cambodia , and indians , among others . ve ##n though thailand has one of the best social security systems in asia , the increasing population of elderly people is a challenge for the country . life expect ##ancy has risen , a positive reflection of thailand ' s efforts in executing effective public health
-sim_word_ids_dict {'as': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'spruce': [], 'of': ['in', 'the', 'for', 'and', 'from'], ',': ['and', '[MASK]', ';', 'the', '-'], 'scientific': ['science'], 'trees': ['forests'], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]'], 'cone': []}
-sim_values [[0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'spruce': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'of': ['in', 'the', 'for', 'and', 'from'], 'scientific': ['science'], 'trees': ['forests'], 'cone': [], 'pic': []}
+sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.3412504  0.32763314 0.3080654  0.30264544 0.29775915]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]
  [0.40884727 0.3635432  0.33923286 0.33793002 0.3300494 ]
  [0.40888983 0.354379   0.35166937 0.34946132 0.31684434]
- [0.55602837 0.49707404 0.49370688 0.457479   0.45735276]
- [0.3354603  0.219485   0.21719798 0.2141364  0.21301308]]
-sub_word_dict {'coniferous': [23930, 9530]}
+ [0.3354603  0.219485   0.21719798 0.2141364  0.21301308]
+ [0.3046484  0.2980364  0.26764235 0.2330167  0.22437105]]
+sub_word_dict {'coniferous': [23930, 9530], 'picea': [5243, 27263]}
 new_doc_token_id_list:  spruce tree scientific name , pic ##ea . spruce trees are cone bearing trees and can therefore be classified as con ##iferous . other con ##iferous trees include pine trees , douglas fir trees , redwood trees and cedar trees . spruce tree types : list of different type of spruce . bird ' s nest spruce , dwarf variety of norway
 original text:  spruce tree scientific name , pic ##ea . spruce trees are cone bearing trees and can therefore be classified as con ##iferous . other con ##iferous trees include pine trees , douglas fir trees , redwood trees and cedar trees . spruce tree types : list of different type of spruce . bird ' s nest spruce , dwarf variety of norway
-sim_word_ids_dict {'indication': ['indicator'], '.': ['and', '[MASK]', '>', ';', 'the'], 'fa': [], '(': [], ':': [], 'in': ['of', 'to', 'for', 'at', 'with']}
+sim_word_ids_dict {'indication': ['indicator'], '.': ['and', '[MASK]', '>', ';', 'the'], 'fa': [], '(': []}
 sim_values [[0.4317749  0.38323542 0.38168174 0.37804282 0.3759565 ]
  [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
  [0.2461285  0.23262025 0.22744891 0.21495613 0.21396646]
- [0.3757127  0.35221475 0.35174134 0.3325004  0.32266322]
- [0.38903573 0.37166783 0.36592972 0.34958887 0.34839818]
- [0.4530402  0.43751714 0.42688805 0.42426473 0.42382014]]
-sub_word_dict {'famvir®': [29656, 21663, 2213, 6904], 'famvirm': [2213, 21663, 2213, 6904], 'famvirvir': [21663, 21663, 2213, 6904], 'antiherpesvirapes': [10374, 24093, 10374, 5886, 3424]}
+ [0.3757127  0.35221475 0.35174134 0.3325004  0.32266322]]
+sub_word_dict {'famvir®': [29656, 21663, 2213, 6904], 'famvirm': [2213, 21663, 2213, 6904], 'famvirvir': [21663, 21663, 2213, 6904], 'valacyclovov': [4492, 4492, 20464, 15719, 11748], 'famciclovir': [4313, 14301, 2594, 12458, 6904], 'antiherpesvirapes': [10374, 24093, 10374, 5886, 3424]}
 new_doc_token_id_list:  fa ##mc ##ic ##lov ##ir ( fa ##m ##vir ##® ) and val ##acy ##cl ##ov ##ir ( val ##tre ##x ##® ) both are new anti ##her ##pes ##vira ##l pro ##dr ##ug ##s ( in the same class as ac ##y ##cl ##ov ##ir ) . indication : acute her ##pes z ##ost ##er in the im ##mun ##oco ##mp ##ete ##nt host . ( their role in gen ##ital her ##pes will be discussed in a future therapeutic ##s letter ) . mechanism of action : reduce viral replication by inhibit ##ing viral dna polymer
 original text:  fa ##mc ##ic ##lov ##ir ( fa ##m ##vir ##® ) and val ##acy ##cl ##ov ##ir ( val ##tre ##x ##® ) both are new anti ##her ##pes ##vira ##l pro ##dr ##ug ##s ( in the same class as ac ##y ##cl ##ov ##ir ) . indication : acute her ##pes z ##ost ##er in the im ##mun ##oco ##mp ##ete ##nt host . ( their role in gen ##ital her ##pes will be discussed in a future therapeutic ##s letter ) . mechanism of action : reduce viral replication by inhibit ##ing viral dna polymer
-sim_word_ids_dict {'as': [], 'durable': [], 'includes': ['included', 'including', 'contains', 'comprises', 'encompasses'], 'of': ['in', 'the', 'for', 'and', 'from'], 'equipment': [], '.': ['and', '[MASK]', '>', ';', 'the'], ',': ['and', '[MASK]', ';', 'the', '-'], 'medical': [], 'abbreviated': [], 'the': ['[MASK]', '.', 'of', 'an', ',']}
-sim_values [[0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
- [0.34431157 0.32076702 0.29165775 0.26232806 0.2603646 ]
- [0.5155324  0.48680162 0.46531254 0.44296014 0.41834268]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.35670555 0.3480586  0.33846554 0.33086392 0.31612262]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'durable': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'medical': [], 'equipment': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'as': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], '”': ['’', '"'], 'to': ['of', 'and', 'in', 'the', 'ᵗ']}
+sim_values [[0.34431157 0.32076702 0.29165775 0.26232806 0.2603646 ]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.38690466 0.37708318 0.36560327 0.35631257 0.35108456]
- [0.39001825 0.35330826 0.31624645 0.2856815  0.281699  ]
- [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]]
+ [0.35670555 0.3480587  0.33846554 0.33086392 0.31612268]
+ [0.4530402  0.4412557  0.43977302 0.41892815 0.40535527]
+ [0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.5461428  0.51626813 0.33957475 0.32768875 0.31675917]
+ [0.46190315 0.43789172 0.43751714 0.43116158 0.41013086]]
 sub_word_dict {}
 new_doc_token_id_list:  often abbreviated as “ d ##me ” , durable medical equipment includes various types of walking aids , transfer equipment , bath safety and wheelchair ##s . as the name implies , this category must be manufactured and tested to be “ durable ” because patients who use this equipment rely on it to keep them safe and
 original text:  often abbreviated as “ d ##me ” , durable medical equipment includes various types of walking aids , transfer equipment , bath safety and wheelchair ##s . as the name implies , this category must be manufactured and tested to be “ durable ” because patients who use this equipment rely on it to keep them safe and
-sim_word_ids_dict {'am': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'is': ['are', 'has', 'isn', 'be'], 'programming': ['programmed', 'programmer'], 'arc': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'gi': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'adobe': []}
+sim_word_ids_dict {'am': [], 'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'is': ['are', 'has', 'isn', 'be'], 'arc': [], 'adobe': [], 'language': ['linguistic'], 'basics': []}
 sim_values [[0.3795739  0.36719528 0.35662463 0.32751065 0.2881093 ]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
- [0.42587307 0.41790658 0.37789518 0.35965455 0.25933778]
- [0.22120655 0.2186779  0.20162532 0.1912866  0.18639086]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.22612359 0.22392681 0.22097693 0.21626362 0.1901445 ]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.26024604 0.23300824 0.22742034 0.21511836 0.2149533 ]]
+ [0.6546544  0.5053122  0.43322444 0.4279316  0.3916226 ]
+ [0.22120655 0.21867788 0.20162529 0.1912866  0.18639085]
+ [0.26024604 0.23300824 0.22742034 0.21511836 0.2149533 ]
+ [0.44008857 0.35272878 0.34365726 0.3117681  0.30075425]
+ [0.27841088 0.2708949  0.26683557 0.26348835 0.26345086]]
 sub_word_dict {'aml': [2140, 2572]}
 new_doc_token_id_list:  am ##l is the native programming language of the arc ##in ##fo works ##tation gi ##s software . am ##l is most commonly used in the 7 ##x versions of arc ##in ##fo . am ##l basics pdf file on the basics of am ##l . make sure you have adobe ’ s ( www . adobe . com ) free adobe reader installed on your machine in order to su ##ces ##sf ##ull ##y open up this ur ##l . arcs
 original text:  am ##l is the native programming language of the arc ##in ##fo works ##tation gi ##s software . am ##l is most commonly used in the 7 ##x versions of arc ##in ##fo . am ##l basics pdf file on the basics of am ##l . make sure you have adobe ’ s ( www . adobe . com ) free adobe reader installed on your machine in order to su ##ces ##sf ##ull ##y open up this ur ##l . arcs
-sim_word_ids_dict {'time': ['##time'], 'margins': [], 'making': ['made', 'makes', 'creating'], 'where': ['when'], '.': ['and', '[MASK]', '>', ';', 'the'], 'a': ['the'], 'at': [], 'active': ['actively'], 'passive': [], 'world': []}
-sim_values [[0.4060387  0.27566302 0.27562714 0.27548856 0.26906553]
- [0.30441773 0.28211173 0.27496883 0.22939694 0.21842495]
- [0.5967878  0.58545864 0.4041788  0.38217023 0.3652876 ]
- [0.4163915  0.39867315 0.3970468  0.38998914 0.38097444]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
+sim_word_ids_dict {'making': ['made', 'makes', 'creating'], 'answer': ['answered', 'answering'], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'active': ['actively'], ',': ['and', '[MASK]', ';', 'the', '-'], 'a': ['the'], 'better': ['worse'], 'margins': [], 'world': []}
+sim_values [[0.5967878  0.58545864 0.4041788  0.38217023 0.3652876 ]
+ [0.608156   0.52926767 0.36438954 0.35974097 0.3377162 ]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.4242679  0.37444487 0.34540075 0.27092078 0.26524213]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
- [0.3855792  0.3701084  0.3673467  0.3602547  0.3375935 ]
- [0.42426786 0.37444484 0.3454008  0.27092075 0.26524216]
- [0.2948234  0.2783874  0.27092075 0.23798019 0.23363702]
+ [0.47483167 0.3922264  0.39145073 0.37944293 0.37269956]
+ [0.30441773 0.28211173 0.27496883 0.22939694 0.21842495]
  [0.3972305  0.3617134  0.33556342 0.30183202 0.2813331 ]]
 sub_word_dict {}
 new_doc_token_id_list:  making the world better , one answer at a time . passive continental margins are not areas of convergence . there is little volcanic and earthquake activity on passive margins . active margins are areas of convergence where one plate is descending beneath another . they are associated with volcanic and earthquake
 original text:  making the world better , one answer at a time . passive continental margins are not areas of convergence . there is little volcanic and earthquake activity on passive margins . active margins are areas of convergence where one plate is descending beneath another . they are associated with volcanic and earthquake
-sim_word_ids_dict {'minimize': ['reduce'], 'english': [], '-': [','], 'pl': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'con': [], 'us': ['we']}
+sim_word_ids_dict {'minimize': ['reduce'], 'pl': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], 'con': [], 'in': ['of', 'to', 'for', 'at', 'with'], 'to': ['of', 'and', 'in', 'the', 'ᵗ']}
 sim_values [[0.41309118 0.37041134 0.3326602  0.32964972 0.32288176]
- [0.3810217  0.33062747 0.32909107 0.30766675 0.29885447]
- [0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
  [0.26766342 0.25474504 0.25334647 0.23725948 0.22726248]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
  [0.26390055 0.25856587 0.24799007 0.2357038  0.22686705]
- [0.4379217  0.39361906 0.34147185 0.3205225  0.3189904 ]]
+ [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
+ [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]]
 sub_word_dict {'plowing': [14138, 20228], 'contour': [21163, 9530]}
 new_doc_token_id_list:  definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil erosion . definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil
 original text:  definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil erosion . definition of con ##tour pl ##owing in us english - pl ##owing along the con ##tour ##s of the land in order to minimize soil
-sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'percent': [], '5': ['6', 'five', '3', '10', '15'], '3': ['2', '5', 'three', '6', '1'], 'water': [], '1': ['3', '5', '##1', '4', '0'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'distribution': ['distributed', 'distribute', 'distributing'], ':': [], '2': ['1', '4', 'two', '8', '5']}
+sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'percent': [], '1': ['3', '5', '##1', '4', '0'], '7': ['6', '8', '9', '5', '3'], ':': [], 'earth': [], '0': [], 'ocean': ['sea'], 'water': [], 'the': ['[MASK]', '.', 'of', 'an', ',']}
 sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.37064582 0.31531245 0.30563706 0.29218996 0.2800966 ]
- [0.60637176 0.5859773  0.5835958  0.507771   0.50028944]
- [0.6431918  0.5835958  0.572326   0.52917314 0.52624166]
- [0.32643324 0.3146211  0.30908495 0.29260653 0.28921935]
  [0.52624166 0.4676082  0.4626055  0.4425981  0.43805957]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.478163   0.43912387 0.43318343 0.3997448  0.3695756 ]
- [0.38903567 0.37166792 0.36592972 0.3495888  0.34839812]
- [0.59671825 0.573062   0.5342231  0.500962   0.49005622]]
+ [0.5787113  0.57673424 0.50072014 0.4870879  0.47395855]
+ [0.38903573 0.37166783 0.36592972 0.34958887 0.34839818]
+ [0.3045246  0.28147823 0.27821988 0.2777046  0.27541327]
+ [0.35433245 0.3253666  0.31258792 0.3080547  0.29654792]
+ [0.41804802 0.3563459  0.31510305 0.30102035 0.30045855]
+ [0.32643327 0.3146211  0.30908495 0.29260647 0.2892193 ]
+ [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]]
 sub_word_dict {}
 new_doc_token_id_list:  distribution of the water on earth . 1 ocean water : 97 . 2 percent . 2 glaciers and other ice : 2 . 15 percent . 3 groundwater , : 0 . 61 percent . 4 fresh water lakes : 0 . 00 ##9 percent . 5 inland seas : 0 . 00 ##8 percent . 6 soil moisture : 0 . 00 ##5 percent . 7 atmosphere : 0 . 001 percent . 8 rivers : 0 . 000 ##1
 original text:  distribution of the water on earth . 1 ocean water : 97 . 2 percent . 2 glaciers and other ice : 2 . 15 percent . 3 groundwater , : 0 . 61 percent . 4 fresh water lakes : 0 . 00 ##9 percent . 5 inland seas : 0 . 00 ##8 percent . 6 soil moisture : 0 . 00 ##5 percent . 7 atmosphere : 0 . 001 percent . 8 rivers : 0 . 000 ##1
-sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'are': ['is', 'aren', 'was', 'have'], 'of': ['in', 'the', 'for', 'and', 'from'], '1': ['3', '5', '##1', '4', '0'], 'tr': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'as': [], 'consist': ['consisted', 'consisting']}
-sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'of': ['in', 'the', 'for', 'and', 'from'], 'are': ['is', 'aren', 'was', 'have'], '.': ['and', '[MASK]', '>', ';', 'the'], 'tr': [], 'consist': ['consisted', 'consisting'], 'members': [], '1': ['3', '5', '##1', '4', '0'], 'the': ['[MASK]', '.', 'of', 'an', ',']}
+sim_values [[0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
  [0.65465444 0.47197157 0.43504903 0.43284294 0.39833382]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.52624166 0.4676082  0.4626055  0.4425981  0.43805957]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.26333752 0.25563577 0.24469103 0.2367801  0.22726926]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
- [0.6629065  0.564407   0.35573182 0.3340008  0.33154735]]
+ [0.6629065  0.564407   0.35573182 0.3340008  0.33154735]
+ [0.38482416 0.32340717 0.3141573  0.30727565 0.3045617 ]
+ [0.52624166 0.4676082  0.4626055  0.4425981  0.43805957]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]]
 sub_word_dict {'tracheache': [15395, 15395, 19817], 'tracheids': [9821, 15395, 19817]}
 new_doc_token_id_list:  1 the x ##yle ##m tr ##ache ##ary elements consist of cells known as tr ##ache ##ids and vessel members , both of which are typically narrow , hollow , and elongated . tr ##ache ##ids are less specialized than the vessel members and are the only type of water - conducting cells in most gym ##nos ##per ##ms and seed ##less vascular
 original text:  1 the x ##yle ##m tr ##ache ##ary elements consist of cells known as tr ##ache ##ids and vessel members , both of which are typically narrow , hollow , and elongated . tr ##ache ##ids are less specialized than the vessel members and are the only type of water - conducting cells in most gym ##nos ##per ##ms and seed ##less vascular
-sim_word_ids_dict {'-': [','], 'point': [], 'hydrogen': [], 'boiling': ['boiled'], 'is': ['are', 'has', 'isn', 'be'], 'temperature': [], '253': ['252', '251', '243', '249', '259'], ';': [',', '—', '.', '–'], 'liquid': ['fluid'], 'iron': []}
-sim_values [[0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
- [0.39984035 0.3861099  0.36656415 0.29859126 0.24977139]
- [0.33214402 0.32945836 0.31791484 0.2612015  0.25428146]
+sim_word_ids_dict {'hydrogen': [], 'boiling': ['boiled'], 'liquid': ['fluid'], '.': ['and', '[MASK]', '>', ';', 'the'], 'is': ['are', 'has', 'isn', 'be'], 'temperature': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'mercury': [], 'a': ['the'], '-': [',']}
+sim_values [[0.33214402 0.32945836 0.31791484 0.2612015  0.25428146]
  [0.5721002  0.35714197 0.333239   0.2976916  0.2895011 ]
+ [0.41269115 0.2775269  0.26587358 0.25447965 0.2505955 ]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.6546544  0.5053122  0.43322444 0.4279316  0.3916226 ]
  [0.32721728 0.30682752 0.30099955 0.2966013  0.26779068]
- [0.60585177 0.594347   0.5671537  0.52943707 0.5070557 ]
- [0.4687423  0.46858075 0.45501846 0.43148237 0.33943796]
- [0.41269115 0.2775269  0.26587358 0.25447965 0.2505955 ]
- [0.28074837 0.27707332 0.2721724  0.24798062 0.23296916]]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.29012057 0.27861425 0.27374458 0.26085383 0.24623862]
+ [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
+ [0.42051584 0.37863082 0.3739944  0.3439905  0.341437  ]]
 sub_word_dict {}
 new_doc_token_id_list:  for hydrogen , the boiling point is - 253 degrees ce ##ls ##ius ; for mercury it is 357 degrees ce ##ls ##ius , and for iron it is 2 , 750 degrees ce ##ls ##ius . from these numbers you can see that at room temperature ( and indeed for nearly any temperature found on earth ) hydrogen is a gas , mercury is a liquid , and iron is a
 original text:  for hydrogen , the boiling point is - 253 degrees ce ##ls ##ius ; for mercury it is 357 degrees ce ##ls ##ius , and for iron it is 2 , 750 degrees ce ##ls ##ius . from these numbers you can see that at room temperature ( and indeed for nearly any temperature found on earth ) hydrogen is a gas , mercury is a liquid , and iron is a
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'cooler': ['warmer'], 'true': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'jamaica': ['barbados', 'trinidad', 'guyana'], 'you': ['we'], 'absolutely': ['absolute'], 'weather': [], 'is': ['are', 'has', 'isn', 'be'], 'in': ['of', 'to', 'for', 'at', 'with']}
-sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.4085105  0.37873012 0.3755033  0.34275928 0.3297281 ]
- [0.3204514  0.31486294 0.31380486 0.28684852 0.28048998]
+sim_word_ids_dict {'cooler': ['warmer'], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'true': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'jamaica': ['barbados', 'trinidad', 'guyana'], 'weather': [], 'is': ['are', 'has', 'isn', 'be'], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]'], 'absolutely': ['absolute']}
+sim_values [[0.4085105  0.37873012 0.3755033  0.34275928 0.3297281 ]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.5403636  0.43003637 0.40617555 0.39375556 0.39226002]
- [0.413486   0.3830186  0.36034358 0.3382793  0.3318642 ]
- [0.4452226  0.38413483 0.37723932 0.3511923  0.33940148]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.3204514  0.31486294 0.31380486 0.28684852 0.28048998]
+ [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
+ [0.5403637  0.43003637 0.4061755  0.3937555  0.39226002]
  [0.2841553  0.28226164 0.28125307 0.25994658 0.25166777]
  [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
- [0.4530402  0.43751714 0.42688805 0.42426473 0.42382014]]
+ [0.55602837 0.49707404 0.49370688 0.457479   0.45735276]
+ [0.44522244 0.3841348  0.37723926 0.3511923  0.33940145]]
 sub_word_dict {}
 new_doc_token_id_list:  and it ' s absolutely true . this is jamaica weather ! most of our days are filled with warmth and sunshine , even during the rainy season . jamaica has a tropical climate with hot and humid weather at sea level . the higher inland regions have a more temperate climate . ( bring a light jacket just in case you travel to the mountains where temperatures can be 10 degrees cooler or in case you go on a windy boat ride
 original text:  and it ' s absolutely true . this is jamaica weather ! most of our days are filled with warmth and sunshine , even during the rainy season . jamaica has a tropical climate with hot and humid weather at sea level . the higher inland regions have a more temperate climate . ( bring a light jacket just in case you travel to the mountains where temperatures can be 10 degrees cooler or in case you go on a windy boat ride
-sim_word_ids_dict {'dictionary': [], '.': ['and', '[MASK]', '>', ';', 'the'], 's': [], 'no': [], 'judgment': ['judgments'], "'": ['"', '‘'], 'in': ['of', 'to', 'for', 'at', 'with'], 'english': []}
-sim_values [[0.3519419  0.3327329  0.3116781  0.30961582 0.2886234 ]
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'judgment': ['judgments'], 'a': ['the'], 'dec': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'dictionary': [], 'reluctant': ['reluctance', 'unwilling', 'reluctantly']}
+sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.34788653 0.3463916  0.29874676 0.29393917 0.2909376 ]
- [0.38258132 0.37871078 0.37784678 0.36544287 0.36492208]
  [0.7028494  0.30417228 0.27595806 0.2735689  0.25869238]
- [0.46989387 0.40994143 0.39131227 0.34084296 0.33073243]
- [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
- [0.3810217  0.33062747 0.32909107 0.30766675 0.29885447]]
-sub_word_dict {'nolo': [4135, 2053], 'declaratory': [14049, 8017, 11703]}
+ [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
+ [0.35945696 0.34234267 0.30426428 0.2817866  0.27072006]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.3519419  0.3327329  0.3116781  0.30961582 0.2886234 ]
+ [0.5584254  0.5147138  0.47972867 0.38511413 0.3718515 ]]
+sub_word_dict {'declaratory': [14049, 8017, 11703], 'declarlar': [8017, 8017, 11703]}
 new_doc_token_id_list:  no ##lo ' s plain - english law dictionary . a court decision in a civil case that tells the parties what their rights and responsibilities are , without awarding damages or ordering them to do anything . courts are usually reluctant to hear dec ##lar ##atory judgment cases , preferring to wait until there has been a me ##asurable loss . but especially in cases involving important constitutional rights , courts will step in to clarify the legal
 original text:  no ##lo ' s plain - english law dictionary . a court decision in a civil case that tells the parties what their rights and responsibilities are , without awarding damages or ordering them to do anything . courts are usually reluctant to hear dec ##lar ##atory judgment cases , preferring to wait until there has been a me ##asurable loss . but especially in cases involving important constitutional rights , courts will step in to clarify the legal
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'si': [], 'is': ['are', 'has', 'isn', 'be'], '1': ['3', '5', '##1', '4', '0'], 'of': ['in', 'the', 'for', 'and', 'from'], 'type': ['kind', 'sort'], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]'], '.': ['and', '[MASK]', '>', ';', 'the']}
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], '1': ['3', '5', '##1', '4', '0'], 'is': ['are', 'has', 'isn', 'be'], 'si': [], 'type': ['kind', 'sort'], 'number': [], 'message': ['messaging']}
 sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.25523034 0.25474384 0.22977531 0.22913685 0.21398255]
- [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
- [0.52624166 0.4676082  0.4626055  0.4425981  0.43805957]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.52624166 0.4676082  0.4626055  0.4425981  0.43805957]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
+ [0.25523034 0.25474384 0.22977531 0.22913685 0.21398255]
  [0.42771685 0.4050702  0.3869524  0.35988185 0.34824747]
- [0.55602837 0.49707404 0.49370688 0.457479   0.45735276]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]]
-sub_word_dict {'sigmgm': [21693, 21693, 9033], 'sigmet': [3388, 21693, 9033]}
+ [0.3427167  0.30972865 0.2922162  0.2872234  0.26055533]
+ [0.4379831  0.29604813 0.2848565  0.26922667 0.26213112]]
+sub_word_dict {'sigmet': [3388, 21693, 9033], 'sigmgm': [21693, 21693, 9033]}
 new_doc_token_id_list:  si ##gm ##et 1 is the type of the message and the sequential number of the day ; valid 150 ##43 ##5 / 150 ##8 ##35 is the period of validity of the message . it follows the same standard of the . date / time of the
 original text:  si ##gm ##et 1 is the type of the message and the sequential number of the day ; valid 150 ##43 ##5 / 150 ##8 ##35 is the period of validity of the message . it follows the same standard of the . date / time of the
-sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'mc': [], 'double': ['doubled', 'doubling', 'doubles'], 'cheese': [], 'dollar': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'che': [], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]']}
-sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.33103013 0.27191722 0.20944707 0.20299335 0.20229734]
+sim_word_ids_dict {'mc': [], 'double': ['doubled', 'doubling', 'doubles'], 'the': ['[MASK]', '.', 'of', 'an', ','], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the'], 'instead': [], 'cheese': [], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]']}
+sim_values [[0.33103013 0.27191722 0.20944707 0.20299335 0.20229734]
  [0.4937619  0.4641933  0.45859694 0.32186657 0.31291595]
- [0.2798057  0.27743196 0.2690299  0.267328   0.2647462 ]
- [0.33459187 0.3044746  0.30436713 0.29860145 0.2796711 ]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.20452668 0.19711913 0.1944886  0.19387412 0.18683082]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.2864139  0.26754063 0.24749291 0.24702783 0.2467708 ]
+ [0.2798057  0.27743196 0.2690299  0.267328   0.2647462 ]
  [0.55602837 0.49707404 0.49370688 0.457479   0.45735276]]
-sub_word_dict {'mcdoudou': [26797, 26797, 11338], 'cheesburgburg': [4645, 4645, 2229, 18178]}
+sub_word_dict {'cheesburgburg': [4645, 4645, 2229, 18178], 'mcdoudou': [26797, 26797, 11338]}
 new_doc_token_id_list:  the double che ##es ##burg ##er is now $ 1 . 19 instead of a buck . seriously , $ . 19 / slice of cheese and a removal from the dollar menu . do i order the double cheese ##burg ##er at its new full price or do i stick to the dollar menu and go with the mc ##dou ##ble . of course , i go with the mc ##dou ##ble . one piece of mcc ##hee ##se might be better than two pieces of mcc ##hee ##se . i guess mcdonald ##s thinks people like me who bought the double cheese ##burg ##er for a buck will pony up and pay the extra penn ##ies . sooner or later they will be charging for extra napkin ##s and ke ##tch
 original text:  the double che ##es ##burg ##er is now $ 1 . 19 instead of a buck . seriously , $ . 19 / slice of cheese and a removal from the dollar menu . do i order the double cheese ##burg ##er at its new full price or do i stick to the dollar menu and go with the mc ##dou ##ble . of course , i go with the mc ##dou ##ble . one piece of mcc ##hee ##se might be better than two pieces of mcc ##hee ##se . i guess mcdonald ##s thinks people like me who bought the double cheese ##burg ##er for a buck will pony up and pay the extra penn ##ies . sooner or later they will be charging for extra napkin ##s and ke ##tch
-sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], ',': ['and', '[MASK]', ';', 'the', '-'], 'higher': ['highest', 'high'], 'a': ['the'], 'as': [], 'salary': [], 'bs': [], 'difference': [], 'rn': [], 'have': ['had', 'having', 'are', 've']}
-sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.47256988 0.46749926 0.36847085 0.36506772 0.3613301 ]
- [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
- [0.37010324 0.35350877 0.3500719  0.34161884 0.3379659 ]
- [0.3369099  0.30942005 0.29850894 0.29039913 0.2800414 ]
+sim_word_ids_dict {'rn': [], 'average': ['averaged'], 'bs': [], 'difference': [], 'higher': ['highest', 'high'], 'differential': [], 'salary': [], 'nurse': ['nursing'], 'ad': []}
+sim_values [[0.29284507 0.29071122 0.25934163 0.22631794 0.22443794]
+ [0.4463926  0.39969164 0.35097784 0.31653798 0.29080313]
  [0.23705037 0.2365238  0.23068759 0.23029496 0.21590531]
  [0.31574044 0.29927033 0.29804784 0.2942071  0.27914983]
- [0.29284507 0.29071122 0.25934163 0.22631794 0.22443794]
- [0.6194383  0.50429994 0.43284306 0.40314966 0.34015444]]
-sub_word_dict {}
+ [0.47256994 0.46749932 0.36847097 0.36506775 0.36133015]
+ [0.29428166 0.2708282  0.23220462 0.2212362  0.20981653]
+ [0.3369099  0.30942005 0.29850894 0.29039913 0.2800414 ]
+ [0.536948   0.2907142  0.2771314  0.2732951  0.2651747 ]
+ [0.3120385  0.3021508  0.2813427  0.23633711 0.23614359]]
+sub_word_dict {'adn': [2078, 4748]}
 new_doc_token_id_list:  the higher level positions have a higher average salary . for that reason , while there is no significant difference in the salary of an ad ##n rn and a bs ##n rn working as a staff nurse on a hospital unit , a nurse with a bs ##n will make more income over the course of their career . many ad ##n graduates return to school and complete their bs ##n after they start working . owe ##ver , many facilities also offer a differential for the bs ##n degree . on a national level an rn with a bs ##n makes $ 2500 - $ 350 ##0 more per year in the entry level position due to the
 original text:  the higher level positions have a higher average salary . for that reason , while there is no significant difference in the salary of an ad ##n rn and a bs ##n rn working as a staff nurse on a hospital unit , a nurse with a bs ##n will make more income over the course of their career . many ad ##n graduates return to school and complete their bs ##n after they start working . owe ##ver , many facilities also offer a differential for the bs ##n degree . on a national level an rn with a bs ##n makes $ 2500 - $ 350 ##0 more per year in the entry level position due to the
-sim_word_ids_dict {'inches': ['centimetres', 'millimetres'], 'in': ['of', 'to', 'for', 'at', 'with'], '.': ['and', '[MASK]', '>', ';', 'the'], '18': ['19', '17', '16', '36', '22'], 'grow': ['grew', 'growing', 'grown'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'length': [], 'gold': ['platinum'], ',': ['and', '[MASK]', ';', 'the', '-']}
-sim_values [[0.43544424 0.42181146 0.3911218  0.338411   0.33532324]
- [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.5673983  0.56284165 0.5150424  0.47494164 0.4666851 ]
- [0.6722073  0.6314561  0.562178   0.39909962 0.34089786]
+sim_word_ids_dict {'.': ['and', '[MASK]', '>', ';', 'the'], 'grow': ['grew', 'growing', 'grown'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'a': ['the'], 'gold': ['platinum'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'of': ['in', 'the', 'for', 'and', 'from'], 'while': ['whereas'], 'can': ['cannot', 'couldn', 'will']}
+sim_values [[0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.67220736 0.631456   0.562178   0.3990996  0.34089786]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
+ [0.4033574  0.33309072 0.31103888 0.30874965 0.29211265]
  [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
- [0.3849165  0.3330931  0.3199116  0.29945788 0.29698014]
- [0.4033574  0.33309063 0.31103885 0.30874968 0.29211253]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.40256077 0.38542733 0.36279035 0.36140805 0.31702167]
+ [0.47732723 0.4462158  0.4022872  0.37424582 0.34522477]]
 sub_word_dict {'goldfish': [7529, 2751]}
 new_doc_token_id_list:  a : while gold ##fish can grow up to 18 inches in length and can weigh more than six pounds , most never attain such large size . gold ##fish occur in a number of different varieties , and some grow larger than others . the most common gold ##fish in state fairs and pet shops is the “ common gold ##fish
 original text:  a : while gold ##fish can grow up to 18 inches in length and can weigh more than six pounds , most never attain such large size . gold ##fish occur in a number of different varieties , and some grow larger than others . the most common gold ##fish in state fairs and pet shops is the “ common gold ##fish
-sim_word_ids_dict {'pneumonia': [], 'legion': [], 'caused': ['causes', 'cause'], ',': ['and', '[MASK]', ';', 'the', '-'], 'as': [], 'bacterium': ['bacterial'], '.': ['and', '[MASK]', '>', ';', 'the']}
-sim_values [[0.3394422  0.2984436  0.28970855 0.28858525 0.2814509 ]
- [0.22849074 0.21048647 0.20129322 0.19514264 0.19363661]
+sim_word_ids_dict {'that': ['which', 'the'], 'pneumonia': [], 'is': ['are', 'has', 'isn', 'be'], 'caused': ['causes', 'cause'], '.': ['and', '[MASK]', '>', ';', 'the'], ',': ['and', '[MASK]', ';', 'the', '-'], 'legion': [], ':': []}
+sim_values [[0.43477756 0.40450776 0.38173667 0.3774345  0.36309487]
+ [0.3394422  0.2984436  0.28970855 0.28858525 0.2814509 ]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.5089776  0.49314663 0.3638191  0.34307376 0.33457506]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.37010324 0.35350877 0.3500719  0.34161884 0.3379659 ]
- [0.4949152  0.35969466 0.32199895 0.30885974 0.30195606]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
-sub_word_dict {'immunocompromoco': [24163, 21716, 8737, 24163, 23041, 10047], 'pneumophila': [26415, 7361, 2819, 2638, 1052], 'legionella': [8411, 8009]}
+ [0.22849074 0.21048647 0.20129322 0.19514264 0.19363661]
+ [0.38903567 0.37166792 0.36592972 0.3495888  0.34839812]]
+sub_word_dict {'pneumophila': [26415, 7361, 2819, 2638, 1052], 'legionella': [8411, 8009]}
 new_doc_token_id_list:  : pneumonia that is caused by a bacterium of the genus legion ##ella ( l . p ##ne ##um ##op ##hila ) , that is characterized initially by symptoms resembling influenza ( as mala ##ise , headache , and muscular ache ##s ) followed by high fever , cough , dia ##rr ##hea , lo ##bar pneumonia , and mental confusion , and that may be fatal especially in elderly and im ##mun ##oco ##mp ##rom ##ised .
 original text:  : pneumonia that is caused by a bacterium of the genus legion ##ella ( l . p ##ne ##um ##op ##hila ) , that is characterized initially by symptoms resembling influenza ( as mala ##ise , headache , and muscular ache ##s ) followed by high fever , cough , dia ##rr ##hea , lo ##bar pneumonia , and mental confusion , and that may be fatal especially in elderly and im ##mun ##oco ##mp ##rom ##ised .
-sim_word_ids_dict {'probability': [], 'in': ['of', 'to', 'for', 'at', 'with'], 'is': ['are', 'has', 'isn', 'be'], 'function': ['functioned'], 'mono': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'if': ['whether', 'unless'], ',': ['and', '[MASK]', ';', 'the', '-']}
+sim_word_ids_dict {'probability': [], 'theory': ['theorists', 'theorist', 'theoretical'], '.': ['and', '[MASK]', '>', ';', 'the'], 'mono': [], 'in': ['of', 'to', 'for', 'at', 'with'], 'of': ['in', 'the', 'for', 'and', 'from'], 'is': ['are', 'has', 'isn', 'be'], 'function': ['functioned'], ',': ['and', '[MASK]', ';', 'the', '-']}
 sim_values [[0.36716396 0.31005937 0.30374843 0.29090363 0.26711786]
- [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
+ [0.52886534 0.4982817  0.41374794 0.38177013 0.35193044]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.22141084 0.21174856 0.2045303  0.20058604 0.19795823]
+ [0.4530402  0.43751714 0.42688805 0.42426473 0.42382014]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
  [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.44079244 0.38855207 0.3511733  0.33863634 0.26765478]
- [0.22141081 0.21174857 0.20453033 0.20058599 0.19795825]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.4215111  0.41154265 0.31757408 0.31361338 0.2905967 ]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
 sub_word_dict {'monotonic': [25009, 18847]}
 new_doc_token_id_list:  an important application of mono ##tonic functions is in probability theory . if is a random variable , its cumulative distribution function is a mono ##tonic ##ally increasing function . a function is un ##imo ##dal if it is mono ##tonic ##ally increasing up to some point ( the mode ) and then mono ##tonic ##ally decreasing . when is a strictly mono ##tonic function , then is in ##ject ##ive on its domain , and if is the range of , then there is an inverse function on
 original text:  an important application of mono ##tonic functions is in probability theory . if is a random variable , its cumulative distribution function is a mono ##tonic ##ally increasing function . a function is un ##imo ##dal if it is mono ##tonic ##ally increasing up to some point ( the mode ) and then mono ##tonic ##ally decreasing . when is a strictly mono ##tonic function , then is in ##ject ##ive on its domain , and if is the range of , then there is an inverse function on
-sim_word_ids_dict {'definition': [], 'ex': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'are': ['is', 'aren', 'was', 'have'], 'by': [], 'sequences': [], 'intro': [], 'protein': [], 'and': ['or', 'but', '.', 'ᵖ', '[MASK]']}
-sim_values [[0.3666941  0.35973215 0.33284664 0.27003002 0.25794506]
+sim_word_ids_dict {'are': ['is', 'aren', 'was', 'have'], 'ex': [], 'that': ['which', 'the'], '-': [','], 'definition': [], 'a': ['the'], ',': ['and', '[MASK]', ';', 'the', '-'], 'sequences': [], 'intro': []}
+sim_values [[0.65465444 0.47197157 0.43504903 0.43284294 0.39833382]
  [0.26041088 0.25589862 0.24752371 0.2449228  0.23627752]
+ [0.43477756 0.40450776 0.38173667 0.3774345  0.36309487]
+ [0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
+ [0.36669406 0.35973212 0.33284664 0.27002996 0.25794503]
+ [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.65465444 0.47197157 0.43504903 0.43284294 0.39833382]
- [0.37430364 0.37350565 0.35941052 0.35408854 0.34707162]
  [0.37025127 0.36362645 0.2797043  0.25413358 0.25283438]
- [0.3327477  0.28113562 0.26539803 0.24386567 0.22644573]
- [0.34796187 0.30644616 0.29508442 0.26845324 0.26706514]
- [0.55602837 0.49707404 0.49370688 0.457479   0.45735276]]
+ [0.3327477  0.28113562 0.26539803 0.24386567 0.22644573]]
 sub_word_dict {'exons': [5644, 4654]}
 new_doc_token_id_list:  by definition , ex ##ons and intro ##ns are sequences in a protein - coding gene region of a double - stranded dna molecule ( ds ##dna ) that are expressed as proteins , or intervening sequences not so expressed . the ex ##on and intro ##n sequences are typical ##lly visual ##ized as the sense strand of the ds ##dna , written 5 ' - 3 ' , left to
 original text:  by definition , ex ##ons and intro ##ns are sequences in a protein - coding gene region of a double - stranded dna molecule ( ds ##dna ) that are expressed as proteins , or intervening sequences not so expressed . the ex ##on and intro ##n sequences are typical ##lly visual ##ized as the sense strand of the ds ##dna , written 5 ' - 3 ' , left to
-sim_word_ids_dict {'anthropology': ['anthropological', 'sociology', 'archaeology'], ',': ['and', '[MASK]', ';', 'the', '-'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], 'study': ['studies', 'studied'], 'including': ['include'], 'environment': ['atmosphere', 'environmental'], '.': ['and', '[MASK]', '>', ';', 'the']}
+sim_word_ids_dict {'anthropology': ['anthropological', 'sociology', 'archaeology'], ',': ['and', '[MASK]', ';', 'the', '-'], 'environment': ['atmosphere', 'environmental'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'of': ['in', 'the', 'for', 'and', 'from'], 'study': ['studies', 'studied'], 'prehistoric': ['ancient'], '.': ['and', '[MASK]', '>', ';', 'the']}
 sim_values [[0.6563606  0.5173749  0.43721086 0.39806256 0.37943357]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.41646516 0.40824062 0.3609031  0.33306178 0.31937855]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
  [0.544654   0.51185644 0.38259166 0.33387154 0.32861048]
- [0.45553565 0.3924157  0.37199947 0.34180796 0.33173972]
- [0.41646516 0.40824062 0.3609031  0.33306178 0.31937855]
+ [0.40330032 0.36649576 0.3480447  0.3353299  0.32251132]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]]
-sub_word_dict {'entomtom': [20389, 20389, 4372], 'entomology': [6779, 20389, 4372]}
+sub_word_dict {'entomology': [6779, 20389, 4372], 'entomtom': [20389, 20389, 4372]}
 new_doc_token_id_list:  anthropology , the study of humans , en ##tom ##ology , the study of insect , der ##mat ##ology , the study of the skin , card ##iology , the study of … the heart , and pale ##ont ##ology , is the study of prehistoric life , including organisms ' evolution and interactions with each other and their environment . 3 people found this
 original text:  anthropology , the study of humans , en ##tom ##ology , the study of insect , der ##mat ##ology , the study of the skin , card ##iology , the study of … the heart , and pale ##ont ##ology , is the study of prehistoric life , including organisms ' evolution and interactions with each other and their environment . 3 people found this
-sim_word_ids_dict {'blooded': [], 'sharks': [], 'warm': ['warmth', 'warmer', 'cold'], 'some': ['many'], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the'], 'are': ['is', 'aren', 'was', 'have'], 'birth': ['childbirth'], 'seals': ['sealing', 'sealed'], 'otter': []}
+sim_word_ids_dict {'blooded': [], 'warm': ['warmth', 'warmer', 'cold'], 'sharks': [], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the'], 'some': ['many'], 'oldest': ['eldest', 'earliest', 'longest'], 'are': ['is', 'aren', 'was', 'have'], 'birth': ['childbirth'], 'whales': ['dolphins']}
 sim_values [[0.3090527  0.30458525 0.29845405 0.26968494 0.26959506]
- [0.366863   0.35563266 0.34251288 0.3290664  0.32347536]
  [0.5445952  0.472813   0.40340424 0.35146284 0.34056982]
+ [0.366863   0.35563266 0.34251288 0.3290664  0.32347536]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
  [0.40047652 0.35304788 0.33760378 0.31677365 0.3105502 ]
- [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.53364694 0.4402483  0.4034671  0.3751626  0.37185585]
  [0.65465444 0.47197157 0.43504903 0.43284294 0.39833382]
  [0.406433   0.37727088 0.3066318  0.29540473 0.28723186]
- [0.4709589  0.43661016 0.27786487 0.27329338 0.26079962]
- [0.28234977 0.27790993 0.26684853 0.25515574 0.25262362]]
+ [0.4154345  0.39888796 0.3582267  0.34251285 0.32163498]]
 sub_word_dict {}
 new_doc_token_id_list:  rating newest oldest . best answer : whales , seals , dolphins , and otter ##s are mammals ( warm blooded creatures that give birth to live young . some sharks give live birth , some eggs , and some are eggs in the ut ##erus , but are born live . seals find a nice beach and give birth to their pup ##s there . ut whales , dolphins and otter ##s ( i ' m su ##pp ##osing it ' s sea otter ##s you ' re talking about ) give birth in water . although their babies are born in water and can swim , they need adults to help them to the surface to breathe . as for sharks , most lay eggs , but some do give live
 original text:  rating newest oldest . best answer : whales , seals , dolphins , and otter ##s are mammals ( warm blooded creatures that give birth to live young . some sharks give live birth , some eggs , and some are eggs in the ut ##erus , but are born live . seals find a nice beach and give birth to their pup ##s there . ut whales , dolphins and otter ##s ( i ' m su ##pp ##osing it ' s sea otter ##s you ' re talking about ) give birth in water . although their babies are born in water and can swim , they need adults to help them to the surface to breathe . as for sharks , most lay eggs , but some do give live
-sim_word_ids_dict {'complete': ['completed', 'completing'], 'flea': [], 'cycle': ['##cycle'], 'pass': ['passed', 'passing'], 'life': [], 'through': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'varies': ['varied', 'varying', 'differs', 'depends'], 'of': ['in', 'the', 'for', 'and', 'from']}
-sim_values [[0.44437352 0.43274066 0.37647182 0.3563551  0.34235847]
+sim_word_ids_dict {'stages': ['phases'], 'complete': ['completed', 'completing'], 'flea': [], 'life': [], 'cycle': ['##cycle'], 'weeks': ['week', 'days', 'years', 'hours'], '.': ['and', '[MASK]', '>', ';', 'the'], 'a': ['the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'four': ['five', 'six', 'eight', 'two', '4']}
+sim_values [[0.42195976 0.28713158 0.27813914 0.2440428  0.24250923]
+ [0.44437352 0.43274066 0.37647182 0.3563551  0.34235847]
  [0.24250387 0.24157567 0.23705459 0.21974622 0.21920933]
- [0.40783182 0.37795094 0.3379141  0.26692843 0.25434375]
- [0.6332042  0.56989795 0.31495067 0.29358906 0.22455761]
- [0.3292174  0.31290346 0.30183202 0.29900503 0.29706073]
- [0.3590548  0.35077018 0.3090095  0.29745626 0.29382986]
+ [0.32921743 0.3129034  0.30183196 0.29900497 0.29706073]
+ [0.40783173 0.37795097 0.33791408 0.26692843 0.25434378]
+ [0.60075235 0.5603969  0.49802408 0.44159824 0.39230442]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.44239354 0.4400621  0.43258378 0.4086746  0.33713466]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]]
-sub_word_dict {'fleas': [2015, 26735]}
+ [0.55552083 0.3906492  0.3816697  0.36804414 0.35847333]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.61420137 0.59438235 0.5781969  0.57676595 0.56864816]]
+sub_word_dict {}
 new_doc_token_id_list:  1 flea ##s pass through a complete life cycle of four stages . made up of 50 % eggs , 30 % larvae , 15 % pup ##ae and only 5 % biting adults . completion of the life cycle from egg to adult varies from two weeks to eight
 original text:  1 flea ##s pass through a complete life cycle of four stages . made up of 50 % eggs , 30 % larvae , 15 % pup ##ae and only 5 % biting adults . completion of the life cycle from egg to adult varies from two weeks to eight
-sim_word_ids_dict {'mid': [], 'as': [], 'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], ',': ['and', '[MASK]', ';', 'the', '-']}
-sim_values [[0.25924152 0.2504683  0.22810277 0.22800462 0.22302464]
- [0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
- [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.4530402  0.4412557  0.43977302 0.41892815 0.40535527]
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'mid': [], 'that': ['which', 'the'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from']}
+sim_values [[0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
+ [0.25924155 0.2504683  0.2281028  0.22800468 0.22302468]
+ [0.4347776  0.40450782 0.38173664 0.37743455 0.36309478]
  [0.46190315 0.43789172 0.43751714 0.43116158 0.41013086]
- [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]]
-sub_word_dict {'midsegmse': [3366, 21693, 3366, 3054], 'midsegmgm': [21693, 21693, 3366, 3054], 'trapezoid': [9314, 9351, 8132]}
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
+ [0.4530402  0.4412557  0.43977302 0.41892815 0.40535527]]
+sub_word_dict {'midsegmgm': [21693, 21693, 3366, 3054], 'trapezoid': [9314, 9351, 8132], 'trapezez': [9351, 9351, 8132], 'midsegmse': [3366, 21693, 3366, 3054]}
 new_doc_token_id_list:  the mid ##se ##gm ##ent ( also called the median or mid ##line ) of a trap ##ez ##oid is the segment that joins the mid ##points of the legs . it is parallel to the bases . its length m is equal to the average of the lengths of the bases a and b of the trap ##ez ##oid , n ob ##tus ##e trap ##ez ##oid with two pairs of parallel sides is a parallel ##og ##ram . a parallel ##og ##ram has central 2 - fold rotational symmetry ( or point reflection symmetry ) . there is some disagreement whether parallel ##og ##ram ##s , which have two pairs of parallel sides , should be regarded as trap ##ez
 original text:  the mid ##se ##gm ##ent ( also called the median or mid ##line ) of a trap ##ez ##oid is the segment that joins the mid ##points of the legs . it is parallel to the bases . its length m is equal to the average of the lengths of the bases a and b of the trap ##ez ##oid , n ob ##tus ##e trap ##ez ##oid with two pairs of parallel sides is a parallel ##og ##ram . a parallel ##og ##ram has central 2 - fold rotational symmetry ( or point reflection symmetry ) . there is some disagreement whether parallel ##og ##ram ##s , which have two pairs of parallel sides , should be regarded as trap ##ez
-sim_word_ids_dict {'cd': ['dvd'], 'airport': ['airfield'], 'aero': [], 'paris': ['france'], 'roi': [], '.': ['and', '[MASK]', '>', ';', 'the']}
-sim_values [[0.43007398 0.32832327 0.3181406  0.31399325 0.30728692]
- [0.44485256 0.35539576 0.34700137 0.33929542 0.33015668]
+sim_word_ids_dict {'cd': ['dvd'], 'airport': ['airfield'], 'paris': ['france'], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the'], 'aero': [], 'is': ['are', 'has', 'isn', 'be']}
+sim_values [[0.43007392 0.32832336 0.31814057 0.31399328 0.3072869 ]
+ [0.44485253 0.35539588 0.3470014  0.3392954  0.33015662]
+ [0.44928628 0.38677645 0.37319273 0.35662967 0.33211732]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
  [0.2774207  0.25102785 0.23908299 0.23849016 0.2369754 ]
- [0.44928628 0.38677648 0.37319273 0.3566297  0.3321172 ]
- [0.20001799 0.1990577  0.19583425 0.19540076 0.18757856]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
-sub_word_dict {'cdg': [2290, 3729], 'aeroport': [6442, 18440], 'roissy': [2100, 4757, 25223], 'roissss': [4757, 4757, 25223]}
+ [0.6546544  0.5053122  0.43322444 0.4279316  0.3916226 ]]
+sub_word_dict {'cdg': [2290, 3729], 'aeroport': [6442, 18440], 'roissy': [2100, 4757, 25223]}
 new_doc_token_id_list:  aero ##port aero ##port - roi ##ss ##y charles de ( gaulle airport code ) . cd ##g located 30 km northeast of paris in the suburb of , roi ##ss ##y this is ’ paris largest airport and has three , terminals which are used by both international and domestic
 original text:  aero ##port aero ##port - roi ##ss ##y charles de ( gaulle airport code ) . cd ##g located 30 km northeast of paris in the suburb of , roi ##ss ##y this is ’ paris largest airport and has three , terminals which are used by both international and domestic
-sim_word_ids_dict {'lp': [], 'is': ['are', 'has', 'isn', 'be'], 'lightweight': ['middleweight', 'welterweight'], '(': [], 'security': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'portable': [], 'award': ['awarded', 'awarding'], 'an': ['the']}
+sim_word_ids_dict {'lp': [], 'lightweight': ['middleweight', 'welterweight'], '.': ['and', '[MASK]', '>', ';', 'the'], '(': [], 'portable': [], 'security': [], 'is': ['are', 'has', 'isn', 'be'], ')': [], ',': ['and', '[MASK]', ';', 'the', '-']}
 sim_values [[0.23966259 0.2376945  0.23450777 0.23242147 0.23049715]
- [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.41351327 0.41243315 0.38865066 0.2719676  0.2666183 ]
- [0.37571254 0.3522147  0.3517413  0.33250034 0.32266322]
- [0.32752946 0.259651   0.2595331  0.2574978  0.2567072 ]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.2999883  0.2693085  0.26340148 0.24205066 0.23359439]
- [0.44882122 0.40123343 0.34677553 0.3261326  0.30240571]
- [0.4405691  0.33755758 0.29314578 0.27657863 0.2750675 ]]
+ [0.37571254 0.3522147  0.3517413  0.33250034 0.32266322]
+ [0.29998824 0.26930857 0.26340148 0.24205062 0.23359437]
+ [0.32752952 0.25965098 0.2595331  0.25749773 0.2567072 ]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
+ [0.32768875 0.3190791  0.3136093  0.3130896  0.2733777 ]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
 sub_word_dict {'lps': [2015, 6948]}
 new_doc_token_id_list:  lightweight portable security ( lp ##s ) . lp ##s is an award winning thin ( 282 ##mb ) linux based os designed to boot from cd or usb stick . it resides entirely within ram when run ( so no persistent user data is saved ) , but can write to usb sticks and portable hard
 original text:  lightweight portable security ( lp ##s ) . lp ##s is an award winning thin ( 282 ##mb ) linux based os designed to boot from cd or usb stick . it resides entirely within ram when run ( so no persistent user data is saved ) , but can write to usb sticks and portable hard
-sim_word_ids_dict {',': ['and', '[MASK]', ';', 'the', '-'], 'mechanical': [], 'ventilation': [], 'the': ['[MASK]', '.', 'of', 'an', ','], '?': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'what': ['whatever'], 'in': ['of', 'to', 'for', 'at', 'with'], '.': ['and', '[MASK]', '>', ';', 'the'], 'or': []}
-sim_values [[0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.36828905 0.3486979  0.34650275 0.30427137 0.28242108]
+sim_word_ids_dict {'mechanical': [], 'ventilation': [], 'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the'], '?': [], 'of': ['in', 'the', 'for', 'and', 'from'], ',': ['and', '[MASK]', ';', 'the', '-'], 'in': ['of', 'to', 'for', 'at', 'with'], 's': [], 'healthcare': []}
+sim_values [[0.36828905 0.3486979  0.34650275 0.30427137 0.28242108]
  [0.32964766 0.32329908 0.30194974 0.2943115  0.24390963]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.36106706 0.34128672 0.32894704 0.32879603 0.3055028 ]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.46557164 0.39594105 0.38235915 0.37447542 0.32669997]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
  [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.39950368 0.38396004 0.35035503 0.33486372 0.3041964 ]]
+ [0.34788653 0.3463916  0.29874676 0.29393917 0.2909376 ]
+ [0.38690463 0.37069368 0.33373383 0.32567388 0.3097809 ]]
 sub_word_dict {}
 new_doc_token_id_list:  what is mechanical ventilation ? mechanical ventilation , in the healthcare setting or home , helps patients breathe by assisting the in ##hala ##tion of oxygen into the lungs and the ex ##hala ##tion of carbon dioxide . depending on the patient ’ s condition , mechanical ventilation can help support or completely control
 original text:  what is mechanical ventilation ? mechanical ventilation , in the healthcare setting or home , helps patients breathe by assisting the in ##hala ##tion of oxygen into the lungs and the ex ##hala ##tion of carbon dioxide . depending on the patient ’ s condition , mechanical ventilation can help support or completely control
-sim_word_ids_dict {'terminals': [], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'ax': [], 'syn': [], 'refer': ['referred', 'referring'], 'the': ['[MASK]', '.', 'of', 'an', ','], '.': ['and', '[MASK]', '>', ';', 'the']}
+sim_word_ids_dict {'terminals': [], 'that': ['which', 'the'], 'ax': [], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'refer': ['referred', 'referring'], 'nerve': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'cell': ['cellular']}
 sim_values [[0.2699935  0.26851887 0.2683268  0.2635914  0.24834055]
- [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
+ [0.43477756 0.40450776 0.38173667 0.3774345  0.36309487]
  [0.36255944 0.20936681 0.205533   0.19885266 0.18204136]
- [0.19462788 0.19443007 0.19109997 0.19092977 0.18579076]
+ [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
  [0.58036876 0.5288907  0.28119123 0.2585789  0.25378412]
- [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
-sub_word_dict {'synaptic': [4588, 9331, 19962], 'synapap': [9331, 9331, 19962], 'axon': [2239, 22260]}
+ [0.27513346 0.27389312 0.2729931  0.2555012  0.24657035]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.43704325 0.25071523 0.23676533 0.21435165 0.20708269]]
+sub_word_dict {'axon': [2239, 22260]}
 new_doc_token_id_list:  ax ##on terminals refer to the ax ##on endings that are somewhat enlarged and often club - or button - shaped . ax ##on terminals are that part of a nerve cell that make syn ##ap ##tic connections with another nerve cell or with an effect ##or cell ( e . g . muscle cell or gland cell
 original text:  ax ##on terminals refer to the ax ##on endings that are somewhat enlarged and often club - or button - shaped . ax ##on terminals are that part of a nerve cell that make syn ##ap ##tic connections with another nerve cell or with an effect ##or cell ( e . g . muscle cell or gland cell
-sim_word_ids_dict {'causes': ['caused', 'causing'], 'pain': ['agony', 'painful'], 'pe': [], ',': ['and', '[MASK]', ';', 'the', '-'], '.': ['and', '[MASK]', '>', ';', 'the'], ':': [], 'women': ['men', 'female', 'girls'], 'causing': ['causes', 'cause']}
-sim_values [[0.5089776  0.4848256  0.27297318 0.25137454 0.2506352 ]
- [0.42405292 0.41351712 0.36171108 0.32897598 0.30437586]
+sim_word_ids_dict {'?': [], 'causes': ['caused', 'causing'], 'pe': [], 'pain': ['agony', 'painful'], ',': ['and', '[MASK]', ';', 'the', '-'], 'that': ['which', 'the'], '.': ['and', '[MASK]', '>', ';', 'the'], 'your': ['my', 'our', 'yourself', 'their', 'his'], ':': []}
+sim_values [[0.361067   0.34128675 0.32894707 0.32879606 0.30550286]
+ [0.5089776  0.4848256  0.27297318 0.25137454 0.2506352 ]
  [0.24886326 0.24672036 0.21790862 0.20950936 0.20873582]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.42405292 0.41351712 0.36171108 0.32897598 0.30437586]
+ [0.57408774 0.49434656 0.46874225 0.44030803 0.42051584]
+ [0.43477756 0.40450776 0.38173667 0.3774345  0.36309487]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.38903567 0.37166792 0.36592972 0.3495888  0.34839812]
- [0.4753612  0.4613675  0.4587854  0.3970737  0.39399853]
- [0.4848256  0.4799077  0.34626758 0.33815664 0.33024696]]
-sub_word_dict {'pelvic': [7903, 2140, 21877], 'pell': [2140, 2140, 21877]}
+ [0.5471027  0.49598935 0.43760377 0.4271956  0.41140407]
+ [0.38903567 0.37166792 0.36592972 0.3495888  0.34839812]]
+sub_word_dict {'pelvic': [7903, 2140, 21877]}
 new_doc_token_id_list:  pe ##l ##vic pain : what ' s causing your pe ##l ##vic pain ? there are many causes of pe ##l ##vic pain in women including ut ##erine fi ##bro ##ids , cy ##sts , pm ##s , app ##end ##ici ##tis , bladder infections , and unusual vu ##lva ##r pain . pe ##l ##vic pain has symptoms that can be uncomfortable , but luckily there are treatments for pe ##l ##vic
 original text:  pe ##l ##vic pain : what ' s causing your pe ##l ##vic pain ? there are many causes of pe ##l ##vic pain in women including ut ##erine fi ##bro ##ids , cy ##sts , pm ##s , app ##end ##ici ##tis , bladder infections , and unusual vu ##lva ##r pain . pe ##l ##vic pain has symptoms that can be uncomfortable , but luckily there are treatments for pe ##l ##vic
-sim_word_ids_dict {'as': [], 'key': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'rs': [], 'our': ['my', 'your', 'their', 'ourselves'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'encryption': [], 'algorithm': [], 'is': ['are', 'has', 'isn', 'be']}
-sim_values [[0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
- [0.34758964 0.29517287 0.29365623 0.26538    0.26295435]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+sim_word_ids_dict {'key': [], 'rs': [], '2': ['1', '4', 'two', '8', '5'], '.': ['and', '[MASK]', '>', ';', 'the'], 'encryption': [], 'is': ['are', 'has', 'isn', 'be'], 'algorithm': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'public': ['publicly']}
+sim_values [[0.34758964 0.29517287 0.29365623 0.26538    0.26295435]
  [0.24209426 0.23068759 0.2201581  0.21465802 0.21253493]
- [0.56041753 0.4959895  0.46441424 0.44201556 0.393619  ]
- [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
- [0.294192   0.290182   0.27287975 0.26548213 0.26391396]
+ [0.5967182  0.57306194 0.5342232  0.50096196 0.49005622]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.29419202 0.29018202 0.27287984 0.2654822  0.26391396]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
  [0.35008645 0.30261514 0.30185843 0.29747087 0.2903284 ]
- [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.4004858  0.28532225 0.27568185 0.25103015 0.24476811]]
 sub_word_dict {'rsa': [2050, 12667]}
 new_doc_token_id_list:  2 . rs ##a is a public - key encryption algorithm and the standard for en ##cr ##yp ##ting data sent over the internet . it also happens to be one of the methods used in our pg ##p and gp ##g programs . unlike triple des , rs ##a is considered an as ##ym ##metric algorithm due to its use of a pair of
 original text:  2 . rs ##a is a public - key encryption algorithm and the standard for en ##cr ##yp ##ting data sent over the internet . it also happens to be one of the methods used in our pg ##p and gp ##g programs . unlike triple des , rs ##a is considered an as ##ym ##metric algorithm due to its use of a pair of
-sim_word_ids_dict {'cerebral': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'pal': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'when': ['if', 'where'], 'types': ['kinds'], 'spa': [], 'type': ['kind', 'sort']}
-sim_values [[0.2835389  0.2573173  0.25538325 0.2523182  0.23913589]
+sim_word_ids_dict {'when': ['if', 'where'], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'pal': [], 'cerebral': [], '-': [','], 'spa': [], 'the': ['[MASK]', '.', 'of', 'an', ','], 'stiff': ['stiffly']}
+sim_values [[0.480494   0.4163915  0.36279035 0.34774384 0.34499365]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.23075044 0.22487861 0.22158302 0.20997381 0.19398643]
  [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.480494   0.4163915  0.36279035 0.34774384 0.34499365]
- [0.5028143  0.33358523 0.32528234 0.32018363 0.31940466]
+ [0.23075044 0.22487861 0.22158302 0.20997381 0.19398643]
+ [0.28353888 0.25731736 0.25538325 0.25231826 0.23913589]
+ [0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
  [0.21009536 0.20210119 0.19277334 0.19104272 0.18983364]
- [0.42771685 0.4050702  0.3869524  0.35988185 0.34824747]]
-sub_word_dict {'palsy': [6508, 14412], 'spastic': [10074, 12403]}
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.4207401  0.37955192 0.3071363  0.2642909  0.26382878]]
+sub_word_dict {'palsy': [6508, 14412]}
 new_doc_token_id_list:  spa ##stic cerebral pal ##sy . spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff and jerk ##y . spa ##stic ##ity is a form of hyper ##ton ##ia , or increased muscle tone . when people without cerebral pal ##sy perform a movement , some groups of muscles turn on and some groups of muscles turn off . past ##ic cerebral pal ##sy spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff . . . https : / / www . cerebral ##pal ##sy . org . au / what - is - cerebral - pal ##sy / types - of - cerebral - pal ##sy / spa ##stic - cerebral - pal ##sy
 original text:  spa ##stic cerebral pal ##sy . spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff and jerk ##y . spa ##stic ##ity is a form of hyper ##ton ##ia , or increased muscle tone . when people without cerebral pal ##sy perform a movement , some groups of muscles turn on and some groups of muscles turn off . past ##ic cerebral pal ##sy spa ##stic cerebral pal ##sy is the most common type of cerebral pal ##sy . the muscles of people with spa ##stic cerebral pal ##sy appear stiff and their movements may look stiff . . . https : / / www . cerebral ##pal ##sy . org . au / what - is - cerebral - pal ##sy / types - of - cerebral - pal ##sy / spa ##stic - cerebral - pal ##sy
-sim_word_ids_dict {'health': [], 'reflect': ['reflecting', 'reflected', 'reflection'], 'of': ['in', 'the', 'for', 'and', 'from'], 'deter': [], 'social': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'the': ['[MASK]', '.', 'of', 'an', ',']}
-sim_values [[0.34995824 0.3399579  0.3248515  0.29971057 0.29161832]
- [0.69318235 0.6477095  0.4254815  0.39814252 0.3949547 ]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.22597775 0.22117902 0.219809   0.21846361 0.21742126]
- [0.3427714  0.31985343 0.31274113 0.29511523 0.25899747]
+sim_word_ids_dict {'social': [], 'health': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'deter': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'reflect': ['reflecting', 'reflected', 'reflection'], '.': ['and', '[MASK]', '>', ';', 'the'], 'the': ['[MASK]', '.', 'of', 'an', ',']}
+sim_values [[0.3427714  0.31985343 0.31274113 0.29511523 0.25899747]
+ [0.34995824 0.3399579  0.3248515  0.29971057 0.29161832]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
+ [0.22597775 0.22117902 0.219809   0.21846361 0.21742126]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.69318235 0.6477095  0.4254815  0.39814252 0.3949547 ]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]]
 sub_word_dict {'determinants': [7666, 22311, 28283], 'determinamina': [22311, 22311, 28283]}
 new_doc_token_id_list:  social deter ##mina ##nts of health reflect the social factors and physical conditions of the environment in which people are born , live , learn , play , work , and age . also known as social and physical deter ##mina ##nts of health , they impact a wide range of health , functioning , and quality - of - life outcomes . examples of social deter ##mina ##nts include : availability of resources to meet daily needs , such as educational and job opportunities , living wages , or health ##ful
 original text:  social deter ##mina ##nts of health reflect the social factors and physical conditions of the environment in which people are born , live , learn , play , work , and age . also known as social and physical deter ##mina ##nts of health , they impact a wide range of health , functioning , and quality - of - life outcomes . examples of social deter ##mina ##nts include : availability of resources to meet daily needs , such as educational and job opportunities , living wages , or health ##ful
-sim_word_ids_dict {'zur': [], 'ein': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'in': ['of', 'to', 'for', 'at', 'with'], 'switzerland': ['zurich'], '-': [','], 'the': ['[MASK]', '.', 'of', 'an', ','], 'are': ['is', 'aren', 'was', 'have']}
-sim_values [[0.2361231  0.22469366 0.21614447 0.21533537 0.21519843]
- [0.26197153 0.25356984 0.22944126 0.22485703 0.22189388]
+sim_word_ids_dict {'switzerland': ['zurich'], 'that': ['which', 'the'], '.': ['and', '[MASK]', '>', ';', 'the'], 'dishes': [], 'swiss': ['zurich'], 'food': [], 'in': ['of', 'to', 'for', 'at', 'with'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'is': ['are', 'has', 'isn', 'be'], 'famous': ['renowned', 'infamous']}
+sim_values [[0.45112497 0.38365626 0.3786766  0.37188587 0.3673756 ]
+ [0.43477756 0.40450776 0.38173667 0.3774345  0.36309487]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.331171   0.28922445 0.2732575  0.24057028 0.2401494 ]
+ [0.4462028  0.3802307  0.32729685 0.32679176 0.30987015]
+ [0.3941099  0.36570385 0.34987515 0.34226492 0.33581308]
  [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
- [0.45112497 0.38365626 0.3786766  0.37188587 0.3673756 ]
- [0.42051575 0.37863067 0.37399456 0.3439905  0.34143692]
  [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
- [0.65465444 0.47197157 0.43504903 0.43284294 0.39833382]]
-sub_word_dict {'zuercher': [7474, 2121, 16950], 'eintoptop': [14399, 14399, 16417]}
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
+ [0.55288285 0.52436936 0.3885617  0.37840343 0.36251116]]
+sub_word_dict {}
 new_doc_token_id_list:  switzerland dishes . swiss dishes . 1 zu ##er ##cher zur ##cher - ein ##top ##f zurich style hot . 2 pot vegetables and meat are served all in the same . 3 pot - fond ##ue this is a famous swiss food made of melted . 4 cheese bread pieces or potato pieces are dipped in . cheese ##ood of switzerland . traditional food in switzerland . there are many different dishes in switzerland that are regional . italian food is very common in modern switzerland including pasta and pizza . swiss cheese includes em ##mental cheese , va ##cher ##in and app ##en ##zell
 original text:  switzerland dishes . swiss dishes . 1 zu ##er ##cher zur ##cher - ein ##top ##f zurich style hot . 2 pot vegetables and meat are served all in the same . 3 pot - fond ##ue this is a famous swiss food made of melted . 4 cheese bread pieces or potato pieces are dipped in . cheese ##ood of switzerland . traditional food in switzerland . there are many different dishes in switzerland that are regional . italian food is very common in modern switzerland including pasta and pizza . swiss cheese includes em ##mental cheese , va ##cher ##in and app ##en ##zell
-sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], ',': ['and', '[MASK]', ';', 'the', '-'], 'for': ['of', 'in', 'with'], 'this': ['that'], 'brand': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'products': []}
-sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+sim_word_ids_dict {'for': ['of', 'in', 'with'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'case': [], ',': ['and', '[MASK]', ';', 'the', '-'], 'brand': [], 'in': ['of', 'to', 'for', 'at', 'with'], 'is': ['are', 'has', 'isn', 'be'], 'of': ['in', 'the', 'for', 'and', 'from']}
+sim_values [[0.4397732  0.42688805 0.40551943 0.3828122  0.38031858]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
+ [0.38501316 0.27948964 0.24857919 0.23664717 0.23325536]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.4397732  0.42688805 0.40551943 0.3828122  0.38031858]
- [0.45101494 0.3769896  0.3597887  0.2904514  0.2901443 ]
  [0.39989322 0.3944562  0.27453202 0.24546033 0.2334543 ]
- [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.3266045  0.31804004 0.31749445 0.31050047 0.2932626 ]]
-sub_word_dict {'theraderm': [10867, 13662, 1996], 'theraderade': [13662, 13662, 1996]}
+ [0.45304027 0.43751702 0.42688805 0.4242648  0.42382014]
+ [0.65465444 0.5053122  0.4332246  0.4279315  0.39162254]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]]
+sub_word_dict {'theraderade': [13662, 13662, 1996], 'theraderm': [10867, 13662, 1996]}
 new_doc_token_id_list:  in the case of the ##rade ##rm , this is taken even further , as the brand was founded by a plastic surgeon , dr . james beck ##man . however , even though this brand was created by a doctor , it doesn ’ t mean that the products are the right choice for
 original text:  in the case of the ##rade ##rm , this is taken even further , as the brand was founded by a plastic surgeon , dr . james beck ##man . however , even though this brand was created by a doctor , it doesn ’ t mean that the products are the right choice for
-sim_word_ids_dict {'as': [], 'hyper': [], 'en': [], 'causes': ['caused', 'causing'], '.': ['and', '[MASK]', '>', ';', 'the'], 'to': ['of', 'and', 'in', 'the', 'ᵗ']}
-sim_values [[0.37010324 0.35350877 0.3500719  0.34161884 0.3379659 ]
- [0.24146435 0.22507212 0.22092527 0.2158651  0.20157804]
- [0.2571768  0.25589877 0.2556976  0.24799007 0.23834881]
- [0.5089776  0.48482555 0.27297318 0.2513746  0.25063518]
- [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]
- [0.46190315 0.43789172 0.43751714 0.43116158 0.41013086]]
-sub_word_dict {'hypertrophy': [21281, 13181, 23760], 'ventricular': [7934, 7277, 18834], 'enlarlar': [8017, 8017, 4372], 'hypertrotro': [13181, 13181, 23760]}
-new_doc_token_id_list:  left vent ##ric ##ular hyper ##tro ##phy is en ##lar ##gement and thick ##ening ( hyper ##tro ##phy ) of the walls of your heart ' s main pumping chamber ( left vent ##ric ##le ) . left vent ##ric ##ular hyper ##tro ##phy can develop in response to some factor — such as high blood pressure or a heart condition — that causes the left vent ##ric ##le to work harder . as the work ##load increases , the muscle tissue in the chamber wall thick ##ens , and sometimes the size of the chamber itself also
-original text:  left vent ##ric ##ular hyper ##tro ##phy is en ##lar ##gement and thick ##ening ( hyper ##tro ##phy ) of the walls of your heart ' s main pumping chamber ( left vent ##ric ##le ) . left vent ##ric ##ular hyper ##tro ##phy can develop in response to some factor — such as high blood pressure or a heart condition — that causes the left vent ##ric ##le to work harder . as the work ##load increases , the muscle tissue in the chamber wall thick ##ens , and sometimes the size of the chamber itself also
-sim_word_ids_dict {'suicide': [], 'as': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'sam': [], 'issues': ['problems', 'concerns'], 'military': [], 'homeless': [], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], ',': ['and', '[MASK]', ';', 'the', '-']}
-sim_values [[0.32023066 0.29014134 0.27574992 0.2721373  0.25303328]
+sim_word_ids_dict {'the': ['[MASK]', '.', 'of', 'an', ','], 'as': [], '.': ['and', '[MASK]', '>', ';', 'the'], 'of': ['in', 'the', 'for', 'and', 'from'], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], 'causes': ['caused', 'causing'], 'hyper': []}
+sim_values [[0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
  [0.37010324 0.35350883 0.35007182 0.34161875 0.33796597]
  [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
- [0.24259268 0.24168995 0.22460414 0.21823362 0.21644473]
- [0.5085094  0.42661917 0.37213182 0.36029327 0.33090407]
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.46190315 0.43789172 0.43751714 0.43116158 0.41013086]
+ [0.5089776  0.48482555 0.27297318 0.2513746  0.25063518]
+ [0.24146435 0.22507212 0.22092527 0.2158651  0.20157804]]
+sub_word_dict {'enlarlar': [8017, 8017, 4372], 'hypertrophy': [21281, 13181, 23760], 'ventricular': [7934, 7277, 18834]}
+new_doc_token_id_list:  left vent ##ric ##ular hyper ##tro ##phy is en ##lar ##gement and thick ##ening ( hyper ##tro ##phy ) of the walls of your heart ' s main pumping chamber ( left vent ##ric ##le ) . left vent ##ric ##ular hyper ##tro ##phy can develop in response to some factor — such as high blood pressure or a heart condition — that causes the left vent ##ric ##le to work harder . as the work ##load increases , the muscle tissue in the chamber wall thick ##ens , and sometimes the size of the chamber itself also
+original text:  left vent ##ric ##ular hyper ##tro ##phy is en ##lar ##gement and thick ##ening ( hyper ##tro ##phy ) of the walls of your heart ' s main pumping chamber ( left vent ##ric ##le ) . left vent ##ric ##ular hyper ##tro ##phy can develop in response to some factor — such as high blood pressure or a heart condition — that causes the left vent ##ric ##le to work harder . as the work ##load increases , the muscle tissue in the chamber wall thick ##ens , and sometimes the size of the chamber itself also
+sim_word_ids_dict {'sam': [], 'suicide': [], '.': ['and', '[MASK]', '>', ';', 'the'], ',': ['and', '[MASK]', ';', 'the', '-'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'military': [], 'of': ['in', 'the', 'for', 'and', 'from'], 'trauma': [], 'homeless': []}
+sim_values [[0.24259268 0.24168995 0.22460414 0.21823362 0.21644473]
+ [0.32023066 0.29014134 0.27574992 0.2721373  0.25303328]
+ [0.49370688 0.48180383 0.4700628  0.45501846 0.4483785 ]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
+ [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
  [0.38647854 0.34089702 0.33633643 0.33592147 0.32560515]
- [0.3211421  0.27392715 0.2731436  0.2684002  0.2660113 ]
- [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
-sub_word_dict {'homelessness': [2791, 11573]}
+ [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
+ [0.32037556 0.29749757 0.29566786 0.27042377 0.27034688]
+ [0.3211421  0.27392715 0.2731436  0.2684002  0.2660113 ]]
+sub_word_dict {'samhsa': [2050, 7898, 3520]}
 new_doc_token_id_list:  critical issues facing veterans and military families . sam ##hs ##a addresses critical issues such as suicide risk , trauma , and homeless ##ness that impact members of the military with behavioral health conditions . suicide prevention according to the january 2014 veterans health administration report ( pdf | 85 ##5 kb ) , the suicide rate among male and female veterans and military service members exceeds the national rate for the general
 original text:  critical issues facing veterans and military families . sam ##hs ##a addresses critical issues such as suicide risk , trauma , and homeless ##ness that impact members of the military with behavioral health conditions . suicide prevention according to the january 2014 veterans health administration report ( pdf | 85 ##5 kb ) , the suicide rate among male and female veterans and military service members exceeds the national rate for the general
-sim_word_ids_dict {'sous': [], 'eggs': [], 'vi': [], 'cook': ['cooking', 'cooked'], '-': [','], 'anywhere': ['anything', 'anyone', 'nowhere', 'everywhere', 'anytime'], ',': ['and', '[MASK]', ';', 'the', '-'], 'of': ['in', 'the', 'for', 'and', 'from'], 'from': []}
-sim_values [[0.22135706 0.22134143 0.21502322 0.21206367 0.20215692]
- [0.30621648 0.27030975 0.26940274 0.26659876 0.25396502]
- [0.33273834 0.24239999 0.23492013 0.22544402 0.22068962]
+sim_word_ids_dict {'eggs': [], 'sous': [], 'anywhere': ['anything', 'anyone', 'nowhere', 'everywhere', 'anytime'], 'cook': ['cooking', 'cooked'], '-': [','], 'vi': [], 'from': [], 'can': ['cannot', 'couldn', 'will'], ',': ['and', '[MASK]', ';', 'the', '-']}
+sim_values [[0.30621648 0.27030975 0.26940274 0.26659876 0.25396502]
+ [0.22135706 0.22134143 0.21502322 0.21206367 0.20215692]
+ [0.48344347 0.45472133 0.45247588 0.42575595 0.42477477]
  [0.5537027  0.4902161  0.32585108 0.31567156 0.3020919 ]
  [0.42051584 0.37863082 0.3739944  0.3439905  0.341437  ]
- [0.48344347 0.45472133 0.45247588 0.42575595 0.42477477]
- [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.45304027 0.44125572 0.4397732  0.41892803 0.40535533]
- [0.3911842  0.3797421  0.37561306 0.37274575 0.36693794]]
+ [0.33273834 0.24239999 0.23492013 0.22544402 0.22068962]
+ [0.3911842  0.3797421  0.37561306 0.37274575 0.36693794]
+ [0.47732723 0.4462158  0.4022872  0.37424582 0.34522477]
+ [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]]
 sub_word_dict {'vide': [3207, 6819]}
 new_doc_token_id_list:  with a sous vi ##de cooke ##r , you can cook your eggs anywhere from just - set - enough - that - they - break - when - you - touch - them , to a rich , fu ##dge - like consistency , to hard - boiled with no hint of chalk ##iness in the yo ##lk . cooking eggs sous vi ##de also allows you to make flawless ##ly egg - shaped po ##ache ##d eggs time after
 original text:  with a sous vi ##de cooke ##r , you can cook your eggs anywhere from just - set - enough - that - they - break - when - you - touch - them , to a rich , fu ##dge - like consistency , to hard - boiled with no hint of chalk ##iness in the yo ##lk . cooking eggs sous vi ##de also allows you to make flawless ##ly egg - shaped po ##ache ##d eggs time after
-sim_word_ids_dict {'australia': ['australians', 'canada', 'nsw', 'sydney', 'queensland'], ',': ['and', '[MASK]', ';', 'the', '-'], 'africa': ['africans'], 'canada': ['canadians', 'australia'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'salvation': [], 'india': ['china'], 'france': ['italy', 'paris'], 'army': ['military', 'soldiers'], 'iceland': ['reykjavik', 'greenland']}
-sim_values [[0.5882034  0.44214267 0.4356609  0.4226578  0.41489324]
+sim_word_ids_dict {'canada': ['canadians', 'australia'], 'foundation': [], 'to': ['of', 'and', 'in', 'the', 'ᵗ'], ',': ['and', '[MASK]', ';', 'the', '-'], 'firm': [], "'": ['"', '‘'], 'the': ['[MASK]', '.', 'of', 'an', ','], 'salvation': [], 'army': ['military', 'soldiers'], '.': ['and', '[MASK]', '>', ';', 'the']}
+sim_values [[0.528995   0.44214267 0.35582158 0.3464911  0.34645635]
+ [0.2586583  0.24009475 0.23855251 0.2367568  0.23349603]
+ [0.46190313 0.43789166 0.43751702 0.43116158 0.41013083]
  [0.5740878  0.49434656 0.4687423  0.4403081  0.42051575]
- [0.62498707 0.37523872 0.3476612  0.32967487 0.32864296]
- [0.528995   0.44214267 0.35582158 0.3464911  0.34645635]
- [0.45166957 0.44837844 0.4412557  0.44056904 0.44030803]
+ [0.32741943 0.30778787 0.25042105 0.24452986 0.21726456]
+ [0.46989387 0.40994143 0.39131227 0.34084296 0.33073243]
+ [0.45166963 0.4483785  0.44125572 0.4405691  0.4403081 ]
  [0.35504204 0.2747717  0.2717833  0.24557991 0.24479292]
- [0.40457386 0.3957172  0.3888759  0.38151622 0.3799608 ]
- [0.45048326 0.44928628 0.39642268 0.38891912 0.38166153]
  [0.449391   0.4090662  0.3690793  0.36852598 0.32929766]
- [0.5592402  0.42242944 0.39458364 0.3637911  0.3387694 ]]
+ [0.49370688 0.48180383 0.47006282 0.4550186  0.44837844]]
 sub_word_dict {}
 new_doc_token_id_list:  the salvation army movement expanded rapidly to canada , australia , france , switzerland , india , south africa , iceland , and local neighborhood units . the salvation army is active in virtually every corner of the world . general booth ' s death in 1912 was a great loss to the salvation army . however , he had laid a firm foundation ' even his death could not deter the ministry ' s onward march . his eldest son , bram ##well booth , succeeded
 original text:  the salvation army movement expanded rapidly to canada , australia , france , switzerland , india , south africa , iceland , and local neighborhood units . the salvation army is active in virtually every corner of the world . general booth ' s death in 1912 was a great loss to the salvation army . however , he had laid a firm foundation ' even his death could not deter the ministry ' s onward march . his eldest son , bram ##well booth , succeeded
