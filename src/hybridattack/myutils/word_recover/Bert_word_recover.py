@@ -167,7 +167,7 @@ class BERTWordRecover(WordRecover):
         return tensor
 
     def eval_model(self, model, doc_input_ids, query_input_ids, args):
-
+        query_input_ids = query_input_ids.tolist()
         query_input_ids = query_input_ids[: self.max_query_length]
         query_input_ids = [self.cls_id] + query_input_ids + [self.sep_id]
         doc_input_ids = doc_input_ids[: self.max_doc_length]
