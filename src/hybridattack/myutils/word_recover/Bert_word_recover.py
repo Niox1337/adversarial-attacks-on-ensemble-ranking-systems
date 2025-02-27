@@ -191,7 +191,6 @@ class BERTWordRecover(WordRecover):
             position_ids_lst = position_ids_lst.to(args.device)
             outputs = model(input_id_lst, token_type_ids_lst, position_ids_lst)
             scores = outputs.detach().cpu().numpy()
-            print("scores: ", scores)
             # score [B,1]
         return scores
 
@@ -311,9 +310,11 @@ class BERTWordRecover(WordRecover):
                     )
                 )
                 # inference
+                print('greedy new_doc_token_id_list: ', " ".join([self.idx2word[idx.item()] for idx in new_doc_token_id_list]))
                 score = self.eval_model(
                     model, new_doc_token_id_list, query_input_id, args
                 )[0][0]
+                print("scores: ", score)
 
                 rank_pos = self.get_rank_pos(ori_qds, score, attack_doc_id, qid)
                 if rank_pos < best_pos:
