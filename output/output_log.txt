@@ -12,23 +12,28 @@ Traceback (most recent call last):
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 156, in attack
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/hybridattack/myutils/word_recover/Bert_word_recover.py", line 322, in recover_document_greedy_rank_pos
-    print('greedy new_doc_token_id_list: ', " ".join([self.idx2word[idx.item()] for idx in new_doc_token_id_list]))
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/hybridattack/myutils/word_recover/Bert_word_recover.py", line 322, in <listcomp>
-    print('greedy new_doc_token_id_list: ', " ".join([self.idx2word[idx.item()] for idx in new_doc_token_id_list]))
-AttributeError: 'int' object has no attribute 'item'
+    score = self.eval_model(
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/hybridattack/myutils/word_recover/Bert_word_recover.py", line 172, in eval_model
+    query_input_ids = [self.cls_id] + query_input_ids + [self.sep_id]
+TypeError: can only concatenate list (not "Tensor") to list
 Building vocab...
 Building vocab for bert_tokenizer...
-candidate_word_matrix_dict:  {'gray': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'robert': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), '.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.0050,  0.0040,  0.0035],
+candidate_word_matrix_dict:  {'trailers': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'gray': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'were': tensor([[ 0.0218,  0.0258, -0.0631,  ..., -0.0340, -0.0503,  0.0126],
+        [ 0.0325,  0.0257, -0.0439,  ..., -0.1091, -0.0779,  0.0032],
+        [ 0.0163, -0.0352, -0.1013,  ..., -0.0319,  0.0175, -0.0167]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'robert': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), '.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.0050,  0.0040,  0.0035],
         [-0.0049,  0.0003, -0.0091,  ..., -0.0116,  0.0076,  0.0124],
         [-0.0484,  0.0612,  0.1562,  ..., -0.0019, -0.0238,  0.0089],
         [-0.0123,  0.0727, -0.0372,  ..., -0.0103,  0.0187,  0.0561],
         [ 0.0264,  0.0226,  0.0072,  ...,  0.0107,  0.0187,  0.0161]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'trailers': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'travel': tensor([[ 0.1134,  0.0879, -0.0635,  ...,  0.0343, -0.0587, -0.0385],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'pioneer': tensor([[ 0.0353,  0.0312, -0.0667,  ...,  0.0756, -0.0332, -0.1204],
+        [ 0.0281,  0.0071, -0.0643,  ..., -0.0303,  0.0653, -0.0597]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'travel': tensor([[ 0.1134,  0.0879, -0.0635,  ...,  0.0343, -0.0587, -0.0385],
         [ 0.0746,  0.1017,  0.0083,  ...,  0.0534,  0.0337, -0.0511],
         [ 0.0196,  0.0773,  0.0580,  ...,  0.0425,  0.0024, -0.1001],
         [ 0.0965,  0.1210,  0.0243,  ...,  0.0051, -0.0567, -0.0353],
         [ 0.0464,  0.0120, -0.0334,  ...,  0.0432,  0.0340, -0.0866]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'the': tensor([[-4.9057e-03,  3.2084e-04, -9.0553e-03,  ..., -1.1589e-02,
+       device='cuda:0', grad_fn=<IndexBackward0>), 'sha': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'the': tensor([[-4.9057e-03,  3.2084e-04, -9.0553e-03,  ..., -1.1589e-02,
           7.6116e-03,  1.2370e-02],
         [ 1.2232e-02,  1.7792e-02,  3.0522e-02,  ..., -1.3040e-02,
           2.8569e-03,  1.3823e-02],
@@ -37,17 +42,15 @@ candidate_word_matrix_dict:  {'gray': tensor([], device='cuda:0', size=(0, 768),
         [-5.3974e-05, -1.2105e-02, -9.5134e-03,  ..., -5.4570e-02,
          -5.3497e-03,  2.8294e-02],
         [ 7.1358e-03, -1.3163e-02, -8.6237e-03,  ..., -1.4211e-02,
-         -1.3587e-03,  1.0604e-02]], device='cuda:0', grad_fn=<IndexBackward0>), 'pioneer': tensor([[ 0.0353,  0.0312, -0.0667,  ...,  0.0756, -0.0332, -0.1204],
-        [ 0.0281,  0.0071, -0.0643,  ..., -0.0303,  0.0653, -0.0597]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'sha': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'founded': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>)}
-candidate_word_index_dict:  {'gray': [], 'robert': [], '.': [1998, 103, 1028, 1025, 1996], 'trailers': [], 'travel': [7930, 8932, 6158, 15183, 7837], 'the': [103, 1012, 1997, 2019, 1010], 'pioneer': [13280, 16193], 'sha': [], 'founded': []}
-max_id_dict:  {'.': tensor([0], device='cuda:0'), 'travel': tensor([0], device='cuda:0'), 'the': tensor([0], device='cuda:0'), 'pioneer': tensor([0], device='cuda:0')}
-max_sim_dict:  {'.': tensor([0.4958], device='cuda:0', grad_fn=<MaxBackward0>), 'travel': tensor([0.5576], device='cuda:0', grad_fn=<MaxBackward0>), 'the': tensor([0.4533], device='cuda:0', grad_fn=<MaxBackward0>), 'pioneer': tensor([0.5741], device='cuda:0', grad_fn=<MaxBackward0>)}
-max_word_index_dict:  {'.': [1998], 'travel': [7930], 'the': [103], 'pioneer': [13280]}
+         -1.3587e-03,  1.0604e-02]], device='cuda:0', grad_fn=<IndexBackward0>)}
+candidate_word_index_dict:  {'trailers': [], 'gray': [], 'were': [2001, 4694, 2018], 'robert': [], '.': [1998, 103, 1028, 1025, 1996], 'pioneer': [13280, 16193], 'travel': [7930, 8932, 6158, 15183, 7837], 'sha': [], 'the': [103, 1012, 1997, 2019, 1010]}
+max_id_dict:  {'were': tensor([0], device='cuda:0'), '.': tensor([0], device='cuda:0'), 'pioneer': tensor([0], device='cuda:0'), 'travel': tensor([0], device='cuda:0'), 'the': tensor([0], device='cuda:0')}
+max_sim_dict:  {'were': tensor([0.6741], device='cuda:0', grad_fn=<MaxBackward0>), '.': tensor([0.4878], device='cuda:0', grad_fn=<MaxBackward0>), 'pioneer': tensor([0.5744], device='cuda:0', grad_fn=<MaxBackward0>), 'travel': tensor([0.5576], device='cuda:0', grad_fn=<MaxBackward0>), 'the': tensor([0.4532], device='cuda:0', grad_fn=<MaxBackward0>)}
+max_word_index_dict:  {'were': [2001], '.': [1998], 'pioneer': [13280], 'travel': [7930], 'the': [103]}
 new_doc_token_id_list:  tensor([21146,  9153,  3604, 21389,  1012, 21146,  9153,  3604, 21389,  2020,
         10517,  4683,  2328,  2090,  3874,  1998,  2432,  1012,  2631,  2011,
          3068,  7156,  2728,  3897,  1010,  1996,  3813,  2001,  2761,  4350,
          1999,  1037,  2235,  4713,  1999,  3050,  3349,  1010,  2662,  2000,
          3073,  3847,  2005,  2372,  1997,  1996,  2149,  4273])
-word_token_ids:  [1012]
-finded_start_index_list:  [4, 17]
+word_token_ids:  [2020]
+finded_start_index_list:  [9]
