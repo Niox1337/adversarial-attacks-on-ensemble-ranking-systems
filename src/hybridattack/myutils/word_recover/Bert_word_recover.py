@@ -279,6 +279,8 @@ class BERTWordRecover(WordRecover):
                 candidate_word_index_dict[word][max_id_dict[word][0]]
             ]
 
+        print("max_word_index_dict: ", max_word_index_dict)
+
         m = args.max_attack_word_number
         current_attacked_num = 0
         import copy
