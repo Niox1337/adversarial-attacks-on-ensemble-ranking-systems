@@ -301,7 +301,8 @@ class BERTWordRecover(WordRecover):
                     print(word)
                 word_token_ids = [self.word2idx[word]]
             new_token_ids = max_word_index_dict[word]
-            print("new_token_ids: ", new_token_ids)
+            print("new_doc_token_id_list: ", new_doc_token_id_list)
+            print("word_token_ids: ", word_token_ids)
             if isinstance(new_token_ids[0], list):
                 new_token_ids = new_token_ids[0]
             finded_start_index_list = self.find_ori_word_index(
