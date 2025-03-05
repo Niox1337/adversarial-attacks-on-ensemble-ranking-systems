@@ -74,9 +74,6 @@ class Attacker:
 
         batch = {k: v.to(args.device) for k, v in batch.items()}
 
-        for param in model.parameters():
-            param.requires_grad_(True)
-
         pgd_attacker = PGD(model, attack_word_idx, args.device)
 
         alpha = eps / max(1, max_iter // 2)

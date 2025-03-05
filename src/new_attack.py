@@ -105,7 +105,6 @@ def attack(
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
     post_sep = post_sep[post_sep > 102]
-    post_sep = post_sep[:-2]
     attack_sequence_list = [
         token_id for token_id in dict.fromkeys(post_sep).keys()
     ]
@@ -152,7 +151,6 @@ def attack(
         )
     )
 
-    print("type of post_sep: ", type(post_sep))
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
         post_sep,
         ori_we_matrix,

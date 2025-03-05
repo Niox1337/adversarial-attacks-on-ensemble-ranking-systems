@@ -207,7 +207,8 @@ class BERTWordRecover(WordRecover):
                 ori_sub_tokens = ori_doc_token_ids_list[
                     i : i + len(specific_token_ids_list)
                 ]
-                print("type(ori_sub_tokens): ", type(ori_sub_tokens))
+                print("ori_sub_tokens: ", ori_sub_tokens)
+                print("specific_token_ids_list: ", specific_token_ids_list)
                 if ori_sub_tokens.tolist() == specific_token_ids_list:
                     finded_start_index_list.append(i)
         return finded_start_index_list
@@ -275,17 +276,12 @@ class BERTWordRecover(WordRecover):
         max_sim_dict, max_id_dict = self.get_sim_word_semantic(
             candidate_word_matrix_dict, now_wem
         )
-        print("candidate_word_matrix_dict: ", candidate_word_matrix_dict)
-        print("candidate_word_index_dict: ", candidate_word_index_dict)
-        print("max_id_dict: ", max_id_dict)
-        print("max_sim_dict: ", max_sim_dict)
 
         for word in max_id_dict:
             max_word_index_dict[word] = [
                 candidate_word_index_dict[word][max_id_dict[word][0]]
             ]
 
-        print("max_word_index_dict: ", max_word_index_dict)
 
         m = args.max_attack_word_number
         current_attacked_num = 0

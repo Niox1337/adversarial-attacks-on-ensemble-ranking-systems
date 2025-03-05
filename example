@@ -1,0 +1,12 @@
+retrieved= 0
+for query in queries:
+    corpus
+    document = choose_document(query, corpus)
+    doc_attacked = attack(document)
+    corpus.replace(document, doc_attacked)
+    index(corpus)
+    results = bm25(query, corpus) % k
+    if doc_attacked in results:
+        retrieved += 1
+
+print(retrieved/len(queries))
