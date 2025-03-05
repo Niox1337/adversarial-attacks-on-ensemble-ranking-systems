@@ -209,7 +209,7 @@ class BERTWordRecover(WordRecover):
                 ]
                 print("ori_sub_tokens: ", ori_sub_tokens)
                 print("specific_token_ids_list: ", specific_token_ids_list)
-                if ori_sub_tokens.tolist() == specific_token_ids_list:
+                if ori_sub_tokens == specific_token_ids_list:
                     finded_start_index_list.append(i)
         return finded_start_index_list
 
