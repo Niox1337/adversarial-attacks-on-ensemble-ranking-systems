@@ -7,6 +7,11 @@ candidate_word_matrix_dict:  {'.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.
         [-0.0484,  0.0612,  0.1562,  ..., -0.0019, -0.0238,  0.0089],
         [-0.0123,  0.0727, -0.0372,  ..., -0.0103,  0.0187,  0.0561],
         [ 0.0264,  0.0226,  0.0072,  ...,  0.0107,  0.0187,  0.0161]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'to': tensor([[-0.0033,  0.0010, -0.0033,  ..., -0.0099, -0.0046,  0.0047],
+        [ 0.0158,  0.0060, -0.0122,  ..., -0.0050,  0.0040,  0.0035],
+        [ 0.0137,  0.0126,  0.0017,  ..., -0.0288,  0.0668,  0.0284],
+        [ 0.0264,  0.0226,  0.0072,  ...,  0.0107,  0.0187,  0.0161],
+        [-0.0192, -0.0377, -0.0129,  ...,  0.0077,  0.0828,  0.0351]],
        device='cuda:0', grad_fn=<IndexBackward0>), 'the': tensor([[-4.9057e-03,  3.2084e-04, -9.0553e-03,  ..., -1.1589e-02,
           7.6116e-03,  1.2370e-02],
         [ 1.2232e-02,  1.7792e-02,  3.0522e-02,  ..., -1.3040e-02,
@@ -16,10 +21,19 @@ candidate_word_matrix_dict:  {'.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.
         [-5.3974e-05, -1.2105e-02, -9.5134e-03,  ..., -5.4570e-02,
          -5.3497e-03,  2.8294e-02],
         [ 7.1358e-03, -1.3163e-02, -8.6237e-03,  ..., -1.4211e-02,
-         -1.3587e-03,  1.0604e-02]], device='cuda:0', grad_fn=<IndexBackward0>), 'were': tensor([[ 0.0218,  0.0258, -0.0631,  ..., -0.0340, -0.0503,  0.0126],
-        [ 0.0325,  0.0257, -0.0439,  ..., -0.1091, -0.0779,  0.0032],
-        [ 0.0163, -0.0352, -0.1013,  ..., -0.0319,  0.0175, -0.0167]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'gray': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'robert': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'a': tensor([[ 2.6367e-02,  2.2570e-02,  7.2420e-03,  3.8311e-02, -1.4301e-02,
+         -1.3587e-03,  1.0604e-02]], device='cuda:0', grad_fn=<IndexBackward0>), ',': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.0050,  0.0040,  0.0035],
+        [-0.0049,  0.0003, -0.0091,  ..., -0.0116,  0.0076,  0.0124],
+        [-0.0123,  0.0727, -0.0372,  ..., -0.0103,  0.0187,  0.0561],
+        [ 0.0264,  0.0226,  0.0072,  ...,  0.0107,  0.0187,  0.0161],
+        [-0.0026, -0.0439,  0.0191,  ...,  0.0189, -0.0116,  0.0157]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'gray': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'robert': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'vehicles': tensor([[ 0.0506, -0.0063,  0.0079,  ..., -0.0738,  0.0236,  0.0421],
+        [ 0.0069, -0.0181, -0.0324,  ..., -0.0267, -0.0506,  0.0338]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'in': tensor([[-0.0033,  0.0010, -0.0033,  ..., -0.0099, -0.0046,  0.0047],
+        [-0.0130,  0.0030,  0.0069,  ..., -0.0188, -0.0139,  0.0055],
+        [ 0.0022, -0.0112,  0.0555,  ..., -0.0405,  0.0274,  0.0313],
+        [-0.0015,  0.0504, -0.0504,  ..., -0.0347,  0.0175,  0.0266],
+        [-0.0298,  0.0397, -0.0351,  ..., -0.0215,  0.0137,  0.0143]],
+       device='cuda:0', grad_fn=<IndexBackward0>), 'a': tensor([[ 2.6367e-02,  2.2570e-02,  7.2420e-03,  3.8311e-02, -1.4301e-02,
          -5.9264e-03, -2.5639e-03,  7.8003e-03,  2.9877e-02, -1.5151e-02,
           1.8486e-02, -4.1579e-04,  2.3970e-02,  1.9350e-02,  2.2485e-02,
           1.1764e-02,  2.6986e-02, -2.5026e-02, -2.6322e-02,  1.2468e-02,
@@ -173,22 +187,7 @@ candidate_word_matrix_dict:  {'.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.
           1.0735e-02,  4.4155e-03, -1.2301e-02,  6.5242e-02, -1.6734e-02,
          -1.2548e-02, -5.3689e-02, -5.4289e-03,  1.2833e-02, -7.9711e-03,
           1.0702e-02,  1.8711e-02,  1.6054e-02]], device='cuda:0',
-       grad_fn=<IndexBackward0>), ',': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.0050,  0.0040,  0.0035],
-        [-0.0049,  0.0003, -0.0091,  ..., -0.0116,  0.0076,  0.0124],
-        [-0.0123,  0.0727, -0.0372,  ..., -0.0103,  0.0187,  0.0561],
-        [ 0.0264,  0.0226,  0.0072,  ...,  0.0107,  0.0187,  0.0161],
-        [-0.0026, -0.0439,  0.0191,  ...,  0.0189, -0.0116,  0.0157]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'travel': tensor([[ 0.1134,  0.0879, -0.0635,  ...,  0.0343, -0.0587, -0.0385],
-        [ 0.0746,  0.1017,  0.0083,  ...,  0.0534,  0.0337, -0.0511],
-        [ 0.0196,  0.0773,  0.0580,  ...,  0.0425,  0.0024, -0.1001],
-        [ 0.0965,  0.1210,  0.0243,  ...,  0.0051, -0.0567, -0.0353],
-        [ 0.0464,  0.0120, -0.0334,  ...,  0.0432,  0.0340, -0.0866]],
-       device='cuda:0', grad_fn=<IndexBackward0>), 'trailers': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>), 'in': tensor([[-0.0033,  0.0010, -0.0033,  ..., -0.0099, -0.0046,  0.0047],
-        [-0.0130,  0.0030,  0.0069,  ..., -0.0188, -0.0139,  0.0055],
-        [ 0.0022, -0.0112,  0.0555,  ..., -0.0405,  0.0274,  0.0313],
-        [-0.0015,  0.0504, -0.0504,  ..., -0.0347,  0.0175,  0.0266],
-        [-0.0298,  0.0397, -0.0351,  ..., -0.0215,  0.0137,  0.0143]],
-       device='cuda:0', grad_fn=<IndexBackward0>)}Traceback (most recent call last):
+       grad_fn=<IndexBackward0>), 'trailers': tensor([], device='cuda:0', size=(0, 768), grad_fn=<IndexBackward0>)}Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
@@ -209,10 +208,10 @@ candidate_word_matrix_dict:  {'.': tensor([[ 0.0158,  0.0060, -0.0122,  ..., -0.
     return forward_call(*args, **kwargs)
 TypeError: Cat.forward() takes 1 positional argument but 4 were given
 
-candidate_word_index_dict:  {'.': [1998, 103, 1028, 1025, 1996], 'the': [103, 1012, 1997, 2019, 1010], 'were': [2001, 4694, 2018], 'gray': [], 'robert': [], 'a': [1996], ',': [1998, 103, 1025, 1996, 1011], 'travel': [7930, 8932, 6158, 15183, 7837], 'trailers': [], 'in': [1997, 2000, 2005, 2012, 2007]}
-max_id_dict:  {'.': tensor([0], device='cuda:0'), 'the': tensor([0], device='cuda:0'), 'were': tensor([0], device='cuda:0'), 'a': tensor([0], device='cuda:0'), ',': tensor([0], device='cuda:0'), 'travel': tensor([0], device='cuda:0'), 'in': tensor([0], device='cuda:0')}
-max_sim_dict:  {'.': tensor([0.4929], device='cuda:0', grad_fn=<MaxBackward0>), 'the': tensor([0.4528], device='cuda:0', grad_fn=<MaxBackward0>), 'were': tensor([0.6748], device='cuda:0', grad_fn=<MaxBackward0>), 'a': tensor([0.5559], device='cuda:0', grad_fn=<MaxBackward0>), ',': tensor([0.5746], device='cuda:0', grad_fn=<MaxBackward0>), 'travel': tensor([0.5584], device='cuda:0', grad_fn=<MaxBackward0>), 'in': tensor([0.4527], device='cuda:0', grad_fn=<MaxBackward0>)}
-max_word_index_dict:  {'.': [1998], 'the': [103], 'were': [2001], 'a': [1996], ',': [1998], 'travel': [7930], 'in': [1997]}
+candidate_word_index_dict:  {'.': [1998, 103, 1028, 1025, 1996], 'to': [1997, 1998, 1999, 1996, 1505], 'the': [103, 1012, 1997, 2019, 1010], ',': [1998, 103, 1025, 1996, 1011], 'gray': [], 'robert': [], 'vehicles': [3765, 19207], 'in': [1997, 2000, 2005, 2012, 2007], 'a': [1996], 'trailers': []}
+max_id_dict:  {'.': tensor([0], device='cuda:0'), 'to': tensor([0], device='cuda:0'), 'the': tensor([0], device='cuda:0'), ',': tensor([0], device='cuda:0'), 'vehicles': tensor([0], device='cuda:0'), 'in': tensor([0], device='cuda:0'), 'a': tensor([0], device='cuda:0')}
+max_sim_dict:  {'.': tensor([0.4912], device='cuda:0', grad_fn=<MaxBackward0>), 'to': tensor([0.4606], device='cuda:0', grad_fn=<MaxBackward0>), 'the': tensor([0.4527], device='cuda:0', grad_fn=<MaxBackward0>), ',': tensor([0.5743], device='cuda:0', grad_fn=<MaxBackward0>), 'vehicles': tensor([0.5177], device='cuda:0', grad_fn=<MaxBackward0>), 'in': tensor([0.4526], device='cuda:0', grad_fn=<MaxBackward0>), 'a': tensor([0.5539], device='cuda:0', grad_fn=<MaxBackward0>)}
+max_word_index_dict:  {'.': [1998], 'to': [1997], 'the': [103], ',': [1998], 'vehicles': [3765], 'in': [1997], 'a': [1996]}
 new_doc_token_id_list:  tensor([21146,  9153,  3604, 21389,  1012, 21146,  9153,  3604, 21389,  2020,
         10517,  4683,  2328,  2090,  3874,  1998,  2432,  1012,  2631,  2011,
          3068,  7156,  2728,  3897,  1010,  1996,  3813,  2001,  2761,  4350,
