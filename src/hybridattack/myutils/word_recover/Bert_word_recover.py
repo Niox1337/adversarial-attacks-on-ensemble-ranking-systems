@@ -207,10 +207,9 @@ class BERTWordRecover(WordRecover):
                 ori_sub_tokens = ori_doc_token_ids_list[
                     i : i + len(specific_token_ids_list)
                 ]
-                if ori_sub_tokens == specific_token_ids_list:
+                print("type(ori_sub_tokens): ", type(ori_sub_tokens))
+                if ori_sub_tokens.tolist() == specific_token_ids_list:
                     finded_start_index_list.append(i)
-                else:
-                    raise ValueError("Something went wrong")
         return finded_start_index_list
 
     def replace_one_word_token_ids(
