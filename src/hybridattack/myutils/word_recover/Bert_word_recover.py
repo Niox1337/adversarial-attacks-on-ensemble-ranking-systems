@@ -326,7 +326,7 @@ class BERTWordRecover(WordRecover):
                 # inference
                 score = self.eval_model(
                     model, new_doc_token_id_list, query_input_id, args
-                )[0][0]
+                )
                 print("scores: ", score)
 
                 rank_pos = self.get_rank_pos(ori_qds, score, attack_doc_id, qid)
