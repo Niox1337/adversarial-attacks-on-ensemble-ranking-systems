@@ -207,6 +207,7 @@ class BERTWordRecover(WordRecover):
                 ori_sub_tokens = ori_doc_token_ids_list[
                     i : i + len(specific_token_ids_list)
                 ]
+                print("type of ori_sub_tokens", type(ori_sub_tokens))
                 if ori_sub_tokens.tolist() == specific_token_ids_list:
                     finded_start_index_list.append(i)
         return finded_start_index_list
