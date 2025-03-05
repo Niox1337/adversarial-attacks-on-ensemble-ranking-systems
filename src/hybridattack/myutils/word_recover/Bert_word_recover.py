@@ -190,7 +190,7 @@ class BERTWordRecover(WordRecover):
             token_type_ids_lst = token_type_ids_lst.to(args.device)
             position_ids_lst = position_ids_lst.to(args.device)
             # outputs = model(input_id_lst, token_type_ids_lst, position_ids_lst)
-            outputs = model(input_id_lst, token_type_ids=token_type_ids_lst)
+            outputs = model(input_ids=input_id_lst, token_type_ids=token_type_ids_lst, position_ids=position_ids_lst)
             print(outputs)
             scores = outputs.detach().cpu().numpy()
             # score [B,1]
