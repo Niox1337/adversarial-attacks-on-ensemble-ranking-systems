@@ -152,7 +152,7 @@ def attack(
         )
     )
 
-
+    print("type of post_sep: ", type(post_sep))
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
         post_sep,
         ori_we_matrix,
