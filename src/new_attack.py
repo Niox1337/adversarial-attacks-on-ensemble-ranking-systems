@@ -328,7 +328,7 @@ def main():
             doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
 
             same = recovered_doc==doc_text_decoded
-            to_write = f"key: {key}\nrecovered_doc: {recovered_doc}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nsame: {same}"
+            to_write = f"key: {key}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nori_score: {batch['scores_a'][0]}\nsame: {same}"
 
             if args.toy:
                 print(to_write)
