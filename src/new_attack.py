@@ -152,7 +152,7 @@ def attack(
     )
 
     new_doc_token_id_list, score = word_re.recover_document_greedy_rank_pos(
-        post_sep,
+        post_sep.tolist(),
         ori_we_matrix,
         attacked_we_matrix,
         sim_word_ids_dict,
