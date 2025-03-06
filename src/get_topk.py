@@ -53,22 +53,22 @@ def get_topk(
         .to_dict()
     )
 
-    # sort by score
-    data = {
-        qid: [doc_id for doc_id, _ in sorted(doc_score.items(), key=lambda item: item[1], reverse=True)[:k]]
-        for qid, doc_score in scores.items()
-    }
+    # # sort by score
+    # data = {
+    #     qid: [doc_id for doc_id, _ in sorted(doc_score.items(), key=lambda item: item[1], reverse=True)[:k]]
+    #     for qid, doc_score in scores.items()
+    # }
 
     # Add ranked documents
-    ranked_docs["doc_id_b"] = ranked_docs["qid"].map(data)
-
-    formatted_model = model_name_or_path.replace("/", "-")
-    formatted_dataset = dataset_id.replace("/", "-")
-    out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}.tsv.gz"
-    score_out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}-scores.json.gz"
-
-    ranked_docs.to_csv(out_file, sep="\t", index=False)
-    save_json(scores, score_out_file)
+    # ranked_docs["doc_id_b"] = ranked_docs["qid"].map(data)
+    #
+    # formatted_model = model_name_or_path.replace("/", "-")
+    # formatted_dataset = dataset_id.replace("/", "-")
+    # out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}.tsv.gz"
+    # score_out_file = f"{out_dir}/{formatted_model}-{formatted_dataset}-{k}-scores.json.gz"
+    #
+    # ranked_docs.to_csv(out_file, sep="\t", index=False)
+    # save_json(scores, score_out_file)
 
     return ranked_docs, scores
 

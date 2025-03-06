@@ -204,14 +204,22 @@ def main():
         dataloader = []
 
         for qid, group in ranked_pairs.groupby("qid"):
-            group = group.sort_values(by="score", ascending=False)  # Lower score = more relevant
+            group = group.sort_values(by="score", ascending=False)
+            if len(group) < 3:
+                continue
 
-            docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
-            docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
+            # docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
+            # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
+
+            doc_a = group.iloc[1:].sample(n=1).iloc[0]
+            doc_b = group.drop(doc_a.index)
+
+            docid_a = [doc_a["doc_id"]]
+            docid_b = doc_b["doc_id"].tolist()
 
             sequences_a = tokenizer(
-                [group.iloc[-1]["query"]],
-                [group.iloc[-1]["text"]],
+                [doc_a["query"]],
+                [doc_a["text"]],
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
@@ -219,16 +227,18 @@ def main():
             )
 
             sequences_b = tokenizer(
-                [group.iloc[-1]["query"]] * len(docid_b),
-                group.iloc[:-1]["text"].tolist(),
+                [doc_b["query"]] * len(docid_b),
+                doc_b["text"].tolist(),
                 return_tensors="pt",
                 padding=True,
                 truncation=True,  # Truncate if exceeding model max length
                 max_length=512
             )
 
-            scores_a = [group.iloc[-1]["score"]]  # Score for docid_a
-            scores_b = group.iloc[:-1]["score"].tolist()  # Scores for docid_b
+            # scores_a = [group.iloc[-1]["score"]]  # Score for docid_a
+            # scores_b = group.iloc[:-1]["score"].tolist()  # Scores for docid_b
+            scores_a = [doc_a["score"]]
+            scores_b = doc_b["score"].tolist()
 
             dataloader.append({
                 "qid": str(qid),
@@ -335,6 +345,8 @@ def main():
             else:
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
+
+    return
 
 
 if __name__ == "__main__":
