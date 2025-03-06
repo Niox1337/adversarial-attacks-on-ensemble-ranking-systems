@@ -30,4 +30,6 @@ for ids in attack_ids_docs.keys():
     if not successful_attack.empty:
         retrieved_attack_num += 1
 
-print(retrieved_attack_num)
+print("Number of successful attacks: ", len(attack_ids_docs))
+print("Retrieved attacks: ", retrieved_attack_num)
+print("Ratio: ", retrieved_attack_num/len(attack_ids_docs))
