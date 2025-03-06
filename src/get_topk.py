@@ -10,7 +10,7 @@ def get_topk(
     dataset_id: str,
     model_name_or_path: str,
     index_path: str = "./index",
-    k=10,
+    k=1000,
     batch_size: int = 128,
 ):
     dataset = irds.load(dataset_id)
