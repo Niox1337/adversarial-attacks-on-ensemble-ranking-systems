@@ -191,6 +191,8 @@ def main():
         corpus=corpus
     )
 
+    ranked_pairs = pd.DataFrame()
+
     if not args.toy:
         # dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         # collator = (
@@ -275,8 +277,7 @@ def main():
         }
 
 
-    attack_pair_docs = {}   # {f"{qid}_{doc_id_a}": tokens}
-    attack_pair_scores = {} # {f"{qid}_{doc_id_a}": new_score}
+    attack_pair_docs = {}   # {doc_id: text}
 
     for batch in dataloader:
         attack_text_dict = {}
@@ -323,7 +324,6 @@ def main():
         attack_text_dict[new_key] = new_tokens
         attack_score_dict[new_key] = score
         attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
-        attack_pair_scores[new_key] = score
 
         for key, text in attack_text_dict.items():
             if isinstance(text, torch.Tensor):
@@ -355,7 +355,7 @@ def main():
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return dataloader, attack_pair_scores, attack_pair_docs
+    return ranked_pairs, attack_pair_docs, args
 
 
 if __name__ == "__main__":
