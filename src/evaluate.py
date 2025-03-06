@@ -13,7 +13,7 @@ for ids, text in attack_ids_docs.items():
     doc_id = ids.split("_")[1]
     attack_data[doc_id] = text
 
-index = PisaIndex("./index", threads=4)
+index = PisaIndex("./attack_index", threads=4)
 index.index(attack_data)
 bm25 = index.bm25(num_results=100)
 
