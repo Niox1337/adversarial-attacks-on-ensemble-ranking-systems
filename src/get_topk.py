@@ -26,7 +26,7 @@ def get_topk(
     #     )
     # )
 
-    bm25 = index.bm25() % 100
+    bm25 = index.bm25()
 
     model = (
         CatTransformer.from_pretrained(model_name_or_path, batch_size=batch_size) % k

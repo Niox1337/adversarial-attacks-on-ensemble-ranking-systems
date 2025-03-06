@@ -204,15 +204,16 @@ def main():
         dataloader = []
 
         for qid, group in ranked_pairs.groupby("qid"):
-            group = group.sort_values(by="score", ascending=False)
-            if len(group) < 3:
+            if len(group) < 10:
                 continue
+            group = group.sort_values(by="score", ascending=False)
+
 
             # docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
             # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
-            doc_a = group.iloc[1:].sample(n=1).iloc[0]
-            doc_b = group.drop(doc_a.index)
+            doc_a = group.iloc[10:].sample(n=1).iloc[0]
+            doc_b = group.iloc[:10]
 
             docid_a = [doc_a["doc_id"]]
             docid_b = doc_b["doc_id"].tolist()
@@ -272,6 +273,11 @@ def main():
                 "4": 0.2
             }
         }
+
+
+    attack_pair_docs = {}   # {f"{qid}_{doc_id_a}": tokens}
+    attack_pair_scores = {} # {f"{qid}_{doc_id_a}": new_score}
+
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
@@ -316,6 +322,8 @@ def main():
         new_key = f"{qid}_{doc_id_a}"
         attack_text_dict[new_key] = new_tokens
         attack_score_dict[new_key] = score
+        attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+        attack_pair_scores[new_key] = score
 
         for key, text in attack_text_dict.items():
             if isinstance(text, torch.Tensor):
@@ -340,13 +348,14 @@ def main():
             same = recovered_doc==doc_text_decoded
             to_write = f"key: {key}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nori_score: {batch['scores_a'][0]}\nsame: {same}"
 
+
             if args.toy:
                 print(to_write)
             else:
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return
+    return dataloader, attack_pair_scores, attack_pair_docs
 
 
 if __name__ == "__main__":
