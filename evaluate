@@ -1,0 +1,7 @@
+#!/bin/bash
+. venv/bin/activate
+git pull
+python -m src.evaluate 2>&1 | tee output/output_log.txt
+git add *
+git commit -m "update output"
+git push
