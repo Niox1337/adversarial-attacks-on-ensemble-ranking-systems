@@ -19,12 +19,12 @@ def get_topk(
 
     # Uncomment the following to create indexes
 
-    index.index(
-        (
-            {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
-            for doc in dataset.docs_iter()
-        )
-    )
+    # index.index(
+    #     (
+    #         {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
+    #         for doc in dataset.docs_iter()
+    #     )
+    # )
 
     bm25 = index.bm25(num_results=100)
 
