@@ -1993,4 +1993,214 @@ recovered_attack_doc: the salvation army movement expanded rapidly to canada, au
 ori_doc: the salvation army movement expanded rapidly to canada, australia, france, switzerland, india, south africa, iceland, and local neighborhood units. the salvation army is active in virtually every corner of the world. general booth's death in 1912 was a great loss to the salvation army. however, he had laid a firm foundation'even his death could not deter the ministry's onward march. his eldest son, bramwell booth, succeeded him.
 attack_score_dict[key]: [-0.22316977]
 ori_score: -0.2825322449207306
+same: Falsekey: 1037798_6438657
+recovered_attack_doc: amazon. com : fall guy and the complete season 1 : lee majors, douglas barr, heather thomas, jo ann pflug, monte markham, william smith, ken swofford, bennett ohta, ken scott, tony young, erin gray, robert lussier, bruce bilson, christian i. nyby ii, cliff bole, daniel haller, frank beascoechea, jack arnold, lawrence dobkin, michael lange : movies & tv
+ori_doc: amazon. com : fall guy, the complete season 1 : lee majors, douglas barr, heather thomas, jo ann pflug, monte markham, william smith, ken swofford, bennett ohta, ken scott, tony young, erin gray, robert lussier, bruce bilson, christian i. nyby ii, cliff bole, daniel haller, frank beascoechea, jack arnold, lawrence dobkin, michael lange : movies & tv
+attack_score_dict[key]: [-2.603244]
+ori_score: -4.345527648925781
+same: Falsekey: 104861_8131235
+recovered_attack_doc: of course, a concrete roof requires more support than a typical wooden roof. concrete weighs a lot, and the outside walls have to be capable of supporting the giant slab. interior support beams can help, but the construction works best when concrete walls, floor and roof form a solid shell.
+ori_doc: of course, a concrete roof requires more support than a typical wooden roof. concrete weighs a lot, and the outside walls have to be capable of supporting the giant slab. interior support beams can help, but the construction works best when concrete walls, floor and roof form a solid shell.
+attack_score_dict[key]: -9.11823558807373
+ori_score: -9.11823558807373
+same: Truekey: 1063750_7860032
+recovered_attack_doc: conscription in england conscription has only been deemed necessary on two occasions during the first and second world wars ww1 conscription ended in 1919 but the compulsory military service that began in 1939 for the second world war didn t come to an end until the 1960sonscription in britain conscription has only been deemed necessary on two occasions during the first and second world wars ww1 conscription ended in 1919 but the compulsory military service that began in 1939 for the second world war didn t come to an end until the 1960s
+ori_doc: conscription in britain conscription has only been deemed necessary on two occasions during the first and second world wars ww1 conscription ended in 1919 but the compulsory military service that began in 1939 for the second world war didn t come to an end until the 1960sonscription in britain conscription has only been deemed necessary on two occasions during the first and second world wars ww1 conscription ended in 1919 but the compulsory military service that began in 1939 for the second world war didn t come to an end until the 1960s
+attack_score_dict[key]: [-7.3994255]
+ori_score: -8.356571197509766
+same: Falsekey: 1103812_8293805
+recovered_attack_doc: commonwealth of independent states ; putative successor to the ussr, except that the baltic republics of estonia, latvia, and lithuania never joined. contrary to another definition of cis at the urban dictionary, the cis does not stand for communist independent states..
+ori_doc: commonwealth of independent states ; putative successor to the ussr, except that the baltic republics of estonia, latvia, and lithuania never joined. contrary to another definition of cis at the urban dictionary, the cis does not stand for communist independent states..
+attack_score_dict[key]: -0.801659345626831
+ori_score: -0.801659345626831
+same: Truekey: 1106007_5952125
+recovered_attack_doc: responsible for control in visceral effectors or or visceral reflexes : • smooth muscle, glands, the heart or • e or g or blood pressure, cardiac output, plasma or glucose or the autonomic system is often considered a motor system for control in or autonomic ( visceral ) effectors. these effectors include smooth muscle, glands, and the heart. it also utilizes sensory inputs as part of visceral. reflexes and independently as part of broader control mechanisms.
+ori_doc: responsible for control of visceral effectors and. visceral reflexes : • smooth muscle, glands, the heart. • e. g. blood pressure, cardiac output, plasma. glucose. the autonomic system is often considered a motor system for control of. autonomic ( visceral ) effectors. these effectors include smooth muscle, glands, and the heart. it also utilizes sensory inputs as part of visceral. reflexes and independently as part of broader control mechanisms.
+attack_score_dict[key]: [-2.2886143]
+ori_score: -3.7204995155334473
+same: Falsekey: 1110199_7680811
+recovered_attack_doc: sky wifi smartpen the sky wifi smartpen is a middle - tier device from livescribe. like the livescribe 3, it can sync your notes wirelessly to an iphone or ipad in real time. but unlike the more premium pen, which syncs to your mobile device via bluetooth, the sky wifi must be connected to a local wi - fi network to sync.
+ori_doc: sky wifi smartpen. the sky wifi smartpen is a middle - tier device from livescribe. like the livescribe 3, it can sync your notes wirelessly to an iphone or ipad in real time. but unlike the more premium pen, which syncs to your mobile device via bluetooth, the sky wifi must be connected to a local wi - fi network to sync.
+attack_score_dict[key]: [-1.5596926]
+ori_score: -2.0567984580993652
+same: Falsekey: 1112341_8223035
+recovered_attack_doc: life today with james and betty robison not only ministers to people directly through daily broadcast, but also presents the global mission focus of life outreach international. life today with james and betty robison not only ministers to people directly through the daily broadcast, but also presents the global mission focus of life outreach international. home life today tv
+ori_doc: life today with james and betty robison not only ministers to people directly through the daily broadcast, but also presents the global mission focus of life outreach international. life today with james and betty robison not only ministers to people directly through the daily broadcast, but also presents the global mission focus of life outreach international. home life today tv
+attack_score_dict[key]: [-8.185102]
+ori_score: -8.416196823120117
+same: Falsekey: 1113437_3049193
+recovered_attack_doc: of symbiotic relationship between the mistletoe or the spruce is parasitism > good buddies : symbiotic relationships. answer key for class activity. mistletoe / spruce tree. mistletoe extracts water and nutrients from the spruce tree to the. _ _ _ _ mistletoe / spruce tree mistletoe extracts water and nutrients from the spruce tree. 02. 03. 2010 · mistletoe is a parasite. it grows on trees, spruce and others, and absorbs nutrients. it is called hemi - parasitic.
+ori_doc: the symbiotic relationship between the mistletoe and the spruce is parasitism. good buddies : symbiotic relationships. answer key for class activity. mistletoe / spruce tree. mistletoe extracts water and nutrients from the spruce tree to the. _ _ _ _ mistletoe / spruce tree mistletoe extracts water and nutrients from the spruce tree. 02. 03. 2010 · mistletoe is a parasite. it grows on trees, spruce and others, and absorbs nutrients. it is called hemi - parasitic.
+attack_score_dict[key]: [-6.2159863]
+ori_score: -7.801941871643066
+same: Falsekey: 1114646_5959593
+recovered_attack_doc: a treatment with antiviral medications can help people who are bothered by genital herpes outbreaks stay symptom free longer these medications can also reduce the severity and duration of symptoms when they do flare up drug therapy is not a cure but it can make living with the condition easierthere are three major medications commonly used to treat genital herpes symptoms acyclovir zovirax famciclovir famvir and valacyclovir valtrexhese medications can also reduce the severity and duration of symptoms when they do flare up drug therapy is not a cure but it can make living with the condition easier there are three major medications commonly used to treat genital herpes symptoms acyclovir zovirax famciclovir famvir and valacyclovir valtrex
+ori_doc: a treatment with antiviral drugs can help people who are bothered by genital herpes outbreaks stay symptom free longer these drugs can also reduce the severity and duration of symptoms when they do flare up drug therapy is not a cure but it can make living with the condition easierthere are three major drugs commonly used to treat genital herpes symptoms acyclovir zovirax famciclovir famvir and valacyclovir valtrexhese drugs can also reduce the severity and duration of symptoms when they do flare up drug therapy is not a cure but it can make living with the condition easier there are three major drugs commonly used to treat genital herpes symptoms acyclovir zovirax famciclovir famvir and valacyclovir valtrex
+attack_score_dict[key]: [-2.153552]
+ori_score: -2.6684107780456543
+same: Falsekey: 1114819_8508255
+recovered_attack_doc: this article discusses of definitions or types in home medical equipment ( hme ), also known as durable medical equipment ( dme ), or durable medical equipment prosthetics and orthotics ( dmepos ). ome equipment, such as oxygen, is fda regulated and must be prescribed by a physician before purchase whether insurance reimbursed or otherwise. of physician may recommend a supplier for of home medical equipment, or of patient will have to research this on their own.
+ori_doc: this article discusses the definitions and types of home medical equipment ( hme ), also known as durable medical equipment ( dme ), and durable medical equipment prosthetics and orthotics ( dmepos ). ome equipment, such as oxygen, is fda regulated and must be prescribed by a physician before purchase whether insurance reimbursed or otherwise. the physician may recommend a supplier for the home medical equipment, or the patient will have to research this on their own.
+attack_score_dict[key]: [-0.25092325]
+ori_score: -0.4862256646156311
+same: Falsekey: 1115776_7442432
+recovered_attack_doc: in fact, this treated are recognized as a major cause of aml ( a type of leukemia ) in children aml can also stem from treatment for breast cancer, ovarian cancer, hodgkin's disease, and non - hodgkin's lymphoma, accounting for 20 % of aml cases radiated
+ori_doc: in fact, this treatment is recognized as a major cause of aml ( a type of leukemia ) in children. aml can also stem from treatment for breast cancer, ovarian cancer, hodgkin's disease, and non - hodgkin's lymphoma, accounting for 20 % of aml cases. radiation.
+attack_score_dict[key]: [-8.387522]
+ori_score: -9.117171287536621
+same: Falsekey: 1117099_5319158
+recovered_attack_doc: hawaiian archipelago. whilst most volcanic activity happens at plate margins, there are cases of volcanoes erupting in the middle of plates. the hawaiian archipelago are formed by volcanic activity, despite the nearest plate margin being 3, 200 km away. some geologists have suggested that a'hot spot'in the mantle, which remains stationary as the pacific plate moves over it, explains the existence of the island chain. he hawaiian islands are formed by volcanic activity, despite the nearest plate margin being 3, 200 km away. some geologists have suggested that a'hot spot'in the mantle, which remains stationary as the pacific plate moves over it, explains the existence of the island chain.
+ori_doc: hawaiian islands. whilst most volcanic activity happens at plate margins, there are cases of volcanoes erupting in the middle of plates. the hawaiian islands are formed by volcanic activity, despite the nearest plate margin being 3, 200 km away. some geologists have suggested that a'hot spot'in the mantle, which remains stationary as the pacific plate moves over it, explains the existence of the island chain. he hawaiian islands are formed by volcanic activity, despite the nearest plate margin being 3, 200 km away. some geologists have suggested that a'hot spot'in the mantle, which remains stationary as the pacific plate moves over it, explains the existence of the island chain.
+attack_score_dict[key]: [-3.7226586]
+ori_score: -4.997583866119385
+same: Falsekey: 1121402_188217
+recovered_attack_doc: definitions for contour plowing. contour plowing. contour ploughing or contour farming is the farming practice of ploughing and / or planting across a slope following its elevation contour lines.
+ori_doc: definitions for contour plowing. contour plowing. contour ploughing or contour farming is the farming practice of ploughing and / or planting across a slope following its elevation contour lines.
+attack_score_dict[key]: -2.4849586486816406
+ori_score: -2.4849586486816406
+same: Truekey: 1121709_7888078
+recovered_attack_doc: those who do backdrop check are analyzed these aspects : criminal backdrop : 82 percent — confirm employment : 62 percent — confirm identity : 60 percent — confirm education : 50 percent — check for illegal drug use : 44 percent — check licensing : 38 percent — credit check : 29 percent
+ori_doc: those who do background check are analyzing these aspects : criminal background : 82 percent ; confirm employment : 62 percent ; confirm identity : 60 percent ; confirm education : 50 percent ; check for illegal drug use : 44 percent ; check licensing : 38 percent ; credit check : 29 percent
+attack_score_dict[key]: [-7.183217]
+ori_score: -8.497269630432129
+same: Falsekey: 1124210_2258595
+recovered_attack_doc: summary : boats have perforations at the end plates while tracheids do not have end plates. tracheids are derived from single individual cells while vessels are derived from a pile of cells. tracheids are present in all vascular plants whereas vessels are confined to angiosperms. tracheids are thin whereas vessel elements are wide. tracheids have a much higher surface - to - volume ratio as compared to vessel elements. vessels are broader than tracheids with which they are associated. morphology of the perforation plate is different from that in tracheids. racheids are thin whereas vessel elements are wide. tracheids have a much higher surface - to - volume ratio as compared to vessel elements. vessels are broader than tracheids with which they are associated. morphology of the perforation plate is different from that in tracheids.
+ori_doc: summary : vessels have perforations at the end plates while tracheids do not have end plates. tracheids are derived from single individual cells while vessels are derived from a pile of cells. tracheids are present in all vascular plants whereas vessels are confined to angiosperms. tracheids are thin whereas vessel elements are wide. tracheids have a much higher surface - to - volume ratio as compared to vessel elements. vessels are broader than tracheids with which they are associated. morphology of the perforation plate is different from that in tracheids. racheids are thin whereas vessel elements are wide. tracheids have a much higher surface - to - volume ratio as compared to vessel elements. vessels are broader than tracheids with which they are associated. morphology of the perforation plate is different from that in tracheids.
+attack_score_dict[key]: [-1.6742485]
+ori_score: -1.9091336727142334
+same: Falsekey: 1129237_7337950
+recovered_attack_doc: ( redirected from hydrogen cyanide gas ) hydrogen cyanide ( hcn ), sometimes called prussic acid, is a chemical compound with the chemical formula hcn > it is a colorless, extremely poisonous and flammable liquid that boils slightly above room temperature, at 25. 6 °c ( 78. 1 °f ).
+ori_doc: ( redirected from hydrogen cyanide gas ) hydrogen cyanide ( hcn ), sometimes called prussic acid, is a chemical compound with the chemical formula hcn. it is a colorless, extremely poisonous and flammable liquid that boils slightly above room temperature, at 25. 6 °c ( 78. 1 °f ).
+attack_score_dict[key]: [-0.5521085]
+ori_score: -1.138248324394226
+same: Falsekey: 1133167_6299575
+recovered_attack_doc: weather in jamaica in november. cooler weather - for jamaica - begins to swing in during november, when the weather begins to dry up. november is an important month as it is the end of the off - season and severe tropical weather should clear by the end of the month.
+ori_doc: weather in jamaica in november. cooler weather - for jamaica - begins to swing in during november, when the weather begins to dry up. november is an important month as it is the end of the off - season and severe tropical weather should clear by the end of the month.
+attack_score_dict[key]: -0.07060927897691727
+ori_score: -0.07060927897691727
+same: Truekey: 130510_1047769
+recovered_attack_doc: motion of vacate judgment law & legal definition. a motion of vacate judgment refers to a request that is filed before the court that entered the judgment to dismiss the judgment. law prescribes specific time line and grounds for filing such motions. there are state specific laws on the subject which vary from state to state. otion to vacate judgment law & legal definition. a motion to vacate judgment refers to a request that is filed before the court that entered the judgment to dismiss the judgment.
+ori_doc: motion to vacate judgment law & legal definition. a motion to vacate judgment refers to a request that is filed before the court that entered the judgment to dismiss the judgment. law prescribes specific time line and grounds for filing such motions. there are state specific laws on the subject which vary from state to state. otion to vacate judgment law & legal definition. a motion to vacate judgment refers to a request that is filed before the court that entered the judgment to dismiss the judgment.
+attack_score_dict[key]: [-5.6168146]
+ori_score: -6.974660873413086
+same: Falsekey: 131843_1935431
+recovered_attack_doc: searching to find any definition and meaning of the word at of - definition > com online dictionary what does mean by scurried | scurried definition | online dictionary and definition. searching to find any definition and meaning of a word at of - definition. com online dictionary definition
+ori_doc: search to find any definition and meaning of a word at the - definition. com online dictionary what does mean by scurried | scurried definition | online dictionary and definition. search to find any definition and meaning of a word at the - definition. com online dictionary definition
+attack_score_dict[key]: [-11.327723]
+ori_score: -11.511948585510254
+same: Falsekey: 146187_8795495
+recovered_attack_doc: relating searches : 1 calories and fat and protein and fiber and & carbs in wendys doublestack. 2 calories and fat and protein and fiber and & carbs in wendys doubled cheeseburger. calories and fat and protein and fiber, & carbs in wendys double stack.
+ori_doc: related searches : 1 calories, fat, protein, fiber, & carbs in wendys doublestack. 2 calories, fat, protein, fiber, & carbs in wendys double cheeseburger. calories, fat, protein, fiber, & carbs in wendys double stack.
+attack_score_dict[key]: [-7.8381367]
+ori_score: -9.245059967041016
+same: Falsekey: 148538_8080460
+recovered_attack_doc: to determine if you're a bad fit for a bsn program, you'll first want to consider your background. there are generally three types of bsn students. 1 an aspiring rn who attends a four - year college or university. 2 an rn looking to get their bachelor's degree and enrolls in an rn - bsn program. bachelor of science in nursing ( bsn ) degree prepares you for a job as a registered nurse. while you can work as an rn with an associate's degree, nurses with a bsn are typically given more responsibility, supervisory roles and higher salaries.
+ori_doc: to determine if you're a good fit for a bsn program, you'll first want to consider your background. there are generally three types of bsn students. 1 an aspiring rn who attends a four - year college or university. 2 an rn looking to get their bachelor's degree and enrolls in an rn - bsn program. bachelor of science in nursing ( bsn ) degree prepares you for a job as a registered nurse. while you can work as an rn with an associate's degree, nurses with a bsn are typically given more responsibility, supervisory roles and higher salaries.
+attack_score_dict[key]: [-0.8813614]
+ori_score: -1.0315349102020264
+same: Falsekey: 156493_1277720
+recovered_attack_doc: shubunkin goldfish can grow of be 12 centimetres and so according to this rule, you should give each goldfish 12 gallons. this guideline works better for small fish than for big goldfish. instead, i like to follow the guideline # 2 below.
+ori_doc: shubunkin goldfish can grow to be 12 inches, so according to this rule, you should give each goldfish 12 gallons. this guideline works better for small fish than for big goldfish. instead, i like to follow the guideline # 2 below.
+attack_score_dict[key]: [-0.07300346]
+ori_score: -0.12808887660503387
+same: Falsekey: 168216_4498419
+recovered_attack_doc: the answer. the pathogens causing atypical pneumonia include : mycoplasma pneumonia. chlamydia psittaci. chlamydia pneumonia. coxiella burnetii. francisella tularensis. legionella pneumophila. viruses including influenza a or b, parainfluenza, adenovirus and respiratory syncytial virus.
+ori_doc: the answer. the pathogens causing atypical pneumonia include : mycoplasma pneumonia. chlamydia psittaci. chlamydia pneumonia. coxiella burnetii. francisella tularensis. legionella pneumophila. viruses including influenza a and b, parainfluenza, adenovirus and respiratory syncytial virus.
+attack_score_dict[key]: [-0.10452627]
+ori_score: -0.11409016698598862
+same: Falsekey: 182539_5567729
+recovered_attack_doc: and, a function is known as decreasing if y - value decreases when x is increases and denoted as if x 1 2 $ \ rightarrow $ f ( x 1 2 ). a function that either increases or decreases everywhere in an interval is called monotonic on the interval.
+ori_doc: and, a function is known as decreasing if y - value decreases when x is increases and denoted as if x 1 2 $ \ rightarrow $ f ( x 1 2 ). a function that either increases or decreases everywhere in an interval is called monotonic on the interval.
+attack_score_dict[key]: -0.8063822984695435
+ori_score: -0.8063822984695435
+same: Truekey: 183378_1886705
+recovered_attack_doc: potassium voltage - gated channel, isk - related family, member 1 > kcne2 ( nm _ 172201 > 1 ) encodes a voltage gated potassium channel protein ( also called mirp1 ) that assembles with the kcnh2 pore - forming protein ( also called herg ) to alter its function. the kcne2 gene contains 2 exons ( 1 coding exon ) and is located at 21q22. loss of function mutations in kcne2 account for approximately 1 % of all individuals with romano - ward syndrome, an autosomal dominant form of long qt syndrome ( lqts ) ( splawski et al. 2000. he kcne2 gene contains 2 exons ( 1 coding exon ) and is located at 21q22. loss of function mutations in kcne2 account for approximately 1 % of all individuals with romano - ward syndrome, an autosomal dominant form of long qt syndrome ( lqts ) ( splawski et al. 2000.
+ori_doc: potassium voltage - gated channel, isk - related family, member 2. kcne2 ( nm _ 172201. 1 ) encodes a voltage gated potassium channel protein ( also called mirp1 ) that assembles with the kcnh2 pore - forming protein ( also called herg ) to alter its function. the kcne2 gene contains 2 exons ( 1 coding exon ) and is located at 21q22. loss of function mutations in kcne2 account for approximately 1 % of all individuals with romano - ward syndrome, an autosomal dominant form of long qt syndrome ( lqts ) ( splawski et al. 2000. he kcne2 gene contains 2 exons ( 1 coding exon ) and is located at 21q22. loss of function mutations in kcne2 account for approximately 1 % of all individuals with romano - ward syndrome, an autosomal dominant form of long qt syndrome ( lqts ) ( splawski et al. 2000.
+attack_score_dict[key]: [-3.6799583]
+ori_score: -5.164320945739746
+same: Falsekey: 19335_901325
+recovered_attack_doc: urban ( from latin urbs, ) citya citya anthropological emerged as - a sub discipline during the 1960s in order to concentrate on issues to do with people living in or moving to. urban environments there were two factors that led to the formation of. urban anthropologicalhe chicago school of urban anthropology took the lead in considering rural and urban forms of society. in 1956, its most prominent theorist, robert redfield, developed the theoretical construct of a folk - urban continuum from his studies of mexican communities.
+ori_doc: urban ( from latin urbs, ) citya citya anthropology emerged as - a sub discipline during the 1960s in order to concentrate on issues to do with people living in or moving to. urban environments there were two factors that led to the formation of. urban anthropologyhe chicago school of urban anthropology took the lead in considering rural and urban forms of society. in 1956, its most prominent theorist, robert redfield, developed the theoretical construct of a folk - urban continuum from his studies of mexican communities.
+attack_score_dict[key]: [-1.1564728]
+ori_score: -2.5524027347564697
+same: Falsekey: 207786_3000011
+recovered_attack_doc: definition the nurse shark. : any of various usually bottom - dwelling sharks ( family ginglymostomatidae ) with barbels near the nostrils ; especially : a large yellowish to grayish brown shark ( ginglymostoma cirratum ) of warm usually shallow coastal waters that is typically nonaggressive or rests often in groups on the sea floor during the day.
+ori_doc: definition of nurse shark. : any of various usually bottom - dwelling sharks ( family ginglymostomatidae ) with barbels near the nostrils ; especially : a large yellowish to grayish brown shark ( ginglymostoma cirratum ) of warm usually shallow coastal waters that is typically nonaggressive and rests often in groups on the sea floor during the day.
+attack_score_dict[key]: [-4.1221023]
+ori_score: -4.720884323120117
+same: Falsekey: 264014_96852
+recovered_attack_doc: flea pupa. the flea larvae spin cocoons around themselves in which they move to the last phase the the flea life cycle and become adult fleas. the larvae can remain in the cocoon anywhere from one week to one year. temperature is one factor that determines how long it will take for the adult flea to emerge from the cocoon.
+ori_doc: flea pupa. the flea larvae spin cocoons around themselves in which they move to the last phase of the flea life cycle and become adult fleas. the larvae can remain in the cocoon anywhere from one week to one year. temperature is one factor that determines how long it will take for the adult flea to emerge from the cocoon.
+attack_score_dict[key]: [-0.13802078]
+ori_score: -0.16900788247585297
+same: Falsekey: 359349_15805
+recovered_attack_doc: if you have the length of each base and of height, you can use them to find the area. in this tutorial, you'll see how to identify those values and plug them into the formula for the area of a trapezoid. f you have the length of each base and the height, you can use them to find the area. in this tutorial, you'll see how to identify those values and plug them into the formula for the area of a trapezoid.
+ori_doc: if you have the length of each base and the height, you can use them to find the area. in this tutorial, you'll see how to identify those values and plug them into the formula for the area of a trapezoid. f you have the length of each base and the height, you can use them to find the area. in this tutorial, you'll see how to identify those values and plug them into the formula for the area of a trapezoid.
+attack_score_dict[key]: [-1.7000365]
+ori_score: -2.143087148666382
+same: Falsekey: 405717_2747491
+recovered_attack_doc: average journey time between paris - gare du nord and cdg airfield is 35 minutes. preferred express ( direct ) train, local trains stop at suburban stations on their way into the city / the airfield. trains run every 6 to 15 minutes. you can purchase tickets at any metro, rer station ( airport included ).
+ori_doc: average journey time between paris - gare du nord and cdg airport is 35 minutes. preferred express ( direct ) train, local trains stop at suburban stations on their way into the city / the airport. trains run every 6 to 15 minutes. you can purchase tickets at any metro, rer station ( airport included ).
+attack_score_dict[key]: [-1.4271672]
+ori_score: -1.7969746589660645
+same: Falsekey: 443396_2716455
+recovered_attack_doc: this is a big part of why lps were for adults, along with the fact that no pop idol could cobble together 12 songs of any quality. before the earthquake hit : when the beatles landed in america michael tomasky january 28, 2014. but according to the lps data, underwater borrowers are also prepaying at a much faster clip.
+ori_doc: this is a big part of why lps were for adults, along with the fact that no pop idol could cobble together 12 songs of any quality. before the earthquake hit : when the beatles landed in america michael tomasky january 28, 2014. but according to the lps data, underwater borrowers are also prepaying at a much faster clip.
+attack_score_dict[key]: -7.92606258392334
+ori_score: -7.92606258392334
+same: Truekey: 451602_7403454
+recovered_attack_doc: ventilator - associated pneumonia ( vap ) is a complication in as many as 28 % the patients who receive mechanical ventilation. the incidence the vap increases with the duration the mechanical ventilation.
+ori_doc: ventilator - associated pneumonia ( vap ) is a complication in as many as 28 % of patients who receive mechanical ventilation. the incidence of vap increases with the duration of mechanical ventilation.
+attack_score_dict[key]: [-5.759443]
+ori_score: -6.210687637329102
+same: Falsekey: 47923_1488916
+recovered_attack_doc: postsynaptic neuron > definitions : 1. a neuron to of cell body or dendrite of which an electrical impulse is transmitted across a synaptic cleft by of release of a chemical neurotransmitter from of axon terminal of a presynaptic neuron. the definition information for postsynaptic neuron is provided by stedman's.. a neuron to the cell body or dendrite of which an electrical impulse is transmitted across a synaptic cleft by the release of a chemical neurotransmitter from the axon terminal of a presynaptic neuron.
+ori_doc: postsynaptic neuron. definitions : 1. a neuron to the cell body or dendrite of which an electrical impulse is transmitted across a synaptic cleft by the release of a chemical neurotransmitter from the axon terminal of a presynaptic neuron. the definition information for postsynaptic neuron is provided by stedman's.. a neuron to the cell body or dendrite of which an electrical impulse is transmitted across a synaptic cleft by the release of a chemical neurotransmitter from the axon terminal of a presynaptic neuron.
+attack_score_dict[key]: [-2.2019148]
+ori_score: -3.5936172008514404
+same: Falsekey: 489204_5583224
+recovered_attack_doc: leg pain or numbness or pelvic symptoms and abdominal symptoms ( 5 caused ) leg pain and numbness and pelvic symptoms and back pain ( 5 caused ) leg pain and numbness and pelvic symptoms and back symptoms ( 5 caused ) leg pain and numbness and pelvic symptoms and back tingling / paresthesias ( 5 caused ) leg pain and numbness and pelvic symptoms and bladder symptoms ( 5 caused ) leg pain and numbness and pelvic symptoms and bone symptoms ( 5 caused ) leg pain and numbness and pelvic symptoms and bowel incontinence ( 5 caused ) leg pain and numbness and pelvic symptoms and bowel movements ( 5 causes )
+ori_doc: leg pain and numbness and pelvic symptoms and abdominal symptoms ( 5 causes ) leg pain and numbness and pelvic symptoms and back pain ( 5 causes ) leg pain and numbness and pelvic symptoms and back symptoms ( 5 causes ) leg pain and numbness and pelvic symptoms and back tingling / paresthesias ( 5 causes ) leg pain and numbness and pelvic symptoms and bladder symptoms ( 5 causes ) leg pain and numbness and pelvic symptoms and bone symptoms ( 5 causes ) leg pain and numbness and pelvic symptoms and bowel incontinence ( 5 causes ) leg pain and numbness and pelvic symptoms and bowel movements ( 5 causes )
+attack_score_dict[key]: [-2.582561]
+ori_score: -4.253250598907471
+same: Falsekey: 490595_3833413
+recovered_attack_doc: when alice receives bob ’ s message she decrypts it by using her rsa private key ( d, n ) as follows : c d mod n = 48 103 mod 143 = 9 = m. to use rsa keys to digitally sign a message, alice would create a hash or message digest of her message to bob, encrypt the hash value with her rsa private key and add it to the message. ou also agree which your personal information may be transferred and processed in the united states, and that you have read and agree to the terms of use and the privacy policy. rsa was first described in 1977 by ron rivest, adi shamir and leonard adleman of the massachusetts institute of technology.
+ori_doc: when alice receives bob ’ s message she decrypts it by using her rsa private key ( d, n ) as follows : c d mod n = 48 103 mod 143 = 9 = m. to use rsa keys to digitally sign a message, alice would create a hash or message digest of her message to bob, encrypt the hash value with her rsa private key and add it to the message. ou also agree that your personal information may be transferred and processed in the united states, and that you have read and agree to the terms of use and the privacy policy. rsa was first described in 1977 by ron rivest, adi shamir and leonard adleman of the massachusetts institute of technology.
+attack_score_dict[key]: [-1.436591]
+ori_score: -2.091960906982422
+same: Falsekey: 527433_2496224
+recovered_attack_doc: donate. types the cerebral palsy cerebral palsy can be described by the way it affects people's movement, the part the the body affected and by how severe the affects are. quadriplegia... https : / / www. cerebralpalsy. org. au / what - is - cerebral - palsy / types - of - cerebral - palsy /.
+ori_doc: donate. types of cerebral palsy cerebral palsy can be described by the way it affects people's movement, the part of the body affected and by how severe the affects are. quadriplegia... https : / / www. cerebralpalsy. org. au / what - is - cerebral - palsy / types - of - cerebral - palsy /.
+attack_score_dict[key]: [-2.4515269]
+ori_score: -3.5557126998901367
+same: Falsekey: 573724_2986944
+recovered_attack_doc: the world health organization ’ s health promotion glossary says : health literacy represents the cognitive and social skills which determine the motivation and ability of individuals to gain access to, understand and use information in ways which promote and maintain good health.
+ori_doc: the world health organization ’ s health promotion glossary says : health literacy represents the cognitive and social skills which determine the motivation and ability of individuals to gain access to, understand and use information in ways which promote and maintain good health.
+attack_score_dict[key]: -2.0434658527374268
+ori_score: -2.0434658527374268
+same: Truekey: 833860_6804385
+recovered_attack_doc: hi im swiss and i can answer my question. for us swiss people zurich is not that expensive because out salary makes up for it ( we have one of the highest salaries per / person worldwide ). for foreigners visiting switzerland many will find it very expensive, from public transports to food.
+ori_doc: hi im swiss and i can answer your question. for us swiss people switzerland is not that expensive because out salary makes up for it ( we have one of the highest salaries per / person worldwide ). for foreigners visiting switzerland many will find it very expensive, from public transportation to food.
+attack_score_dict[key]: [-4.6119556]
+ori_score: -7.273956298828125
+same: Falsekey: 87181_8614360
+recovered_attack_doc: read more one of of most confusing st - elevation mimics for paramedics are of “ strain pattern ” ( or repolarization abnormality ) occasionally found with left ventricular hypertrophy. this are important because left ventricular hypertrophy are one of of most common caused of st segment elevation in chest pain patients. many 12 lead ecg classes teach paramedics to recognize the voltage [ … ]. cardiac rhythm analysis, 12 - lead ecg interpretation, resuscitation. his is important because left ventricular hypertrophy is one of the most common caused of st segment elevation in chest pain patients. many 12 lead ecg classes teach paramedics to recognize the voltage [ … ]. cardiac rhythm analysis, 12 - lead ecg interpretation, resuscitation.
+ori_doc: read more. one of the most confusing st - elevation mimics for paramedics is the “ strain pattern ” ( or repolarization abnormality ) occasionally found with left ventricular hypertrophy. this is important because left ventricular hypertrophy is one of the most common causes of st segment elevation in chest pain patients. many 12 lead ecg classes teach paramedics to recognize the voltage [ … ]. cardiac rhythm analysis, 12 - lead ecg interpretation, resuscitation. his is important because left ventricular hypertrophy is one of the most common causes of st segment elevation in chest pain patients. many 12 lead ecg classes teach paramedics to recognize the voltage [ … ]. cardiac rhythm analysis, 12 - lead ecg interpretation, resuscitation.
+attack_score_dict[key]: [-0.12670322]
+ori_score: -0.33783113956451416
+same: Falsekey: 87452_4312660
+recovered_attack_doc: suicide is of number one caused of premature death among people with schizophrenia, with an estimated 10 percent to 13 percent killing themselves and approximately 40 % attempting suicide at least once ( and as much as 60 % of males attempting suicide ). uicide is of number one cause of premature death among people with schizophrenia, with an estimated 10 percent to 13 percent killing themselves and approximately 40 % attempting suicide at least once ( and as much as 60 % of males attempting suicide ).
+ori_doc: suicide is the number one cause of premature death among people with schizophrenia, with an estimated 10 percent to 13 percent killing themselves and approximately 40 % attempting suicide at least once ( and as much as 60 % of males attempting suicide ). uicide is the number one cause of premature death among people with schizophrenia, with an estimated 10 percent to 13 percent killing themselves and approximately 40 % attempting suicide at least once ( and as much as 60 % of males attempting suicide ).
+attack_score_dict[key]: [-4.600446]
+ori_score: -5.49641227722168
+same: Falsekey: 915593_6923057
+recovered_attack_doc: # 1 best immersion circulator review – anova culinary wifi / bluetooth precision cooker. this is by far of best sous vide machine! if you prefer of versatility of using your own stock pots for cooking sous vide, then the anova immersion circulator with bluetooth capability is a very good choice. this unit is designed to be clamped to almost any pot up to a 5 gallon capacity.
+ori_doc: # 1 best immersion circulator review – anova culinary wifi / bluetooth precision cooker. this is by far the best sous vide machine! if you prefer the versatility of using your own stock pots for cooking sous vide, then the anova immersion circulator with bluetooth capability is a very good choice. this unit is designed to be clamped to almost any pot up to a 5 gallon capacity.
+attack_score_dict[key]: [-1.704571]
+ori_score: -2.66437029838562
+same: Falsekey: 962179_1006861
+recovered_attack_doc: salvation military officers. operations the the salvation army are supervised by trained, commissioned officers. they proclaim the gospel and serve as administrators, teachers, social workers, counselors, youth leaders, and musicians. these men and women have dedicated their lives, skills, and service completely to god.
+ori_doc: salvation army officers. operations of the salvation army are supervised by trained, commissioned officers. they proclaim the gospel and serve as administrators, teachers, social workers, counselors, youth leaders, and musicians. these men and women have dedicated their lives, skills, and service completely to god.
+attack_score_dict[key]: [-6.604358]
+ori_score: -7.717989444732666
 same: False
