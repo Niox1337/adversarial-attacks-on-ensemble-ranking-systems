@@ -14,7 +14,14 @@ for ids, text in attack_ids_docs.items():
     attack_data[doc_id] = text
 
 index = PisaIndex("./attack_index", threads=4)
-index.index(attack_data)
+
+index.index(
+    (
+        {"docno": doc_id, "text": text}
+        for doc_id, text in attack_data.items()
+    )
+)
+
 bm25 = index.bm25(num_results=100)
 
 queries = pd.DataFrame(dataset.queries_iter()).rename(

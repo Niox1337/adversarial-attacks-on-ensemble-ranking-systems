@@ -189,12 +189,12 @@ class BERTWordRecover(WordRecover):
             input_id_lst = input_id_lst.to(args.device)
             token_type_ids_lst = token_type_ids_lst.to(args.device)
             position_ids_lst = position_ids_lst.to(args.device)
-            print("input_id_lst", input_id_lst)
-            print("token_type_ids_lst", token_type_ids_lst)
-            print("position_ids_lst", position_ids_lst)
+            # print("input_id_lst", input_id_lst)
+            # print("token_type_ids_lst", token_type_ids_lst)
+            # print("position_ids_lst", position_ids_lst)
             # outputs = model(input_id_lst, token_type_ids_lst, position_ids_lst)
             outputs = model(input_ids=input_id_lst, token_type_ids=token_type_ids_lst, position_ids=position_ids_lst)
-            print(outputs)
+            # print(outputs)
             scores = outputs.detach().cpu().numpy()
             # score [B,1]
         return scores
@@ -207,8 +207,8 @@ class BERTWordRecover(WordRecover):
                 ori_sub_tokens = ori_doc_token_ids_list[
                     i : i + len(specific_token_ids_list)
                 ]
-                print("ori_sub_tokens: ", ori_sub_tokens)
-                print("specific_token_ids_list: ", specific_token_ids_list)
+                # print("ori_sub_tokens: ", ori_sub_tokens)
+                # print("specific_token_ids_list: ", specific_token_ids_list)
                 if ori_sub_tokens == specific_token_ids_list:
                     finded_start_index_list.append(i)
         return finded_start_index_list
@@ -321,7 +321,7 @@ class BERTWordRecover(WordRecover):
                 score = self.eval_model(
                     model, new_doc_token_id_list, query_input_id, args
                 )
-                print("scores: ", score)
+                # print("scores: ", score)
 
                 rank_pos = self.get_rank_pos(ori_qds, score, attack_doc_id, qid)
                 if rank_pos < best_pos:
