@@ -2203,4 +2203,214 @@ recovered_attack_doc: salvation military officers. operations the the salvation 
 ori_doc: salvation army officers. operations of the salvation army are supervised by trained, commissioned officers. they proclaim the gospel and serve as administrators, teachers, social workers, counselors, youth leaders, and musicians. these men and women have dedicated their lives, skills, and service completely to god.
 attack_score_dict[key]: [-6.604358]
 ori_score: -7.717989444732666
+same: Falsekey: 1037798_3641442
+recovered_attack_doc: she is son of nena thurman ( nee nee birgitte caroline von ), schlebruegge schlebrugge a fashion model and socialite who now runs a, mountain retreat and of ( robert thurman robert alexander ), farrar thurman a professor and academic who is one and.. ofhe is the daughter of nena thurman ( nee nee birgitte caroline von ), schlebruegge schlebrugge a fashion model and socialite who now runs a, mountain retreat and of ( robert thurman robert alexander ), farrar thurman a professor and academic who is one... of the see ». full bio
+ori_doc: she is the daughter of nena thurman ( nee nee birgitte caroline von ), schlebruegge schlebrugge a fashion model and socialite who now runs a, mountain retreat and of ( robert thurman robert alexander ), farrar thurman a professor and academic who is one... of thehe is the daughter of nena thurman ( nee nee birgitte caroline von ), schlebruegge schlebrugge a fashion model and socialite who now runs a, mountain retreat and of ( robert thurman robert alexander ), farrar thurman a professor and academic who is one... of the see ». full bio
+attack_score_dict[key]: [-6.9322543]
+ori_score: -8.587776184082031
+same: Falsekey: 104861_1995989
+recovered_attack_doc: even flooring options that are initially inexpensive of install than decorative concrete may turn out of be more expensive in long run. when you amortize cost of a concrete floor over a lifetime, the price is often comparable or even lower than other flooring materials, especially if you factor in maintenance costs. ven flooring options that are initially cheaper of install than decorative concrete may turn out to be more expensive in the long run. when you amortize the cost of a concrete floor over a lifetime, the price is often comparable or even lower than other flooring materials, especially if you factor in maintenance costs.
+ori_doc: even flooring options that are initially cheaper to install than decorative concrete may turn out to be more expensive in the long run. when you amortize the cost of a concrete floor over a lifetime, the price is often comparable or even lower than other flooring materials, especially if you factor in maintenance costs. ven flooring options that are initially cheaper to install than decorative concrete may turn out to be more expensive in the long run. when you amortize the cost of a concrete floor over a lifetime, the price is often comparable or even lower than other flooring materials, especially if you factor in maintenance costs.
+attack_score_dict[key]: [-4.3898263]
+ori_score: -5.0407795906066895
+same: Falsekey: 1063750_4415978
+recovered_attack_doc: well and come closer my friend and because mutaflor really is one of of good guys. listen up - this supplement contains e. coli nissle 1917, a probiotic with a long and interesting history. back during ww1, when shigellosis was make life in the trenches a living hell, one soldier was unscathed. ell, come closer my friend, because mutaflor really is one of the good guys. listen up - this supplement contains e. coli nissle 1917, a probiotic with a long and interesting history. back during ww1, when shigellosis was make life in the trenches a living hell, one soldier was unscathed.
+ori_doc: well, come closer my friend, because mutaflor really is one of the good guys. listen up - this supplement contains e. coli nissle 1917, a probiotic with a long and interesting history. back during ww1, when shigellosis was make life in the trenches a living hell, one soldier was unscathed. ell, come closer my friend, because mutaflor really is one of the good guys. listen up - this supplement contains e. coli nissle 1917, a probiotic with a long and interesting history. back during ww1, when shigellosis was make life in the trenches a living hell, one soldier was unscathed.
+attack_score_dict[key]: [-6.056852]
+ori_score: -6.611716270446777
+same: Falsekey: 1103812_4059416
+recovered_attack_doc: it gained independence from south africa on 23 february 1990, following the namibian war of independence. its capital and largest city is windhoek. namibia is a member state of the united countries ( un ), the southern african development community ( sadc ), the african union ( au ), and the commonwealth of countries.
+ori_doc: it gained independence from south africa on 21 march 1990, following the namibian war of independence. its capital and largest city is windhoek. namibia is a member state of the united nations ( un ), the southern african development community ( sadc ), the african union ( au ), and the commonwealth of nations.
+attack_score_dict[key]: [-3.9430764]
+ori_score: -5.195135593414307
+same: Falsekey: 1106007_2677529
+recovered_attack_doc: echocardiography is the main diagnostic tool used in the evaluation of pericardial effusion and a pericardial effusion causes an echo - free space between visceral and parietal pericardium ; the extent of the space defines the size of the effusion ( table 3 ) and large effusions can produce the picture of a swinging heart and
+ori_doc: echocardiography is the main diagnostic tool used in the evaluation of pericardial effusion. a pericardial effusion causes an echo - free space between visceral and parietal pericardium ; the extent of the space defines the size of the effusion ( table 3 ). large effusions can produce the picture of a swinging heart.
+attack_score_dict[key]: [-3.690585]
+ori_score: -3.9641830921173096
+same: Falsekey: 1110199_5600214
+recovered_attack_doc: over 3 million downloads..! transfer any file format now!!! rated best app for bluetooth transfer and a must have and easy - to - use bluetooth sharing tool for your iphone / ipod touch / ipad. now you can share files, photos and contacts between your idevices via bluetooth. you can also use your idevice as a usb disk to store files and transfer them between idevices and computers. now you can share files, photos and contacts between your idevices via wifi / bluetooth. save it to your contact list. √ share files from local document via bluetooth. √ share photos from photo library via bluetooth. √ share multiple contacts from phone contacts book via bluetooth. √ transfer files between ipad and computer via usb cable.
+ori_doc: over 3 million downloads!!! transfer any file format now!!! rated best app for bluetooth transfer. a must have and easy - to - use bluetooth sharing tool for your iphone / ipod touch / ipad. now you can share files, photos and contacts between your idevices via bluetooth. you can also use your idevice as a usb disk to store files and transfer them between idevices and computers. now you can share files, photos and contacts between your idevices via wifi / bluetooth. save it to your contact list. √ share files from local document via bluetooth. √ share photos from photo library via bluetooth. √ share multiple contacts from phone contacts book via bluetooth. √ transfer files between ipad and computer via usb cable.
+attack_score_dict[key]: [-3.0167055]
+ori_score: -3.674592971801758
+same: Falsekey: 1112341_1373646
+recovered_attack_doc: isan ( northeastern thai ), the language of the isan region of thailand, a collective term for the various lao dialects spoken in thailand that show some siamese thai influences, which are written with the thai script. it is spoken by about 20 million people.
+ori_doc: isan ( northeastern thai ), the language of the isan region of thailand, a collective term for the various lao dialects spoken in thailand that show some siamese thai influences, which is written with the thai script. it is spoken by about 20 million people.
+attack_score_dict[key]: [-6.6664534]
+ori_score: -7.123660564422607
+same: Falsekey: 1113437_657405
+recovered_attack_doc: shared activity and fishing reports on and near spruce ran reservoir and 1 added a catch on spruce ran reservoir and 2 advertisement and 3 added a catch on spruce ran reservoir and added a catch on spruce ran 1 reservoir and added a catch on spruce ran reservoir and added a catch on spruce run 1 reservoir and added a catch on spruce run reservoir and
+ori_doc: shared activity and fishing reports on and near spruce run reservoir. 1 added a catch on spruce run reservoir. 2 advertisement. 3 added a catch on spruce run reservoir. added a catch on spruce run 1 reservoir. added a catch on spruce run reservoir. added a catch on spruce run 1 reservoir. added a catch on spruce run reservoir.
+attack_score_dict[key]: [-9.986726]
+ori_score: -10.72202205657959
+same: Falsekey: 1114646_8117095
+recovered_attack_doc: if you have the prescription of famvir, then take the 1 day outbreak dose of that when you start to feel an ob coming on and on average hsv2 recurrences are 4, 6 the year though that can differ from person to person.
+ori_doc: if you have a prescription for famvir - then take the 1 day outbreak dose of that when you start to feel an ob coming on. on average hsv2 recurrences are 4 - 6 a year though that can differ from person to person.
+attack_score_dict[key]: [-1.295953]
+ori_score: -1.9718109369277954
+same: Falsekey: 1114819_8022277
+recovered_attack_doc: one the the definitions the dmerc are durable medical equipment regional carrier. q : a : what does dmerc mean? dmerc as abbreviation means durable medical equipment regional carrier. q : a : what are shorthand of durable medical equipment regional carrier? the most common shorthand of durable medical equipment regional carrier is dmerc.
+ori_doc: one of the definitions of dmerc is durable medical equipment regional carrier. q : a : what does dmerc mean? dmerc as abbreviation means durable medical equipment regional carrier. q : a : what is shorthand of durable medical equipment regional carrier? the most common shorthand of durable medical equipment regional carrier is dmerc.
+attack_score_dict[key]: [-1.2443712]
+ori_score: -2.0396223068237305
+same: Falsekey: 1115776_7840022
+recovered_attack_doc: the major categories of the current classification include aml with recurrent genetic abnormalities, aml with myelodysplasia - related changes, therapeutic - related aml, and aml not otherwise specified and a revision of the who classification is under way and
+ori_doc: the major categories of the current classification include aml with recurrent genetic abnormalities, aml with myelodysplasia - related changes, therapy - related aml, and aml not otherwise specified. a revision of the who classification is under way.
+attack_score_dict[key]: [-8.604741]
+ori_score: -8.97657585144043
+same: Falsekey: 1117099_2019589
+recovered_attack_doc: fundraising income. 1 how huge is my dreamed foundation brought in $ 7, 268 in net income in 2013 through fundraising and gaming activities. 2 the organization's gaming and fundraising margin of 100 % is high : the typical nonprofit that fundraised had a 51. 30 percent margin.
+ori_doc: fundraising income. 1 how big is your dream foundation brought in $ 7, 268 in net income in 2013 through fundraising and gaming activities. 2 the organization's gaming and fundraising margin of 100 % is high : the typical nonprofit that fundraised had a 51. 30 percent margin.
+attack_score_dict[key]: [-5.8672285]
+ori_score: -7.3465046882629395
+same: Falsekey: 1121402_3747588
+recovered_attack_doc: other ways to reduces face fat and some cosmetic activities cannot make the face look more slender and attractive, which is ideal for capturing the best image in photographs. using bronzing powder in the hollows of the cheeks or on the sides of the nose can help contour the face to make it look thinner.
+ori_doc: other ways to reduce face fat. some cosmetic activities can make the face look more slender and attractive, which is ideal for capturing the best image in photographs. using bronzing powder in the hollows of the cheeks or on the sides of the nose can help contour the face to make it look thinner.
+attack_score_dict[key]: [-4.581247]
+ori_score: -5.890445709228516
+same: Falsekey: 1121709_4381673
+recovered_attack_doc: americans report irritability or anger ( 42 percent ) ; fatigue ( 37 percent ) ; lack of interest, motivation or energy ( 35 percent ) ; headaches ( 32 percent ) ; and upset stomachs ( 24 percent ) due to stress and a smaller percentage report having a change in appetite ( 17 percent ) and sex drive ( 11 percent ) and similar proportions of adults engage in unhealthy behaviors due to stress as did last year and 29 percent skipped a meal due to stress ( 31 percent in 2010 ) and 39 percent reported overeating or eating...
+ori_doc: americans report irritability or anger ( 42 percent ) ; fatigue ( 37 percent ) ; lack of interest, motivation or energy ( 35 percent ) ; headaches ( 32 percent ) ; and upset stomachs ( 24 percent ) due to stress. a smaller percentage report having a change in appetite ( 17 percent ) and sex drive ( 11 percent ). similar proportions of adults engage in unhealthy behaviors due to stress as did last year. 29 percent skipped a meal due to stress ( 31 percent in 2010 ). 39 percent reported overeating or eating...
+attack_score_dict[key]: [-8.213923]
+ori_score: -8.892644882202148
+same: Falsekey: 1124210_3466956
+recovered_attack_doc: xylem consists of three different types of cells : xylem parenchyma cells or xylem fiber cells, which simply provide structural support for the most important xylem cells, the tracheary elements ( te ) or the te are completely dead at maturity, or act like pipes to allow water or dissolved minterals to flow through them. there are two types of tracheary elements : vessel elements and tracheids. though they have some structural differences, these two types function in the same manner. he te are completely dead at maturity, and act like pipes to allow water and dissolved minterals to flow through them. there are two types of tracheary elements : vessel elements and tracheids. though they have some structural differences, these two types function in the same manner.
+ori_doc: xylem consists of three different types of cells : xylem parenchyma cells and xylem fiber cells, which simply provide structural support for the most important xylem cells, the tracheary elements ( te ). the te are completely dead at maturity, and act like pipes to allow water and dissolved minterals to flow through them. there are two types of tracheary elements : vessel elements and tracheids. though they have some structural differences, these two types function in the same manner. he te are completely dead at maturity, and act like pipes to allow water and dissolved minterals to flow through them. there are two types of tracheary elements : vessel elements and tracheids. though they have some structural differences, these two types function in the same manner.
+attack_score_dict[key]: [-3.3685412]
+ori_score: -3.523237943649292
+same: Falsekey: 1129237_7072552
+recovered_attack_doc: the sped the sounded in a material, particularly in a gas or liquid, varies with temperature because a change in temperature affects the material's density. in air, for example, the speed the sound increases with an increase in temperature. at 32 °f. ( 0 °c. ), the speed the sound in air is 1, 087 feet per second ( 331 m / s ) ; at 68 °f. ( 20 °c. ), it is 1, 127 feet per second ( 343 m / s ). he effect the elasticity and density on the speed the sound can be seen by comparing the speed the sound in air, hydrogen, and iron. air and hydrogen have nearly the same elastic properties, but the density the hydrogen is less than that of air. sound thus travels faster ( about 4 times as fast ) in hydrogen than in air.
+ori_doc: the speed of sound in a material, particularly in a gas or liquid, varies with temperature because a change in temperature affects the material's density. in air, for example, the speed of sound increases with an increase in temperature. at 32 °f. ( 0 °c. ), the speed of sound in air is 1, 087 feet per second ( 331 m / s ) ; at 68 °f. ( 20 °c. ), it is 1, 127 feet per second ( 343 m / s ). he effect of elasticity and density on the speed of sound can be seen by comparing the speed of sound in air, hydrogen, and iron. air and hydrogen have nearly the same elastic properties, but the density of hydrogen is less than that of air. sound thus travels faster ( about 4 times as fast ) in hydrogen than in air.
+attack_score_dict[key]: [-2.4783359]
+ori_score: -3.7948691844940186
+same: Falsekey: 1133167_2613293
+recovered_attack_doc: check the weather in jamaica in november before you book your next holiday. this gives the best indication of the weather in november and includes figures for temperature, sunshine and rainfall. the jamaica november weather guide shown below is for montego bay. 1 30°c max day temperature.
+ori_doc: check the weather in jamaica in november before you book your next holiday. this gives the best indication of the weather in november and includes figures for temperature, sunshine and rainfall. the jamaica november weather guide shown below is for montego bay. 1 30°c max day temperature.
+attack_score_dict[key]: -0.08159638941287994
+ori_score: -0.08159638941287994
+same: Truekey: 130510_6763277
+recovered_attack_doc: [ cite as n. canton v. canton, 2005 - ohio - 6953. ] gwin, p. j. { ¶ 1 } plaintiff the city of north canton, ohio appeals a judgment of the court of. common pleas of stark county, ohio, which dismissed its complaint for declaratory. judgment and injunction. north canton sought to prevent the defendant city of canton.
+ori_doc: [ cite as n. canton v. canton, 2005 - ohio - 6953. ] gwin, p. j. { ¶ 1 } plaintiff the city of north canton, ohio appeals a judgment of the court of. common pleas of stark county, ohio, which dismissed its complaint for declaratory. judgment and injunction. north canton sought to prevent the defendant city of canton.
+attack_score_dict[key]: -3.9758517742156982
+ori_score: -3.9758517742156982
+same: Truekey: 131843_8085708
+recovered_attack_doc: 2nd rooted word definition : suffix : - blast suffix definition : embryonic ; immature cell definition : embryonic cell that turns into a cell of muscle fiber : myoblastoma : prefix : prefix definition : 1st rooted word : my / o 1st root definition : muscle 2nd root word : 2nd root word definition : suffix : - blastoma suffix definition : immature tumor ( cells ) definition : tumor comprised of immature muscle cells : myorrhaphy : prefix : prefix definition : 1st root word : my / o 1st root definition : muscle 2nd root word : 2nd root word definition : suffix : - rrhaphy suffix definition : suture definition : suture of a muscle : myringotomy : prefix : prefix definition :
+ori_doc: 2nd root word definition : suffix : - blast suffix definition : embryonic ; immature cell definition : embryonic cell that turns into a cell of muscle fiber : myoblastoma : prefix : prefix definition : 1st root word : my / o 1st root definition : muscle 2nd root word : 2nd root word definition : suffix : - blastoma suffix definition : immature tumor ( cells ) definition : tumor comprised of immature muscle cells : myorrhaphy : prefix : prefix definition : 1st root word : my / o 1st root definition : muscle 2nd root word : 2nd root word definition : suffix : - rrhaphy suffix definition : suture definition : suture of a muscle : myringotomy : prefix : prefix definition :
+attack_score_dict[key]: [-10.167687]
+ori_score: -10.634276390075684
+same: Falsekey: 146187_7836297
+recovered_attack_doc: wendys double cheeseburger ( 1 serving ) calories : 700 and fat : 39g and carbs : 38g, protein : 48g. 1 calories burned for treadmill : 10 % incline, 8. 5 mph ( 7 minutes per mile ) calories burned for treadmill : 10 % incline, 10 mph ( 6 minutes per mile )
+ori_doc: wendys double cheeseburger ( 1 serving ) calories : 700, fat : 39g, carbs : 38g, protein : 48g. 1 calories burned for treadmill : 10 % incline, 8. 5 mph ( 7 minutes per mile ) calories burned for treadmill : 10 % incline, 10 mph ( 6 minutes per mile )
+attack_score_dict[key]: [-7.4063106]
+ori_score: -8.350543022155762
+same: Falsekey: 148538_7696609
+recovered_attack_doc: iu online rn - bsn mobility option and the rn of bsn degree completion program is designed for the rn of receive a bachelor of science degree in nursing ( bsn ) and the program offers a flexible curriculum for the education of professional nurses competent in meeting the current and future health needs of society and
+ori_doc: iu online rn - bsn mobility option. the rn to bsn degree completion program is designed for the rn to receive a bachelor of science degree in nursing ( bsn ). the program offers a flexible curriculum for the education of professional nurses competent in meeting the current and future health needs of society.
+attack_score_dict[key]: [-2.8988893]
+ori_score: -3.0334362983703613
+same: Falsekey: 156493_1277727
+recovered_attack_doc: common goldfish can grow over 90 centimeters and take more than 2 years to max out. i've been told that they don't stop growing, but i don't know how true that is. fancy goldfish can grow to about 20 centimeters ant take about 2 years to max out i hope the goldfish aren't fancy, koi can get very nasty.
+ori_doc: common goldfish can grow over 90 centimeters and take more than 2 years to max out. i've been told that they don't stop growing, but i don't know how true that is. fancy goldfish can grow to about 20 centimeters ant take about 2 years to max out i hope the goldfish aren't fancy, koi can get very nasty.
+attack_score_dict[key]: -0.046317048370838165
+ori_score: -0.046317048370838165
+same: Truekey: 168216_1735358
+recovered_attack_doc: other bacteria types that can cause pneumonia include the bacteria that cause so - called atypical pneumonia, legionella pneumophila, mycoplasma pneumoniae, and chlamydophila pneumonia. the most common cause of viral pneumonia in adults is the influenza virus. a number of different respiratory viruses cause pneumonia in children, such as respiratory syncytial virus ( rsv ). while viral pneumonia tends to be less severe than bacterial pneumonia, there is a risk of developing secondary bacterial pneumonia when viral pneumonia is present.
+ori_doc: other bacteria types that can cause pneumonia include the bacteria that cause so - called atypical pneumonia, legionella pneumophila, mycoplasma pneumoniae, and chlamydophila pneumonia. the most common cause of viral pneumonia in adults is the influenza virus. a number of different respiratory viruses cause pneumonia in children, such as respiratory syncytial virus ( rsv ). while viral pneumonia tends to be less severe than bacterial pneumonia, there is a risk of developing secondary bacterial pneumonia when viral pneumonia is present.
+attack_score_dict[key]: -0.10123961418867111
+ori_score: -0.10123961418867111
+same: Truekey: 182539_6816573
+recovered_attack_doc: • monotone ( adjective ). the adjective monotone has 2 senses : 1. of the sequence or function ; consistently increasing and never decreasing or consistently decreasing and never increasing in value. 2. sounded or spoken in a tone unvarying in pitch.
+ori_doc: • monotone ( adjective ). the adjective monotone has 2 senses : 1. of a sequence or function ; consistently increasing and never decreasing or consistently decreasing and never increasing in value. 2. sounded or spoken in a tone unvarying in pitch.
+attack_score_dict[key]: [-5.3237267]
+ori_score: -6.013973236083984
+same: Falsekey: 183378_4493914
+recovered_attack_doc: 1. exons is coding areas whereas introns are non - coding areas. 2. an exon is termed as a nucleic acid sequence which is represented in of rna molecule. introns and on of other hand, are termed as nucleotide sequences seen within of genes which are removed through rna splicing for generating a mature rna molecule. 3.. exons can be termed as dna bases which are translated into mrna. introns are also dna bases that are found in between exons. 6. introns are very much common in of genome of higher vertebrates such as human beings and mice but unlikely to be seen in of genome of certain varieties of eukaryotic micro - organisms.
+ori_doc: 1. exons are coding areas whereas introns are non - coding areas. 2. an exon is termed as a nucleic acid sequence which is represented in the rna molecule. introns, on the other hand, are termed as nucleotide sequences seen within the genes which are removed through rna splicing for generating a mature rna molecule. 3.. exons can be termed as dna bases which are translated into mrna. introns are also dna bases that are found in between exons. 6. introns are very much common in the genome of higher vertebrates such as human beings and mice but unlikely to be seen in the genome of certain varieties of eukaryotic micro - organisms.
+attack_score_dict[key]: [-0.85157275]
+ori_score: -1.166530728340149
+same: Falsekey: 19335_8612877
+recovered_attack_doc: ‘ organizational sociology raises interesting questioned about of relationship between organisations and the environments in which they operate. ’ ‘ major social sciences today are economics and political science, anthropological, and sociology. ’
+ori_doc: ‘ organizational sociology raises interesting questions about the relationship between organizations and the environments in which they operate. ’ ‘ major social sciences today are economics, political science, anthropology, and sociology. ’
+attack_score_dict[key]: [-5.3754716]
+ori_score: -6.811702251434326
+same: Falsekey: 207786_3357630
+recovered_attack_doc: bottom, dweller, a # # fish that lives and feeds on the bottom of a body of water and bottom, feeder and # # fish, any of various mostly cold - blooded aquatic vertebrates usually having scales and breathing through gills ; the shark is a large # # fish ; in the living room there was a tank of colorful fish and mullet - bottom dwelling marine warm water fishes with two barbels on the chin and
+ori_doc: bottom - dweller - a fish that lives and feeds on the bottom of a body of water. bottom - feeder. fish - any of various mostly cold - blooded aquatic vertebrates usually having scales and breathing through gills ; the shark is a large fish ; in the living room there was a tank of colorful fish. mullet - bottom dwelling marine warm water fishes with two barbels on the chin.
+attack_score_dict[key]: [-3.4264464]
+ori_score: -4.581926345825195
+same: Falsekey: 264014_5063302
+recovered_attack_doc: both drugs protect against heartworm, hookworm, roundworm, and whipworm. 1 sentinel interrupts the flea life # # cycle by ensuring that female fleas who feed on treated animals will produce eggs that cannot hatch. trifexis also addresses fleas, by killing adult fleas.
+ori_doc: both drugs protect against heartworm, hookworm, roundworm, and whipworm. 1 sentinel interrupts the flea life cycle by ensuring that female fleas who feed on treated animals will produce eggs that cannot hatch. trifexis also addresses fleas, by killing adult fleas.
+attack_score_dict[key]: [-5.4589143]
+ori_score: -6.205934524536133
+same: Falsekey: 359349_7857629
+recovered_attack_doc: - - - - it is impossible to find of volume of the trapezoid, because a trapezoid is a 2 - dimensional figure, and volume is for 3 - dimensional figures. - - - - you … may find the area though, because that is possible for 2 - dimensional figures.
+ori_doc: - - - - it is impossible to find the volume of a trapezoid, because a trapezoid is a 2 - dimensional figure, and volume is for 3 - dimensional figures. - - - - you … may find the area though, because that is possible for 2 - dimensional figures.
+attack_score_dict[key]: [-3.8986168]
+ori_score: -4.101469039916992
+same: Falsekey: 405717_2365665
+recovered_attack_doc: charles de gaulle airport ( cdg ) of eiffel tower - paris and i have 2 questions about pairs and need some suggestions and this summer, i will arrive the charles de gaulle airport in the morning about 9 : 00 and will transit to budapest at 18 : 00 on the same day and i believe that i will have enough time to go to the eiffel tower and
+ori_doc: charles de gaulle airport ( cdg ) to eiffel tower - paris. i have 2 questions about pairs and need some suggestions. this summer, i will arrive the charles de gaulle airport in the morning about 9 : 00 and will transit to budapest at 18 : 00 on the same day. i believe that i will have enough time to go to the eiffel tower.
+attack_score_dict[key]: [-0.4261495]
+ori_score: -0.685975193977356
+same: Falsekey: 443396_8079045
+recovered_attack_doc: if of facility is found to be in compliance with the lps guidelines and criteria, the lac lps designation. review survey team leader / coordinator submits a written report to the lac dmh designation review. committee and the la county mental health director with the recommendation that the facility be. designated.
+ori_doc: if the facility is found to be in compliance with the lps guidelines and criteria, the lac lps designation. review survey team leader / coordinator submits a written report to the lac dmh designation review. committee and the la county mental health director with the recommendation that the facility be. designated.
+attack_score_dict[key]: [-6.8008776]
+ori_score: -6.9376912117004395
+same: Falsekey: 451602_5902818
+recovered_attack_doc: an energy recovery ventilator ( erv ) is a type of mechanical equipment that features a heat exchanger combined with a ventilation system for providing controlled ventilation into a building.
+ori_doc: an energy recovery ventilator ( erv ) is a type of mechanical equipment that features a heat exchanger combined with a ventilation system for providing controlled ventilation into a building.
+attack_score_dict[key]: -5.714221477508545
+ori_score: -5.714221477508545
+same: Truekey: 47923_473807
+recovered_attack_doc: quick answer. the function of a synaptic knob is to change the action potential that is carried by axons into a chemical message. the chemical message then interacts with the recipient neuron or effector. this process is called synaptic transmission.
+ori_doc: quick answer. the function of a synaptic knob is to change the action potential that is carried by axons into a chemical message. the chemical message then interacts with the recipient neuron or effector. this process is called synaptic transmission.
+attack_score_dict[key]: -0.4945651888847351
+ori_score: -0.4945651888847351
+same: Truekey: 489204_1310106
+recovered_attack_doc: 1 abdominal pain or pelvic pain or sensory symptoms ( 47 caused ). 2 abdominal pain or pelvic pain or digestive symptoms ( 43 caused ). 3 abdominal pain or pelvic pain or sexual symptoms ( 40 caused ). 4 abdominal pain or pelvic pain and musculoskeletal symptoms ( 39 causes ).
+ori_doc: 1 abdominal pain and pelvic pain and sensory symptoms ( 47 causes ). 2 abdominal pain and pelvic pain and digestive symptoms ( 43 causes ). 3 abdominal pain and pelvic pain and sexual symptoms ( 40 causes ). 4 abdominal pain and pelvic pain and musculoskeletal symptoms ( 39 causes ).
+attack_score_dict[key]: [-1.9641341]
+ori_score: -2.8499064445495605
+same: Falsekey: 490595_1620438
+recovered_attack_doc: the key interface is the top - level interface for all keys. 1 it defines the functionality shared by all key objects. all keys have three characteristics : 2 an algorithm this is the key algorithm for that key. the key algorithm is usually an encryption or asymmetric operation algorithm ( such as dsa or rsa ), which will work with those algorithms and with related algorithms ( such as md5 with rsa, sha - 1 with rsa, raw dsa, etc. ) the name of the algorithm of a key is obtained using the getalgorithm method. an encoded form this is an external encoded form for the key used when a standard representation of the key is needed outside the java virtual machine, as when transmitting the key to some other party.
+ori_doc: the key interface is the top - level interface for all keys. 1 it defines the functionality shared by all key objects. all keys have three characteristics : 2 an algorithm this is the key algorithm for that key. the key algorithm is usually an encryption or asymmetric operation algorithm ( such as dsa or rsa ), which will work with those algorithms and with related algorithms ( such as md5 with rsa, sha - 1 with rsa, raw dsa, etc. ) the name of the algorithm of a key is obtained using the getalgorithm method. an encoded form this is an external encoded form for the key used when a standard representation of the key is needed outside the java virtual machine, as when transmitting the key to some other party.
+attack_score_dict[key]: -0.6947064399719238
+ori_score: -0.6947064399719238
+same: Truekey: 527433_5603305
+recovered_attack_doc: spastic cerebral palsy is the most common type of the disorder. people have stiff muscles and awkward movements. forms of spastic cerebral palsy include : 1 spastic hemiplegia / hemiparesis typically affects the arm and hand on one side of the body, but it can also include the leg. ixed types of cerebral palsy refer to symptoms that don ’ t correspond to any single type of cp but are a mix of types. for example, a child with mixed cp may have some muscles that are too tight and others that are too relaxed, creating a mix of stiffness and floppiness.
+ori_doc: spastic cerebral palsy is the most common type of the disorder. people have stiff muscles and awkward movements. forms of spastic cerebral palsy include : 1 spastic hemiplegia / hemiparesis typically affects the arm and hand on one side of the body, but it can also include the leg. ixed types of cerebral palsy refer to symptoms that don ’ t correspond to any single type of cp but are a mix of types. for example, a child with mixed cp may have some muscles that are too tight and others that are too relaxed, creating a mix of stiffness and floppiness.
+attack_score_dict[key]: -0.8962121605873108
+ori_score: -0.8962121605873108
+same: Truekey: 573724_141998
+recovered_attack_doc: self - determination : the ability of aboriginal people to determine their own political, economic, social and cultural development as an essential approach to overcoming indigenous disadvantage. aboriginal peoples making the health system equitable. national aboriginal community controlled health organisation.
+ori_doc: self - determination : the ability of aboriginal people to determine their own political, economic, social and cultural development as an essential approach to overcoming indigenous disadvantage. aboriginal peoples making the health system equitable. national aboriginal community controlled health organisation.
+attack_score_dict[key]: -3.5574917793273926
+ori_score: -3.5574917793273926
+same: Truekey: 833860_1969741
+recovered_attack_doc: what is gmbh in switzerland? the gmbh in switzerland is the limited liability company or a gesellschaftmitbeschrankterhaftung. this type of company is not as popular as a joint stock company in switzerland, but the incorporation and administration of the gmbh in switzerland are rather simple to fulfill.
+ori_doc: what is gmbh in switzerland? a gmbh in switzerland is a limited liability company or a gesellschaftmitbeschrankterhaftung. this type of company is not as popular as a joint stock company in switzerland, but the incorporation and administration of the gmbh in switzerland are rather simple to fulfill.
+attack_score_dict[key]: [-6.7181177]
+ori_score: -7.548282146453857
+same: Falsekey: 87181_803955
+recovered_attack_doc: wrong atrial or ventricular dilation, wrong ventricular hypertrophy, or dilation of the pulmonary artery ( reflecting the effects of the chronically increased volume load on the wrong side of the heart due to left - to - wrong shunting )
+ori_doc: right atrial and ventricular dilation, right ventricular hypertrophy, and dilation of the pulmonary artery ( reflecting the effects of a chronically increased volume load on the right side of the heart due to left - to - right shunting )
+attack_score_dict[key]: [-0.66727954]
+ori_score: -2.480285406112671
+same: Falsekey: 87452_8436576
+recovered_attack_doc: military suicides : one u. s. veteran dies every 65 minutes 3. 8k washington, feb 1 ( reuters ) - the most extensive study yet by the u. s. government on suicide among military veterans shows more veterans are killing themselves than previously thought, with 22 deaths a day - or one every 65 minutes, on average.
+ori_doc: military suicides : one u. s. veteran dies every 65 minutes 3. 8k washington, feb 1 ( reuters ) - the most extensive study yet by the u. s. government on suicide among military veterans shows more veterans are killing themselves than previously thought, with 22 deaths a day - or one every 65 minutes, on average.
+attack_score_dict[key]: -3.114999294281006
+ori_score: -3.114999294281006
+same: Truekey: 915593_3573479
+recovered_attack_doc: how to cook using sous vide. sous - vide, which is french for “ under vacuum ”, also called cryovacing, is a method of cooking that is intended to maintain the integrity of ingredients by heating them for an extended period of time at relatively low temperatures. it was developed by georges pralus in the mid - 1970s.
+ori_doc: how to cook using sous vide. sous - vide, which is french for “ under vacuum ”, also called cryovacing, is a method of cooking that is intended to maintain the integrity of ingredients by heating them for an extended period of time at relatively low temperatures. it was developed by georges pralus in the mid - 1970s.
+attack_score_dict[key]: -1.4055231809616089
+ori_score: -1.4055231809616089
+same: Truekey: 962179_2929469
+recovered_attack_doc: get free back to school supplies from of salvation military. families that need help with obtaining school supplies for their children can get assistance from of salvation military as well as other non - profit agencies. the organizations offer qualified families the number of resources. et free back to school supplies from the salvation army. families that need help with obtaining school supplies for their children can get assistance from the salvation army as well as other non - profit agencies.
+ori_doc: get free back to school supplies from the salvation army. families that need help with obtaining school supplies for their children can get assistance from the salvation army as well as other non - profit agencies. the organizations offer qualified families a number of resources. et free back to school supplies from the salvation army. families that need help with obtaining school supplies for their children can get assistance from the salvation army as well as other non - profit agencies.
+attack_score_dict[key]: [-9.681033]
+ori_score: -10.367064476013184
 same: False
