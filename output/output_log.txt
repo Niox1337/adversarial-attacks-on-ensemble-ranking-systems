@@ -1,12 +1,219 @@
+You are using a model of type electra to instantiate a model of type Cat. This is not supported for all configurations of models and can yield errors.
+/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pyterrier_pisa/__init__.py:169: UserWarning: text_field not specified; indexing all str fields: ['text']
+  warn(f'text_field not specified; indexing all str fields: {text_field}')
+[2025-03-07 17:47:31.451] [info] [Batch 0] Processed documents [0, 100000)
+[2025-03-07 17:47:31.935] [info] [Batch 1] Processed documents [100000, 200000)
+[2025-03-07 17:47:32.414] [info] [Batch 2] Processed documents [200000, 300000)
+[2025-03-07 17:47:32.612] [info] [Batch 3] Processed documents [300000, 400000)
+[2025-03-07 17:47:36.369] [info] [Batch 4] Processed documents [400000, 500000)
+[2025-03-07 17:47:36.763] [info] [Batch 5] Processed documents [500000, 600000)
+[2025-03-07 17:47:37.283] [info] [Batch 6] Processed documents [600000, 700000)
+[2025-03-07 17:47:37.581] [info] [Batch 7] Processed documents [700000, 800000)
+[2025-03-07 17:47:41.203] [info] [Batch 8] Processed documents [800000, 900000)
+[2025-03-07 17:47:41.598] [info] [Batch 9] Processed documents [900000, 1000000)
+[2025-03-07 17:47:42.093] [info] [Batch 10] Processed documents [1000000, 1100000)
+[2025-03-07 17:47:42.521] [info] [Batch 11] Processed documents [1100000, 1200000)
+[2025-03-07 17:47:45.994] [info] [Batch 12] Processed documents [1200000, 1300000)
+[2025-03-07 17:47:46.431] [info] [Batch 13] Processed documents [1300000, 1400000)
+[2025-03-07 17:47:47.157] [info] [Batch 14] Processed documents [1400000, 1500000)
+[2025-03-07 17:47:47.334] [info] [Batch 15] Processed documents [1500000, 1600000)
+[2025-03-07 17:47:50.726] [info] [Batch 16] Processed documents [1600000, 1700000)
+[2025-03-07 17:47:51.214] [info] [Batch 17] Processed documents [1700000, 1800000)
+[2025-03-07 17:47:52.055] [info] [Batch 18] Processed documents [1800000, 1900000)
+[2025-03-07 17:47:52.207] [info] [Batch 19] Processed documents [1900000, 2000000)
+[2025-03-07 17:47:55.503] [info] [Batch 20] Processed documents [2000000, 2100000)
+[2025-03-07 17:47:55.981] [info] [Batch 21] Processed documents [2100000, 2200000)
+[2025-03-07 17:47:56.873] [info] [Batch 22] Processed documents [2200000, 2300000)
+[2025-03-07 17:47:57.041] [info] [Batch 23] Processed documents [2300000, 2400000)
+[2025-03-07 17:48:00.228] [info] [Batch 24] Processed documents [2400000, 2500000)
+[2025-03-07 17:48:00.800] [info] [Batch 25] Processed documents [2500000, 2600000)
+[2025-03-07 17:48:01.678] [info] [Batch 26] Processed documents [2600000, 2700000)
+[2025-03-07 17:48:01.992] [info] [Batch 27] Processed documents [2700000, 2800000)
+[2025-03-07 17:48:05.065] [info] [Batch 28] Processed documents [2800000, 2900000)
+[2025-03-07 17:48:05.620] [info] [Batch 29] Processed documents [2900000, 3000000)
+[2025-03-07 17:48:06.486] [info] [Batch 30] Processed documents [3000000, 3100000)
+[2025-03-07 17:48:06.782] [info] [Batch 31] Processed documents [3100000, 3200000)
+[2025-03-07 17:48:09.933] [info] [Batch 32] Processed documents [3200000, 3300000)
+[2025-03-07 17:48:10.397] [info] [Batch 33] Processed documents [3300000, 3400000)
+[2025-03-07 17:48:11.268] [info] [Batch 34] Processed documents [3400000, 3500000)
+[2025-03-07 17:48:11.615] [info] [Batch 35] Processed documents [3500000, 3600000)
+[2025-03-07 17:48:14.753] [info] [Batch 36] Processed documents [3600000, 3700000)
+[2025-03-07 17:48:15.329] [info] [Batch 37] Processed documents [3700000, 3800000)
+[2025-03-07 17:48:16.136] [info] [Batch 38] Processed documents [3800000, 3900000)
+[2025-03-07 17:48:16.517] [info] [Batch 39] Processed documents [3900000, 4000000)
+[2025-03-07 17:48:19.531] [info] [Batch 40] Processed documents [4000000, 4100000)
+[2025-03-07 17:48:20.087] [info] [Batch 41] Processed documents [4100000, 4200000)
+[2025-03-07 17:48:20.920] [info] [Batch 42] Processed documents [4200000, 4300000)
+[2025-03-07 17:48:21.286] [info] [Batch 43] Processed documents [4300000, 4400000)
+[2025-03-07 17:48:24.341] [info] [Batch 44] Processed documents [4400000, 4500000)
+[2025-03-07 17:48:24.969] [info] [Batch 45] Processed documents [4500000, 4600000)
+[2025-03-07 17:48:25.842] [info] [Batch 46] Processed documents [4600000, 4700000)
+[2025-03-07 17:48:26.102] [info] [Batch 47] Processed documents [4700000, 4800000)
+[2025-03-07 17:48:29.149] [info] [Batch 48] Processed documents [4800000, 4900000)
+[2025-03-07 17:48:29.758] [info] [Batch 49] Processed documents [4900000, 5000000)
+[2025-03-07 17:48:30.878] [info] [Batch 51] Processed documents [5100000, 5200000)
+[2025-03-07 17:48:30.991] [info] [Batch 50] Processed documents [5000000, 5100000)
+[2025-03-07 17:48:34.003] [info] [Batch 52] Processed documents [5200000, 5300000)
+[2025-03-07 17:48:34.674] [info] [Batch 53] Processed documents [5300000, 5400000)
+[2025-03-07 17:48:35.723] [info] [Batch 54] Processed documents [5400000, 5500000)
+[2025-03-07 17:48:36.046] [info] [Batch 55] Processed documents [5500000, 5600000)
+[2025-03-07 17:48:38.936] [info] [Batch 56] Processed documents [5600000, 5700000)
+[2025-03-07 17:48:39.672] [info] [Batch 57] Processed documents [5700000, 5800000)
+[2025-03-07 17:48:40.641] [info] [Batch 58] Processed documents [5800000, 5900000)
+[2025-03-07 17:48:40.910] [info] [Batch 59] Processed documents [5900000, 6000000)
+[2025-03-07 17:48:43.895] [info] [Batch 60] Processed documents [6000000, 6100000)
+[2025-03-07 17:48:45.165] [info] [Batch 61] Processed documents [6100000, 6200000)
+[2025-03-07 17:48:45.991] [info] [Batch 63] Processed documents [6300000, 6400000)
+[2025-03-07 17:48:46.735] [info] [Batch 62] Processed documents [6200000, 6300000)
+[2025-03-07 17:48:48.893] [info] [Batch 64] Processed documents [6400000, 6500000)
+[2025-03-07 17:48:50.179] [info] [Batch 65] Processed documents [6500000, 6600000)
+[2025-03-07 17:48:50.905] [info] [Batch 66] Processed documents [6600000, 6700000)
+[2025-03-07 17:48:51.586] [info] [Batch 67] Processed documents [6700000, 6800000)
+[2025-03-07 17:48:53.734] [info] [Batch 68] Processed documents [6800000, 6900000)
+[2025-03-07 17:48:55.092] [info] [Batch 69] Processed documents [6900000, 7000000)
+[2025-03-07 17:48:55.571] [info] [Batch 70] Processed documents [7000000, 7100000)
+[2025-03-07 17:48:55.964] [info] [Batch 71] Processed documents [7100000, 7200000)
+[2025-03-07 17:48:58.171] [info] [Batch 72] Processed documents [7200000, 7300000)
+[2025-03-07 17:48:59.914] [info] [Batch 73] Processed documents [7300000, 7400000)
+[2025-03-07 17:49:00.225] [info] [Batch 74] Processed documents [7400000, 7500000)
+[2025-03-07 17:49:00.573] [info] [Batch 75] Processed documents [7500000, 7600000)
+[2025-03-07 17:49:02.817] [info] [Batch 76] Processed documents [7600000, 7700000)
+[2025-03-07 17:49:04.620] [info] [Batch 77] Processed documents [7700000, 7800000)
+[2025-03-07 17:49:04.839] [info] [Batch 78] Processed documents [7800000, 7900000)
+[2025-03-07 17:49:05.179] [info] [Batch 79] Processed documents [7900000, 8000000)
+[2025-03-07 17:49:07.445] [info] [Batch 80] Processed documents [8000000, 8100000)
+[2025-03-07 17:49:09.219] [info] [Batch 81] Processed documents [8100000, 8200000)
+[2025-03-07 17:49:09.492] [info] [Batch 82] Processed documents [8200000, 8300000)
+[2025-03-07 17:49:09.896] [info] [Batch 83] Processed documents [8300000, 8400000)
+[2025-03-07 17:49:10.289] [info] [Batch 88] Processed documents [8800000, 8841823)
+[2025-03-07 17:49:12.574] [info] [Batch 84] Processed documents [8400000, 8500000)
+[2025-03-07 17:49:14.136] [info] [Batch 86] Processed documents [8600000, 8700000)
+[2025-03-07 17:49:14.332] [info] [Batch 85] Processed documents [8500000, 8600000)
+[2025-03-07 17:49:14.527] [info] [Batch 87] Processed documents [8700000, 8800000)
+[2025-03-07 17:49:14.858] [info] Merging titles
+[2025-03-07 17:49:15.679] [info] Creating document lexicon
+[2025-03-07 17:49:17.732] [info] Merging URLs
+[2025-03-07 17:49:17.903] [info] Collecting terms
+[2025-03-07 17:49:22.908] [info] Writing terms
+[2025-03-07 17:49:23.499] [info] Mapping terms
+[2025-03-07 17:49:24.092] [info] Remapping IDs
+[2025-03-07 17:50:04.992] [info] Concatenating batches
+[2025-03-07 17:50:06.361] [info] Success.
+[2025-03-07 17:50:27.336] [info] Inverting [0, 100000)
+[2025-03-07 17:50:28.525] [info] Inverting [100000, 200000)
+[2025-03-07 17:50:29.776] [info] Inverting [200000, 300000)
+[2025-03-07 17:50:30.944] [info] Inverting [300000, 400000)
+[2025-03-07 17:50:32.189] [info] Inverting [400000, 500000)
+[2025-03-07 17:50:33.394] [info] Inverting [500000, 600000)
+[2025-03-07 17:50:34.627] [info] Inverting [600000, 700000)
+[2025-03-07 17:50:35.809] [info] Inverting [700000, 800000)
+[2025-03-07 17:50:37.033] [info] Inverting [800000, 900000)
+[2025-03-07 17:50:38.243] [info] Inverting [900000, 1000000)
+[2025-03-07 17:50:39.445] [info] Inverting [1000000, 1100000)
+[2025-03-07 17:50:40.622] [info] Inverting [1100000, 1200000)
+[2025-03-07 17:50:41.845] [info] Inverting [1200000, 1300000)
+[2025-03-07 17:50:43.019] [info] Inverting [1300000, 1400000)
+[2025-03-07 17:50:44.249] [info] Inverting [1400000, 1500000)
+[2025-03-07 17:50:45.426] [info] Inverting [1500000, 1600000)
+[2025-03-07 17:50:46.608] [info] Inverting [1600000, 1700000)
+[2025-03-07 17:50:47.776] [info] Inverting [1700000, 1800000)
+[2025-03-07 17:50:48.953] [info] Inverting [1800000, 1900000)
+[2025-03-07 17:50:50.131] [info] Inverting [1900000, 2000000)
+[2025-03-07 17:50:51.320] [info] Inverting [2000000, 2100000)
+[2025-03-07 17:50:52.517] [info] Inverting [2100000, 2200000)
+[2025-03-07 17:50:53.800] [info] Inverting [2200000, 2300000)
+[2025-03-07 17:50:54.975] [info] Inverting [2300000, 2400000)
+[2025-03-07 17:50:56.191] [info] Inverting [2400000, 2500000)
+[2025-03-07 17:50:57.438] [info] Inverting [2500000, 2600000)
+[2025-03-07 17:50:58.624] [info] Inverting [2600000, 2700000)
+[2025-03-07 17:50:59.856] [info] Inverting [2700000, 2800000)
+[2025-03-07 17:51:01.046] [info] Inverting [2800000, 2900000)
+[2025-03-07 17:51:02.305] [info] Inverting [2900000, 3000000)
+[2025-03-07 17:51:03.484] [info] Inverting [3000000, 3100000)
+[2025-03-07 17:51:04.748] [info] Inverting [3100000, 3200000)
+[2025-03-07 17:51:05.970] [info] Inverting [3200000, 3300000)
+[2025-03-07 17:51:07.267] [info] Inverting [3300000, 3400000)
+[2025-03-07 17:51:08.493] [info] Inverting [3400000, 3500000)
+[2025-03-07 17:51:09.703] [info] Inverting [3500000, 3600000)
+[2025-03-07 17:51:10.949] [info] Inverting [3600000, 3700000)
+[2025-03-07 17:51:12.293] [info] Inverting [3700000, 3800000)
+[2025-03-07 17:51:13.464] [info] Inverting [3800000, 3900000)
+[2025-03-07 17:51:14.706] [info] Inverting [3900000, 4000000)
+[2025-03-07 17:51:16.016] [info] Inverting [4000000, 4100000)
+[2025-03-07 17:51:17.219] [info] Inverting [4100000, 4200000)
+[2025-03-07 17:51:18.426] [info] Inverting [4200000, 4300000)
+[2025-03-07 17:51:19.682] [info] Inverting [4300000, 4400000)
+[2025-03-07 17:51:20.895] [info] Inverting [4400000, 4500000)
+[2025-03-07 17:51:22.094] [info] Inverting [4500000, 4600000)
+[2025-03-07 17:51:23.301] [info] Inverting [4600000, 4700000)
+[2025-03-07 17:51:24.524] [info] Inverting [4700000, 4800000)
+[2025-03-07 17:51:25.754] [info] Inverting [4800000, 4900000)
+[2025-03-07 17:51:26.989] [info] Inverting [4900000, 5000000)
+[2025-03-07 17:51:28.179] [info] Inverting [5000000, 5100000)
+[2025-03-07 17:51:29.415] [info] Inverting [5100000, 5200000)
+[2025-03-07 17:51:30.621] [info] Inverting [5200000, 5300000)
+[2025-03-07 17:51:31.871] [info] Inverting [5300000, 5400000)
+[2025-03-07 17:51:33.058] [info] Inverting [5400000, 5500000)
+[2025-03-07 17:51:34.320] [info] Inverting [5500000, 5600000)
+[2025-03-07 17:51:35.533] [info] Inverting [5600000, 5700000)
+[2025-03-07 17:51:36.823] [info] Inverting [5700000, 5800000)
+[2025-03-07 17:51:38.043] [info] Inverting [5800000, 5900000)
+[2025-03-07 17:51:39.329] [info] Inverting [5900000, 6000000)
+[2025-03-07 17:51:40.554] [info] Inverting [6000000, 6100000)
+[2025-03-07 17:51:41.878] [info] Inverting [6100000, 6200000)
+[2025-03-07 17:51:43.238] [info] Inverting [6200000, 6300000)
+[2025-03-07 17:51:44.638] [info] Inverting [6300000, 6400000)
+[2025-03-07 17:51:45.873] [info] Inverting [6400000, 6500000)
+[2025-03-07 17:51:47.111] [info] Inverting [6500000, 6600000)
+[2025-03-07 17:51:48.354] [info] Inverting [6600000, 6700000)
+[2025-03-07 17:51:49.663] [info] Inverting [6700000, 6800000)
+[2025-03-07 17:51:50.880] [info] Inverting [6800000, 6900000)
+[2025-03-07 17:51:52.109] [info] Inverting [6900000, 7000000)
+[2025-03-07 17:51:53.301] [info] Inverting [7000000, 7100000)
+[2025-03-07 17:51:54.497] [info] Inverting [7100000, 7200000)
+[2025-03-07 17:51:55.638] [info] Inverting [7200000, 7300000)
+[2025-03-07 17:51:56.777] [info] Inverting [7300000, 7400000)
+[2025-03-07 17:51:58.022] [info] Inverting [7400000, 7500000)
+[2025-03-07 17:51:59.168] [info] Inverting [7500000, 7600000)
+[2025-03-07 17:52:00.346] [info] Inverting [7600000, 7700000)
+[2025-03-07 17:52:01.527] [info] Inverting [7700000, 7800000)
+[2025-03-07 17:52:02.744] [info] Inverting [7800000, 7900000)
+[2025-03-07 17:52:03.976] [info] Inverting [7900000, 8000000)
+[2025-03-07 17:52:05.160] [info] Inverting [8000000, 8100000)
+[2025-03-07 17:52:06.353] [info] Inverting [8100000, 8200000)
+[2025-03-07 17:52:07.476] [info] Inverting [8200000, 8300000)
+[2025-03-07 17:52:08.715] [info] Inverting [8300000, 8400000)
+[2025-03-07 17:52:09.877] [info] Inverting [8400000, 8500000)
+[2025-03-07 17:52:11.093] [info] Inverting [8500000, 8600000)
+[2025-03-07 17:52:12.281] [info] Inverting [8600000, 8700000)
+[2025-03-07 17:52:13.568] [info] Inverting [8700000, 8800000)
+[2025-03-07 17:52:14.780] [info] Inverting [8800000, 8841823)
+[2025-03-07 17:52:53.428] [info] Number of terms: 1345701
+[2025-03-07 17:52:53.428] [info] Number of documents: 8841823
+[2025-03-07 17:52:53.428] [info] Number of postings: 346095384
+[2025-03-07 17:53:20.096] [info] Dropping 0 terms
+[2025-03-07 17:53:20.578] [info] Reading sizes...
+[2025-03-07 17:53:20.870] [info] Storing max weight for each list and for each block...
+Storing terms statistics: 1% [0s]Storing terms statistics: 2% [0s]Storing terms statistics: 3% [0s]Storing terms statistics: 4% [0s]Storing terms statistics: 5% [0s]Storing terms statistics: 6% [0s]Storing terms statistics: 7% [0s]Storing terms statistics: 8% [0s]Storing terms statistics: 9% [0s]Storing terms statistics: 10% [0s]Storing terms statistics: 11% [0s]Storing terms statistics: 12% [0s]Storing terms statistics: 13% [0s]Storing terms statistics: 14% [0s]Storing terms statistics: 14% [1s]Storing terms statistics: 15% [1s]Storing terms statistics: 16% [1s]Storing terms statistics: 17% [1s]Storing terms statistics: 18% [1s]Storing terms statistics: 19% [1s]Storing terms statistics: 20% [1s]Storing terms statistics: 20% [2s]Storing terms statistics: 21% [2s]Storing terms statistics: 22% [2s]Storing terms statistics: 23% [2s]Storing terms statistics: 24% [2s]Storing terms statistics: 25% [2s]Storing terms statistics: 26% [2s]Storing terms statistics: 27% [2s]Storing terms statistics: 28% [2s]Storing terms statistics: 29% [2s]Storing terms statistics: 30% [2s]Storing terms statistics: 30% [3s]Storing terms statistics: 31% [3s]Storing terms statistics: 32% [3s]Storing terms statistics: 33% [3s]Storing terms statistics: 34% [3s]Storing terms statistics: 35% [3s]Storing terms statistics: 36% [3s]Storing terms statistics: 37% [3s]Storing terms statistics: 38% [3s]Storing terms statistics: 38% [4s]Storing terms statistics: 39% [4s]Storing terms statistics: 40% [4s]Storing terms statistics: 41% [4s]Storing terms statistics: 42% [4s]Storing terms statistics: 43% [4s]Storing terms statistics: 44% [4s]Storing terms statistics: 45% [4s]Storing terms statistics: 46% [4s]Storing terms statistics: 47% [4s]Storing terms statistics: 47% [5s]Storing terms statistics: 48% [5s]Storing terms statistics: 49% [5s]Storing terms statistics: 50% [5s]Storing terms statistics: 51% [5s]Storing terms statistics: 52% [5s]Storing terms statistics: 53% [5s]Storing terms statistics: 54% [5s]Storing terms statistics: 55% [5s]Storing terms statistics: 55% [6s]Storing terms statistics: 56% [6s]Storing terms statistics: 57% [6s]Storing terms statistics: 58% [6s]Storing terms statistics: 59% [6s]Storing terms statistics: 60% [6s]Storing terms statistics: 61% [6s]Storing terms statistics: 62% [6s]Storing terms statistics: 63% [6s]Storing terms statistics: 64% [6s]Storing terms statistics: 65% [6s]Storing terms statistics: 65% [7s]Storing terms statistics: 66% [7s]Storing terms statistics: 67% [7s]Storing terms statistics: 68% [7s]Storing terms statistics: 69% [7s]Storing terms statistics: 70% [7s]Storing terms statistics: 71% [7s]Storing terms statistics: 72% [7s]Storing terms statistics: 72% [8s]Storing terms statistics: 73% [8s]Storing terms statistics: 74% [8s]Storing terms statistics: 75% [8s]Storing terms statistics: 76% [8s]Storing terms statistics: 77% [8s]Storing terms statistics: 78% [8s]Storing terms statistics: 79% [8s]Storing terms statistics: 80% [8s]Storing terms statistics: 81% [8s]Storing terms statistics: 82% [8s]Storing terms statistics: 82% [9s]Storing terms statistics: 83% [9s]Storing terms statistics: 84% [9s]Storing terms statistics: 85% [9s]Storing terms statistics: 86% [9s]Storing terms statistics: 87% [9s]Storing terms statistics: 87% [10s]Storing terms statistics: 88% [10s]Storing terms statistics: 89% [10s]Storing terms statistics: 90% [10s]Storing terms statistics: 91% [10s]Storing terms statistics: 92% [10s]Storing terms statistics: 93% [10s]Storing terms statistics: 94% [10s]Storing terms statistics: 94% [11s]Storing terms statistics: 95% [11s]Storing terms statistics: 96% [11s]Storing terms statistics: 97% [11s]Storing terms statistics: 98% [11s]Storing terms statistics: 99% [11s]Storing terms statistics: 100% [11s]
+Storing score upper bounds: 1% [0s]Storing score upper bounds: 2% [0s]Storing score upper bounds: 3% [0s]Storing score upper bounds: 4% [0s]Storing score upper bounds: 5% [0s]Storing score upper bounds: 6% [0s]Storing score upper bounds: 7% [0s]Storing score upper bounds: 8% [0s]Storing score upper bounds: 9% [0s]Storing score upper bounds: 10% [0s]Storing score upper bounds: 11% [0s]Storing score upper bounds: 12% [0s]Storing score upper bounds: 13% [0s]Storing score upper bounds: 14% [0s]Storing score upper bounds: 15% [0s]Storing score upper bounds: 16% [0s]Storing score upper bounds: 17% [0s]Storing score upper bounds: 18% [0s]Storing score upper bounds: 18% [1s]Storing score upper bounds: 19% [1s]Storing score upper bounds: 20% [1s]Storing score upper bounds: 21% [1s]Storing score upper bounds: 22% [1s]Storing score upper bounds: 23% [1s]Storing score upper bounds: 24% [1s]Storing score upper bounds: 25% [1s]Storing score upper bounds: 26% [1s]Storing score upper bounds: 27% [1s]Storing score upper bounds: 28% [1s]Storing score upper bounds: 29% [1s]Storing score upper bounds: 30% [1s]Storing score upper bounds: 31% [1s]Storing score upper bounds: 31% [2s]Storing score upper bounds: 32% [2s]Storing score upper bounds: 33% [2s]Storing score upper bounds: 34% [2s]Storing score upper bounds: 35% [2s]Storing score upper bounds: 36% [2s]Storing score upper bounds: 37% [2s]Storing score upper bounds: 38% [2s]Storing score upper bounds: 39% [2s]Storing score upper bounds: 40% [2s]Storing score upper bounds: 41% [2s]Storing score upper bounds: 42% [2s]Storing score upper bounds: 43% [2s]Storing score upper bounds: 44% [2s]Storing score upper bounds: 45% [2s]Storing score upper bounds: 46% [2s]Storing score upper bounds: 47% [2s]Storing score upper bounds: 47% [3s]Storing score upper bounds: 48% [3s]Storing score upper bounds: 49% [3s]Storing score upper bounds: 50% [3s]Storing score upper bounds: 51% [3s]Storing score upper bounds: 52% [3s]Storing score upper bounds: 53% [3s]Storing score upper bounds: 54% [3s]Storing score upper bounds: 55% [3s]Storing score upper bounds: 56% [3s]Storing score upper bounds: 57% [3s]Storing score upper bounds: 58% [3s]Storing score upper bounds: 59% [3s]Storing score upper bounds: 60% [3s]Storing score upper bounds: 61% [3s]Storing score upper bounds: 62% [3s]Storing score upper bounds: 63% [3s]Storing score upper bounds: 64% [3s]Storing score upper bounds: 65% [3s]Storing score upper bounds: 65% [4s]Storing score upper bounds: 66% [4s]Storing score upper bounds: 67% [4s]Storing score upper bounds: 68% [4s]Storing score upper bounds: 69% [4s]Storing score upper bounds: 70% [4s]Storing score upper bounds: 71% [4s]Storing score upper bounds: 72% [4s]Storing score upper bounds: 73% [4s]Storing score upper bounds: 74% [4s]Storing score upper bounds: 75% [4s]Storing score upper bounds: 76% [4s]Storing score upper bounds: 77% [4s]Storing score upper bounds: 78% [4s]Storing score upper bounds: 79% [4s]Storing score upper bounds: 80% [4s]Storing score upper bounds: 80% [5s]Storing score upper bounds: 81% [5s]Storing score upper bounds: 82% [5s]Storing score upper bounds: 83% [5s]Storing score upper bounds: 84% [5s]Storing score upper bounds: 85% [5s]Storing score upper bounds: 86% [5s]Storing score upper bounds: 87% [5s]Storing score upper bounds: 88% [5s]Storing score upper bounds: 89% [5s]Storing score upper bounds: 90% [5s]Storing score upper bounds: 91% [5s]Storing score upper bounds: 92% [5s]Storing score upper bounds: 92% [6s]Storing score upper bounds: 93% [6s]Storing score upper bounds: 94% [6s]Storing score upper bounds: 95% [6s]Storing score upper bounds: 96% [6s]Storing score upper bounds: 97% [6s]Storing score upper bounds: 98% [6s]Storing score upper bounds: 99% [6s]Storing score upper bounds: 100% [6s]
+[2025-03-07 17:53:50.030] [info] number of elements / number of blocks: 52.0447
+[2025-03-07 17:53:51.264] [info] Processing 8841823 documents (streaming)
+Create index: 1% [0s]Create index: 2% [0s]Create index: 3% [0s]Create index: 4% [0s]Create index: 5% [0s]Create index: 6% [0s]Create index: 7% [0s]Create index: 8% [0s]Create index: 9% [0s]Create index: 10% [0s]Create index: 11% [0s]Create index: 12% [0s]Create index: 13% [0s]Create index: 14% [0s]Create index: 15% [0s]Create index: 16% [0s]Create index: 17% [0s]Create index: 18% [0s]Create index: 19% [0s]Create index: 20% [0s]Create index: 21% [0s]Create index: 22% [0s]Create index: 23% [0s]Create index: 24% [0s]Create index: 25% [0s]Create index: 26% [0s]Create index: 27% [0s]Create index: 28% [0s]Create index: 29% [0s]Create index: 30% [0s]Create index: 31% [0s]Create index: 32% [0s]Create index: 33% [0s]Create index: 34% [0s]Create index: 35% [0s]Create index: 36% [0s]Create index: 37% [0s]Create index: 38% [0s]Create index: 39% [0s]Create index: 40% [0s]Create index: 41% [0s]Create index: 42% [0s]Create index: 43% [0s]Create index: 44% [0s]Create index: 45% [0s]Create index: 46% [0s]Create index: 47% [0s]Create index: 48% [0s]Create index: 49% [0s]Create index: 50% [0s]Create index: 51% [0s]Create index: 52% [0s]Create index: 53% [0s]Create index: 54% [0s]Create index: 55% [0s]Create index: 56% [0s]Create index: 57% [0s]Create index: 58% [0s]Create index: 59% [0s]Create index: 60% [0s]Create index: 61% [0s]Create index: 62% [0s]Create index: 63% [0s]Create index: 64% [0s]Create index: 64% [1s]Create index: 65% [1s]Create index: 66% [1s]Create index: 67% [1s]Create index: 68% [1s]Create index: 69% [1s]Create index: 70% [1s]Create index: 71% [1s]Create index: 72% [1s]Create index: 73% [1s]Create index: 74% [1s]Create index: 75% [1s]Create index: 76% [1s]Create index: 77% [1s]Create index: 78% [1s]Create index: 79% [1s]Create index: 80% [1s]Create index: 81% [1s]Create index: 82% [1s]Create index: 83% [1s]Create index: 84% [1s]Create index: 85% [1s]Create index: 86% [1s]Create index: 87% [1s]Create index: 88% [1s]Create index: 89% [1s]Create index: 90% [1s]Create index: 91% [1s]Create index: 92% [1s]Create index: 93% [1s]Create index: 94% [1s]Create index: 95% [1s]Create index: 96% [1s]Create index: 97% [1s]Create index: 98% [1s]Create index: 99% [1s]Create index: 100% [1s]
+index/bm25.k1-0.9.b-0.4.q0.bmw.64.block_simdbp
+[2025-03-07 17:53:59.036] [info] Index compressed in 7.77195 seconds
 Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 1, in <module>
-    from src import new_attack
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 3, in <module>
-    from src.hybridattack.myutils.modelling.modelling_bert_cat import Cat
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/hybridattack/myutils/modelling/modelling_bert_cat.py", line 10, in <module>
-    from rankers.modelling.base import Ranker
-ModuleNotFoundError: No module named 'rankers'
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 6, in <module>
+    ranked_pairs, attack_ids_docs, args = new_attack.main()
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 232, in main
+    sequences_b = tokenizer(
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2868, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2928, in _call_one
+    raise ValueError(
+ValueError: text input must be of type `str` (single example), `List[str]` (batch or single pretokenized example) or `List[List[str]]` (batch of pretokenized examples).
+Building vocab...
+Building vocab for bert_tokenizer...
