@@ -49,49 +49,129 @@ def parse_args():
                         help="Dataset identifier.")
     parser.add_argument("--group_size", type=int, default=20,
                         help="Size of each evaluation group.")
-    parser.add_argument("--rewrite_query", type=bool, default=False,
+    parser.add_argument("--rewrite_query", type=bool, default=True,
                         help="Enable rewriting of queries.")
 
     return parser.parse_args()
 
-retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
-datasets = {"msmarco-document-v2":
-            ["trec-dl-2019/judged", "trec-dl-2020/judged", "trec-dl-2021/judged", "trec-dl-2022/judged"]}
-rewriters = ["bo1", "rm3"]
 
-ranked_pairs, attack_ids_docs, args = new_attack.main()
+def evaluate_retriever(retriever_model, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
+    """Evaluates the attack retrieval performance for a given retriever and (optionally) a rewriter."""
 
-dataset = irds.load(args.dataset_id)
-attack_data = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
+    retrieved_docs = retriever_model.transform(queries).rename(columns={"docno": "doc_id"})
 
-for ids, text in attack_ids_docs.items():
-    doc_id = ids.split("_")[1]
-    attack_data[doc_id] = text
-
-index = PisaIndex("./attack_index", threads=4)
-
-index.index(
-    (
-        {"docno": doc_id, "text": text}
-        for doc_id, text in attack_data.items()
+    # Evaluate attack success
+    retrieved_attack_num = sum(
+        (retrieved_docs["qid"] == ids.split("_")[0]) &
+        (retrieved_docs["doc_id"] == ids.split("_")[1])
+        for ids in attack_ids_docs.keys()
     )
-)
 
-bm25 = index.bm25(num_results=100)
+    total_attacks = len(attack_ids_docs)
+    attack_retrieval_ratio = retrieved_attack_num / total_attacks if total_attacks > 0 else 0
 
-queries = pd.DataFrame(dataset.queries_iter()).rename(
-    columns={"query_id": "qid", "text": "query"}
-)
-retrieved_docs = bm25.transform(queries)
-retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
+    evaluation_results.append({
+        "dataset": dataset_id,
+        "retriever": retriever,
+        "rewriter": rewriter,
+        "successful_attacks": retrieved_attack_num,
+        "total_attacks": total_attacks,
+        "attack_retrieval_ratio": attack_retrieval_ratio
+    })
 
-retrieved_attack_num = 0
-for ids in attack_ids_docs.keys():
-    qid, doc_id = ids.split("_")[0], ids.split("_")[1]
-    successful_attack = retrieved_docs[(retrieved_docs['qid'] == qid) & (retrieved_docs['doc_id'] == doc_id)]
-    if not successful_attack.empty:
-        retrieved_attack_num += 1
+retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+datasets = {
+    "msmarco-document-v2": [
+        "trec-dl-2019/judged",
+        "trec-dl-2020/judged",
+        "trec-dl-2021/judged",
+        "trec-dl-2022/judged",
+    ]
+}
+rewriters = ["bo1", "rm3"]
+evaluation_results = []
+args = parse_args()
 
-print("Number of successful attacks: ", len(attack_ids_docs))
-print("Retrieved attacks: ", retrieved_attack_num)
-print("Ratio: ", retrieved_attack_num/len(attack_ids_docs))
+for parent, children in datasets.items():
+    args.first_child = True
+    for child in children:
+        args.dataset_id = f"{parent}/{child}"
+        print(f"\nEvaluating dataset: {args.dataset_id}")
+
+        # Load dataset
+        dataset = irds.load(args.dataset_id)
+        queries = pd.DataFrame(dataset.queries_iter()).rename(
+            columns={"query_id": "qid", "text": "query"}
+        )
+
+        # Iterate over retrievers
+        for retriever in retrievers:
+
+            # Run attacks
+            ranked_pairs, attack_ids_docs, args = new_attack.main(args, dataset)
+            attack_data = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
+
+            # Inject attack documents into dataset
+            for ids, text in attack_ids_docs.items():
+                doc_id = ids.split("_")[1]
+                attack_data[doc_id] = text
+
+            # Index attack-modified dataset
+            index = PisaIndex("./attack_index", threads=4)
+            index.index(
+                ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+            )
+
+            print(f"  - Evaluating retriever: {retriever}")
+
+            # Retrieve documents using the selected retriever
+            retriever_model = getattr(index, retriever)(num_results=100)
+            args.pipeline = retriever_model
+            evaluate_retriever(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever)
+
+            # === Retrieval with Rewriting ===
+            if args.rewrite_query:
+                for rewriter in rewriters:
+                    print(f"  - Evaluating retriever with rewriter: {rewriter}")
+
+                    rewriter_model = getattr(rewrite, rewriter)(index)
+                    args.pipeline = retriever_model >> rewriter_model >> retriever_model
+
+                    evaluate_retriever(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever, rewriter)
+
+# ranked_pairs, attack_ids_docs, args = new_attack.main()
+#
+# dataset = irds.load(args.dataset_id)
+# attack_data = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
+#
+# for ids, text in attack_ids_docs.items():
+#     doc_id = ids.split("_")[1]
+#     attack_data[doc_id] = text
+#
+# index = PisaIndex("./attack_index", threads=4)
+#
+# index.index(
+#     (
+#         {"docno": doc_id, "text": text}
+#         for doc_id, text in attack_data.items()
+#     )
+# )
+#
+# bm25 = index.bm25(num_results=100)
+#
+# queries = pd.DataFrame(dataset.queries_iter()).rename(
+#     columns={"query_id": "qid", "text": "query"}
+# )
+# retrieved_docs = bm25.transform(queries)
+# retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
+#
+# retrieved_attack_num = 0
+# for ids in attack_ids_docs.keys():
+#     qid, doc_id = ids.split("_")[0], ids.split("_")[1]
+#     successful_attack = retrieved_docs[(retrieved_docs['qid'] == qid) & (retrieved_docs['doc_id'] == doc_id)]
+#     if not successful_attack.empty:
+#         retrieved_attack_num += 1
+#
+# print("Number of successful attacks: ", len(attack_ids_docs))
+# print("Retrieved attacks: ", retrieved_attack_num)
+# print("Ratio: ", retrieved_attack_num/len(attack_ids_docs))

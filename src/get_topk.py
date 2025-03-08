@@ -6,33 +6,27 @@ import pandas as pd
 
 
 def get_topk(
-    out_dir: str,
-    dataset_id: str,
-    model_name_or_path: str,
+    args,
+    dataset,
+    model,
     index_path: str = "./index",
-    k=1000,
+    k=100,
     batch_size: int = 128,
 ):
-    dataset = irds.load(dataset_id)
 
     index = PisaIndex(index_path, threads=4)
 
-    # Uncomment the following to create indexes
-
-    # index.index(
-    #     (
-    #         {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
-    #         for doc in dataset.docs_iter()
-    #     )
-    # )
+    if args.first_child:
+        index.index(
+            (
+                {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
+                for doc in dataset.docs_iter()
+            )
+        )
 
     bm25 = index.bm25(num_results=100)
-
-    model = (
-        CatTransformer.from_pretrained(model_name_or_path, batch_size=batch_size) % k
-    )
-
     # pipeline = bm25 >> model
+    model = model % k
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
         columns={"query_id": "qid", "text": "query"}

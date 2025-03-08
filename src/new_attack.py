@@ -170,7 +170,7 @@ def attack(
     return new_doc_token_id_list, score
 
 
-def main(args=None):
+def main(args=None, dataset=None):
     if not args:
         parser = HfArgumentParser(Args)
         args = parser.parse_args()
@@ -187,7 +187,13 @@ def main(args=None):
     tokenizer = model.tokenizer
     embeddings = model.model.base_model.embeddings.word_embeddings
     semantic_helper = SemanticHelper(embeddings, tokenizer)
-    corpus = irds.load(args.dataset_id)
+
+    if dataset is None:
+        corpus = irds.load(args.dataset_id)
+    else:
+        corpus = dataset
+
+
     word_re = BERTWordRecover(
         tokenizer,
         max_query_length=args.max_query_length,
@@ -206,7 +212,7 @@ def main(args=None):
         # )
         # dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
 
-        ranked_pairs, args.score_lookup = get_topk("./output", args.dataset_id, args.model_name_or_path)
+        ranked_pairs, args.score_lookup = get_topk(args, corpus, model)
         dataloader = []
 
         for qid, group in ranked_pairs.groupby("qid"):
