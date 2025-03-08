@@ -55,8 +55,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def evaluate_retriever(retriever_model, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
-    """Evaluates the attack retrieval performance for a given retriever and (optionally) a rewriter."""
+def evaluate_pipeline(retriever_model, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
 
     retrieved_docs = retriever_model.transform(queries).rename(columns={"docno": "doc_id"})
 
@@ -127,9 +126,9 @@ for parent, children in datasets.items():
             # Retrieve documents using the selected retriever
             retriever_model = getattr(index, retriever)(num_results=100)
             args.pipeline = retriever_model
-            evaluate_retriever(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever)
+            evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever)
 
-            # === Retrieval with Rewriting ===
+            #Retrieval with Rewriting
             if args.rewrite_query:
                 for rewriter in rewriters:
                     print(f"  - Evaluating retriever with rewriter: {rewriter}")
@@ -137,7 +136,7 @@ for parent, children in datasets.items():
                     rewriter_model = getattr(rewrite, rewriter)(index)
                     args.pipeline = retriever_model >> rewriter_model >> retriever_model
 
-                    evaluate_retriever(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever, rewriter)
+                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever, rewriter)
 
 # ranked_pairs, attack_ids_docs, args = new_attack.main()
 #
