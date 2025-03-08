@@ -1,9 +1,58 @@
+from torch.cpu import is_available
+
 from src import new_attack
 import pandas as pd
 from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
 from  pyterrier import rewrite
 import argparse
+from torch.cuda import is_available
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Argument parser for attack evaluation.")
+
+    parser.add_argument("--model_name_or_path", type=str, default="crystina-z/monoELECTRA_LCE_nneg31",
+                        help="Path to the model or model identifier from HuggingFace.")
+    parser.add_argument("--output_file", type=str, default="./output/attacks.txt",
+                        help="Path to the output file where attack results will be stored.")
+    parser.add_argument("--dataset", type=str, default="./dataset.tsv.gz",
+                        help="Path to the dataset file.")
+    parser.add_argument("--scores", type=str, default="./scores.json.gz",
+                        help="Path to the scores file.")
+    parser.add_argument("--model_type", type=str, default="cat",
+                        help="Type of model to use.")
+    parser.add_argument("--subset", type=int, default=1,
+                        help="Subset size for evaluation.")
+    parser.add_argument("--max_attack_word_number", type=int, default=10,
+                        help="Maximum number of words to attack.")
+    parser.add_argument("--toy", action="store_true",
+                        help="Use toy mode (default: False).")
+    parser.add_argument("--eps", type=float, default=0.1,
+                        help="Epsilon value for attack algorithm.")
+    parser.add_argument("--max_iter", type=int, default=3,
+                        help="Maximum number of iterations for attack.")
+    parser.add_argument("--simi_candi_topk", type=int, default=5,
+                        help="Top-K similar words to consider.")
+    parser.add_argument("--simi_threshod", type=float, default=0.4,
+                        help="Similarity threshold for word substitution.")
+    parser.add_argument("--max_doc_length", type=int, default=300,
+                        help="Maximum document length.")
+    parser.add_argument("--max_query_length", type=int, default=30,
+                        help="Maximum query length.")
+    parser.add_argument("--device", type=str, default="cuda" if is_available() else "cpu",
+                        help="Device to run the model on (default: cuda if available, else cpu).")
+    parser.add_argument("--find_word_search", action="store_true",
+                        help="Enable word search for finding attacks (default: False).")
+    parser.add_argument("--doc_list_length", type=int, default=100,
+                        help="Number of documents in the list.")
+    parser.add_argument("--dataset_id", type=str, default="msmarco-passage/trec-dl-2019/judged",
+                        help="Dataset identifier.")
+    parser.add_argument("--group_size", type=int, default=20,
+                        help="Size of each evaluation group.")
+    parser.add_argument("--rewrite_query", type=bool, default=False,
+                        help="Enable rewriting of queries.")
+
+    return parser.parse_args()
 
 retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 datasets = {"msmarco-document-v2":

@@ -41,6 +41,7 @@ class Args:
     doc_list_length: int = field(default=100)
     dataset_id : str = field(default="msmarco-passage/trec-dl-2019/judged")
     group_size: int = field(default=20)
+    rewrite_query: bool = field(default=False)
 
     def __post_init(self):
         if self.model_type not in ["cat", "dot"]:
@@ -169,9 +170,12 @@ def attack(
     return new_doc_token_id_list, score
 
 
-def main():
-    parser = HfArgumentParser(Args)
-    args = parser.parse_args()
+def main(args=None):
+    if not args:
+        parser = HfArgumentParser(Args)
+        args = parser.parse_args()
+
+
     if args.model_type == "cat":
         model = Cat.from_pretrained(args.model_name_or_path).to(args.device)
     elif args.model_type == "dot":
@@ -179,7 +183,7 @@ def main():
     else:
         raise ValueError(f"Model type '{args.model_type}' not recognised")
 
-    model_state_dict = copy.deepcopy(model.state_dict())
+    # model_state_dict = copy.deepcopy(model.state_dict())
     tokenizer = model.tokenizer
     embeddings = model.model.base_model.embeddings.word_embeddings
     semantic_helper = SemanticHelper(embeddings, tokenizer)
