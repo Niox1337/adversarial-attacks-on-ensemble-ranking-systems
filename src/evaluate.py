@@ -2,9 +2,15 @@ from src import new_attack
 import pandas as pd
 from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
+from  pyterrier import rewrite
+import argparse
+
+retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+datasets = {"msmarco-document-v2":
+            ["trec-dl-2019/judged", "trec-dl-2020/judged", "trec-dl-2021/judged", "trec-dl-2022/judged"]}
+rewriters = ["bo1", "rm3"]
 
 ranked_pairs, attack_ids_docs, args = new_attack.main()
-
 
 dataset = irds.load(args.dataset_id)
 attack_data = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
