@@ -135,7 +135,7 @@ for parent, children in datasets.items():
         for retriever in retrievers:
 
             # Run attacks
-            ranked_pairs, attack_ids_docs, args = new_attack.main(args, dataset)
+            attack_ids_docs, args = new_attack.main(args, dataset)
             attack_data = original_docs.copy()
 
             # Inject attack documents into dataset

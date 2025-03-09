@@ -201,8 +201,6 @@ def main(args=None, dataset=None):
         corpus=corpus
     )
 
-    ranked_pairs = pd.DataFrame()
-
     if not args.toy:
         # dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         # collator = (
@@ -365,7 +363,7 @@ def main(args=None, dataset=None):
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return ranked_pairs, attack_pair_docs, args
+    return attack_pair_docs, args
 
 
 if __name__ == "__main__":
