@@ -57,28 +57,38 @@ def parse_args():
     return parser.parse_args()
 
 
-def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs):
 
     retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
 
-    # Evaluate attack success
-    retrieved_attack_num = sum(
-        (retrieved_docs["qid"] == ids.split("_")[0]) &
-        (retrieved_docs["doc_id"] == ids.split("_")[1])
-        for ids in attack_ids_docs.keys()
-    )
+    retrieved_attack_num = 0
+    for attack_key, attack_text in attack_ids_docs.items():
+        qid_part, doc_id_part = attack_key.split("_")
+        query_text = queries.loc[queries["qid"] == qid_part, "query"]
+        query_text = query_text.iloc[0] if not query_text.empty else None
+        orig_text = ori_docs.get(doc_id_part, None)
+        # Check if the attack document was retrieved: i.e. whether there exists a row in retrieved_docs
+        # with matching qid and doc_id.
+        retrieved = ((retrieved_docs["qid"] == qid_part) & (retrieved_docs["doc_id"] == doc_id_part)).any()
+        if retrieved:
+            retrieved_attack_num += 1
+
+        evaluation_data["qid"].append(qid_part)
+        evaluation_data["query"].append(query_text)
+        evaluation_data["doc_id"].append(doc_id_part)
+        evaluation_data["original_doc"].append(orig_text)
+        evaluation_data["attack_doc"].append(attack_text)
+        evaluation_data["pipeline"].append(pipeline_name)
+        evaluation_data["retrieved"].append(retrieved)
 
     total_attacks = len(attack_ids_docs)
     attack_retrieval_ratio = retrieved_attack_num / total_attacks if total_attacks > 0 else 0
 
-    evaluation_results.append({
-        "dataset": dataset_id,
-        "retriever": retriever,
-        "rewriter": rewriter,
-        "successful_attacks": retrieved_attack_num,
-        "total_attacks": total_attacks,
-        "attack_retrieval_ratio": attack_retrieval_ratio
-    })
+    evaluation_results["dataset"].append(dataset_id)
+    evaluation_results["pipeline"].append(pipeline_name)
+    evaluation_results["successful_attacks"].append(retrieved_attack_num)
+    evaluation_results["total_attacks"].append(total_attacks)
+    evaluation_results["attack_retrieval_ratio"].append(attack_retrieval_ratio)
 
 retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 datasets = {
@@ -90,7 +100,22 @@ datasets = {
     ]
 }
 rewriters = ["bo1", "rm3"]
-evaluation_results = []
+evaluation_data = {
+    "qid": [],
+    "query": [],
+    "doc_id": [],
+    "original_doc": [],
+    "attack_doc": [],
+    "pipeline": [],
+    "retrieved": [],
+}
+evaluation_results = {
+    "dataset": [],
+    "pipeline": [],
+    "successful_attacks": [],
+    "total_attacks": [],
+    "attack_retrieval_ratio": [],
+}
 args = parse_args()
 
 for parent, children in datasets.items():
@@ -104,13 +129,14 @@ for parent, children in datasets.items():
         queries = pd.DataFrame(dataset.queries_iter()).rename(
             columns={"query_id": "qid", "text": "query"}
         )
+        original_docs = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
 
         # Iterate over retrievers
         for retriever in retrievers:
 
             # Run attacks
             ranked_pairs, attack_ids_docs, args = new_attack.main(args, dataset)
-            attack_data = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
+            attack_data = original_docs.copy()
 
             # Inject attack documents into dataset
             for ids, text in attack_ids_docs.items():
@@ -128,7 +154,7 @@ for parent, children in datasets.items():
             # Retrieve documents using the selected retriever
             retriever_model = getattr(index, retriever)(num_results=100)
             args.pipeline = retriever_model
-            evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever)
+            evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
 
             #Retrieval with Rewriting
             if args.rewrite_query:
@@ -138,17 +164,22 @@ for parent, children in datasets.items():
                     rewriter_model = getattr(rewrite, rewriter)(index)
                     args.pipeline = retriever_model >> rewriter_model >> retriever_model
 
-                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever, rewriter)
+                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
 
             if args.multiple_retrievers:
                 remaining_retrievers = retrievers.copy()
                 remaining_retrievers.remove(retriever)
                 for second_retriever in remaining_retrievers:
-                    print(f"  - Evaluating pipeline with second retriever: {second_retriever}")
+                    print(f"  - Evaluating pipeline: {retriever} -> {second_retriever}")
 
                     args.pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
-                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, second_retriever)
+                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
 
+evaluation_data_df = pd.DataFrame(evaluation_data)
+evaluation_results_df = pd.DataFrame(evaluation_results)
+
+evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False)
+evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
 
 # ranked_pairs, attack_ids_docs, args = new_attack.main()
 #
