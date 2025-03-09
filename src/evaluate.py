@@ -124,26 +124,20 @@ for parent, children in datasets.items():
         args.dataset_id = f"{parent}/{child}"
         print(f"\nEvaluating dataset: {args.dataset_id}")
 
-        # Load dataset
         dataset = irds.load(args.dataset_id)
         queries = pd.DataFrame(dataset.queries_iter()).rename(
             columns={"query_id": "qid", "text": "query"}
         )
         original_docs = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
 
-        # Iterate over retrievers
         for retriever in retrievers:
-
-            # Run attacks
             attack_ids_docs, args = new_attack.main(args, dataset)
             attack_data = original_docs.copy()
 
-            # Inject attack documents into dataset
             for ids, text in attack_ids_docs.items():
                 doc_id = ids.split("_")[1]
                 attack_data[doc_id] = text
 
-            # Index attack-modified dataset
             index = PisaIndex("./attack_index", threads=4)
             index.index(
                 ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
@@ -151,12 +145,10 @@ for parent, children in datasets.items():
 
             print(f"  - Evaluating retriever: {retriever}")
 
-            # Retrieve documents using the selected retriever
             retriever_model = getattr(index, retriever)(num_results=100)
             args.pipeline = retriever_model
             evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
 
-            #Retrieval with Rewriting
             if args.rewrite_query:
                 for rewriter in rewriters:
                     print(f"  - Evaluating retriever with rewriter: {rewriter}")
