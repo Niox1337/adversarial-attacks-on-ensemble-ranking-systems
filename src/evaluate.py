@@ -51,13 +51,15 @@ def parse_args():
                         help="Size of each evaluation group.")
     parser.add_argument("--rewrite_query", type=bool, default=True,
                         help="Enable rewriting of queries.")
+    parser.add_argument("--multiple_retrievers", type=bool, default=False,
+                        help="Enable multi-retrievers evaluation.")
 
     return parser.parse_args()
 
 
-def evaluate_pipeline(retriever_model, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, retriever, rewriter=None):
 
-    retrieved_docs = retriever_model.transform(queries).rename(columns={"docno": "doc_id"})
+    retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
 
     # Evaluate attack success
     retrieved_attack_num = sum(
@@ -137,6 +139,16 @@ for parent, children in datasets.items():
                     args.pipeline = retriever_model >> rewriter_model >> retriever_model
 
                     evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever, rewriter)
+
+            if args.multiple_retrievers:
+                remaining_retrievers = retrievers.copy()
+                remaining_retrievers.remove(retriever)
+                for second_retriever in remaining_retrievers:
+                    print(f"  - Evaluating pipeline with second retriever: {second_retriever}")
+
+                    args.pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
+                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, second_retriever)
+
 
 # ranked_pairs, attack_ids_docs, args = new_attack.main()
 #

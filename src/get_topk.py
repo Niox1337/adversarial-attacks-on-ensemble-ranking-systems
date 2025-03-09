@@ -24,9 +24,9 @@ def get_topk(
             )
         )
 
-    bm25 = index.bm25(num_results=100)
+    bm25 = index.bm25(num_results=k)
     # pipeline = bm25 >> model
-    model = model % k
+    model = model
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
         columns={"query_id": "qid", "text": "query"}
