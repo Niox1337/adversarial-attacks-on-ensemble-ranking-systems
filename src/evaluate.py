@@ -131,7 +131,7 @@ for parent, children in datasets.items():
         )
 
         sample_doc = next(iter(dataset.docs_iter()))
-        print(vars(sample_doc))
+        print(type(sample_doc),"\n", sample_doc)
 
         original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
