@@ -125,10 +125,15 @@ for parent, children in datasets.items():
         print(f"\nEvaluating dataset: {args.dataset_id}")
 
         dataset = irds.load(args.dataset_id)
+
         queries = pd.DataFrame(dataset.queries_iter()).rename(
             columns={"query_id": "qid", "text": "query"}
         )
-        original_docs = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
+
+        sample_doc = next(iter(dataset.docs_iter()))
+        print(vars(sample_doc))
+
+        original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
         for retriever in retrievers:
             attack_ids_docs, args = new_attack.main(args, dataset)
@@ -148,7 +153,7 @@ for parent, children in datasets.items():
             retriever_model = getattr(index, retriever)(num_results=100)
             args.pipeline = retriever_model
             evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
-
+            args.first_child = False
             if args.rewrite_query:
                 for rewriter in rewriters:
                     print(f"  - Evaluating retriever with rewriter: {rewriter}")
