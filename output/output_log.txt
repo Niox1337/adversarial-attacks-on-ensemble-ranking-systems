@@ -1,17 +1,10 @@
-[INFO] Please confirm you agree to the MSMARCO data usage agreement found at <http://www.msmarco.org/dataset.aspx>
-[INFO] [starting] https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz
-
-Evaluating dataset: msmarco-document-v2/trec-dl-2019/judged
-https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz: 0.0%| 0.00/107k [00:00<?, ?B/s]https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz: 15.2%| 16.4k/107k [00:00<00:00, 105kB/s]https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz: 45.7%| 49.2k/107k [00:00<00:00, 158kB/s]                                                                                                                             [INFO] [finished] https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz: [00:00] [107kB] [345kB/s]
-https://msmarco.z22.web.core.windows.net/msmarcoranking/docv2_trec2019_qrels.txt.gz: [00:00] [107kB] [345kB/s]                                                                                                              [INFO] [starting] https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz
-https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz: 0.0%| 0.00/4.28k [00:00<?, ?B/s]                                                                                                                         [INFO] [finished] https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz: [00:00] [4.28kB] [28.9MB/s]
-https://msmarco.z22.web.core.windows.net/msmarcoranking/msmarco-test2019-queries.tsv.gz: [00:00] [4.28kB] [12.8MB/s]                                                                                                                    Traceback (most recent call last):
+Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
     exec(code, run_globals)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 131, in <module>
-    original_docs = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 131, in <dictcomp>
-    original_docs = {doc.doc_id: doc.text for doc in dataset.docs_iter()}
-AttributeError: 'MsMarcoV2Document' object has no attribute 'text'
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 134, in <module>
+    print(vars(sample_doc))
+TypeError: vars() argument must have __dict__ attribute
+
+Evaluating dataset: msmarco-document-v2/trec-dl-2019/judged
