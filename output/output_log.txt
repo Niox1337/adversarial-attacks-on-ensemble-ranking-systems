@@ -1,10 +1,1 @@
-Traceback (most recent call last):
-  File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/opt/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 134, in <module>
-    print(vars(sample_doc))
-TypeError: vars() argument must have __dict__ attribute
-
-Evaluating dataset: msmarco-document-v2/trec-dl-2019/judged
+You are using a model of type electra to instantiate a model of type Cat. This is not supported for all configurations of models and can yield errors.
