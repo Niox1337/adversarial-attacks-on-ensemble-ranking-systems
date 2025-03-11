@@ -139,7 +139,7 @@ datasets = {
         "trec-dl-2020/judged",
     ]
 }
-rewriters = ["bo1", "rm3"]
+rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
     "query": [],
@@ -170,10 +170,6 @@ def main():
             index_path = args.index_path+"attack/"+parent
             dataset = irds.load(args.dataset_id)
 
-            for i, doc in enumerate(dataset.docs_iter()):
-                print(doc)
-                break
-
             print("Constructing queries")
 
             queries = pd.DataFrame(dataset.queries_iter()).rename(
@@ -194,9 +190,12 @@ def main():
                     attack_data[doc_id] = text
 
                 index = PisaIndex(index_path, threads=4)
-                index.index(
-                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
-                )
+                try:
+                    index.index(
+                        ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+                    )
+                except RuntimeError:
+                    print(f"{parent} attack document is already indexed attacks, skipping...")
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
