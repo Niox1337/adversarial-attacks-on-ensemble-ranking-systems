@@ -169,11 +169,12 @@ def main():
             print(f"\nEvaluating dataset: {args.dataset_id}")
 
             dataset = irds.load(args.dataset_id)
+            print("Constructing original_docs")
 
             queries = pd.DataFrame(dataset.queries_iter()).rename(
                 columns={"query_id": "qid", "text": "query"}
             )
-
+            print("Constructing original_docs")
             original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
             for retriever in retrievers:
