@@ -1,5 +1,3 @@
-from torch.cpu import is_available
-
 from src import new_attack
 import pandas as pd
 from pyterrier_pisa import PisaIndex
@@ -106,7 +104,8 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         qid_part, doc_id_part = attack_key.split("_")
         query_text = queries.loc[queries["qid"] == qid_part, "query"]
         query_text = query_text.iloc[0] if not query_text.empty else None
-        orig_text = ori_docs.get(doc_id_part, None)
+        orig_text = ori_docs.loc[ori_docs["doc_id"] == doc_id_part, "original_doc"]
+        orig_text = orig_text.iloc[0] if not orig_text.empty else None
         # Check if the attack document was retrieved: i.e. whether there exists a row in retrieved_docs
         # with matching qid and doc_id.
         retrieved = ((retrieved_docs["qid"] == qid_part) & (retrieved_docs["doc_id"] == doc_id_part)).any()
@@ -169,13 +168,13 @@ def main():
             print(f"\nEvaluating dataset: {args.dataset_id}")
 
             dataset = irds.load(args.dataset_id)
-            print("Constructing original_docs")
+            print("Constructing queries")
 
             queries = pd.DataFrame(dataset.queries_iter()).rename(
                 columns={"query_id": "qid", "text": "query"}
             )
             print("Constructing original_docs")
-            original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
+            original_docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"doc_id": "doc_id", "body": "text"})
 
             for retriever in retrievers:
                 print("Start Attacking")
@@ -185,12 +184,13 @@ def main():
 
                 for ids, text in attack_ids_docs.items():
                     doc_id = ids.split("_")[1]
-                    attack_data[doc_id] = text
+                    attack_data.loc[attack_data["doc_id"] == doc_id, "text"] = text
 
                 index = PisaIndex("./attack_index", threads=4)
                 index.index(
-                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+                    ({"docno": doc_id, "text": text} for doc_id, text in zip(attack_data["doc_id"], attack_data["original_doc"]))
                 )
+
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
