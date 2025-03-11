@@ -1,11 +1,51 @@
 dataset,pipeline,successful_attacks,total_attacks,attack_retrieval_ratio
 msmarco-document/trec-dl-2019/judged,bm25,42,42,1.0
-msmarco-document/trec-dl-2019/judged,dph,42,42,1.0
+msmarco-document/trec-dl-2019/judged,bm25 -> dph,27,42,0.6428571428571429
+msmarco-document/trec-dl-2019/judged,bm25 -> pl2,24,42,0.5714285714285714
+msmarco-document/trec-dl-2019/judged,bm25 -> qld,29,42,0.6904761904761905
+msmarco-document/trec-dl-2019/judged,bm25 -> quantized,0,42,0.0
+msmarco-document/trec-dl-2019/judged,dph,40,42,0.9523809523809523
+msmarco-document/trec-dl-2019/judged,dph -> bm25,24,42,0.5714285714285714
+msmarco-document/trec-dl-2019/judged,dph -> pl2,34,42,0.8095238095238095
+msmarco-document/trec-dl-2019/judged,dph -> qld,34,42,0.8095238095238095
+msmarco-document/trec-dl-2019/judged,dph -> quantized,1,42,0.023809523809523808
 msmarco-document/trec-dl-2019/judged,pl2,41,42,0.9761904761904762
+msmarco-document/trec-dl-2019/judged,pl2 -> bm25,24,42,0.5714285714285714
+msmarco-document/trec-dl-2019/judged,pl2 -> dph,36,42,0.8571428571428571
+msmarco-document/trec-dl-2019/judged,pl2 -> qld,32,42,0.7619047619047619
+msmarco-document/trec-dl-2019/judged,pl2 -> quantized,2,42,0.047619047619047616
 msmarco-document/trec-dl-2019/judged,qld,42,42,1.0
+msmarco-document/trec-dl-2019/judged,qld -> bm25,30,42,0.7142857142857143
+msmarco-document/trec-dl-2019/judged,qld -> dph,38,42,0.9047619047619048
+msmarco-document/trec-dl-2019/judged,qld -> pl2,39,42,0.9285714285714286
+msmarco-document/trec-dl-2019/judged,qld -> quantized,2,42,0.047619047619047616
 msmarco-document/trec-dl-2019/judged,quantized,42,42,1.0
+msmarco-document/trec-dl-2019/judged,quantized -> bm25,2,42,0.047619047619047616
+msmarco-document/trec-dl-2019/judged,quantized -> dph,2,42,0.047619047619047616
+msmarco-document/trec-dl-2019/judged,quantized -> pl2,2,42,0.047619047619047616
+msmarco-document/trec-dl-2019/judged,quantized -> qld,2,42,0.047619047619047616
 msmarco-document/trec-dl-2020/judged,bm25,45,45,1.0
+msmarco-document/trec-dl-2020/judged,bm25 -> dph,27,45,0.6
+msmarco-document/trec-dl-2020/judged,bm25 -> pl2,27,45,0.6
+msmarco-document/trec-dl-2020/judged,bm25 -> qld,32,45,0.7111111111111111
+msmarco-document/trec-dl-2020/judged,bm25 -> quantized,2,45,0.044444444444444446
 msmarco-document/trec-dl-2020/judged,dph,45,45,1.0
+msmarco-document/trec-dl-2020/judged,dph -> bm25,27,45,0.6
+msmarco-document/trec-dl-2020/judged,dph -> pl2,39,45,0.8666666666666667
+msmarco-document/trec-dl-2020/judged,dph -> qld,36,45,0.8
+msmarco-document/trec-dl-2020/judged,dph -> quantized,3,45,0.06666666666666667
 msmarco-document/trec-dl-2020/judged,pl2,45,45,1.0
+msmarco-document/trec-dl-2020/judged,pl2 -> bm25,22,45,0.4888888888888889
+msmarco-document/trec-dl-2020/judged,pl2 -> dph,42,45,0.9333333333333333
+msmarco-document/trec-dl-2020/judged,pl2 -> qld,33,45,0.7333333333333333
+msmarco-document/trec-dl-2020/judged,pl2 -> quantized,2,45,0.044444444444444446
 msmarco-document/trec-dl-2020/judged,qld,45,45,1.0
+msmarco-document/trec-dl-2020/judged,qld -> bm25,37,45,0.8222222222222222
+msmarco-document/trec-dl-2020/judged,qld -> dph,38,45,0.8444444444444444
+msmarco-document/trec-dl-2020/judged,qld -> pl2,34,45,0.7555555555555555
+msmarco-document/trec-dl-2020/judged,qld -> quantized,2,45,0.044444444444444446
 msmarco-document/trec-dl-2020/judged,quantized,45,45,1.0
+msmarco-document/trec-dl-2020/judged,quantized -> bm25,1,45,0.022222222222222223
+msmarco-document/trec-dl-2020/judged,quantized -> dph,4,45,0.08888888888888889
+msmarco-document/trec-dl-2020/judged,quantized -> pl2,4,45,0.08888888888888889
+msmarco-document/trec-dl-2020/judged,quantized -> qld,3,45,0.06666666666666667
