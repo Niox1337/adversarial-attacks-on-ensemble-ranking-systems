@@ -22,7 +22,7 @@ def get_topk(
             (
                 {"docno": doc.doc_id, "text": doc.body}  # Correct mapping for PISA
                 for doc in dataset.docs_iter()
-            )
+            ), mode="overwrire"
         )
 
     bm25 = index.bm25(num_results=k)

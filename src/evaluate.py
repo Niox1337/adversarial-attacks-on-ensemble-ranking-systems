@@ -190,7 +190,7 @@ def main():
 
                 index = PisaIndex("./attack_index", threads=4)
                 index.index(
-                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items()), mode="overwrite"
                 )
 
 
