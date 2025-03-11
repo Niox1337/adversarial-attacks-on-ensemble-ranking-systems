@@ -165,6 +165,11 @@ def main():
             print(f"\nEvaluating dataset: {args.dataset_id}")
 
             dataset = irds.load(args.dataset_id)
+
+            for i, doc in enumerate(dataset.docs_iter()):
+                print(doc)
+                break
+
             print("Constructing queries")
 
             queries = pd.DataFrame(dataset.queries_iter()).rename(
