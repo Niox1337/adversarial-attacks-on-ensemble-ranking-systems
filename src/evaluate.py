@@ -5,56 +5,96 @@ import pandas as pd
 from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
 from  pyterrier import rewrite
-import argparse
+from transformers import HfArgumentParser
+from dataclasses import dataclass, field
 from torch.cuda import is_available
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Argument parser for attack evaluation.")
-
-    parser.add_argument("--model_name_or_path", type=str, default="crystina-z/monoELECTRA_LCE_nneg31",
-                        help="Path to the model or model identifier from HuggingFace.")
-    parser.add_argument("--output_file", type=str, default="./output/attacks.txt",
-                        help="Path to the output file where attack results will be stored.")
-    parser.add_argument("--dataset", type=str, default="./dataset.tsv.gz",
-                        help="Path to the dataset file.")
-    parser.add_argument("--scores", type=str, default="./scores.json.gz",
-                        help="Path to the scores file.")
-    parser.add_argument("--model_type", type=str, default="cat",
-                        help="Type of model to use.")
-    parser.add_argument("--subset", type=int, default=1,
-                        help="Subset size for evaluation.")
-    parser.add_argument("--max_attack_word_number", type=int, default=10,
-                        help="Maximum number of words to attack.")
-    parser.add_argument("--toy", action="store_true",
-                        help="Use toy mode (default: False).")
-    parser.add_argument("--eps", type=float, default=0.1,
-                        help="Epsilon value for attack algorithm.")
-    parser.add_argument("--max_iter", type=int, default=3,
-                        help="Maximum number of iterations for attack.")
-    parser.add_argument("--simi_candi_topk", type=int, default=5,
-                        help="Top-K similar words to consider.")
-    parser.add_argument("--simi_threshod", type=float, default=0.4,
-                        help="Similarity threshold for word substitution.")
-    parser.add_argument("--max_doc_length", type=int, default=300,
-                        help="Maximum document length.")
-    parser.add_argument("--max_query_length", type=int, default=30,
-                        help="Maximum query length.")
-    parser.add_argument("--device", type=str, default="cuda" if is_available() else "cpu",
-                        help="Device to run the model on (default: cuda if available, else cpu).")
-    parser.add_argument("--find_word_search", action="store_true",
-                        help="Enable word search for finding attacks (default: False).")
-    parser.add_argument("--doc_list_length", type=int, default=100,
-                        help="Number of documents in the list.")
-    parser.add_argument("--dataset_id", type=str, default="msmarco-passage/trec-dl-2019/judged",
-                        help="Dataset identifier.")
-    parser.add_argument("--group_size", type=int, default=20,
-                        help="Size of each evaluation group.")
-    parser.add_argument("--rewrite_query", type=bool, default=True,
-                        help="Enable rewriting of queries.")
-    parser.add_argument("--multiple_retrievers", type=bool, default=False,
-                        help="Enable multi-retrievers evaluation.")
-
-    return parser.parse_args()
+@dataclass
+class AttackEvalArguments:
+    model_name_or_path: str = field(
+        default="crystina-z/monoELECTRA_LCE_nneg31",
+        metadata={"help": "Path to the model or model identifier from HuggingFace."}
+    )
+    output_file: str = field(
+        default="./output/attacks.txt",
+        metadata={"help": "Path to the output file where attack results will be stored."}
+    )
+    dataset: str = field(
+        default="./dataset.tsv.gz",
+        metadata={"help": "Path to the dataset file."}
+    )
+    scores: str = field(
+        default="./scores.json.gz",
+        metadata={"help": "Path to the scores file."}
+    )
+    model_type: str = field(
+        default="cat",
+        metadata={"help": "Type of model to use."}
+    )
+    subset: int = field(
+        default=1,
+        metadata={"help": "Subset size for evaluation."}
+    )
+    max_attack_word_number: int = field(
+        default=10,
+        metadata={"help": "Maximum number of words to attack."}
+    )
+    toy: bool = field(
+        default=False,
+        metadata={"help": "Use toy mode."}
+    )
+    eps: float = field(
+        default=0.1,
+        metadata={"help": "Epsilon value for attack algorithm."}
+    )
+    max_iter: int = field(
+        default=3,
+        metadata={"help": "Maximum number of iterations for attack."}
+    )
+    simi_candi_topk: int = field(
+        default=5,
+        metadata={"help": "Top-K similar words to consider."}
+    )
+    simi_threshod: float = field(
+        default=0.4,
+        metadata={"help": "Similarity threshold for word substitution."}
+    )
+    max_doc_length: int = field(
+        default=300,
+        metadata={"help": "Maximum document length."}
+    )
+    max_query_length: int = field(
+        default=30,
+        metadata={"help": "Maximum query length."}
+    )
+    device: str = field(
+        default="cuda" if torch.cuda.is_available() else "cpu",
+        metadata={"help": "Device to run the model on (default: cuda if available, else cpu)."}
+    )
+    find_word_search: bool = field(
+        default=False,
+        metadata={"help": "Enable word search for finding attacks."}
+    )
+    doc_list_length: int = field(
+        default=100,
+        metadata={"help": "Number of documents in the list."}
+    )
+    dataset_id: str = field(
+        default="msmarco-passage/trec-dl-2019/judged",
+        metadata={"help": "Dataset identifier."}
+    )
+    group_size: int = field(
+        default=20,
+        metadata={"help": "Size of each evaluation group."}
+    )
+    rewrite_query: bool = field(
+        default=True,
+        metadata={"help": "Enable rewriting of queries."}
+    )
+    multiple_retrievers: bool = field(
+        default=False,
+        metadata={"help": "Enable multi-retrievers evaluation."}
+    )
 
 
 def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs):
@@ -116,7 +156,8 @@ evaluation_results = {
     "total_attacks": [],
     "attack_retrieval_ratio": [],
 }
-args = parse_args()
+parser = HfArgumentParser(AttackEvalArguments)
+args = parser.parse_args()
 
 for parent, children in datasets.items():
     args.first_child = True
