@@ -7,6 +7,8 @@ Start Attacking
 You are using a model of type electra to instantiate a model of type Cat. This is not supported for all configurations of models and can yield errors.
 Building vocab...
 Building vocab for bert_tokenizer...
+/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pyterrier_pisa/__init__.py:169: UserWarning: text_field not specified; indexing all str fields: ['text']
+  warn(f'text_field not specified; indexing all str fields: {text_field}')
 Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
@@ -16,10 +18,12 @@ Traceback (most recent call last):
     main()
   File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 183, in main
     attack_ids_docs, args = new_attack.main(args)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 197, in main
-    word_re = BERTWordRecover(
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/hybridattack/myutils/word_recover/Bert_word_recover.py", line 19, in __init__
-    self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").text.to_dict()
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pandas/core/generic.py", line 6299, in __getattr__
-    return object.__getattribute__(self, name)
-AttributeError: 'DataFrame' object has no attribute 'text'
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/new_attack.py", line 213, in main
+    ranked_pairs, args.score_lookup = get_topk(args, corpus, model)
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/get_topk.py", line 21, in get_topk
+    index.index(
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pyterrier_pisa/__init__.py", line 175, in index
+    return self.indexer(text_field, mode=mode).index(it)
+  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pyterrier_pisa/indexers.py", line 41, in index
+    raise RuntimeError(f'A PISA index already exists at {path}. If you want to overwrite it, set mode="overwrite"')
+RuntimeError: A PISA index already exists at index. If you want to overwrite it, set mode="overwrite"
