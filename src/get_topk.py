@@ -46,7 +46,7 @@ def get_topk(
         columns={"query_id": "qid", "text": "query"}
     )
     retrieved_docs = retrieval_pipeline.transform(queries)
-    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"text": "doc_text"})
+    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"body": "doc_text"})
     retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
 
     retrieved_docs = retrieved_docs.merge(docs, on="doc_id", how="left")
