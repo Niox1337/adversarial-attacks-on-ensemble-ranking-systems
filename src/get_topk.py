@@ -20,7 +20,7 @@ def get_topk(
     if args.first_child:
         index.index(
             (
-                {"docno": doc.doc_id, "text": doc.text}  # Correct mapping for PISA
+                {"docno": doc.doc_id, "text": doc.body}  # Correct mapping for PISA
                 for doc in dataset.docs_iter()
             )
         )

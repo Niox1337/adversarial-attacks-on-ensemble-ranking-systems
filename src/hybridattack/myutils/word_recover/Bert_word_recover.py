@@ -16,7 +16,7 @@ class BERTWordRecover(WordRecover):
         self.sep_id = self.tokenizer.sep_token_id
         self.max_query_length = max_query_length
         self.max_doc_length = max_doc_length
-        self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").text.to_dict()
+        self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").body.to_dict()
     
     def get_tokenized_doc(self, doc_id):
         text = self.docs[doc_id]
