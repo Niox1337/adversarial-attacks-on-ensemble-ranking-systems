@@ -177,6 +177,7 @@ def main():
             original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
             for retriever in retrievers:
+                print("Start Attacking")
                 attack_ids_docs, args = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
