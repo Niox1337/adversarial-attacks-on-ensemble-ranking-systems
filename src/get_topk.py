@@ -3,6 +3,7 @@ from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
 from rankers._util import save_json
 import pandas as pd
+from pyterrier import rewrite
 
 
 def get_topk(
@@ -13,8 +14,7 @@ def get_topk(
     k=100,
     batch_size: int = 128,
 ):
-
-
+    index_path = args.index_path + "original/" + args.dataset_id.split("/")[0]
     index = PisaIndex(index_path, threads=4)
 
     if args.first_child:
@@ -22,17 +22,24 @@ def get_topk(
             (
                 {"docno": doc.doc_id, "text": doc.body}  # Correct mapping for PISA
                 for doc in dataset.docs_iter()
-            ), mode="overwrire"
+            )
         )
 
-    bm25 = index.bm25(num_results=k)
+    retrieval_pipeline = getattr(index, args.pipeline[0])(num_results=100)
+    if len(args.pipeline) > 1:
+        for component in args.pipeline[1:]:
+            if component in ["bo1", "rm3"]:
+                retrieval_pipeline = retrieval_pipeline >> getattr(index, component)(index)
+            else:
+                retrieval_pipeline = retrieval_pipeline >> getattr(index, component)()
+
     # pipeline = bm25 >> model
     model = model
 
     queries = pd.DataFrame(dataset.queries_iter()).rename(
         columns={"query_id": "qid", "text": "query"}
     )
-    retrieved_docs = bm25.transform(queries)
+    retrieved_docs = retrieval_pipeline.transform(queries)
     docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"text": "doc_text"})
     retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
 

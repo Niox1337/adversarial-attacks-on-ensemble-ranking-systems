@@ -93,6 +93,10 @@ class AttackEvalArguments:
         default=False,
         metadata={"help": "Enable multi-retrievers evaluation."}
     )
+    index_path: str = field(
+        default="./index/",
+        metadata={"help": "Path to the index files."}
+    )
 
 
 def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs):
@@ -163,7 +167,7 @@ def main():
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
-
+            index_path = args.index_path+"attack/"+parent
             dataset = irds.load(args.dataset_id)
 
             for i, doc in enumerate(dataset.docs_iter()):
@@ -180,6 +184,7 @@ def main():
 
             for retriever in retrievers:
                 print("Start Attacking")
+                args.pipeline = [retriever]
                 attack_ids_docs, args = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
@@ -188,14 +193,13 @@ def main():
                     doc_id = ids.split("_")[1]
                     attack_data[doc_id] = text
 
-                index = PisaIndex("./attack_index", threads=4)
+                index = PisaIndex(index_path, threads=4)
                 index.index(
-                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items()), mode="overwrite"
+                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
                 )
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
-                args.pipeline = retriever_model
                 evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
                 args.first_child = False
                 if args.rewrite_query:
@@ -203,9 +207,10 @@ def main():
                         print(f"  - Evaluating retriever with rewriter: {rewriter}")
 
                         rewriter_model = getattr(rewrite, rewriter)(index)
-                        args.pipeline = retriever_model >> rewriter_model >> retriever_model
+                        pipeline = retriever_model >> rewriter_model >> retriever_model
+                        args.pipeline = [retriever, rewriter, retriever]
 
-                        evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
 
                 if args.multiple_retrievers:
                     remaining_retrievers = retrievers.copy()
@@ -213,8 +218,9 @@ def main():
                     for second_retriever in remaining_retrievers:
                         print(f"  - Evaluating pipeline: {retriever} -> {second_retriever}")
 
-                        args.pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
-                        evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
+                        pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
+                        args.pipeline = [retriever, second_retriever]
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
