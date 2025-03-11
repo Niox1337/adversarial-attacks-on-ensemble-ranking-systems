@@ -174,13 +174,11 @@ def main():
                 columns={"query_id": "qid", "text": "query"}
             )
 
-            sample_doc = next(iter(dataset.docs_iter()))
-            print(type(sample_doc),"\n", sample_doc)
-
             original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
             for retriever in retrievers:
-                attack_ids_docs, args = new_attack.main(args, dataset)
+                attack_ids_docs, args = new_attack.main(args)
+                print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
                 for ids, text in attack_ids_docs.items():
@@ -192,7 +190,6 @@ def main():
                     ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
                 )
 
-                print(f"  - Evaluating retriever: {retriever}")
 
                 retriever_model = getattr(index, retriever)(num_results=100)
                 args.pipeline = retriever_model

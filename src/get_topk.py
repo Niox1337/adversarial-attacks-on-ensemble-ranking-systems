@@ -14,6 +14,7 @@ def get_topk(
     batch_size: int = 128,
 ):
 
+
     index = PisaIndex(index_path, threads=4)
 
     if args.first_child:
