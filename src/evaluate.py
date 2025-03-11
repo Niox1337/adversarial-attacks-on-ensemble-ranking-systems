@@ -86,7 +86,7 @@ class AttackEvalArguments:
         metadata={"help": "Size of each evaluation group."}
     )
     rewrite_query: bool = field(
-        default=True,
+        default=False,
         metadata={"help": "Enable rewriting of queries."}
     )
     multiple_retrievers: bool = field(
