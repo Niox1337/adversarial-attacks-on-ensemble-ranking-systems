@@ -1,1 +1,8 @@
+
+Evaluating dataset: msmarco-document-v2/trec-dl-2019/judged
+Constructing queries
+Constructing original_docs
+Start Attacking
 You are using a model of type electra to instantiate a model of type Cat. This is not supported for all configurations of models and can yield errors.
+Building vocab...
+Building vocab for bert_tokenizer...
