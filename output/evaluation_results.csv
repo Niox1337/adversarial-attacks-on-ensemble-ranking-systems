@@ -1,0 +1,11 @@
+dataset,pipeline,successful_attacks,total_attacks,attack_retrieval_ratio
+msmarco-document/trec-dl-2019/judged,bm25,42,42,1.0
+msmarco-document/trec-dl-2019/judged,dph,42,42,1.0
+msmarco-document/trec-dl-2019/judged,pl2,41,42,0.9761904761904762
+msmarco-document/trec-dl-2019/judged,qld,42,42,1.0
+msmarco-document/trec-dl-2019/judged,quantized,42,42,1.0
+msmarco-document/trec-dl-2020/judged,bm25,45,45,1.0
+msmarco-document/trec-dl-2020/judged,dph,45,45,1.0
+msmarco-document/trec-dl-2020/judged,pl2,45,45,1.0
+msmarco-document/trec-dl-2020/judged,qld,45,45,1.0
+msmarco-document/trec-dl-2020/judged,quantized,45,45,1.0
