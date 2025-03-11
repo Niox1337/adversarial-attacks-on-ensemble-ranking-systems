@@ -68,7 +68,7 @@ class AttackEvalArguments:
         metadata={"help": "Maximum query length."}
     )
     device: str = field(
-        default="cuda" if torch.cuda.is_available() else "cpu",
+        default="cuda" if is_available() else "cpu",
         metadata={"help": "Device to run the model on (default: cuda if available, else cpu)."}
     )
     find_word_search: bool = field(
@@ -156,68 +156,74 @@ evaluation_results = {
     "total_attacks": [],
     "attack_retrieval_ratio": [],
 }
-parser = HfArgumentParser(AttackEvalArguments)
-args = parser.parse_args()
 
-for parent, children in datasets.items():
-    args.first_child = True
-    for child in children:
-        args.dataset_id = f"{parent}/{child}"
-        print(f"\nEvaluating dataset: {args.dataset_id}")
 
-        dataset = irds.load(args.dataset_id)
+def main():
+    parser = HfArgumentParser(AttackEvalArguments)
+    args = parser.parse_args()
 
-        queries = pd.DataFrame(dataset.queries_iter()).rename(
-            columns={"query_id": "qid", "text": "query"}
-        )
+    for parent, children in datasets.items():
+        args.first_child = True
+        for child in children:
+            args.dataset_id = f"{parent}/{child}"
+            print(f"\nEvaluating dataset: {args.dataset_id}")
 
-        sample_doc = next(iter(dataset.docs_iter()))
-        print(type(sample_doc),"\n", sample_doc)
+            dataset = irds.load(args.dataset_id)
 
-        original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
-
-        for retriever in retrievers:
-            attack_ids_docs, args = new_attack.main(args, dataset)
-            attack_data = original_docs.copy()
-
-            for ids, text in attack_ids_docs.items():
-                doc_id = ids.split("_")[1]
-                attack_data[doc_id] = text
-
-            index = PisaIndex("./attack_index", threads=4)
-            index.index(
-                ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+            queries = pd.DataFrame(dataset.queries_iter()).rename(
+                columns={"query_id": "qid", "text": "query"}
             )
 
-            print(f"  - Evaluating retriever: {retriever}")
+            sample_doc = next(iter(dataset.docs_iter()))
+            print(type(sample_doc),"\n", sample_doc)
 
-            retriever_model = getattr(index, retriever)(num_results=100)
-            args.pipeline = retriever_model
-            evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
-            args.first_child = False
-            if args.rewrite_query:
-                for rewriter in rewriters:
-                    print(f"  - Evaluating retriever with rewriter: {rewriter}")
+            original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
-                    rewriter_model = getattr(rewrite, rewriter)(index)
-                    args.pipeline = retriever_model >> rewriter_model >> retriever_model
+            for retriever in retrievers:
+                attack_ids_docs, args = new_attack.main(args, dataset)
+                attack_data = original_docs.copy()
 
-                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
+                for ids, text in attack_ids_docs.items():
+                    doc_id = ids.split("_")[1]
+                    attack_data[doc_id] = text
 
-            if args.multiple_retrievers:
-                remaining_retrievers = retrievers.copy()
-                remaining_retrievers.remove(retriever)
-                for second_retriever in remaining_retrievers:
-                    print(f"  - Evaluating pipeline: {retriever} -> {second_retriever}")
+                index = PisaIndex("./attack_index", threads=4)
+                index.index(
+                    ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
+                )
 
-                    args.pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
-                    evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
+                print(f"  - Evaluating retriever: {retriever}")
 
-evaluation_data_df = pd.DataFrame(evaluation_data)
-evaluation_results_df = pd.DataFrame(evaluation_results)
+                retriever_model = getattr(index, retriever)(num_results=100)
+                args.pipeline = retriever_model
+                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
+                args.first_child = False
+                if args.rewrite_query:
+                    for rewriter in rewriters:
+                        print(f"  - Evaluating retriever with rewriter: {rewriter}")
 
-evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False)
-evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
+                        rewriter_model = getattr(rewrite, rewriter)(index)
+                        args.pipeline = retriever_model >> rewriter_model >> retriever_model
+
+                        evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
+
+                if args.multiple_retrievers:
+                    remaining_retrievers = retrievers.copy()
+                    remaining_retrievers.remove(retriever)
+                    for second_retriever in remaining_retrievers:
+                        print(f"  - Evaluating pipeline: {retriever} -> {second_retriever}")
+
+                        args.pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
+                        evaluate_pipeline(args.pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
+
+    evaluation_data_df = pd.DataFrame(evaluation_data)
+    evaluation_results_df = pd.DataFrame(evaluation_results)
+
+    evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False)
+    evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
+
+if __name__ == "__main__":
+    main()
 
 # ranked_pairs, attack_ids_docs, args = new_attack.main()
 #
