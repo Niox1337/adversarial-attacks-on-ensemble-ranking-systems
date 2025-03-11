@@ -90,7 +90,7 @@ class AttackEvalArguments:
         metadata={"help": "Enable rewriting of queries."}
     )
     multiple_retrievers: bool = field(
-        default=False,
+        default=True,
         metadata={"help": "Enable multi-retrievers evaluation."}
     )
     index_path: str = field(
