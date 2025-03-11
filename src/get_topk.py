@@ -3,7 +3,7 @@ from pyterrier_pisa import PisaIndex
 import ir_datasets as irds
 from rankers._util import save_json
 import pandas as pd
-from pyterrier import rewrite, IndexRef
+from pyterrier import rewrite
 
 
 def get_topk(
@@ -16,7 +16,6 @@ def get_topk(
 ):
     doc_name = args.dataset_id.split("/")[0]
     index_path = args.index_path + "original/" + doc_name
-    indexRef = IndexRef()
     index = PisaIndex(index_path, threads=4)
 
     if args.first_child:
