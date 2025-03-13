@@ -225,7 +225,7 @@ def main():
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
 
-    evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False)
+    evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False, sep="\t")
     evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
 
 if __name__ == "__main__":
