@@ -6,6 +6,7 @@ from  pyterrier import rewrite
 from transformers import HfArgumentParser
 from dataclasses import dataclass, field
 from torch.cuda import is_available
+import os
 
 @dataclass
 class AttackEvalArguments:
@@ -132,6 +133,20 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
     evaluation_results["total_attacks"].append(total_attacks)
     evaluation_results["attack_retrieval_ratio"].append(attack_retrieval_ratio)
 
+
+def remove_files_in_directory(directory_path):
+    if os.path.exists(directory_path) and os.path.isdir(directory_path):
+        for filename in os.listdir(directory_path):
+            file_path = os.path.join(directory_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+            except Exception as e:
+                print(f'Failed to delete {file_path}. Reason: {e}')
+        print(f'All files in "{directory_path}" have been removed.')
+    else:
+        print(f'Directory "{directory_path}" does not exist.')
+
 # retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 # datasets = {
 #     "msmarco-document": [
@@ -195,9 +210,11 @@ def main():
                 for ids, text in attack_ids_docs.items():
                     doc_id = ids.split("_")[1]
                     attack_data[doc_id] = text
-                index_path = args.index_path + "attack/" + "retriever" + args.dataset_id
+                index_path = args.index_path + "attack/" +args.dataset_id+"/"+retriever
                 index = PisaIndex(index_path, threads=16)
+
                 try:
+                    remove_files_in_directory(index_path)
                     index.index(
                         ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
                     )
@@ -231,7 +248,7 @@ def main():
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
 
-    evaluation_data_df.to_csv("./output/evaluation_data.csv", index=False, sep="\t")
+    evaluation_data_df.to_excel("./output/evaluation_data.xlsx", index=False)
     evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
 
 if __name__ == "__main__":
