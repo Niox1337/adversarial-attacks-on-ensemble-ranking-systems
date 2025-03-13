@@ -355,10 +355,8 @@ def main(args=None, dataset=None):
             doc_token_ids = input_ids[first_sep_index + 1:]
             doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
 
-            recovered_doc = word_re.recover_doc(
-                doc_id_a, new_tokens.tolist(), args.max_doc_length
-            )
-            same = recovered_doc == doc_text_decoded
+            recovered_attack_doc = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+            same = recovered_attack_doc == doc_text_decoded
             to_write = (
                 f"key: {new_key}\n"
                 f"recovered_attack_doc: {word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)}\n"
