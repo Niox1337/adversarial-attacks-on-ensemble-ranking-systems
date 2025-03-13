@@ -230,7 +230,7 @@ def main(args=None, dataset=None):
 
             sequences_a = tokenizer(
                 [doc_a.iloc[0]["query"]] * len(docid_a),
-                [doc_a["text"]],
+                doc_b["text"].tolist(),
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
@@ -260,6 +260,7 @@ def main(args=None, dataset=None):
                 "scores_a": scores_a,
                 "scores_b": scores_b
             })
+        print("Initialization complete. Now move onto attack")
 
 
     else:
