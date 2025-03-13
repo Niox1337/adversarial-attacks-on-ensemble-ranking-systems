@@ -248,8 +248,10 @@ def main():
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
 
-    evaluation_data_df.to_excel("./output/evaluation_data.xlsx", index=False)
     evaluation_results_df.to_csv("./output/evaluation_results.csv", index=False)
+
+    with open("./output/evaluation_data.json", "w", encoding="utf-8") as file:
+        file.write(evaluation_data_df.to_json(orient="records", indent=2))
 
 if __name__ == "__main__":
     main()
