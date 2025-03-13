@@ -170,7 +170,7 @@ def main():
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
-            index_path = args.index_path+"attack/"+parent
+            index_path = args.index_path+"attack/"+args.dataset_id
             dataset = irds.load(args.dataset_id)
 
             print("Constructing queries")
