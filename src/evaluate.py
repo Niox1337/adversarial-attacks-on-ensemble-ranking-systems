@@ -132,11 +132,17 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
     evaluation_results["total_attacks"].append(total_attacks)
     evaluation_results["attack_retrieval_ratio"].append(attack_retrieval_ratio)
 
-retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+# retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+# datasets = {
+#     "msmarco-document": [
+#         "trec-dl-2019/judged",
+#         "trec-dl-2020/judged",
+#     ]
+# }
+retrievers = ["bm25"]
 datasets = {
     "msmarco-document": [
         "trec-dl-2019/judged",
-        "trec-dl-2020/judged",
     ]
 }
 rewriters = ["Bo1QueryExpansion", "RM3"]
@@ -170,7 +176,7 @@ def main():
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
-            index_path = args.index_path+"attack/"+args.dataset_id
+
             dataset = irds.load(args.dataset_id)
 
             print("Constructing queries")
@@ -189,8 +195,8 @@ def main():
                 for ids, text in attack_ids_docs.items():
                     doc_id = ids.split("_")[1]
                     attack_data[doc_id] = text
-
-                index = PisaIndex(index_path, threads=4)
+                index_path = args.index_path + "attack/" + "retriever" + args.dataset_id
+                index = PisaIndex(index_path, threads=16)
                 try:
                     index.index(
                         ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())

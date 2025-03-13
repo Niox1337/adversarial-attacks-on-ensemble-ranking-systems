@@ -105,7 +105,7 @@ def attack(
     sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
-    post_sep = post_sep[post_sep > 102]
+    post_sep = post_sep[post_sep > 102] # Filter special tokens
     attack_sequence_list = [
         token_id for token_id in dict.fromkeys(post_sep).keys()
     ]
@@ -222,14 +222,14 @@ def main(args=None, dataset=None):
             # docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
             # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
-            doc_a = group.iloc[10:].sample(n=1).iloc[0]
+            doc_a = group.iloc[10:].sample(n=10)
             doc_b = group.iloc[:10]
 
-            docid_a = [doc_a["doc_id"]]
+            docid_a = doc_a["doc_id"].tolist()
             docid_b = doc_b["doc_id"].tolist()
 
             sequences_a = tokenizer(
-                [doc_a["query"]],
+                [doc_a.iloc[0]["query"]] * len(docid_a),
                 [doc_a["text"]],
                 return_tensors="pt",
                 padding=True,
@@ -248,7 +248,7 @@ def main(args=None, dataset=None):
 
             # scores_a = [group.iloc[-1]["score"]]  # Score for docid_a
             # scores_b = group.iloc[:-1]["score"].tolist()  # Scores for docid_b
-            scores_a = [doc_a["score"]]
+            scores_a = doc_a["score"].tolist()
             scores_b = doc_b["score"].tolist()
 
             dataloader.append({
@@ -285,21 +285,20 @@ def main(args=None, dataset=None):
         }
 
 
-    attack_pair_docs = {}   # {doc_id: text}
+    attack_pair_docs = {}   # {qid_docid: text}
 
     for batch in dataloader:
         attack_text_dict = {}
         attack_score_dict = {}
 
         qid = batch["qid"]
-        doc_id_a = batch["docid_a"][0]
-
-        all_docs = [batch["sequences_a"]["input_ids"].squeeze(0)] + [
-            seq.squeeze(0) for seq in batch["sequences_b"]["input_ids"]
-        ]
+        # Prepare positive and negative sequences
+        all_a_docs = [row for row in batch["sequences_a"]["input_ids"]]
+        all_b_docs = [row for row in batch["sequences_b"]["input_ids"]]
+        all_docs = all_a_docs + all_b_docs
 
         combined_tokens = tokenizer(
-            [tokenizer.decode(seq.tolist()) for seq in all_docs],
+            [tokenizer.decode(ids) for ids in all_docs],
             padding=True,
             truncation=True,
             max_length=args.max_doc_length,
@@ -309,53 +308,64 @@ def main(args=None, dataset=None):
         ranking = {
             "input_ids": combined_tokens["input_ids"],
             "token_type_ids": combined_tokens["token_type_ids"],
-            "position_ids": torch.arange(combined_tokens["input_ids"].size(-1)).unsqueeze(0).repeat(
-                combined_tokens["input_ids"].size(0), 1
-            ),
+            "position_ids": torch.arange(combined_tokens["input_ids"].size(-1))
+            .unsqueeze(0)
+            .repeat(combined_tokens["input_ids"].size(0), 1),
         }
 
-        new_tokens, score = attack(
-            ranking,
-            batch["scores_a"][0],
-            qid,
-            doc_id_a,
-            model,
-            word_re,
-            semantic_helper,
-            tokenizer,
-            args,
-            args.device,
-            attack_word_number=args.max_attack_word_number,
-        )
+        # Process each doc A in the batch
+        num_doc_a = len(batch["docid_a"])
+        for i in range(num_doc_a):
+            doc_id_a = batch["docid_a"][i]
+            sequence_score = batch["scores_a"][i]
 
-        new_key = f"{qid}_{doc_id_a}"
-        attack_text_dict[new_key] = new_tokens
-        attack_score_dict[new_key] = score
-        attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+            # Create a ranking slice for this positive document.
+            # Assumption: the first num_doc_a rows in ranking correspond to sequences_a.
+            single_ranking = {
+                "input_ids": torch.cat((ranking["input_ids"][i].unsqueeze(0), ranking["input_ids"][num_doc_a:]), dim=0),
+                "token_type_ids": torch.cat((ranking["token_type_ids"][i].unsqueeze(0), ranking["token_type_ids"][num_doc_a:]), dim=0),
+                "position_ids": torch.cat((ranking["position_ids"][i].unsqueeze(0), ranking["position_ids"][num_doc_a:]), dim=0)
+            }
 
-        for key, text in attack_text_dict.items():
-            if isinstance(text, torch.Tensor):
-                text = text.tolist()
-            recovered_doc = word_re.recover_doc(
-                key.split("_")[1], text, args.max_doc_length
+            new_tokens, score = attack(
+                single_ranking,
+                sequence_score,
+                qid,
+                doc_id_a,
+                model,
+                word_re,
+                semantic_helper,
+                tokenizer,
+                args,
+                args.device,
+                attack_word_number=args.max_attack_word_number,
             )
-            recovered_attack_doc = word_re.tokenizer.decode(text, skip_special_tokens=True)
 
-            # Get the token IDs from the tokenized sequence
-            input_ids = batch["sequences_a"]["input_ids"][0]
+            new_key = f"{qid}_{doc_id_a}"
+            attack_text_dict[new_key] = new_tokens
+            attack_score_dict[new_key] = score
+            attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
 
-            # Find the first [SEP] token, which marks the end of the query
+            # Recover the original document for comparison:
+            input_ids = batch["sequences_a"]["input_ids"][i]
             sep_indices = (input_ids == tokenizer.sep_token_id).nonzero(as_tuple=True)[0]
-
             first_sep_index = sep_indices[0].item()
             # The document tokens are everything after the first [SEP] token
             doc_token_ids = input_ids[first_sep_index + 1:]
-            # Decode only the document part
             doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
 
-            same = recovered_doc==doc_text_decoded
-            to_write = f"key: {key}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nori_score: {batch['scores_a'][0]}\nsame: {same}"
-
+            recovered_doc = word_re.recover_doc(
+                doc_id_a, new_tokens.tolist(), args.max_doc_length
+            )
+            same = recovered_doc == doc_text_decoded
+            to_write = (
+                f"key: {new_key}\n"
+                f"recovered_attack_doc: {word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)}\n"
+                f"ori_doc: {doc_text_decoded}\n"
+                f"attack_score: {attack_score_dict[new_key]}\n"
+                f"ori_score: {sequence_score}\n"
+                f"same: {same}\n\n"
+            )
 
             if args.toy:
                 print(to_write)
@@ -364,6 +374,88 @@ def main(args=None, dataset=None):
                     f.write(to_write)
 
     return attack_pair_docs, args
+
+    # for batch in dataloader:
+    #     attack_text_dict = {}
+    #     attack_score_dict = {}
+    #
+    #     qid = batch["qid"]
+    #     doc_id_a = batch["docid_a"][0]
+    #
+    #     # all_docs = [batch["sequences_a"]["input_ids"].squeeze(0)] + [
+    #     #     seq.squeeze(0) for seq in batch["sequences_b"]["input_ids"]
+    #     # ]
+    #
+    #     all_a_docs = [row for row in batch["sequences_a"]["input_ids"]]
+    #     all_b_docs = [row for row in batch["sequences_b"]["input_ids"]]
+    #     all_docs = all_a_docs + all_b_docs
+    #
+    #     combined_tokens = tokenizer(
+    #         [tokenizer.decode(ids) for ids in all_docs],
+    #         padding=True,
+    #         truncation=True,
+    #         max_length=args.max_doc_length,
+    #         return_tensors="pt",
+    #     )
+    #
+    #     ranking = {
+    #         "input_ids": combined_tokens["input_ids"],
+    #         "token_type_ids": combined_tokens["token_type_ids"],
+    #         "position_ids": torch.arange(combined_tokens["input_ids"].size(-1)).unsqueeze(0).repeat(
+    #             combined_tokens["input_ids"].size(0), 1
+    #         ),
+    #     }
+    #
+    #     new_tokens, score = attack(
+    #         ranking,
+    #         batch["scores_a"][0],
+    #         qid,
+    #         doc_id_a,
+    #         model,
+    #         word_re,
+    #         semantic_helper,
+    #         tokenizer,
+    #         args,
+    #         args.device,
+    #         attack_word_number=args.max_attack_word_number,
+    #     )
+    #
+    #     new_key = f"{qid}_{doc_id_a}"
+    #     attack_text_dict[new_key] = new_tokens
+    #     attack_score_dict[new_key] = score
+    #     attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+    #
+    #     for key, text in attack_text_dict.items():
+    #         if isinstance(text, torch.Tensor):
+    #             text = text.tolist()
+    #         recovered_doc = word_re.recover_doc(
+    #             key.split("_")[1], text, args.max_doc_length
+    #         )
+    #         recovered_attack_doc = word_re.tokenizer.decode(text, skip_special_tokens=True)
+    #
+    #         # Get the token IDs from the tokenized sequence
+    #         input_ids = batch["sequences_a"]["input_ids"][0]
+    #
+    #         # Find the first [SEP] token, which marks the end of the query
+    #         sep_indices = (input_ids == tokenizer.sep_token_id).nonzero(as_tuple=True)[0]
+    #
+    #         first_sep_index = sep_indices[0].item()
+    #         # The document tokens are everything after the first [SEP] token
+    #         doc_token_ids = input_ids[first_sep_index + 1:]
+    #         # Decode only the document part
+    #         doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
+    #
+    #         same = recovered_doc==doc_text_decoded
+    #         to_write = f"key: {key}\nrecovered_attack_doc: {recovered_attack_doc}\nori_doc: {doc_text_decoded}\nattack_score_dict[key]: {attack_score_dict[key]}\nori_score: {batch['scores_a'][0]}\nsame: {same}"
+    #
+    #
+    #         if args.toy:
+    #             print(to_write)
+    #         else:
+    #             with open(args.output_file, "a") as f:
+    #                 f.write(to_write)
+    #
+    # return attack_pair_docs, args
 
 
 if __name__ == "__main__":

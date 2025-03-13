@@ -16,7 +16,7 @@ def get_topk(
 ):
     doc_name = args.dataset_id.split("/")[0]
     index_path = args.index_path + "original/" + doc_name
-    index = PisaIndex(index_path, threads=4)
+    index = PisaIndex(index_path, threads=16)
 
     if args.first_child:
         try:
