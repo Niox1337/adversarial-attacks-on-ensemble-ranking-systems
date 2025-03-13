@@ -1,2 +1,2 @@
 dataset,pipeline,successful_attacks,total_attacks,attack_retrieval_ratio
-msmarco-document/trec-dl-2019/judged,bm25,383,420,0.9119047619047619
+msmarco-document/trec-dl-2019/judged,bm25,67,420,0.1595238095238095
