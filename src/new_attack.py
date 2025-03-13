@@ -230,7 +230,7 @@ def main(args=None, dataset=None):
 
             sequences_a = tokenizer(
                 [doc_a.iloc[0]["query"]] * len(docid_a),
-                doc_b["text"].tolist(),
+                doc_a["text"].tolist(),
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
