@@ -90,7 +90,7 @@ class AttackEvalArguments:
         metadata={"help": "Enable rewriting of queries."}
     )
     multiple_retrievers: bool = field(
-        default=True,
+        default=False,
         metadata={"help": "Enable multi-retrievers evaluation."}
     )
     index_path: str = field(
@@ -164,6 +164,9 @@ def main():
 
     for parent, children in datasets.items():
         args.first_child = True
+        docs_dataset = irds.load(parent)
+        print("Constructing original_docs")
+        original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
@@ -175,8 +178,6 @@ def main():
             queries = pd.DataFrame(dataset.queries_iter()).rename(
                 columns={"query_id": "qid", "text": "query"}
             )
-            print("Constructing original_docs")
-            original_docs = {doc.doc_id: doc.body for doc in dataset.docs_iter()}
 
             for retriever in retrievers:
                 print("Start Attacking")
