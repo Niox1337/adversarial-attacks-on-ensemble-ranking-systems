@@ -3,6 +3,7 @@
 git pull
 rm -rf index/attack/
 python -u -m src.evaluate 2>&1 | tee output/output_log.txt
+git pull
 git add *
 git commit -m "update output"
 git push
