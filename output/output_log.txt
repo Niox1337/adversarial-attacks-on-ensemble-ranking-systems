@@ -15,15 +15,3 @@ Initialization complete. Now move onto attack
 /nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/venv/lib/python3.10/site-packages/pyterrier_pisa/__init__.py:169: UserWarning: text_field not specified; indexing all str fields: ['text']
   warn(f'text_field not specified; indexing all str fields: {text_field}')
 msmarco-document attack document is already indexed, skipping...
-Traceback (most recent call last):
-  File "/opt/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/opt/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 283, in <module>
-    main()
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 252, in main
-    evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_ranks, attack_data)
-  File "/nfs/primary/adversarial-attacks-on-ensemble-ranking-systems/src/evaluate.py", line 153, in evaluate_pipeline
-    evaluation_results["top10_num"].append(top10_num)
-KeyError: 'top10_num'
