@@ -129,6 +129,9 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         new_rank = new_rank[0] if len(new_rank)>0 else -1
         if new_rank != -1 and new_rank<10:
             top10_num += 1
+            evaluation_data["top10"].append(True)
+        else:
+            evaluation_data["top10"].append(False)
         improvement = (new_rank - ori_rank) if new_rank != -1 else None
 
         evaluation_data["original_rank"].append(ori_rank)
@@ -190,7 +193,8 @@ evaluation_data = {
     "retrieved": [],
     "original_rank": [],
     "attacked_rank": [],
-    "rank_improvement": []
+    "rank_improvement": [],
+    "top10": []
 }
 evaluation_results = {
     "dataset": [],
