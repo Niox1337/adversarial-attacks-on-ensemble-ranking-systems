@@ -101,9 +101,12 @@ class AttackEvalArguments:
     )
 
 
-def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_ranks):
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_ranks, attack_text_dict):
 
     retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
+
+    retrieved_docs["text"] = retrieved_docs["doc_id"].map(ori_docs)
+    retrieved_docs["text"] = retrieved_docs["doc_id"].map(attack_text_dict)
 
     reranked = model.transform(retrieved_docs)
     retrieved_attack_num = 0
@@ -163,19 +166,19 @@ def remove_files_in_directory(directory_path):
     else:
         print(f'Directory "{directory_path}" does not exist.')
 
-# retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
-# datasets = {
-#     "msmarco-document": [
-#         "trec-dl-2019/judged",
-#         "trec-dl-2020/judged",
-#     ]
-# }
-retrievers = ["bm25"]
+retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 datasets = {
     "msmarco-document": [
         "trec-dl-2019/judged",
+        "trec-dl-2020/judged",
     ]
 }
+# retrievers = ["bm25"]
+# datasets = {
+#     "msmarco-document": [
+#         "trec-dl-2019/judged",
+#     ]
+# }
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -237,16 +240,16 @@ def main():
                 index = PisaIndex(index_path, threads=16)
 
                 try:
-                    remove_files_in_directory(index_path)
+                    # remove_files_in_directory(index_path)
                     index.index(
                         ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
                     )
                 except RuntimeError:
-                    print(f"{parent} attack document is already indexed attacks, skipping...")
+                    print(f"{parent} attack document is already indexed, skipping...")
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
-                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_ranks)
+                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_ranks, attack_data)
                 args.first_child = False
                 if args.rewrite_query:
                     for rewriter in rewriters:
@@ -256,7 +259,7 @@ def main():
                         pipeline = retriever_model >> rewriter_model >> retriever_model
                         args.pipeline = [retriever, rewriter, retriever]
 
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_ranks)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_ranks, attack_data)
 
                 if args.multiple_retrievers:
                     remaining_retrievers = retrievers.copy()
@@ -266,7 +269,7 @@ def main():
 
                         pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
                         args.pipeline = [retriever, second_retriever]
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_ranks)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_ranks, attack_data)
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
