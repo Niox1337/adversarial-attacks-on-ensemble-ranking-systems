@@ -198,7 +198,7 @@ evaluation_results = {
     "successful_attacks": [],
     "total_attacks": [],
     "attack_retrieval_ratio": [],
-    "Top10": []
+    "top10_num": []
 }
 
 
