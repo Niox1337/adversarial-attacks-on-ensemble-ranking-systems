@@ -6,6 +6,7 @@ from  pyterrier import rewrite
 from transformers import HfArgumentParser
 from dataclasses import dataclass, field
 from torch.cuda import is_available
+from rankers import CatTransformer
 import os
 
 @dataclass
@@ -100,11 +101,13 @@ class AttackEvalArguments:
     )
 
 
-def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs):
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_ranks):
 
     retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
 
+    reranked = model.transform(retrieved_docs)
     retrieved_attack_num = 0
+    top10_num = 0
     for attack_key, attack_text in attack_ids_docs.items():
         qid_part, doc_id_part = attack_key.split("_")
         query_text = queries.loc[queries["qid"] == qid_part, "query"]
@@ -116,6 +119,17 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         if retrieved:
             retrieved_attack_num += 1
 
+        ori_rank = ori_ranks.loc[
+            (ori_ranks["qid"] == qid_part) & (ori_ranks["doc_id"] == doc_id_part), "rank"].values[0]
+        new_rank = reranked.loc[
+            (reranked["qid"] == qid_part) & (retrieved_docs["doc_id"] == doc_id_part), "rank"].values
+        new_rank = new_rank[0] if len(new_rank)>0 else -1
+        if new_rank != -1 and new_rank<10:
+            top10_num += 1
+        improvement = (new_rank - ori_rank) if new_rank != -1 else None
+
+        evaluation_data["original_rank"].append(ori_rank)
+        evaluation_data["attacked_rank"].append(new_rank)
         evaluation_data["qid"].append(qid_part)
         evaluation_data["query"].append(query_text)
         evaluation_data["doc_id"].append(doc_id_part)
@@ -123,6 +137,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         evaluation_data["attack_doc"].append(attack_text)
         evaluation_data["pipeline"].append(pipeline_name)
         evaluation_data["retrieved"].append(retrieved)
+        evaluation_data["rank_improvement"].append(improvement)
 
     total_attacks = len(attack_ids_docs)
     attack_retrieval_ratio = retrieved_attack_num / total_attacks if total_attacks > 0 else 0
@@ -132,6 +147,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
     evaluation_results["successful_attacks"].append(retrieved_attack_num)
     evaluation_results["total_attacks"].append(total_attacks)
     evaluation_results["attack_retrieval_ratio"].append(attack_retrieval_ratio)
+    evaluation_results["top10_num"].append(top10_num)
 
 
 def remove_files_in_directory(directory_path):
@@ -147,19 +163,19 @@ def remove_files_in_directory(directory_path):
     else:
         print(f'Directory "{directory_path}" does not exist.')
 
-retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
-datasets = {
-    "msmarco-document": [
-        "trec-dl-2019/judged",
-        "trec-dl-2020/judged",
-    ]
-}
-# retrievers = ["bm25"]
+# retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 # datasets = {
 #     "msmarco-document": [
 #         "trec-dl-2019/judged",
+#         "trec-dl-2020/judged",
 #     ]
 # }
+retrievers = ["bm25"]
+datasets = {
+    "msmarco-document": [
+        "trec-dl-2019/judged",
+    ]
+}
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -169,6 +185,9 @@ evaluation_data = {
     "attack_doc": [],
     "pipeline": [],
     "retrieved": [],
+    "original_rank": [],
+    "attacked_rank": [],
+    "rank_improvement": []
 }
 evaluation_results = {
     "dataset": [],
@@ -176,12 +195,16 @@ evaluation_results = {
     "successful_attacks": [],
     "total_attacks": [],
     "attack_retrieval_ratio": [],
+    "Top10": []
 }
 
 
 def main():
     parser = HfArgumentParser(AttackEvalArguments)
     args = parser.parse_args()
+    model = (
+            CatTransformer.from_pretrained(args.model_name_or_path, batch_size=128)
+    )
 
     for parent, children in datasets.items():
         args.first_child = True
@@ -203,7 +226,7 @@ def main():
             for retriever in retrievers:
                 print("Start Attacking")
                 args.pipeline = [retriever]
-                attack_ids_docs, args = new_attack.main(args)
+                attack_ids_docs, args, ori_ranks = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
@@ -223,7 +246,7 @@ def main():
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
-                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs)
+                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_ranks)
                 args.first_child = False
                 if args.rewrite_query:
                     for rewriter in rewriters:
@@ -233,7 +256,7 @@ def main():
                         pipeline = retriever_model >> rewriter_model >> retriever_model
                         args.pipeline = [retriever, rewriter, retriever]
 
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_ranks)
 
                 if args.multiple_retrievers:
                     remaining_retrievers = retrievers.copy()
@@ -243,7 +266,7 @@ def main():
 
                         pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
                         args.pipeline = [retriever, second_retriever]
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_ranks)
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)

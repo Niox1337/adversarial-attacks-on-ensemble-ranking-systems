@@ -201,6 +201,8 @@ def main(args=None, dataset=None):
         corpus=corpus
     )
 
+    ranked_pairs = {}
+
     if not args.toy:
         # dataset = PreAttackDataset(args.dataset_data, corpus, args.score_lookup)
         # collator = (
@@ -222,7 +224,8 @@ def main(args=None, dataset=None):
             # docid_b = group.iloc[:-1]["doc_id"].tolist()  # All except the last (most irrelevant)
             # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
-            doc_a = group.iloc[10:].sample(n=10)
+            # doc_a = group.iloc[10:].sample(n=10)
+            doc_a = group.iloc[10:]
             doc_b = group.iloc[:10]
 
             docid_a = doc_a["doc_id"].tolist()
@@ -372,7 +375,7 @@ def main(args=None, dataset=None):
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return attack_pair_docs, args
+    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank"]]
 
     # for batch in dataloader:
     #     attack_text_dict = {}
