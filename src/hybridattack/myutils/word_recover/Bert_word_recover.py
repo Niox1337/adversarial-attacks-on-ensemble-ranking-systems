@@ -16,7 +16,20 @@ class BERTWordRecover(WordRecover):
         self.sep_id = self.tokenizer.sep_token_id
         self.max_query_length = max_query_length
         self.max_doc_length = max_doc_length
-        self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").body.to_dict()
+        fields = corpus.docs_cls()._fields
+        if "url" in fields:
+            self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").body.to_dict()
+        elif "doi" in fields:
+            if "body" in fields:
+                self.docs = {
+                    doc.doc_id: doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text
+                    for doc in corpus.docs_iter()
+                }
+            else:
+                self.docs = {
+                    doc.doc_id: doc.abstract
+                    for doc in corpus.docs_iter()
+                }
     
     def get_tokenized_doc(self, doc_id):
         text = self.docs[doc_id]
