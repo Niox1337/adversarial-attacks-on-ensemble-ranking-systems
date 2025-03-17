@@ -170,18 +170,26 @@ def remove_files_in_directory(directory_path):
         print(f'Directory "{directory_path}" does not exist.')
 
 retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
-datasets = {
-    "msmarco-document": [
-        "trec-dl-2019/judged",
-        "trec-dl-2020/judged",
-    ]
-}
+# datasets = {
+#     "msmarco-document": [
+#         "trec-dl-2019/judged",
+#         "trec-dl-2020/judged",
+#     ]
+# }
 # retrievers = ["bm25"]
 # datasets = {
 #     "msmarco-document": [
 #         "trec-dl-2019/judged",
 #     ]
 # }
+datasets = {
+    "cord19": [
+        "trec-covid"
+    ],
+    "cord19/fulltext": [
+        "trec-covid",
+    ]
+}
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -217,7 +225,13 @@ def main():
         args.first_child = True
         docs_dataset = irds.load(parent)
         print("Constructing original_docs")
-        original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
+        if not "cord19" in parent:
+            original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
+        else:
+            if "fulltext" in parent:
+                original_docs = {doc.doc_id: doc.abstract+"\n"+doc.body[0].title+"\n"+doc.body[0].text for doc in docs_dataset.docs_iter()}
+            else:
+                original_docs = {doc.doc_id: doc.abstract for doc in docs_dataset.docs_iter()}
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
@@ -226,9 +240,14 @@ def main():
 
             print("Constructing queries")
 
-            queries = pd.DataFrame(dataset.queries_iter()).rename(
-                columns={"query_id": "qid", "text": "query"}
-            )
+            if not "cord19" in parent:
+                queries = pd.DataFrame(dataset.queries_iter()).rename(
+                    columns={"query_id": "qid", "text": "query"}
+                )
+            else:
+                queries = pd.DataFrame(dataset.queries_iter()).rename(
+                    columns={"query_id": "qid", "title": "query"}
+                )
 
             for retriever in retrievers:
                 print("Start Attacking")

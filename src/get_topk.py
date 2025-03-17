@@ -21,12 +21,29 @@ def get_topk(
 
     if args.first_child:
         try:
-            index.index(
-                (
-                    {"docno": doc.doc_id, "text": doc.body}
-                    for doc in dataset.docs_iter()
+            if "cord19" not in doc_name:
+                index.index(
+                    (
+                        {"docno": doc.doc_id, "text": doc.body}
+                        for doc in dataset.docs_iter()
+                    )
                 )
-            )
+            else:
+                if "fulltext" in doc_name:
+                    index.index(
+                        (
+                            {"docno": doc.doc_id,
+                             "text": doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text}
+                            for doc in dataset.docs_iter()
+                        )
+                    )
+                else:
+                    index.index(
+                        (
+                            {"docno": doc.doc_id, "text": doc.abstract}
+                            for doc in dataset.docs_iter()
+                        )
+                    )
         except RuntimeError:
             print(f"{doc_name} original document is already indexed, skipping...")
 
@@ -43,11 +60,30 @@ def get_topk(
             CatTransformer.from_pretrained(args.model_name_or_path, batch_size=batch_size)
     )
 
-    queries = pd.DataFrame(dataset.queries_iter()).rename(
-        columns={"query_id": "qid", "text": "query"}
-    )
+    if "cord19" not in doc_name:
+        queries = pd.DataFrame(dataset.queries_iter()).rename(
+            columns={"query_id": "qid", "text": "query"}
+        )
+    else:
+        queries = pd.DataFrame(dataset.queries_iter()).rename(
+            columns={"query_id": "qid", "title": "query"}
+        )
     retrieved_docs = retrieval_pipeline.transform(queries)
-    docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"body": "doc_text"})
+
+    if "cord19" not in doc_name:
+        docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"body": "doc_text"})
+    elif "fulltext" in doc_name:
+        docs = pd.DataFrame({
+            "doc_id": [doc.doc_id for doc in dataset.docs_iter()],
+            "doc_text": [doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text for doc in
+                         dataset.docs_iter()]
+        })
+    else:
+        docs = pd.DataFrame({
+            "doc_id": [doc.doc_id for doc in dataset.docs_iter()],
+            "doc_text": [doc.abstract for doc in dataset.docs_iter()]
+        })
+
     retrieved_docs = retrieved_docs.rename(columns={"docno": "doc_id"})
 
     retrieved_docs = retrieved_docs.merge(docs, on="doc_id", how="left")
