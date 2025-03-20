@@ -376,7 +376,7 @@ def main(args=None, dataset=None):
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank"]]
+    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]],
 
     # for batch in dataloader:
     #     attack_text_dict = {}

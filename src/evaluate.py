@@ -101,7 +101,7 @@ class AttackEvalArguments:
     )
 
 
-def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_ranks, attack_text_dict):
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_pairs, attack_text_dict):
 
     retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
 
@@ -122,11 +122,20 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         if retrieved:
             retrieved_attack_num += 1
 
-        ori_rank = ori_ranks.loc[
-            (ori_ranks["qid"] == qid_part) & (ori_ranks["doc_id"] == doc_id_part), "rank"].values[0]
-        new_rank = reranked.loc[
-            (reranked["qid"] == qid_part) & (retrieved_docs["doc_id"] == doc_id_part), "rank"].values
-        new_rank = new_rank[0] if len(new_rank)>0 else -1
+        ori_pair = ori_pairs.loc[(ori_pairs["qid"] == qid_part) & (ori_pairs["doc_id"] == doc_id_part)]
+        ori_rank = ori_pair["rank"].values[0]
+        # ori_score = ori_pair["score"].values[0]
+
+        new_pair = reranked.loc[(reranked["qid"] == qid_part) & (reranked["doc_id"] == doc_id_part)]
+
+        if not new_pair.empty:
+            new_score = new_pair["score"].values[0]
+            original_subset = ori_pairs.loc[ori_pairs["qid"] == qid_part]
+            # rank starts at 0
+            new_rank = (original_subset["score"] > new_score).sum()
+        else:
+            new_rank = -1
+
         if new_rank != -1 and new_rank<10:
             top10_num += 1
             evaluation_data["top10"].append(True)
@@ -169,27 +178,27 @@ def remove_files_in_directory(directory_path):
     else:
         print(f'Directory "{directory_path}" does not exist.')
 
-retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+# retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
 # datasets = {
 #     "msmarco-document": [
 #         "trec-dl-2019/judged",
 #         "trec-dl-2020/judged",
 #     ]
 # }
-# retrievers = ["bm25"]
-# datasets = {
-#     "msmarco-document": [
-#         "trec-dl-2019/judged",
-#     ]
-# }
+retrievers = ["bm25"]
 datasets = {
-    "cord19": [
-        "trec-covid"
-    ],
-    "cord19/fulltext": [
-        "trec-covid",
+    "msmarco-document": [
+        "trec-dl-2019/judged",
     ]
 }
+# datasets = {
+#     "cord19": [
+#         "trec-covid"
+#     ],
+#     "cord19/fulltext": [
+#         "trec-covid",
+#     ]
+# }
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -252,7 +261,7 @@ def main():
             for retriever in retrievers:
                 print("Start Attacking")
                 args.pipeline = [retriever]
-                attack_ids_docs, args, ori_ranks = new_attack.main(args)
+                attack_ids_docs, args, ori_pairs = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
@@ -272,7 +281,7 @@ def main():
 
 
                 retriever_model = getattr(index, retriever)(num_results=100)
-                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_ranks, attack_data)
+                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_pairs, attack_data)
                 args.first_child = False
                 if args.rewrite_query:
                     for rewriter in rewriters:
@@ -282,7 +291,7 @@ def main():
                         pipeline = retriever_model >> rewriter_model >> retriever_model
                         args.pipeline = [retriever, rewriter, retriever]
 
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_ranks, attack_data)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_pairs, attack_data)
 
                 if args.multiple_retrievers:
                     remaining_retrievers = retrievers.copy()
@@ -292,7 +301,7 @@ def main():
 
                         pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
                         args.pipeline = [retriever, second_retriever]
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_ranks, attack_data)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_pairs, attack_data)
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
