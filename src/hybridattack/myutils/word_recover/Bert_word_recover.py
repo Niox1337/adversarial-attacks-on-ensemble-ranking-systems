@@ -23,12 +23,12 @@ class BERTWordRecover(WordRecover):
             if "body" in fields:
                 self.docs = {
                     doc.doc_id: doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text
-                    for doc in corpus.docs_iter()
+                    for doc in corpus.docs_iter() if doc.abstract
                 }
             else:
                 self.docs = {
                     doc.doc_id: doc.abstract
-                    for doc in corpus.docs_iter()
+                    for doc in corpus.docs_iter() if doc.abstract
                 }
     
     def get_tokenized_doc(self, doc_id):

@@ -178,7 +178,7 @@ def remove_files_in_directory(directory_path):
     else:
         print(f'Directory "{directory_path}" does not exist.')
 
-# retrievers = ["bm25", "dph", "pl2", "qld", "quantized"]
+# retrievers = ["bm25", "dph", "pl2", "qld"]
 # datasets = {
 #     "msmarco-document": [
 #         "trec-dl-2019/judged",
@@ -186,19 +186,19 @@ def remove_files_in_directory(directory_path):
 #     ]
 # }
 retrievers = ["bm25"]
-datasets = {
-    "msmarco-document": [
-        "trec-dl-2019/judged",
-    ]
-}
 # datasets = {
-#     "cord19": [
-#         "trec-covid"
-#     ],
-#     "cord19/fulltext": [
-#         "trec-covid",
+#     "msmarco-document": [
+#         "trec-dl-2019/judged",
 #     ]
 # }
+datasets = {
+    "cord19": [
+        "trec-covid"
+    ],
+    # "cord19/fulltext": [
+    #     "trec-covid",
+    # ]
+}
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -238,9 +238,9 @@ def main():
             original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
         else:
             if "fulltext" in parent:
-                original_docs = {doc.doc_id: doc.abstract+"\n"+doc.body[0].title+"\n"+doc.body[0].text for doc in docs_dataset.docs_iter()}
+                original_docs = {doc.doc_id: doc.abstract+"\n"+doc.body[0].title+"\n"+doc.body[0].text for doc in docs_dataset.docs_iter() if doc.abstract}
             else:
-                original_docs = {doc.doc_id: doc.abstract for doc in docs_dataset.docs_iter()}
+                original_docs = {doc.doc_id: doc.abstract for doc in docs_dataset.docs_iter() if doc.abstract}
         for child in children:
             args.dataset_id = f"{parent}/{child}"
             print(f"\nEvaluating dataset: {args.dataset_id}")
@@ -269,7 +269,7 @@ def main():
                     doc_id = ids.split("_")[1]
                     attack_data[doc_id] = text
                 index_path = args.index_path + "attack/" +args.dataset_id+"/"+retriever
-                index = PisaIndex(index_path, threads=16)
+                index = PisaIndex(index_path, threads=32)
 
                 try:
                     # remove_files_in_directory(index_path)
@@ -280,7 +280,7 @@ def main():
                     print(f"{parent} attack document is already indexed, skipping...")
 
 
-                retriever_model = getattr(index, retriever)(num_results=100)
+                retriever_model = getattr(index, retriever)(num_results=100, threads=32)
                 evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_pairs, attack_data)
                 args.first_child = False
                 if args.rewrite_query:

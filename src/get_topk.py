@@ -17,7 +17,7 @@ def get_topk(
     print("Initializing attack dataset...")
     doc_name = args.dataset_id.split("/")[0]
     index_path = args.index_path + "original/" + doc_name
-    index = PisaIndex(index_path, threads=16)
+    index = PisaIndex(index_path, threads=32)
 
     if args.first_child:
         try:
@@ -47,7 +47,7 @@ def get_topk(
         except RuntimeError:
             print(f"{doc_name} original document is already indexed, skipping...")
 
-    retrieval_pipeline = getattr(index, args.pipeline[0])(num_results=100)
+    retrieval_pipeline = getattr(index, args.pipeline[0])(num_results=100, threads=32)
     if len(args.pipeline) > 1:
         for component in args.pipeline[1:]:
             if component in ["Bo1QueryExpansion", "RM3"]:
@@ -89,6 +89,7 @@ def get_topk(
     retrieved_docs = retrieved_docs.merge(docs, on="doc_id", how="left")
     retrieved_docs = retrieved_docs.dropna()
     retrieved_docs = retrieved_docs.rename(columns={"doc_text": "text"})
+    retrieved_docs = retrieved_docs[retrieved_docs["text"].notnull() & (retrieved_docs["text"].str.strip() != "")]
     ranked_docs = model.transform(retrieved_docs)
 
 
