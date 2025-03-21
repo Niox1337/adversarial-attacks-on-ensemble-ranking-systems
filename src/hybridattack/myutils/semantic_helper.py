@@ -103,14 +103,19 @@ class SemanticHelper:
         sim_values = np.take_along_axis(cos_sim, sim_order, axis=1)
 
         sim_words = {}
+        sim_values_filtered = {}
 
         for idx, in_word in enumerate(in_words):
             sim_word_ids = sim_order[idx]
             sim_word_scores = sim_values[idx]
             mask = sim_word_scores >= threshold
             sim_word_ids = sim_word_ids[mask]
+            valid_mask = sim_word_ids > 102
+            sim_word_ids = sim_word_ids[valid_mask]
+            sim_word_scores = sim_word_scores[valid_mask]
             sim_word_tokens = [self.idx2word[word_id] for word_id in sim_word_ids]
             sim_words[in_word] = sim_word_tokens
+            sim_values_filtered[in_word] = sim_word_scores
             # score can be accessed thru sim_word_scores[mask]
 
         return sim_words, sim_values, self.subword_neighbor_dict
