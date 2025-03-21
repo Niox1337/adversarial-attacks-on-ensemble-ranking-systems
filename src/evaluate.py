@@ -126,7 +126,6 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         ori_pair = ori_pairs.loc[(ori_pairs["qid"] == qid_part) & (ori_pairs["doc_id"] == doc_id_part)]
         ori_rank = ori_pair["rank"].values[0]
         ori_score = ori_pair["score"].values[0]
-        print(attack_pair_scores)
         val = attack_pair_scores[attack_key]
         new_score = val if isinstance(val, float) else val[0]
         if retrieved:
@@ -145,7 +144,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
 
         evaluation_data["original_rank"].append(ori_rank)
         evaluation_data["attacked_rank"].append(new_rank)
-        evaluation_data["origianl_score"].append(ori_score)
+        evaluation_data["original_score"].append(ori_score)
         evaluation_data["attacked_score"].append(new_score) if new_rank != -1 else None
         evaluation_data["qid"].append(qid_part)
         evaluation_data["query"].append(query_text)
@@ -214,7 +213,7 @@ evaluation_data = {
     "original_rank": [],
     "attacked_rank": [],
     "rank_improvement": [],
-    "origianl_score": [],
+    "original_score": [],
     "attacked_score": [],
     "top10": []
 }
@@ -309,6 +308,8 @@ def main():
                         evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id,
                                           retriever + " -> " + second_retriever, original_docs, ori_pairs, attack_data,
                                           attack_pair_scores)
+
+    print("evaluation_data:", {k:len(v) for k,v in evaluation_data})
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
