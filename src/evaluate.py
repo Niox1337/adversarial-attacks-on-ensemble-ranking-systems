@@ -145,7 +145,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         evaluation_data["original_rank"].append(ori_rank)
         evaluation_data["attacked_rank"].append(new_rank)
         evaluation_data["original_score"].append(ori_score)
-        evaluation_data["attacked_score"].append(new_score) if new_rank != -1 else None
+        evaluation_data["attacked_score"].append(new_score) if new_rank != -1 else evaluation_data["attacked_score"].append(None)
         evaluation_data["qid"].append(qid_part)
         evaluation_data["query"].append(query_text)
         evaluation_data["doc_id"].append(doc_id_part)
@@ -309,7 +309,6 @@ def main():
                                           retriever + " -> " + second_retriever, original_docs, ori_pairs, attack_data,
                                           attack_pair_scores)
 
-    print("evaluation_data:", {k:len(v) for k,v in evaluation_data.items()})
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
