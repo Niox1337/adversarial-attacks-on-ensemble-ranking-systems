@@ -309,7 +309,7 @@ def main():
                                           retriever + " -> " + second_retriever, original_docs, ori_pairs, attack_data,
                                           attack_pair_scores)
 
-    print("evaluation_data:", {k:len(v) for k,v in evaluation_data})
+    print("evaluation_data:", {k:len(v) for k,v in evaluation_data.items()})
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
