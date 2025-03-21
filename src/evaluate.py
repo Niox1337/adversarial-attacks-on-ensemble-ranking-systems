@@ -1,13 +1,15 @@
-from src import new_attack
-import pandas as pd
-from pyterrier_pisa import PisaIndex
-import ir_datasets as irds
-from  pyterrier import rewrite
-from transformers import HfArgumentParser
-from dataclasses import dataclass, field
-from torch.cuda import is_available
-from rankers import CatTransformer
 import os
+from dataclasses import dataclass, field
+
+import ir_datasets as irds
+import pandas as pd
+from pyterrier import rewrite
+from pyterrier_pisa import PisaIndex
+from torch.cuda import is_available
+from transformers import HfArgumentParser
+
+from src import new_attack
+
 
 @dataclass
 class AttackEvalArguments:
@@ -101,14 +103,13 @@ class AttackEvalArguments:
     )
 
 
-def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, model, ori_pairs, attack_text_dict):
-
+def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_name, ori_docs, ori_pairs,
+                      attack_text_dict, attack_pair_scores):
     retrieved_docs = pipeline.transform(queries).rename(columns={"docno": "doc_id"})
 
     retrieved_docs["text"] = retrieved_docs["doc_id"].map(ori_docs)
     retrieved_docs["text"] = retrieved_docs["doc_id"].map(attack_text_dict)
 
-    reranked = model.transform(retrieved_docs)
     retrieved_attack_num = 0
     top10_num = 0
     for attack_key, attack_text in attack_ids_docs.items():
@@ -126,17 +127,15 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         ori_rank = ori_pair["rank"].values[0]
         ori_score = ori_pair["score"].values[0]
 
-        new_pair = reranked.loc[(reranked["qid"] == qid_part) & (reranked["doc_id"] == doc_id_part)]
-
-        if not new_pair.empty:
-            new_score = new_pair["score"].values[0]
+        if retrieved:
+            new_score = attack_pair_scores[attack_key]
             original_subset = ori_pairs.loc[ori_pairs["qid"] == qid_part]
             # rank starts at 0
             new_rank = (original_subset["score"] > new_score).sum()
         else:
             new_rank = -1
 
-        if new_rank != -1 and new_rank<10:
+        if new_rank != -1 and new_rank < 10:
             top10_num += 1
             evaluation_data["top10"].append(True)
         else:
@@ -179,6 +178,7 @@ def remove_files_in_directory(directory_path):
         print(f'All files in "{directory_path}" have been removed.')
     else:
         print(f'Directory "{directory_path}" does not exist.')
+
 
 # retrievers = ["bm25", "dph", "pl2", "qld"]
 # datasets = {
@@ -230,9 +230,6 @@ evaluation_results = {
 def main():
     parser = HfArgumentParser(AttackEvalArguments)
     args = parser.parse_args()
-    model = (
-            CatTransformer.from_pretrained(args.model_name_or_path, batch_size=128)
-    )
 
     for parent, children in datasets.items():
         args.first_child = True
@@ -242,7 +239,8 @@ def main():
             original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
         else:
             if "fulltext" in parent:
-                original_docs = {doc.doc_id: doc.abstract+"\n"+doc.body[0].title+"\n"+doc.body[0].text for doc in docs_dataset.docs_iter() if doc.abstract}
+                original_docs = {doc.doc_id: doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text for doc
+                                 in docs_dataset.docs_iter() if doc.abstract}
             else:
                 original_docs = {doc.doc_id: doc.abstract for doc in docs_dataset.docs_iter() if doc.abstract}
         for child in children:
@@ -265,14 +263,14 @@ def main():
             for retriever in retrievers:
                 print("Start Attacking")
                 args.pipeline = [retriever]
-                attack_ids_docs, args, ori_pairs = new_attack.main(args)
+                attack_ids_docs, args, ori_pairs, attack_pair_scores = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
                 for ids, text in attack_ids_docs.items():
                     doc_id = ids.split("_")[1]
                     attack_data[doc_id] = text
-                index_path = args.index_path + "attack/" +args.dataset_id+"/"+retriever
+                index_path = args.index_path + "attack/" + args.dataset_id + "/" + retriever
                 index = PisaIndex(index_path, threads=32)
 
                 try:
@@ -283,9 +281,9 @@ def main():
                 except RuntimeError:
                     print(f"{parent} attack document is already indexed, skipping...")
 
-
                 retriever_model = getattr(index, retriever)(num_results=100, threads=32)
-                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs, model, ori_pairs, attack_data)
+                evaluate_pipeline(retriever_model, queries, attack_ids_docs, args.dataset_id, retriever, original_docs,
+                                  ori_pairs, attack_data, attack_pair_scores)
                 args.first_child = False
                 if args.rewrite_query:
                     for rewriter in rewriters:
@@ -295,7 +293,9 @@ def main():
                         pipeline = retriever_model >> rewriter_model >> retriever_model
                         args.pipeline = [retriever, rewriter, retriever]
 
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever+" -> "+rewriter+" -> "+retriever, original_docs, model, ori_pairs, attack_data)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id,
+                                          retriever + " -> " + rewriter + " -> " + retriever, original_docs, ori_pairs,
+                                          attack_data, attack_pair_scores)
 
                 if args.multiple_retrievers:
                     remaining_retrievers = retrievers.copy()
@@ -305,7 +305,9 @@ def main():
 
                         pipeline = retriever_model >> getattr(index, second_retriever)(num_results=100)
                         args.pipeline = [retriever, second_retriever]
-                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id, retriever + " -> " + second_retriever, original_docs, model, ori_pairs, attack_data)
+                        evaluate_pipeline(pipeline, queries, attack_ids_docs, args.dataset_id,
+                                          retriever + " -> " + second_retriever, original_docs, ori_pairs, attack_data,
+                                          attack_pair_scores)
 
     evaluation_data_df = pd.DataFrame(evaluation_data)
     evaluation_results_df = pd.DataFrame(evaluation_results)
@@ -314,6 +316,7 @@ def main():
 
     with open("./output/evaluation_data.json", "w", encoding="utf-8") as file:
         file.write(evaluation_data_df.to_json(orient="records", indent=2))
+
 
 if __name__ == "__main__":
     main()

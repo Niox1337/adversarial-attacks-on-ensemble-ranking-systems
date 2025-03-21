@@ -294,6 +294,7 @@ def main(args=None, dataset=None):
 
 
     attack_pair_docs = {}   # {qid_docid: text}
+    attack_pair_scores = {} # {qid_docid: score}
 
     for batch in dataloader:
         attack_text_dict = {}
@@ -353,6 +354,7 @@ def main(args=None, dataset=None):
             attack_text_dict[new_key] = new_tokens
             attack_score_dict[new_key] = score
             attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+            attack_pair_scores[new_key] = score
 
             # Recover the original document for comparison:
             input_ids = batch["sequences_a"]["input_ids"][i]
@@ -379,7 +381,7 @@ def main(args=None, dataset=None):
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]],
+    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]], attack_pair_scores
 
     # for batch in dataloader:
     #     attack_text_dict = {}
