@@ -124,7 +124,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
 
         ori_pair = ori_pairs.loc[(ori_pairs["qid"] == qid_part) & (ori_pairs["doc_id"] == doc_id_part)]
         ori_rank = ori_pair["rank"].values[0]
-        # ori_score = ori_pair["score"].values[0]
+        ori_score = ori_pair["score"].values[0]
 
         new_pair = reranked.loc[(reranked["qid"] == qid_part) & (reranked["doc_id"] == doc_id_part)]
 
@@ -141,10 +141,12 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
             evaluation_data["top10"].append(True)
         else:
             evaluation_data["top10"].append(False)
-        improvement = (new_rank - ori_rank) if new_rank != -1 else None
+        improvement = (ori_rank - new_rank) if new_rank != -1 else None
 
         evaluation_data["original_rank"].append(ori_rank)
         evaluation_data["attacked_rank"].append(new_rank)
+        evaluation_data["origianl_score"].append(ori_score)
+        evaluation_data["attacked_score"].append(new_score) if new_rank != -1 else None
         evaluation_data["qid"].append(qid_part)
         evaluation_data["query"].append(query_text)
         evaluation_data["doc_id"].append(doc_id_part)
@@ -211,6 +213,8 @@ evaluation_data = {
     "original_rank": [],
     "attacked_rank": [],
     "rank_improvement": [],
+    "origianl_score": [],
+    "attacked_score": [],
     "top10": []
 }
 evaluation_results = {
@@ -272,7 +276,7 @@ def main():
                 index = PisaIndex(index_path, threads=32)
 
                 try:
-                    # remove_files_in_directory(index_path)
+                    remove_files_in_directory(index_path)
                     index.index(
                         ({"docno": doc_id, "text": text} for doc_id, text in attack_data.items())
                     )
