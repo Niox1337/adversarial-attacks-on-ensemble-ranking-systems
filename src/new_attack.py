@@ -105,7 +105,7 @@ def attack(
     sep_idx = attack_sequence.tolist().index(tokenizer.sep_token_id)
     pre_sep = attack_sequence[1 : sep_idx]
     post_sep = attack_sequence[sep_idx + 1 :]
-    post_sep = post_sep[post_sep > 102] # Filter special tokens
+    post_sep = post_sep[post_sep > 103] # Filter special tokens
     attack_sequence_list = [
         token_id for token_id in dict.fromkeys(post_sep).keys()
     ]
@@ -230,7 +230,7 @@ def main(args=None, dataset=None):
 
             # doc_a = group.iloc[10:].sample(n=10)
             doc_a = group.iloc[10:]
-            doc_b = group.iloc[:10]
+            doc_b = group.iloc[:10].sample(n=2)
 
             docid_a = doc_a["doc_id"].tolist()
             docid_b = doc_b["doc_id"].tolist()

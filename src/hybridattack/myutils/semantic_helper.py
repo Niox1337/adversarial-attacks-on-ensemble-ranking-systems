@@ -95,7 +95,7 @@ class SemanticHelper:
 
         cos_sim = self.get_cos_sim(in_words_idx)
         candidate_indices = np.arange(cos_sim.shape[1])
-        special_token_mask = candidate_indices <= 102
+        special_token_mask = candidate_indices <= 103
         cos_sim[:, special_token_mask] = -np.inf
 
         # Exclude the word itself from similarities
