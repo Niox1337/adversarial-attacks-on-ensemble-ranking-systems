@@ -126,7 +126,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         ori_pair = ori_pairs.loc[(ori_pairs["qid"] == qid_part) & (ori_pairs["doc_id"] == doc_id_part)]
         ori_rank = ori_pair["rank"].values[0]
         ori_score = ori_pair["score"].values[0]
-
+        print(attack_pair_scores)
         if retrieved:
             new_score = attack_pair_scores[attack_key][0]
             original_subset = ori_pairs.loc[ori_pairs["qid"] == qid_part]
