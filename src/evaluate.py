@@ -144,8 +144,6 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
 
         evaluation_data["original_rank"].append(ori_rank)
         evaluation_data["attacked_rank"].append(new_rank)
-        evaluation_data["original_score"].append(ori_score)
-        evaluation_data["attacked_score"].append(new_score) if new_rank != -1 else evaluation_data["attacked_score"].append(None)
         evaluation_data["qid"].append(qid_part)
         evaluation_data["query"].append(query_text)
         evaluation_data["doc_id"].append(doc_id_part)
@@ -180,20 +178,12 @@ def remove_files_in_directory(directory_path):
         print(f'Directory "{directory_path}" does not exist.')
 
 
-# retrievers = ["bm25", "dph", "pl2", "qld"]
-# datasets = {
-#     "msmarco-document": [
-#         "trec-dl-2019/judged",
-#         "trec-dl-2020/judged",
-#     ]
-# }
-retrievers = ["bm25"]
-# datasets = {
-#     "msmarco-document": [
-#         "trec-dl-2019/judged",
-#     ]
-# }
+retrievers = ["bm25", "dph", "pl2", "qld"]
 datasets = {
+    "msmarco-document": [
+        "trec-dl-2019/judged",
+        "trec-dl-2020/judged",
+    ],
     "cord19": [
         "trec-covid"
     ],
@@ -201,6 +191,20 @@ datasets = {
     #     "trec-covid",
     # ]
 }
+# retrievers = ["bm25"]
+# datasets = {
+#     "msmarco-document": [
+#         "trec-dl-2019/judged",
+#     ]
+# }
+# datasets = {
+#     "cord19": [
+#         "trec-covid"
+#     ],
+#     "cord19/fulltext": [
+#         "trec-covid",
+#     ]
+# }
 rewriters = ["Bo1QueryExpansion", "RM3"]
 evaluation_data = {
     "qid": [],
@@ -213,8 +217,6 @@ evaluation_data = {
     "original_rank": [],
     "attacked_rank": [],
     "rank_improvement": [],
-    "original_score": [],
-    "attacked_score": [],
     "top10": []
 }
 evaluation_results = {
