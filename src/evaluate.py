@@ -62,7 +62,7 @@ class AttackEvalArguments:
         metadata={"help": "Similarity threshold for word substitution."}
     )
     max_doc_length: int = field(
-        default=512,
+        default=300,
         metadata={"help": "Maximum document length."}
     )
     max_query_length: int = field(
