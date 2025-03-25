@@ -34,7 +34,7 @@ class Args:
     max_iter: int = field(default=3)
     simi_candi_topk: int = field(default=5)
     simi_threshod: float = field(default=0.4)
-    max_doc_length: int = field(default=300)
+    max_doc_length: int = field(default=512)
     max_query_length: int = field(default=30)
     device: str = field(default="cuda" if torch.cuda.is_available() else "cpu")
     find_word_search: bool = field(default=False)
@@ -229,7 +229,7 @@ def main(args=None, dataset=None):
             # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
             # doc_a = group.iloc[10:].sample(n=10)
-            doc_a = group.iloc[10:]
+            doc_a = group.iloc[10:].sample(n=1)
             doc_b = group.iloc[:10]
 
             docid_a = doc_a["doc_id"].tolist()
@@ -381,7 +381,7 @@ def main(args=None, dataset=None):
                 with open(args.output_file, "a") as f:
                     f.write(to_write)
 
-    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]], attack_pair_scores
+    return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]], attack_pair_scores, tokenizer
 
     # for batch in dataloader:
     #     attack_text_dict = {}

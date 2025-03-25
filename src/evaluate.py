@@ -62,7 +62,7 @@ class AttackEvalArguments:
         metadata={"help": "Similarity threshold for word substitution."}
     )
     max_doc_length: int = field(
-        default=300,
+        default=512,
         metadata={"help": "Maximum document length."}
     )
     max_query_length: int = field(
@@ -265,13 +265,24 @@ def main():
             for retriever in retrievers:
                 print("Start Attacking")
                 args.pipeline = [retriever]
-                attack_ids_docs, args, ori_pairs, attack_pair_scores = new_attack.main(args)
+                attack_ids_docs, args, ori_pairs, attack_pair_scores, tokenizer = new_attack.main(args)
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
                 for ids, text in attack_ids_docs.items():
-                    doc_id = ids.split("_")[1]
-                    attack_data[doc_id] = text
+                    query_id, doc_id = ids.split("_", 1)
+                    query = queries.loc[queries["qid"] == query_id]["query"].values[0]
+                    num_query_tokens = len(tokenizer.tokenize(query))
+                    input_ids = tokenizer.endcode(query, text, add_special_tokens=True)
+                    num_specials = sum(1 for tok_id in input_ids if tok_id in tokenizer.all_special_tokens)
+                    doc_tok = tokenizer.tokenize(original_docs[doc_id])
+                    doc_token_budget = args.max_doc_length-num_query_tokens-num_specials
+                    if len(doc_tok)>doc_token_budget:
+                        truncated = tokenizer.tokenize(original_docs[doc_id])[(args.max_doc_length-num_query_tokens-num_specials):]
+                        truncated = tokenizer.convert_tokens_to_string(truncated)
+                        attack_data[doc_id] = text.strip() + " " + truncated.strip()
+                    else:
+                        attack_data[doc_id] = text
                 index_path = args.index_path + "attack/" + args.dataset_id + "/" + retriever
                 index = PisaIndex(index_path, threads=32)
 
