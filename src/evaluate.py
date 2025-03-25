@@ -125,7 +125,7 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
 
         ori_pair = ori_pairs.loc[(ori_pairs["qid"] == qid_part) & (ori_pairs["doc_id"] == doc_id_part)]
         ori_rank = ori_pair["rank"].values[0]
-        ori_score = ori_pair["score"].values[0]
+        # ori_score = ori_pair["score"].values[0]
         val = attack_pair_scores[attack_key]
         new_score = val if isinstance(val, float) else val[0]
         if retrieved:
@@ -278,9 +278,11 @@ def main():
                     doc_tok = tokenizer.tokenize(original_docs[doc_id])
                     doc_token_budget = args.max_doc_length-num_query_tokens-num_specials
                     if len(doc_tok)>doc_token_budget:
-                        truncated = tokenizer.tokenize(original_docs[doc_id])[(args.max_doc_length-num_query_tokens-num_specials):]
+                        truncated = tokenizer.tokenize(original_docs[doc_id])[doc_token_budget:]
                         truncated = tokenizer.convert_tokens_to_string(truncated)
-                        attack_data[doc_id] = text.strip() + " " + truncated.strip()
+                        attacked_doc = text.strip() + " " + truncated.strip()
+                        attack_data[doc_id] = attacked_doc
+                        attack_ids_docs[ids] = attacked_doc
                     else:
                         attack_data[doc_id] = text
                 index_path = args.index_path + "attack/" + args.dataset_id + "/" + retriever

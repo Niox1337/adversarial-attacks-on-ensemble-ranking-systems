@@ -230,7 +230,7 @@ def main(args=None, dataset=None):
             # docid_a = [group.iloc[-1]["doc_id"]]  # Most irrelevant doc (highest score)
 
             # doc_a = group.iloc[10:].sample(n=10)
-            doc_a = group.iloc[10:].sample(n=2)
+            doc_a = group.iloc[10:].sample(n=1)
             doc_b = group.iloc[:10]
 
             docid_a = doc_a["doc_id"].tolist()
