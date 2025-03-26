@@ -217,7 +217,6 @@ def main(args=None, dataset=None):
         # dataloader = DataLoader(dataset, batch_size=1, collate_fn=collator)
 
         ranked_pairs, args.score_lookup = get_topk(args, corpus, model)
-        ranked_pairs.to_csv("./output/cord19_data")
         dataloader = []
 
         for qid, group in ranked_pairs.groupby("qid"):

@@ -22,7 +22,7 @@ class BERTWordRecover(WordRecover):
         elif "doi" in fields:
             if "body" in fields:
                 self.docs = {
-                    doc.doc_id: doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text
+                    doc.doc_id: doc.abstract + "\n" + doc.body[0].title
                     for doc in corpus.docs_iter() if doc.abstract
                 }
             else:

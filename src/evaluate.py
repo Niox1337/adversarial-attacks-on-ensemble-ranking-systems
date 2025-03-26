@@ -180,7 +180,7 @@ def remove_files_in_directory(directory_path):
 
 retrievers = ["bm25", "dph", "pl2", "qld"]
 datasets = {
-    "msmarco-document": [
+    "msmarco-passage": [
         "trec-dl-2019/judged",
         "trec-dl-2020/judged",
     ],
@@ -193,7 +193,7 @@ datasets = {
 }
 # retrievers = ["bm25"]
 # datasets = {
-#     "msmarco-document": [
+#     "msmarco-passage": [
 #         "trec-dl-2019/judged",
 #     ]
 # }
@@ -241,7 +241,7 @@ def main():
             original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
         else:
             if "fulltext" in parent:
-                original_docs = {doc.doc_id: doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text for doc
+                original_docs = {doc.doc_id: doc.abstract + "\n" + doc.body[0].title for doc
                                  in docs_dataset.docs_iter() if doc.abstract}
             else:
                 original_docs = {doc.doc_id: doc.abstract for doc in docs_dataset.docs_iter() if doc.abstract}

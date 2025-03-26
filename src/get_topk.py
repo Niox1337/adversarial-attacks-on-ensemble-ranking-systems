@@ -75,7 +75,7 @@ def get_topk(
     elif "fulltext" in doc_name:
         docs = pd.DataFrame({
             "doc_id": [doc.doc_id for doc in dataset.docs_iter()],
-            "doc_text": [doc.abstract + "\n" + doc.body[0].title + "\n" + doc.body[0].text for doc in
+            "doc_text": [doc.abstract + "\n" + doc.body[0].title for doc in
                          dataset.docs_iter()]
         })
     else:
