@@ -238,7 +238,7 @@ def main():
         docs_dataset = irds.load(parent)
         print("Constructing original_docs")
         if not "cord19" in parent:
-            original_docs = {doc.doc_id: doc.body for doc in docs_dataset.docs_iter()}
+            original_docs = {doc.doc_id: doc.text for doc in docs_dataset.docs_iter()}
         else:
             if "fulltext" in parent:
                 original_docs = {doc.doc_id: doc.abstract + "\n" + doc.body[0].title for doc
