@@ -178,7 +178,7 @@ def remove_files_in_directory(directory_path):
         print(f'Directory "{directory_path}" does not exist.')
 
 
-# retrievers = ["bm25", "dph", "pl2", "qld"]
+retrievers = ["bm25", "dph", "pl2", "qld"]
 datasets = {
     "msmarco-document": [
         "trec-dl-2019/judged",
