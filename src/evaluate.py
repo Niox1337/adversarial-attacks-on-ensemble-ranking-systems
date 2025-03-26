@@ -269,22 +269,27 @@ def main():
                 print(f"  - Evaluating retriever: {retriever}")
                 attack_data = original_docs.copy()
 
+                special_token_ids = tokenizer.convert_tokens_to_ids(tokenizer.all_special_tokens)
                 for ids, text in attack_ids_docs.items():
                     query_id, doc_id = ids.split("_", 1)
+
                     query = queries.loc[queries["qid"] == query_id]["query"].values[0]
                     num_query_tokens = len(tokenizer.tokenize(query))
+
                     input_ids = tokenizer.encode(query, text, add_special_tokens=True)
-                    num_specials = sum(1 for tok_id in input_ids if tok_id in tokenizer.all_special_tokens)
+                    num_specials = sum(1 for tok_id in input_ids if tok_id in special_token_ids)
                     doc_tok = tokenizer.tokenize(original_docs[doc_id])
                     doc_token_budget = args.max_doc_length-num_query_tokens-num_specials
+
                     if len(doc_tok)>doc_token_budget:
-                        truncated = tokenizer.tokenize(original_docs[doc_id])[doc_token_budget:]
+                        truncated = doc_tok[doc_token_budget:]
                         truncated = tokenizer.convert_tokens_to_string(truncated)
                         attacked_doc = text.strip() + " " + truncated.strip()
                         attack_data[doc_id] = attacked_doc
                         attack_ids_docs[ids] = attacked_doc
                     else:
                         attack_data[doc_id] = text
+
                 index_path = args.index_path + "attack/" + args.dataset_id + "/" + retriever
                 index = PisaIndex(index_path, threads=32)
 

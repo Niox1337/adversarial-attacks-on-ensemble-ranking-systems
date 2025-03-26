@@ -337,7 +337,7 @@ def main(args=None, dataset=None):
                 "position_ids": torch.cat((ranking["position_ids"][i].unsqueeze(0), ranking["position_ids"][num_doc_a:]), dim=0)
             }
 
-            new_tokens, score = attack(
+            new_tokens_ids, score = attack(
                 single_ranking,
                 sequence_score,
                 qid,
@@ -351,36 +351,37 @@ def main(args=None, dataset=None):
                 attack_word_number=args.max_attack_word_number,
             )
 
+            attack_text = tokenizer.decode(new_tokens_ids, skip_special_tokens=True)
             new_key = f"{qid}_{doc_id_a}"
-            attack_text_dict[new_key] = new_tokens
+            attack_text_dict[new_key] = attack_text
             attack_score_dict[new_key] = score
-            attack_pair_docs[new_key] = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
+            attack_pair_docs[new_key] = attack_text
             attack_pair_scores[new_key] = score
 
             # Recover the original document for comparison:
-            input_ids = batch["sequences_a"]["input_ids"][i]
-            sep_indices = (input_ids == tokenizer.sep_token_id).nonzero(as_tuple=True)[0]
-            first_sep_index = sep_indices[0].item()
+            # input_ids = batch["sequences_a"]["input_ids"][i]
+            # sep_indices = (input_ids == tokenizer.sep_token_id).nonzero(as_tuple=True)[0]
+            # first_sep_index = sep_indices[0].item()
             # The document tokens are everything after the first [SEP] token
-            doc_token_ids = input_ids[first_sep_index + 1:]
-            doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
-
-            recovered_attack_doc = word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)
-            same = recovered_attack_doc == doc_text_decoded
-            to_write = (
-                f"key: {new_key}\n"
-                f"recovered_attack_doc: {word_re.tokenizer.decode(new_tokens, skip_special_tokens=True)}\n"
-                f"ori_doc: {doc_text_decoded}\n"
-                f"attack_score: {attack_score_dict[new_key]}\n"
-                f"ori_score: {sequence_score}\n"
-                f"same: {same}\n\n"
-            )
-
-            if args.toy:
-                print(to_write)
-            else:
-                with open(args.output_file, "a") as f:
-                    f.write(to_write)
+            # doc_token_ids = input_ids[first_sep_index + 1:]
+            # doc_text_decoded = tokenizer.decode(doc_token_ids, skip_special_tokens=True)
+            #
+            # recovered_attack_doc = word_re.tokenizer.decode(new_tokens_ids, skip_special_tokens=True)
+            # same = recovered_attack_doc == doc_text_decoded
+            # to_write = (
+            #     f"key: {new_key}\n"
+            #     f"recovered_attack_doc: {word_re.tokenizer.decode(new_tokens_ids, skip_special_tokens=True)}\n"
+            #     f"ori_doc: {doc_text_decoded}\n"
+            #     f"attack_score: {attack_score_dict[new_key]}\n"
+            #     f"ori_score: {sequence_score}\n"
+            #     f"same: {same}\n\n"
+            # )
+            #
+            # if args.toy:
+            #     print(to_write)
+            # else:
+            #     with open(args.output_file, "a") as f:
+            #         f.write(to_write)
 
     return attack_pair_docs, args, ranked_pairs[["qid", "doc_id", "rank", "score"]], attack_pair_scores, tokenizer
 
