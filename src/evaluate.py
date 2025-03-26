@@ -279,7 +279,7 @@ def main():
                     input_ids = tokenizer.encode(query, text, add_special_tokens=True)
                     num_specials = sum(1 for tok_id in input_ids if tok_id in special_token_ids)
                     doc_tok = tokenizer.tokenize(original_docs[doc_id])
-                    doc_token_budget = args.max_doc_length-num_query_tokens-num_specials
+                    doc_token_budget = args.max_doc_length-num_query_tokens-num_specials-1
 
                     if len(doc_tok)>doc_token_budget:
                         truncated = doc_tok[doc_token_budget:]
