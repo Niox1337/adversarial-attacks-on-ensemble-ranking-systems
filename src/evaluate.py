@@ -187,9 +187,9 @@ datasets = {
     "cord19": [
         "trec-covid"
     ],
-    "cord19/fulltext": [
-        "trec-covid",
-    ]
+    # "cord19/fulltext": [
+    #     "trec-covid",
+    # ]
 }
 # retrievers = ["bm25"]
 # datasets = {
