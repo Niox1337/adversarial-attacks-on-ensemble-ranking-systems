@@ -180,16 +180,17 @@ def remove_files_in_directory(directory_path):
 
 retrievers = ["bm25", "dph", "pl2", "qld"]
 datasets = {
-    "msmarco-passage": [
+    # "cord19/fulltext": [
+    #     "trec-covid",
+    # ],
+    "msmarco-document": [
         "trec-dl-2019/judged",
         "trec-dl-2020/judged",
     ],
-    "cord19": [
-        "trec-covid"
-    ],
-    # "cord19/fulltext": [
-    #     "trec-covid",
-    # ]
+    # "cord19": [
+    #     "trec-covid"
+    # ],
+
 }
 # retrievers = ["bm25"]
 # datasets = {
