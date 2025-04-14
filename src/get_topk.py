@@ -24,7 +24,7 @@ def get_topk(
             if "cord19" not in doc_name:
                 index.index(
                     (
-                        {"docno": doc.doc_id, "text": doc.text}
+                        {"docno": doc.doc_id, "text": doc.body}
                         for doc in dataset.docs_iter()
                     )
                 )

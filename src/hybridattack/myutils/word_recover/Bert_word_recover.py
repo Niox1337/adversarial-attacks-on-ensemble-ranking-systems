@@ -18,7 +18,7 @@ class BERTWordRecover(WordRecover):
         self.max_doc_length = max_doc_length
         fields = corpus.docs_cls()._fields
         if "url" in fields:
-            self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").text.to_dict()
+            self.docs = pd.DataFrame(corpus.docs_iter()).set_index("doc_id").body.to_dict()
         elif "doi" in fields:
             if "body" in fields:
                 self.docs = {
