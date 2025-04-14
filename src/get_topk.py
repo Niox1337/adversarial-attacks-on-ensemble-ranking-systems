@@ -71,7 +71,7 @@ def get_topk(
     retrieved_docs = retrieval_pipeline.transform(queries)
 
     if "cord19" not in doc_name:
-        docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"text": "doc_text"})
+        docs = pd.DataFrame(dataset.docs_iter()).rename(columns={"body": "doc_text"})
     elif "fulltext" in doc_name:
         docs = pd.DataFrame({
             "doc_id": [doc.doc_id for doc in dataset.docs_iter()],
@@ -89,6 +89,7 @@ def get_topk(
     retrieved_docs = retrieved_docs.merge(docs, on="doc_id", how="left")
     retrieved_docs = retrieved_docs.dropna()
     retrieved_docs = retrieved_docs.rename(columns={"doc_text": "text"})
+    print(retrieved_docs.head())
     retrieved_docs = retrieved_docs[retrieved_docs["text"].notnull() & (retrieved_docs["text"].str.strip() != "")]
     ranked_docs = model.transform(retrieved_docs)
 
