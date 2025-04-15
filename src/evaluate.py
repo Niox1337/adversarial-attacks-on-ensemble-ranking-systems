@@ -128,12 +128,12 @@ def evaluate_pipeline(pipeline, queries, attack_ids_docs, dataset_id, pipeline_n
         # ori_score = ori_pair["score"].values[0]
         val = attack_pair_scores[attack_key]
         new_score = val if isinstance(val, float) else val[0]
-        if retrieved:
-            original_subset = ori_pairs.loc[ori_pairs["qid"] == qid_part]
-            # rank starts at 0
-            new_rank = (original_subset["score"] > new_score).sum()
-        else:
-            new_rank = -1
+        # if retrieved:
+        original_subset = ori_pairs.loc[ori_pairs["qid"] == qid_part]
+        # rank starts at 0
+        new_rank = (original_subset["score"] > new_score).sum()
+        # else:
+        #     new_rank = -1
 
         if new_rank != -1 and new_rank < 10:
             top10_num += 1
@@ -183,7 +183,7 @@ datasets = {
     # "cord19/fulltext": [
     #     "trec-covid",
     # ],
-    "msmarco-document": [
+    "msmarco-passage": [
         "trec-dl-2019/judged",
         "trec-dl-2020/judged",
     ],
