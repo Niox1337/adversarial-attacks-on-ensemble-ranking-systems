@@ -49,39 +49,7 @@ class Args:
 def load_local_json(file_path):
     with open(file_path, "r") as f:
         data = json.load(f)
-    # Ensure the data is structured as a list of texts
     return [{"text": entry["text"]} for entry in data]
-
-
-# Make new semantic helper without pre-compute
-def replace_with_similar_words(
-    input_text: str,
-    semantic_helper: SemanticHelper,
-    word_re: BERTWordRecover,
-    top_k: int = 5,
-    threshold: float = 0.7,
-):
-    tokens = semantic_helper.tokenizer.tokenize(input_text)
-    token_ids = semantic_helper.tokenizer.convert_tokens_to_ids(tokens)
-    similar_words, *_ = semantic_helper.pick_most_similar_words_batch(
-        tokens,
-        ret_count=top_k,
-        threshold=threshold,
-        word_re=word_re,
-        ori_doc_token_ids_list=token_ids,
-    )
-    new_tokens = []
-    for token in tokens:
-        if token in similar_words and similar_words[token]:
-            new_token = similar_words[token][
-                len(similar_words[token]) // 2
-            ]  # Take the medium similar word
-        else:
-            new_token = token  # Keep the original word if no similar word is found
-        new_tokens.append(new_token)
-
-    adversarial_text = semantic_helper.tokenizer.convert_tokens_to_string(new_tokens)
-    return adversarial_text
 
 
 def attack(
