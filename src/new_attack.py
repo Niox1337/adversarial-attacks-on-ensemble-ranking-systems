@@ -44,13 +44,17 @@ class Args:
     first_child: str = field(
         default=True
     )
-    pipeline: str = field(default="bm25")
+    pipeline: list = field(default_factory=list)
 
     def __post_init(self):
         if self.model_type not in ["cat", "dot"]:
             raise ValueError(f"Model type '{self.model_type}' not recognised")
         self.dataset_frame = pd.read_csv(self.dataset, sep="\t")
         self.scores_lookup = load_json(self.scores)
+        if self.pipeline:
+            self.pipeline = [self.pipeline]
+        else:
+            self.pipeline = ["bm25"]
 
 
 def load_local_json(file_path):
