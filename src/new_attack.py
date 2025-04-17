@@ -44,7 +44,7 @@ class Args:
     first_child: str = field(
         default=True
     )
-    pipeline: list = field(default_factory=list)
+    pipeline: str = field(default="bm25")
 
     def __post_init(self):
         if self.model_type not in ["cat", "dot"]:
