@@ -51,10 +51,6 @@ class Args:
             raise ValueError(f"Model type '{self.model_type}' not recognised")
         self.dataset_frame = pd.read_csv(self.dataset, sep="\t")
         self.scores_lookup = load_json(self.scores)
-        if self.pipeline:
-            self.pipeline = [self.pipeline]
-        else:
-            self.pipeline = ["bm25"]
 
 
 def load_local_json(file_path):
@@ -157,6 +153,7 @@ def main(args=None, dataset=None):
     if not args:
         parser = HfArgumentParser(Args)
         args = parser.parse_args()
+        args.pipeline = [args.pipeline]
 
 
     if args.model_type == "cat":
