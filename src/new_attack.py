@@ -41,6 +41,9 @@ class Args:
     index_path: str = field(
         default="./index/"
     )
+    first_child: str = field(
+        default=True
+    )
 
     def __post_init(self):
         if self.model_type not in ["cat", "dot"]:
