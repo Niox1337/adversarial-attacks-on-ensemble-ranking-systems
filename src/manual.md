@@ -1,4 +1,4 @@
-# ⚙Configuration Manual
+# Configuration Manual
 
 This section documents all configurable parameters used in the adversarial attack pipeline. These parameters can be passed via command line or configuration files.
 
@@ -32,7 +32,7 @@ This section documents all configurable parameters used in the adversarial attac
 
 - **`dataset_id`** (str)  
   *Default*: `"msmarco-passage/trec-dl-2019/judged"`  
-  Identifier for the dataset used.
+  **Valid for running attack standalone only** Identifier for the dataset used.
 
 - **`doc_list_length`** (int)  
   *Default*: `100`  
