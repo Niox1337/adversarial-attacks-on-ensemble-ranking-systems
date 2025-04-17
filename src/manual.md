@@ -80,7 +80,7 @@ This section documents all configurable parameters used in the adversarial attac
 
 - **`max_doc_length`** (int)  
   *Default*: `300`  
-  Maximum length of the document (in tokens or words).
+  Maximum length of the document in tokens.
 
 - **`max_query_length`** (int)  
   *Default*: `30`  
