@@ -38,6 +38,9 @@ class Args:
     dataset_id : str = field(default="msmarco-passage/trec-dl-2019/judged")
     group_size: int = field(default=20)
     rewrite_query: bool = field(default=False)
+    index_path: str = field(
+        default="./index/"
+    )
 
     def __post_init(self):
         if self.model_type not in ["cat", "dot"]:
